@@ -1,0 +1,265 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Énumérations ─────────────────────────────────────────────────────────────
+
+enum Role {
+  ADMIN
+  DIRECTEUR
+  ENSEIGNANT
+  PARENT
+}
+
+enum Sexe {
+  MASCULIN
+  FEMININ
+}
+
+enum TypePeriode {
+  TRIMESTRE
+  SEMESTRE
+}
+
+enum Mention {
+  FELICITATIONS
+  ENCOURAGEMENTS
+  AUCUNE
+}
+
+enum TypeEvenement {
+  COURS
+  EXAMEN
+  REUNION
+  VACANCES
+  AUTRE
+}
+
+// ─── Utilisateurs & Auth ───────────────────────────────────────────────────────
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  role          Role
+  nom           String
+  prenom        String
+  actif         Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations enseignant
+  enseignements Enseignement[]
+
+  // Relations parent
+  parentEleves  ParentEleve[]
+
+  // Notes créées par cet utilisateur (enseignant)
+  notesCreees   Note[]        @relation("NoteCreateur")
+
+  // Appréciations de classe saisies
+  appreciations AppreciationClasse[]
+
+  // Événements créés
+  evenements    EvenementCalendrier[]
+
+  // Réinitialisation de mot de passe
+  resetTokens   PasswordResetToken[]
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─── Élèves ────────────────────────────────────────────────────────────────────
+
+model Eleve {
+  id            String    @id @default(cuid())
+  nom           String
+  prenom        String
+  dateNaissance DateTime
+  sexe          Sexe
+  adresse       String
+  photo         String?
+  actif         Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  parents       ParentEleve[]
+  classes       EleveClasse[]
+  notes         Note[]
+  appreciations AppreciationClasse[]
+}
+
+model ParentEleve {
+  userId  String
+  eleveId String
+
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  eleve   Eleve  @relation(fields: [eleveId], references: [id], onDelete: Cascade)
+
+  @@id([userId, eleveId])
+}
+
+// ─── Structure pédagogique ─────────────────────────────────────────────────────
+
+model AnneeScolaire {
+  id         String    @id @default(cuid())
+  libelle    String    @unique
+  dateDebut  DateTime
+  dateFin    DateTime
+  active     Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+
+  classes    Classe[]
+  periodes   PeriodeEvaluation[]
+  affectations EleveClasse[]
+}
+
+model Niveau {
+  id       String    @id @default(cuid())
+  libelle  String    @unique
+  ordre    Int
+
+  classes  Classe[]
+  matieres Matiere[]
+}
+
+model Classe {
+  id              String        @id @default(cuid())
+  libelle         String
+  niveauId        String
+  anneeScolaireId String
+  createdAt       DateTime      @default(now())
+
+  niveau          Niveau        @relation(fields: [niveauId], references: [id])
+  anneeScolaire   AnneeScolaire @relation(fields: [anneeScolaireId], references: [id])
+  eleves          EleveClasse[]
+  enseignements   Enseignement[]
+  appreciations   AppreciationClasse[]
+
+  @@unique([libelle, anneeScolaireId])
+}
+
+model EleveClasse {
+  eleveId         String
+  classeId        String
+  anneeScolaireId String
+
+  eleve           Eleve         @relation(fields: [eleveId], references: [id], onDelete: Cascade)
+  classe          Classe        @relation(fields: [classeId], references: [id], onDelete: Cascade)
+  anneeScolaire   AnneeScolaire @relation(fields: [anneeScolaireId], references: [id])
+
+  @@id([eleveId, anneeScolaireId])
+}
+
+model Matiere {
+  id          String   @id @default(cuid())
+  libelle     String
+  coefficient Float    @default(1)
+  niveauId    String
+  createdAt   DateTime @default(now())
+
+  niveau        Niveau         @relation(fields: [niveauId], references: [id])
+  enseignements Enseignement[]
+  notes         Note[]
+
+  @@unique([libelle, niveauId])
+}
+
+model Enseignement {
+  userId    String
+  matiereId String
+  classeId  String
+
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  matiere   Matiere @relation(fields: [matiereId], references: [id], onDelete: Cascade)
+  classe    Classe  @relation(fields: [classeId], references: [id], onDelete: Cascade)
+
+  @@id([userId, matiereId, classeId])
+}
+
+// ─── Évaluations & Notes ──────────────────────────────────────────────────────
+
+model PeriodeEvaluation {
+  id              String      @id @default(cuid())
+  libelle         String
+  type            TypePeriode
+  dateDebut       DateTime
+  dateFin         DateTime
+  close           Boolean     @default(false)
+  anneeScolaireId String
+  createdAt       DateTime    @default(now())
+
+  anneeScolaire   AnneeScolaire      @relation(fields: [anneeScolaireId], references: [id])
+  notes           Note[]
+  appreciations   AppreciationClasse[]
+}
+
+model Note {
+  id          String   @id @default(cuid())
+  valeur      Float
+  commentaire String?
+  eleveId     String
+  matiereId   String
+  periodeId   String
+  createdById String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  eleve       Eleve             @relation(fields: [eleveId], references: [id], onDelete: Cascade)
+  matiere     Matiere           @relation(fields: [matiereId], references: [id])
+  periode     PeriodeEvaluation @relation(fields: [periodeId], references: [id])
+  createdBy   User              @relation("NoteCreateur", fields: [createdById], references: [id])
+
+  @@unique([eleveId, matiereId, periodeId])
+}
+
+model AppreciationClasse {
+  id        String   @id @default(cuid())
+  texte     String
+  mention   Mention  @default(AUCUNE)
+  eleveId   String
+  classeId  String
+  periodeId String
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  eleve     Eleve             @relation(fields: [eleveId], references: [id], onDelete: Cascade)
+  classe    Classe            @relation(fields: [classeId], references: [id])
+  periode   PeriodeEvaluation @relation(fields: [periodeId], references: [id])
+  user      User              @relation(fields: [userId], references: [id])
+
+  @@unique([eleveId, classeId, periodeId])
+}
+
+// ─── Calendrier ────────────────────────────────────────────────────────────────
+
+model EvenementCalendrier {
+  id          String        @id @default(cuid())
+  titre       String
+  description String?
+  dateDebut   DateTime
+  dateFin     DateTime
+  type        TypeEvenement @default(AUTRE)
+  createdById String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  createdBy   User          @relation(fields: [createdById], references: [id])
+}
