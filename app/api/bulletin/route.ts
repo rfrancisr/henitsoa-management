@@ -1,7 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
+import fs from "fs";
+import path from "path";
 import { auth } from "@/lib/auth";
 import { getBulletinData, renderBulletinHTML } from "@/lib/bulletin";
 import puppeteer from "puppeteer";
+
+function loadLogoBase64(): string | undefined {
+  try {
+    const logoPath = path.join(process.cwd(), "public", "LogoHenitsoa.png");
+    return fs.readFileSync(logoPath).toString("base64");
+  } catch {
+    return undefined;
+  }
+}
 
 export async function GET(req: NextRequest) {
   const session = await auth();
@@ -28,7 +39,14 @@ export async function GET(req: NextRequest) {
   const data = await getBulletinData(eleveId, classeId, periodeId);
   if (!data) return NextResponse.json({ error: "Données introuvables" }, { status: 404 });
 
-  const html = renderBulletinHTML(data);
+  const logoBase64 = loadLogoBase64();
+  const html = renderBulletinHTML(data, logoBase64);
+
+  if (searchParams.get("format") === "html") {
+    return new NextResponse(html, {
+      headers: { "Content-Type": "text/html; charset=utf-8" },
+    });
+  }
 
   const browser = await puppeteer.launch({
     headless: true,
