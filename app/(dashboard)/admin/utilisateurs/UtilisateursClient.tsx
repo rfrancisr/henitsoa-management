@@ -77,53 +77,56 @@ export default function UtilisateursClient({ utilisateurs }: { utilisateurs: Use
 
   return (
     <>
-      <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-        <div className="px-5 py-4 border-b border-slate-200 flex items-center gap-3">
+      <div className="bg-white rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(232,212,138,0.3)", boxShadow: "0 1px 12px rgba(0,0,0,0.04)" }}>
+        <div className="px-5 py-4 border-b border-stone-100 flex items-center gap-3">
           <input
             type="text"
             placeholder="Rechercher..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="flex-1 px-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 px-3 py-2 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold bg-stone-50 text-stone-900 placeholder-stone-300"
           />
           <button
             onClick={() => setShowCreate(true)}
-            className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors whitespace-nowrap"
+            className="btn-gold text-sm px-4 py-2 rounded-xl whitespace-nowrap"
           >
             + Nouveau compte
           </button>
         </div>
 
-        <div className="divide-y divide-slate-100">
+        <div className="divide-y divide-stone-50">
           {filtered.length === 0 ? (
-            <p className="px-5 py-8 text-slate-400 text-sm text-center">Aucun utilisateur trouvé.</p>
+            <p className="px-5 py-8 text-stone-300 text-sm text-center">Aucun utilisateur trouvé.</p>
           ) : (
             filtered.map((u) => (
               <div key={u.id} className="px-5 py-3.5 flex items-center gap-4">
-                <div className="w-9 h-9 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 font-semibold text-sm shrink-0">
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center font-semibold text-sm shrink-0"
+                  style={{ background: "rgba(201,168,76,0.12)", color: "#9A7428" }}
+                >
                   {u.prenom.charAt(0)}{u.nom.charAt(0)}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-medium text-slate-900 text-sm">
+                  <p className="font-medium text-stone-900 text-sm">
                     {u.prenom} {u.nom}
                   </p>
-                  <p className="text-slate-500 text-xs truncate">{u.email}</p>
+                  <p className="text-stone-400 text-xs truncate">{u.email}</p>
                 </div>
-                <Badge color={ROLE_COLORS[u.role]}>{ROLE_LABELS[u.role]}</Badge>
+                <Badge color="gold">{ROLE_LABELS[u.role]}</Badge>
                 {!u.actif && <Badge color="red">Désactivé</Badge>}
                 <div className="flex items-center gap-2 shrink-0">
                   <button
                     onClick={() => { setResetId(u.id); setNewPassword(""); }}
-                    className="text-xs text-slate-500 hover:text-blue-600 px-2 py-1 rounded hover:bg-blue-50 transition-colors"
+                    className="btn-glass text-xs px-2 py-1 rounded-lg font-medium"
                   >
                     Mot de passe
                   </button>
                   <button
                     onClick={() => handleToggle(u.id, u.actif)}
-                    className={`text-xs px-2 py-1 rounded transition-colors ${
+                    className={`text-xs px-2 py-1 rounded-lg transition-colors ${
                       u.actif
-                        ? "text-slate-500 hover:text-red-600 hover:bg-red-50"
-                        : "text-slate-500 hover:text-green-600 hover:bg-green-50"
+                        ? "text-stone-400 hover:text-red-600 hover:bg-red-50"
+                        : "text-stone-400 hover:text-emerald-600 hover:bg-emerald-50"
                     }`}
                   >
                     {u.actif ? "Désactiver" : "Activer"}

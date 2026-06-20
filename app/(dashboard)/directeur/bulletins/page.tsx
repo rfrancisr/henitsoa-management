@@ -1,10 +1,10 @@
-import { auth } from "@/lib/auth";
+﻿import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import BulletinsClient from "./BulletinsClient";
 
 export default async function BulletinsPage() {
-  const session = await auth();
+  const session = await getSession();
   if (!session || !["ADMIN", "DIRECTEUR"].includes(session.user.role)) redirect("/");
 
   const anneeScolaireActive = await prisma.anneeScolaire.findFirst({ where: { active: true } });
@@ -28,8 +28,8 @@ export default async function BulletinsPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-slate-900">Bulletins scolaires</h1>
-        <p className="text-slate-500 text-sm mt-1">
+        <h1 className="text-2xl font-bold text-stone-900">Bulletins scolaires</h1>
+        <p className="text-stone-500 text-sm mt-1">
           {anneeScolaireActive?.libelle ?? "Aucune année scolaire active"}
         </p>
       </div>

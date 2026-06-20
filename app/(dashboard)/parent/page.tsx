@@ -1,9 +1,9 @@
-import { auth } from "@/lib/auth";
+import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 
 export default async function ParentDashboard() {
-  const session = await auth();
+  const session = await getSession();
   if (session?.user.role !== "PARENT") redirect("/");
 
   const enfants = await prisma.parentEleve.findMany({
@@ -25,13 +25,16 @@ export default async function ParentDashboard() {
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-slate-900">Mes enfants</h1>
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold text-stone-900 tracking-tight">Mes enfants</h1>
       </div>
 
       {enfants.length === 0 ? (
-        <div className="bg-white rounded-xl border border-slate-200 p-8 text-center">
-          <p className="text-slate-400 text-sm">
+        <div
+          className="bg-white rounded-2xl p-8 text-center"
+          style={{ border: "1px solid rgba(232,212,138,0.3)" }}
+        >
+          <p className="text-stone-300 text-sm">
             Aucun enfant associé à votre compte. Contactez l&apos;administration.
           </p>
         </div>
@@ -42,17 +45,21 @@ export default async function ParentDashboard() {
             return (
               <div
                 key={eleve.id}
-                className="bg-white rounded-xl border border-slate-200 p-5"
+                className="bg-white rounded-2xl p-5"
+                style={{ border: "1px solid rgba(232,212,138,0.3)", boxShadow: "0 1px 12px rgba(0,0,0,0.04)" }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-sm">
+                  <div
+                    className="w-10 h-10 rounded-full font-bold flex items-center justify-center text-sm shrink-0"
+                    style={{ background: "rgba(201,168,76,0.12)", color: "#9A7428" }}
+                  >
                     {eleve.prenom.charAt(0)}{eleve.nom.charAt(0)}
                   </div>
                   <div>
-                    <p className="font-semibold text-slate-900">
+                    <p className="font-semibold text-stone-900">
                       {eleve.prenom} {eleve.nom}
                     </p>
-                    <p className="text-slate-500 text-xs">
+                    <p className="text-stone-400 text-xs">
                       {derniereClasse
                         ? `${derniereClasse.libelle} — ${derniereClasse.anneeScolaire.libelle}`
                         : "Classe non assignée"}
@@ -62,7 +69,7 @@ export default async function ParentDashboard() {
                 <div className="flex gap-2">
                   <a
                     href={`/parent/bulletins?eleveId=${eleve.id}`}
-                    className="flex-1 text-center text-sm font-medium text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-2 rounded-lg transition-colors"
+                    className="btn-glass flex-1 text-center text-sm font-medium px-3 py-2 rounded-xl"
                   >
                     Voir les bulletins
                   </a>

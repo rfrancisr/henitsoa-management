@@ -1,10 +1,10 @@
-import { auth } from "@/lib/auth";
+﻿import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import PeriodesClient from "./PeriodesClient";
 
 export default async function PeriodesPage() {
-  const session = await auth();
+  const session = await getSession();
   if (session?.user.role !== "ADMIN" && session?.user.role !== "DIRECTEUR") redirect("/");
 
   const [periodes, anneesScolaires] = await Promise.all([
@@ -20,8 +20,8 @@ export default async function PeriodesPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-slate-900">Périodes d&apos;évaluation</h1>
-        <p className="text-slate-500 text-sm mt-1">Trimestres et semestres</p>
+        <h1 className="text-2xl font-bold text-stone-900">Périodes d&apos;évaluation</h1>
+        <p className="text-stone-500 text-sm mt-1">Trimestres et semestres</p>
       </div>
       <PeriodesClient
         periodes={periodes}

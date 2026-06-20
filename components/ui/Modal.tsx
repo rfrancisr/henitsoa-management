@@ -21,15 +21,19 @@ export default function Modal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ background: "rgba(0,0,0,0.35)", backdropFilter: "blur(4px)" }}
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200">
-          <h2 className="font-semibold text-slate-900">{title}</h2>
+      <div
+        className="bg-white rounded-2xl w-full max-w-lg"
+        style={{ boxShadow: "0 8px 60px rgba(0,0,0,0.12), 0 1px 8px rgba(0,0,0,0.06)" }}
+      >
+        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-100">
+          <h2 className="font-semibold text-stone-900 tracking-tight">{title}</h2>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-slate-600 transition-colors"
+            className="text-stone-300 hover:text-stone-600 transition-colors rounded-lg p-1 hover:bg-stone-50"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

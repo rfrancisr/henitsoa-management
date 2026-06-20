@@ -9,9 +9,9 @@ export function FormField({
 }) {
   return (
     <div>
-      <label className="block text-sm font-medium text-slate-700 mb-1.5">{label}</label>
+      <label className="block text-xs font-semibold text-stone-500 mb-1.5 uppercase tracking-wider">{label}</label>
       {children}
-      {error && <p className="text-red-600 text-xs mt-1">{error}</p>}
+      {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
     </div>
   );
 }
@@ -22,7 +22,7 @@ export function Input({
 }: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <input
-      className={`w-full px-3.5 py-2.5 border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm ${className}`}
+      className={`w-full px-3.5 py-2.5 border border-stone-200 rounded-xl text-stone-900 placeholder-stone-300 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent text-sm bg-stone-50 transition-all ${className}`}
       {...props}
     />
   );
@@ -35,7 +35,7 @@ export function Select({
 }: React.SelectHTMLAttributes<HTMLSelectElement>) {
   return (
     <select
-      className={`w-full px-3.5 py-2.5 border border-slate-300 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm bg-white ${className}`}
+      className={`w-full px-3.5 py-2.5 border border-stone-200 rounded-xl text-stone-900 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent text-sm bg-stone-50 transition-all ${className}`}
       {...props}
     >
       {children}
@@ -54,7 +54,7 @@ export function SubmitButton({
     <button
       type="submit"
       disabled={loading}
-      className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-2.5 px-4 rounded-lg transition-colors text-sm"
+      className="btn-gold w-full py-2.5 px-4 rounded-xl text-sm"
     >
       {loading ? "Chargement…" : children}
     </button>
@@ -66,18 +66,28 @@ export function Badge({
   color = "slate",
 }: {
   children: React.ReactNode;
-  color?: "slate" | "green" | "red" | "blue" | "purple" | "orange";
+  color?: "slate" | "green" | "red" | "blue" | "purple" | "orange" | "gold";
 }) {
-  const colors = {
-    slate: "bg-slate-100 text-slate-700",
-    green: "bg-green-100 text-green-700",
-    red: "bg-red-100 text-red-700",
-    blue: "bg-blue-100 text-blue-700",
-    purple: "bg-purple-100 text-purple-700",
-    orange: "bg-orange-100 text-orange-700",
+  const colors: Record<string, string> = {
+    slate:  "bg-stone-100 text-stone-600",
+    green:  "bg-emerald-50 text-emerald-700 border border-emerald-100",
+    red:    "bg-red-50 text-red-600 border border-red-100",
+    blue:   "bg-stone-100 text-stone-700",
+    purple: "bg-stone-100 text-stone-700",
+    orange: "bg-stone-100 text-stone-700",
+    gold:   "border text-[#9A7428]",
   };
+
+  const goldStyle =
+    color === "gold"
+      ? { background: "rgba(201,168,76,0.10)", borderColor: "rgba(201,168,76,0.30)" }
+      : undefined;
+
   return (
-    <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${colors[color]}`}>
+    <span
+      className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${colors[color] ?? colors.slate}`}
+      style={goldStyle}
+    >
       {children}
     </span>
   );

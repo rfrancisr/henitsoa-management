@@ -1,4 +1,4 @@
-import { auth } from "@/lib/auth";
+﻿import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import NotesClient from "./NotesClient";
@@ -8,7 +8,7 @@ export default async function NotesPage({
 }: {
   searchParams: Promise<{ classeId?: string; periodeId?: string }>;
 }) {
-  const session = await auth();
+  const session = await getSession();
   if (!session || !["ENSEIGNANT", "ADMIN", "DIRECTEUR"].includes(session.user.role)) {
     redirect("/");
   }
@@ -53,8 +53,8 @@ export default async function NotesPage({
   if (!classeId || !periodeId) {
     return (
       <div className="text-center py-16">
-        <h1 className="text-2xl font-bold text-slate-900 mb-2">Saisie des notes</h1>
-        <p className="text-slate-500">
+        <h1 className="text-2xl font-bold text-stone-900 mb-2">Saisie des notes</h1>
+        <p className="text-stone-500">
           {classesDisponibles.length === 0
             ? "Aucune classe assignée pour l'année en cours."
             : "Aucune période d'évaluation créée."}
@@ -109,7 +109,7 @@ export default async function NotesPage({
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-slate-900">Saisie des notes</h1>
+        <h1 className="text-2xl font-bold text-stone-900">Saisie des notes</h1>
       </div>
       <NotesClient
         classes={classesDisponibles}

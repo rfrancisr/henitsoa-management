@@ -34,30 +34,24 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-white flex items-center justify-center p-4">
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+        <div
+          className="bg-white rounded-2xl p-8"
+          style={{ boxShadow: "0 1px 40px rgba(0,0,0,0.07), 0 1px 8px rgba(0,0,0,0.04)" }}
+        >
           {/* En-tête */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-blue-600 mb-4">
-              <svg
-                className="w-8 h-8 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                />
-              </svg>
+            <div className="w-20 h-20 mx-auto mb-5 flex items-center justify-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/LogoHenitsoa.png"
+                alt=""
+                style={{ width: "80px", height: "80px", objectFit: "contain", display: "block" }}
+              />
             </div>
-            <h1 className="text-2xl font-bold text-slate-900">
-              EcoleManager
-            </h1>
-            <p className="text-slate-500 text-sm mt-1">
+            <h1 className="text-xl font-bold text-stone-900 tracking-tight">École Privée Henitsoa</h1>
+            <p className="text-stone-400 text-sm mt-1.5 tracking-wide">
               Connectez-vous à votre espace
             </p>
           </div>
@@ -67,7 +61,7 @@ export default function LoginPage() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-slate-700 mb-1.5"
+                className="block text-xs font-semibold text-stone-500 mb-1.5 uppercase tracking-wider"
               >
                 Adresse email
               </label>
@@ -78,14 +72,14 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="vous@example.com"
-                className="w-full px-3.5 py-2.5 border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                className="w-full px-3.5 py-2.5 border border-stone-200 rounded-xl text-stone-900 placeholder-stone-300 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent text-sm bg-stone-50 transition-all"
               />
             </div>
 
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-slate-700 mb-1.5"
+                className="block text-xs font-semibold text-stone-500 mb-1.5 uppercase tracking-wider"
               >
                 Mot de passe
               </label>
@@ -96,12 +90,12 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full px-3.5 py-2.5 border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                className="w-full px-3.5 py-2.5 border border-stone-200 rounded-xl text-stone-900 placeholder-stone-300 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent text-sm bg-stone-50 transition-all"
               />
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3">
+              <div className="bg-red-50 border border-red-100 text-red-600 text-sm rounded-xl px-4 py-3">
                 {error}
               </div>
             )}
@@ -109,7 +103,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-2.5 px-4 rounded-lg transition-colors text-sm"
+              className="btn-gold w-full py-2.5 px-4 rounded-xl text-sm"
             >
               {loading ? "Connexion…" : "Se connecter"}
             </button>
@@ -118,15 +112,15 @@ export default function LoginPage() {
           <div className="mt-6 text-center">
             <a
               href="/reset-password"
-              className="text-sm text-blue-600 hover:text-blue-700"
+              className="text-xs text-stone-400 hover:text-gold-dark transition-colors"
             >
               Mot de passe oublié ?
             </a>
           </div>
         </div>
 
-        <p className="text-center text-slate-400 text-xs mt-6">
-          © {new Date().getFullYear()} EcoleManager — Tous droits réservés
+        <p className="text-center text-stone-300 text-xs mt-6">
+          © {new Date().getFullYear()} École Privée Henitsoa — Tous droits réservés
         </p>
       </div>
     </div>

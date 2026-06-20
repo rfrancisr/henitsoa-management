@@ -123,14 +123,3 @@ export async function upsertAppreciation(data: {
   revalidatePath("/enseignant/notes");
   return { success: true };
 }
-
-// Calcul de la moyenne pondérée d'un élève pour une période
-export function calculerMoyenne(
-  notes: { valeur: number; matiere: { coefficient: number } }[]
-): number | null {
-  if (notes.length === 0) return null;
-  const totalPts = notes.reduce((s, n) => s + n.valeur * n.matiere.coefficient, 0);
-  const totalCoeff = notes.reduce((s, n) => s + n.matiere.coefficient, 0);
-  if (totalCoeff === 0) return null;
-  return Math.round((totalPts / totalCoeff) * 100) / 100;
-}

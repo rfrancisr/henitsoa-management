@@ -1,10 +1,10 @@
-import { auth } from "@/lib/auth";
+﻿import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import ElevesClient from "./ElevesClient";
 
 export default async function ElevesPage() {
-  const session = await auth();
+  const session = await getSession();
   if (session?.user.role !== "ADMIN" && session?.user.role !== "DIRECTEUR") redirect("/");
 
   const [eleves, parents, anneeScolaireActive] = await Promise.all([
@@ -39,8 +39,8 @@ export default async function ElevesPage() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Élèves</h1>
-          <p className="text-slate-500 text-sm mt-1">{eleves.filter((e) => e.actif).length} élève(s) actif(s)</p>
+          <h1 className="text-2xl font-bold text-stone-900">Élèves</h1>
+          <p className="text-stone-500 text-sm mt-1">{eleves.filter((e) => e.actif).length} élève(s) actif(s)</p>
         </div>
       </div>
       <ElevesClient

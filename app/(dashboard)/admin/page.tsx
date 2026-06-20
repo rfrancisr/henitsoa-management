@@ -1,9 +1,9 @@
-import { auth } from "@/lib/auth";
+import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 
 export default async function AdminDashboard() {
-  const session = await auth();
+  const session = await getSession();
   if (session?.user.role !== "ADMIN") redirect("/");
 
   const [totalEleves, totalUtilisateurs, totalClasses] = await Promise.all([
@@ -18,9 +18,9 @@ export default async function AdminDashboard() {
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-slate-900">Tableau de bord</h1>
-        <p className="text-slate-500 text-sm mt-1">
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold text-stone-900 tracking-tight">Tableau de bord</h1>
+        <p className="text-stone-400 text-sm mt-1">
           {anneeScolaireActive
             ? `Année scolaire : ${anneeScolaireActive.libelle}`
             : "Aucune année scolaire active"}
@@ -28,42 +28,33 @@ export default async function AdminDashboard() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-        <StatCard label="Élèves inscrits" value={totalEleves} color="blue" />
-        <StatCard label="Utilisateurs actifs" value={totalUtilisateurs} color="purple" />
-        <StatCard label="Classes" value={totalClasses} color="green" />
+        <StatCard label="Élèves inscrits" value={totalEleves} />
+        <StatCard label="Utilisateurs actifs" value={totalUtilisateurs} />
+        <StatCard label="Classes" value={totalClasses} />
       </div>
 
-      <div className="bg-white rounded-xl border border-slate-200 p-5">
-        <h2 className="font-semibold text-slate-900 mb-4">Accès rapides</h2>
+      <div className="bg-white rounded-2xl border border-stone-100 p-5" style={{ boxShadow: "0 1px 12px rgba(0,0,0,0.04)" }}>
+        <h2 className="font-semibold text-stone-900 mb-4 text-sm uppercase tracking-wider">Accès rapides</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <QuickLink href="/admin/utilisateurs" label="Gérer les utilisateurs" />
-          <QuickLink href="/admin/eleves" label="Gérer les élèves" />
-          <QuickLink href="/admin/classes" label="Gérer les classes" />
-          <QuickLink href="/admin/periodes" label="Gérer les périodes" />
+          <QuickLink href="/admin/utilisateurs" label="Utilisateurs" />
+          <QuickLink href="/admin/eleves" label="Élèves" />
+          <QuickLink href="/admin/classes" label="Classes" />
+          <QuickLink href="/admin/periodes" label="Périodes" />
         </div>
       </div>
     </div>
   );
 }
 
-function StatCard({
-  label,
-  value,
-  color,
-}: {
-  label: string;
-  value: number;
-  color: "blue" | "purple" | "green";
-}) {
-  const colors = {
-    blue: "bg-blue-50 text-blue-700",
-    purple: "bg-purple-50 text-purple-700",
-    green: "bg-green-50 text-green-700",
-  };
+function StatCard({ label, value }: { label: string; value: number }) {
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-5">
-      <p className="text-sm text-slate-500 mb-1">{label}</p>
-      <p className={`text-3xl font-bold ${colors[color]}`}>{value}</p>
+    <div
+      className="bg-white rounded-2xl p-5"
+      style={{ boxShadow: "0 1px 12px rgba(0,0,0,0.04)", border: "1px solid rgba(232,212,138,0.35)" }}
+    >
+      <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">{label}</p>
+      <p className="text-4xl font-bold text-stone-900 tracking-tight">{value}</p>
+      <div className="mt-3 h-0.5 w-8 rounded-full" style={{ background: "#C9A84C" }} />
     </div>
   );
 }
@@ -72,7 +63,7 @@ function QuickLink({ href, label }: { href: string; label: string }) {
   return (
     <a
       href={href}
-      className="block p-4 rounded-lg bg-slate-50 hover:bg-blue-50 hover:text-blue-700 text-slate-700 text-sm font-medium transition-colors text-center border border-slate-200"
+      className="btn-glass block p-4 rounded-xl text-sm font-medium text-center transition-all"
     >
       {label}
     </a>

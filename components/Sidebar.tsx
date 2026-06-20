@@ -18,13 +18,6 @@ const ROLE_LABELS: Record<Role, string> = {
   PARENT: "Parent",
 };
 
-const ROLE_COLORS: Record<Role, string> = {
-  ADMIN: "bg-purple-100 text-purple-700",
-  DIRECTEUR: "bg-blue-100 text-blue-700",
-  ENSEIGNANT: "bg-green-100 text-green-700",
-  PARENT: "bg-orange-100 text-orange-700",
-};
-
 function navByRole(role: Role): NavItem[] {
   const common: NavItem[] = [
     {
@@ -37,11 +30,14 @@ function navByRole(role: Role): NavItem[] {
   if (role === "ADMIN") {
     return [
       { href: "/admin", label: "Tableau de bord", icon: <HomeIcon /> },
-      { href: "/admin/utilisateurs", label: "Utilisateurs", icon: <UsersIcon /> },
-      { href: "/admin/eleves", label: "Élèves", icon: <StudentIcon /> },
-      { href: "/admin/classes", label: "Classes", icon: <ClassIcon /> },
-      { href: "/admin/matieres", label: "Matières", icon: <BookIcon /> },
+      { href: "/admin/annees", label: "Années scolaires", icon: <YearIcon /> },
       { href: "/admin/periodes", label: "Périodes", icon: <PeriodIcon /> },
+      { href: "/admin/matieres", label: "Matières", icon: <BookIcon /> },
+      { href: "/admin/classes", label: "Classes", icon: <ClassIcon /> },
+      { href: "/admin/utilisateurs", label: "Utilisateurs", icon: <UsersIcon /> },
+      { href: "/admin/enseignants", label: "Enseignants", icon: <TeacherIcon /> },
+      { href: "/admin/eleves", label: "Élèves", icon: <StudentIcon /> },
+      { href: "/performance", label: "Performance", icon: <TrendIcon /> },
       ...common,
     ];
   }
@@ -60,6 +56,7 @@ function navByRole(role: Role): NavItem[] {
     return [
       { href: "/enseignant", label: "Tableau de bord", icon: <HomeIcon /> },
       { href: "/enseignant/notes", label: "Saisie des notes", icon: <GradeIcon /> },
+      { href: "/performance", label: "Performance élèves", icon: <TrendIcon /> },
       ...common,
     ];
   }
@@ -67,6 +64,7 @@ function navByRole(role: Role): NavItem[] {
   // PARENT
   return [
     { href: "/parent", label: "Mes enfants", icon: <StudentIcon /> },
+    { href: "/performance", label: "Performance", icon: <TrendIcon /> },
     { href: "/parent/bulletins", label: "Bulletins", icon: <BulletinIcon /> },
     ...common,
   ];
@@ -81,16 +79,20 @@ export default function Sidebar({
   const navItems = navByRole(user.role);
 
   return (
-    <aside className="w-64 bg-white border-r border-slate-200 flex flex-col h-full shrink-0">
+    <aside className="w-64 bg-white border-r border-stone-100 flex flex-col h-full shrink-0">
       {/* Logo */}
-      <div className="px-5 py-5 border-b border-slate-200">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
+      <div className="px-5 py-5 border-b border-stone-100">
+        <div className="flex items-center gap-3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/LogoHenitsoa.png"
+            alt=""
+            style={{ width: "40px", height: "40px", objectFit: "contain", display: "block", flexShrink: 0 }}
+          />
+          <div className="min-w-0">
+            <p className="font-semibold text-stone-900 text-sm leading-tight tracking-tight">École Privée</p>
+            <p className="font-bold text-sm leading-tight tracking-tight" style={{ color: "#C9A84C" }}>Henitsoa</p>
           </div>
-          <span className="font-bold text-slate-900 text-base">EcoleManager</span>
         </div>
       </div>
 
@@ -102,13 +104,17 @@ export default function Sidebar({
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
                 isActive
-                  ? "bg-blue-50 text-blue-700"
-                  : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                  ? "bg-gold-subtle text-gold-dark"
+                  : "text-stone-500 hover:bg-stone-50 hover:text-stone-900"
               }`}
             >
-              <span className={`w-4 h-4 shrink-0 ${isActive ? "text-blue-600" : "text-slate-400"}`}>
+              <span
+                className={`w-4 h-4 shrink-0 transition-colors ${
+                  isActive ? "text-gold" : "text-stone-400"
+                }`}
+              >
                 {item.icon}
               </span>
               {item.label}
@@ -118,21 +124,31 @@ export default function Sidebar({
       </nav>
 
       {/* Profil utilisateur */}
-      <div className="px-3 py-4 border-t border-slate-200">
+      <div className="px-3 py-4 border-t border-stone-100">
         <div className="flex items-center gap-3 px-3 py-2 mb-1">
-          <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-600 font-semibold text-sm shrink-0">
+          <div
+            className="w-8 h-8 rounded-full flex items-center justify-center font-semibold text-sm shrink-0"
+            style={{ background: "rgba(201,168,76,0.12)", color: "#9A7428" }}
+          >
             {user.name.charAt(0).toUpperCase()}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-slate-900 truncate">{user.name}</p>
-            <span className={`text-xs font-medium px-1.5 py-0.5 rounded ${ROLE_COLORS[user.role]}`}>
+            <p className="text-sm font-medium text-stone-900 truncate">{user.name}</p>
+            <span
+              className="text-xs font-medium px-1.5 py-0.5 rounded"
+              style={{
+                background: "rgba(201,168,76,0.10)",
+                color: "#9A7428",
+                border: "1px solid rgba(201,168,76,0.25)",
+              }}
+            >
               {ROLE_LABELS[user.role]}
             </span>
           </div>
         </div>
         <button
           onClick={() => signOut({ callbackUrl: "/login" })}
-          className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-slate-600 hover:bg-red-50 hover:text-red-600 transition-colors"
+          className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-stone-500 hover:bg-red-50 hover:text-red-600 transition-colors"
         >
           <LogoutIcon />
           Se déconnecter
@@ -154,6 +170,20 @@ function UsersIcon() {
   return (
     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+  );
+}
+function TrendIcon() {
+  return (
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+    </svg>
+  );
+}
+function TeacherIcon() {
+  return (
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
     </svg>
   );
 }
@@ -196,6 +226,13 @@ function PeriodIcon() {
   return (
     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+  );
+}
+function YearIcon() {
+  return (
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
     </svg>
   );
 }

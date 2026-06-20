@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { createMatiere, updateMatiere, deleteMatiere } from "@/lib/actions/structure";
 import Modal from "@/components/ui/Modal";
-import { FormField, Input, Select, SubmitButton, Badge } from "@/components/ui/FormField";
+import { FormField, Input, Select, SubmitButton } from "@/components/ui/FormField";
 
 type Niveau = { id: string; libelle: string; ordre: number };
 type Matiere = { id: string; libelle: string; coefficient: number; niveau: Niveau };
@@ -56,7 +56,7 @@ export default function MatieresClient({
         <div className="flex justify-end">
           <button
             onClick={() => setShowCreate(true)}
-            className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+            className="btn-gold text-sm px-4 py-2 rounded-xl"
           >
             + Nouvelle matière
           </button>
@@ -64,21 +64,30 @@ export default function MatieresClient({
 
         {grouped.map(({ niveau, matieres: ms }) =>
           ms.length === 0 ? null : (
-            <div key={niveau.id} className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-              <div className="px-5 py-3 bg-slate-50 border-b border-slate-200">
-                <h3 className="font-semibold text-slate-700 text-sm">{niveau.libelle}</h3>
+            <div
+              key={niveau.id}
+              className="bg-white rounded-2xl overflow-hidden"
+              style={{ border: "1px solid rgba(232,212,138,0.3)", boxShadow: "0 1px 12px rgba(0,0,0,0.04)" }}
+            >
+              <div className="px-5 py-3 border-b border-stone-50" style={{ background: "rgba(201,168,76,0.04)" }}>
+                <h3 className="font-semibold text-stone-600 text-xs uppercase tracking-wider">{niveau.libelle}</h3>
               </div>
-              <div className="divide-y divide-slate-100">
+              <div className="divide-y divide-stone-50">
                 {ms.map((m) => (
                   <div key={m.id} className="px-5 py-3 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <span className="font-medium text-slate-900 text-sm">{m.libelle}</span>
-                      <Badge color="slate">coeff. {m.coefficient}</Badge>
+                      <span className="font-medium text-stone-900 text-sm">{m.libelle}</span>
+                      <span
+                        className="text-xs px-2 py-0.5 rounded font-medium"
+                        style={{ background: "rgba(201,168,76,0.10)", color: "#9A7428" }}
+                      >
+                        coeff. {m.coefficient}
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => setEditMatiere(m)}
-                        className="text-xs text-slate-500 hover:text-blue-600 px-2 py-1 rounded hover:bg-blue-50 transition-colors"
+                        className="btn-glass text-xs px-2 py-1 rounded-lg font-medium"
                       >
                         Modifier
                       </button>
@@ -86,7 +95,7 @@ export default function MatieresClient({
                         onClick={async () => {
                           if (confirm(`Supprimer "${m.libelle}" ?`)) await deleteMatiere(m.id);
                         }}
-                        className="text-xs text-slate-500 hover:text-red-600 px-2 py-1 rounded hover:bg-red-50 transition-colors"
+                        className="text-xs text-stone-400 hover:text-red-600 px-2 py-1 rounded-lg hover:bg-red-50 transition-colors"
                       >
                         Supprimer
                       </button>
@@ -99,8 +108,8 @@ export default function MatieresClient({
         )}
 
         {matieres.length === 0 && (
-          <div className="bg-white rounded-xl border border-slate-200 p-8 text-center">
-            <p className="text-slate-400 text-sm">Aucune matière créée.</p>
+          <div className="bg-white rounded-2xl p-8 text-center" style={{ border: "1px solid rgba(232,212,138,0.3)" }}>
+            <p className="text-stone-300 text-sm">Aucune matière créée.</p>
           </div>
         )}
       </div>

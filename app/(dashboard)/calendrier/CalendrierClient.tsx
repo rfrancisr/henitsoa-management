@@ -107,7 +107,7 @@ export default function CalendrierClient({ canEdit }: { canEdit: boolean }) {
   }
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-4">
+    <div className="bg-white rounded-2xl p-4" style={{ border: "1px solid rgba(232,212,138,0.3)", boxShadow: "0 1px 12px rgba(0,0,0,0.04)" }}>
       {/* Légende */}
       <div className="flex flex-wrap gap-3 mb-4 text-xs">
         {Object.entries(TYPE_LABELS).map(([type, label]) => (
@@ -120,7 +120,7 @@ export default function CalendrierClient({ canEdit }: { canEdit: boolean }) {
           </span>
         ))}
         {canEdit && (
-          <span className="text-slate-400 ml-2">· Cliquez sur une date pour ajouter un événement</span>
+          <span className="text-stone-300 ml-2">· Cliquez sur une date pour ajouter un événement</span>
         )}
       </div>
 
@@ -192,7 +192,7 @@ export default function CalendrierClient({ canEdit }: { canEdit: boolean }) {
                 onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
                 rows={2}
                 placeholder="Détails supplémentaires…"
-                className="w-full px-3.5 py-2.5 border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm resize-none"
+                className="w-full px-3.5 py-2.5 border border-stone-200 rounded-xl text-stone-900 placeholder-stone-300 focus:outline-none focus:ring-2 focus:ring-gold text-sm resize-none bg-stone-50"
               />
             </FormField>
             <div className="flex gap-3">

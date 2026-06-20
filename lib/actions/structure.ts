@@ -106,6 +106,45 @@ export async function retirerEnseignant(data: {
   return { success: true };
 }
 
+// ─── Années scolaires ─────────────────────────────────────────────────────────
+
+export async function createAnneeScolaire(data: {
+  libelle: string;
+  dateDebut: string;
+  dateFin: string;
+}) {
+  await requireAdmin();
+  await prisma.anneeScolaire.create({
+    data: {
+      libelle: data.libelle,
+      dateDebut: new Date(data.dateDebut),
+      dateFin: new Date(data.dateFin),
+      active: false,
+    },
+  });
+  revalidatePath("/admin/annees");
+  return { success: true };
+}
+
+export async function activerAnneeScolaire(id: string) {
+  await requireAdmin();
+  await prisma.$transaction([
+    prisma.anneeScolaire.updateMany({ data: { active: false } }),
+    prisma.anneeScolaire.update({ where: { id }, data: { active: true } }),
+  ]);
+  revalidatePath("/admin/annees");
+  revalidatePath("/admin/classes");
+  revalidatePath("/admin/periodes");
+  return { success: true };
+}
+
+export async function deleteAnneeScolaire(id: string) {
+  await requireAdmin();
+  await prisma.anneeScolaire.delete({ where: { id } });
+  revalidatePath("/admin/annees");
+  return { success: true };
+}
+
 // ─── Périodes d'évaluation ────────────────────────────────────────────────────
 
 export async function createPeriode(data: {

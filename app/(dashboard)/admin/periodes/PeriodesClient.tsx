@@ -50,28 +50,31 @@ export default function PeriodesClient({
 
   return (
     <>
-      <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-        <div className="px-5 py-4 border-b border-slate-200 flex justify-end">
+      <div
+        className="bg-white rounded-2xl overflow-hidden"
+        style={{ border: "1px solid rgba(232,212,138,0.3)", boxShadow: "0 1px 12px rgba(0,0,0,0.04)" }}
+      >
+        <div className="px-5 py-4 border-b border-stone-100 flex justify-end">
           {isAdmin && (
             <button
               onClick={() => setShowCreate(true)}
-              className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+              className="btn-gold text-sm px-4 py-2 rounded-xl"
             >
               + Nouvelle période
             </button>
           )}
         </div>
 
-        <div className="divide-y divide-slate-100">
+        <div className="divide-y divide-stone-50">
           {periodes.length === 0 ? (
-            <p className="px-5 py-8 text-slate-400 text-sm text-center">Aucune période créée.</p>
+            <p className="px-5 py-8 text-stone-300 text-sm text-center">Aucune période créée.</p>
           ) : (
             periodes.map((p) => (
               <div key={p.id} className="px-5 py-4 flex items-center gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-0.5">
-                    <span className="font-medium text-slate-900">{p.libelle}</span>
-                    <Badge color={p.type === "TRIMESTRE" ? "blue" : "purple"}>
+                    <span className="font-medium text-stone-900">{p.libelle}</span>
+                    <Badge color="gold">
                       {p.type === "TRIMESTRE" ? "Trimestre" : "Semestre"}
                     </Badge>
                     {p.close ? (
@@ -80,7 +83,7 @@ export default function PeriodesClient({
                       <Badge color="green">Ouverte</Badge>
                     )}
                   </div>
-                  <p className="text-slate-500 text-xs">
+                  <p className="text-stone-400 text-xs">
                     {fmt(p.dateDebut)} → {fmt(p.dateFin)} · {p.anneeScolaire.libelle}
                   </p>
                 </div>
@@ -92,14 +95,14 @@ export default function PeriodesClient({
                           await cloturerPeriode(p.id);
                         }
                       }}
-                      className="text-xs text-slate-500 hover:text-red-600 px-2 py-1 rounded hover:bg-red-50 transition-colors"
+                      className="text-xs text-stone-400 hover:text-red-600 px-2 py-1 rounded-lg hover:bg-red-50 transition-colors"
                     >
                       Clôturer
                     </button>
                   ) : isAdmin ? (
                     <button
                       onClick={() => rouvrirPeriode(p.id)}
-                      className="text-xs text-slate-500 hover:text-green-600 px-2 py-1 rounded hover:bg-green-50 transition-colors"
+                      className="text-xs text-stone-400 hover:text-emerald-600 px-2 py-1 rounded-lg hover:bg-emerald-50 transition-colors"
                     >
                       Rouvrir
                     </button>

@@ -1,10 +1,10 @@
-import { auth } from "@/lib/auth";
+﻿import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import ClassesClient from "./ClassesClient";
 
 export default async function ClassesPage() {
-  const session = await auth();
+  const session = await getSession();
   if (session?.user.role !== "ADMIN" && session?.user.role !== "DIRECTEUR") redirect("/");
 
   const [niveaux, anneesScolaires, enseignants] = await Promise.all([
@@ -43,8 +43,8 @@ export default async function ClassesPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-slate-900">Classes</h1>
-        <p className="text-slate-500 text-sm mt-1">
+        <h1 className="text-2xl font-bold text-stone-900">Classes</h1>
+        <p className="text-stone-500 text-sm mt-1">
           {anneeScolaireActive?.libelle ?? "Aucune année scolaire active"}
         </p>
       </div>

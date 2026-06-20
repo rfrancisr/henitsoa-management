@@ -3,7 +3,9 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { upsertNote, upsertAppreciation } from "@/lib/actions/notes";
-import { Badge } from "@/components/ui/FormField";
+import { Badge, FormField, Select } from "@/components/ui/FormField";
+import Modal from "@/components/ui/Modal";
+import { moyennePonderee, moyenneSimple } from "@/lib/notes-utils";
 import type { Mention } from "@/app/generated/prisma/enums";
 
 type Classe = { id: string; libelle: string; niveau: { libelle: string } };
@@ -20,25 +22,22 @@ function moyenneEleve(
   notes: Note[],
   matieres: Matiere[]
 ): number | null {
-  const notesEleve = notes.filter((n) => n.eleveId === eleveId);
-  if (notesEleve.length === 0) return null;
-  const total = notesEleve.reduce((s, n) => {
-    const m = matieres.find((m) => m.id === n.matiereId);
-    return s + n.valeur * (m?.coefficient ?? 1);
-  }, 0);
-  const coeff = notesEleve.reduce((s, n) => {
-    const m = matieres.find((m) => m.id === n.matiereId);
-    return s + (m?.coefficient ?? 1);
-  }, 0);
-  return coeff === 0 ? null : Math.round((total / coeff) * 100) / 100;
+  return moyennePonderee(
+    notes
+      .filter((n) => n.eleveId === eleveId)
+      .map((n) => ({
+        valeur: n.valeur,
+        coefficient: matieres.find((m) => m.id === n.matiereId)?.coefficient ?? 1,
+      }))
+  );
 }
 
 function moyenneClasse(notes: Note[], matieres: Matiere[], eleveIds: string[]): number | null {
-  const moyennes = eleveIds
-    .map((id) => moyenneEleve(id, notes, matieres))
-    .filter((m): m is number => m !== null);
-  if (moyennes.length === 0) return null;
-  return Math.round((moyennes.reduce((s, m) => s + m, 0) / moyennes.length) * 100) / 100;
+  return moyenneSimple(
+    eleveIds
+      .map((id) => moyenneEleve(id, notes, matieres))
+      .filter((m): m is number => m !== null)
+  );
 }
 
 export default function NotesClient({
@@ -94,7 +93,6 @@ export default function NotesClient({
       return;
     }
 
-    // Optimistic update
     setNotes((prev) => {
       const filtered = prev.filter(
         (n) => !(n.eleveId === editingCell.eleveId && n.matiereId === editingCell.matiereId)
@@ -138,13 +136,16 @@ export default function NotesClient({
   return (
     <div className="space-y-4">
       {/* Sélecteurs */}
-      <div className="bg-white rounded-xl border border-slate-200 p-4 flex flex-wrap gap-3 items-center">
+      <div
+        className="bg-white rounded-2xl p-4 flex flex-wrap gap-3 items-center"
+        style={{ border: "1px solid rgba(232,212,138,0.3)", boxShadow: "0 1px 12px rgba(0,0,0,0.04)" }}
+      >
         <div className="flex items-center gap-2">
-          <label className="text-sm font-medium text-slate-700">Classe :</label>
+          <label className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Classe</label>
           <select
             value={selectedClasseId}
             onChange={(e) => navigate(e.target.value, selectedPeriodeId)}
-            className="border border-slate-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-stone-200 rounded-xl px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold bg-stone-50 text-stone-900"
           >
             {classes.map((c) => (
               <option key={c.id} value={c.id}>{c.libelle}</option>
@@ -152,11 +153,11 @@ export default function NotesClient({
           </select>
         </div>
         <div className="flex items-center gap-2">
-          <label className="text-sm font-medium text-slate-700">Période :</label>
+          <label className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Période</label>
           <select
             value={selectedPeriodeId}
             onChange={(e) => navigate(selectedClasseId, e.target.value)}
-            className="border border-slate-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-stone-200 rounded-xl px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold bg-stone-50 text-stone-900"
           >
             {periodes.map((p) => (
               <option key={p.id} value={p.id}>{p.libelle}{p.close ? " (clôturée)" : ""}</option>
@@ -164,40 +165,43 @@ export default function NotesClient({
           </select>
         </div>
         {isPeriodeClosed && <Badge color="red">Période clôturée — lecture seule</Badge>}
-        {isPending && <span className="text-slate-400 text-sm">Enregistrement…</span>}
+        {isPending && <span className="text-stone-300 text-sm">Enregistrement…</span>}
         {moyClasse !== null && (
-          <span className="text-sm text-slate-600 ml-auto">
-            Moyenne de classe : <strong>{moyClasse}/20</strong>
+          <span className="text-sm text-stone-500 ml-auto">
+            Moyenne de classe : <strong className="text-stone-900">{moyClasse}/20</strong>
           </span>
         )}
       </div>
 
       {/* Grille des notes */}
       {classeSelectionnee && eleves.length > 0 ? (
-        <div className="bg-white rounded-xl border border-slate-200 overflow-x-auto">
+        <div
+          className="bg-white rounded-2xl overflow-x-auto"
+          style={{ border: "1px solid rgba(232,212,138,0.3)", boxShadow: "0 1px 12px rgba(0,0,0,0.04)" }}
+        >
           <table className="w-full text-sm">
             <thead>
-              <tr className="bg-slate-50 border-b border-slate-200">
-                <th className="text-left px-4 py-3 font-medium text-slate-700 sticky left-0 bg-slate-50 min-w-[180px]">
+              <tr className="border-b border-stone-100" style={{ background: "rgba(201,168,76,0.04)" }}>
+                <th className="text-left px-4 py-3 font-semibold text-stone-500 text-xs uppercase tracking-wider sticky left-0 min-w-[180px]" style={{ background: "rgba(250,248,241,0.95)" }}>
                   Élève
                 </th>
                 {matieres.map((m) => (
-                  <th key={m.id} className="px-3 py-3 font-medium text-slate-700 text-center min-w-[90px]">
+                  <th key={m.id} className="px-3 py-3 font-semibold text-stone-500 text-xs uppercase tracking-wider text-center min-w-[90px]">
                     <div>{m.libelle}</div>
-                    <div className="text-slate-400 font-normal text-xs">coeff. {m.coefficient}</div>
+                    <div className="text-stone-300 font-normal normal-case">coeff. {m.coefficient}</div>
                   </th>
                 ))}
-                <th className="px-4 py-3 font-medium text-slate-700 text-center min-w-[80px]">Moy.</th>
-                <th className="px-4 py-3 font-medium text-slate-700 text-center min-w-[100px]">Appréciation</th>
+                <th className="px-4 py-3 font-semibold text-stone-500 text-xs uppercase tracking-wider text-center min-w-[80px]">Moy.</th>
+                <th className="px-4 py-3 font-semibold text-stone-500 text-xs uppercase tracking-wider text-center min-w-[100px]">Appréciation</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-stone-50">
               {eleves.map((eleve, idx) => {
                 const moy = moyenneEleve(eleve.id, notes, matieres);
                 const appr = initialAppreciations.find((a) => a.eleveId === eleve.id);
                 return (
-                  <tr key={eleve.id} className={idx % 2 === 0 ? "bg-white" : "bg-slate-50/40"}>
-                    <td className="px-4 py-2.5 font-medium text-slate-900 sticky left-0 bg-inherit">
+                  <tr key={eleve.id} className={idx % 2 === 0 ? "bg-white" : "bg-stone-50/30"}>
+                    <td className="px-4 py-2.5 font-medium text-stone-900 sticky left-0 bg-inherit">
                       {eleve.prenom} {eleve.nom}
                     </td>
                     {matieres.map((matiere) => {
@@ -223,20 +227,22 @@ export default function NotesClient({
                                 if (e.key === "Enter") commitEdit();
                                 if (e.key === "Escape") setEditingCell(null);
                               }}
-                              className="w-16 text-center border border-blue-400 rounded px-1 py-0.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              className="w-16 text-center border rounded-lg px-1 py-0.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold"
+                              style={{ borderColor: "#C9A84C" }}
                               autoFocus
                             />
                           ) : (
                             <button
                               onClick={() => startEdit(eleve.id, matiere.id)}
                               disabled={isPeriodeClosed}
-                              className={`w-16 py-1 rounded text-sm font-medium transition-colors ${
+                              className={`w-16 py-1 rounded-lg text-sm font-medium transition-colors ${
                                 note
-                                  ? "bg-blue-50 text-blue-700 hover:bg-blue-100"
+                                  ? "text-stone-900"
                                   : isPeriodeClosed
-                                  ? "text-slate-300"
-                                  : "text-slate-300 hover:bg-slate-100 hover:text-slate-600 border border-dashed border-slate-200"
+                                  ? "text-stone-200"
+                                  : "text-stone-300 hover:bg-stone-50 hover:text-stone-600 border border-dashed border-stone-200"
                               }`}
+                              style={note ? { background: "rgba(201,168,76,0.10)", color: "#6B5010" } : undefined}
                             >
                               {note ? note.valeur : "—"}
                             </button>
@@ -247,27 +253,22 @@ export default function NotesClient({
                     <td className="px-4 py-2.5 text-center">
                       {moy !== null ? (
                         <span
-                          className={`font-bold text-sm ${
-                            moy >= 14
-                              ? "text-green-600"
-                              : moy >= 10
-                              ? "text-blue-600"
-                              : "text-red-600"
-                          }`}
+                          className="font-bold text-sm"
+                          style={{ color: moy >= 14 ? "#16a34a" : moy >= 10 ? "#9A7428" : "#dc2626" }}
                         >
                           {moy}
                         </span>
                       ) : (
-                        <span className="text-slate-300">—</span>
+                        <span className="text-stone-200">—</span>
                       )}
                     </td>
                     <td className="px-2 py-1.5 text-center">
                       <button
                         onClick={() => openAppreciation(eleve.id)}
-                        className={`text-xs px-2 py-1 rounded transition-colors ${
+                        className={`text-xs px-2 py-1 rounded-lg transition-colors ${
                           appr
-                            ? "bg-green-50 text-green-700 hover:bg-green-100"
-                            : "text-slate-400 hover:bg-slate-100"
+                            ? "bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
+                            : "text-stone-300 hover:bg-stone-50"
                         }`}
                       >
                         {appr ? appr.mention === "FELICITATIONS" ? "Félicitations" : appr.mention === "ENCOURAGEMENTS" ? "Encouragements" : "Aucune" : "Ajouter"}
@@ -280,59 +281,56 @@ export default function NotesClient({
           </table>
         </div>
       ) : (
-        <div className="bg-white rounded-xl border border-slate-200 p-8 text-center">
-          <p className="text-slate-400 text-sm">Aucun élève dans cette classe.</p>
+        <div
+          className="bg-white rounded-2xl p-8 text-center"
+          style={{ border: "1px solid rgba(232,212,138,0.3)" }}
+        >
+          <p className="text-stone-300 text-sm">Aucun élève dans cette classe.</p>
         </div>
       )}
 
       {/* Modal appréciation */}
       {appreciationEleve && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
-          onClick={(e) => e.target === e.currentTarget && setAppreciationEleve(null)}
+        <Modal
+          title={`Appréciation — ${eleves.find((e) => e.id === appreciationEleve)?.prenom ?? ""}`}
+          onClose={() => setAppreciationEleve(null)}
         >
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-6 space-y-4">
-            <h2 className="font-semibold text-slate-900">
-              Appréciation — {eleves.find((e) => e.id === appreciationEleve)?.prenom}
-            </h2>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Mention</label>
-              <select
+          <div className="space-y-4">
+            <FormField label="Mention">
+              <Select
                 value={apprMention}
                 onChange={(e) => setApprMention(e.target.value as Mention)}
-                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="AUCUNE">Aucune mention</option>
                 <option value="ENCOURAGEMENTS">Encouragements</option>
                 <option value="FELICITATIONS">Félicitations</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Commentaire</label>
+              </Select>
+            </FormField>
+            <FormField label="Commentaire">
               <textarea
                 value={apprTexte}
                 onChange={(e) => setApprTexte(e.target.value)}
                 rows={3}
                 placeholder="Bon trimestre, efforts encourageants…"
-                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3.5 py-2.5 border border-stone-200 rounded-xl text-stone-900 placeholder-stone-300 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent text-sm bg-stone-50"
               />
-            </div>
+            </FormField>
             <div className="flex gap-3">
               <button
                 onClick={() => setAppreciationEleve(null)}
-                className="flex-1 border border-slate-200 text-slate-600 py-2 rounded-lg text-sm font-medium hover:bg-slate-50 transition-colors"
+                className="flex-1 border border-stone-200 text-stone-500 py-2 rounded-xl text-sm font-medium hover:bg-stone-50 transition-colors"
               >
                 Annuler
               </button>
               <button
                 onClick={saveAppreciation}
-                className="flex-1 bg-blue-600 text-white py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+                className="btn-gold flex-1 py-2 rounded-xl text-sm"
               >
                 Enregistrer
               </button>
             </div>
           </div>
-        </div>
+        </Modal>
       )}
     </div>
   );
