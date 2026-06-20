@@ -41,6 +41,20 @@ enum TypeEvenement {
   AUTRE
 }
 
+enum TypeContrat {
+  PERMANENT
+  CONTRACTUEL
+  VACATAIRE
+}
+
+enum StatutEnseignant {
+  ACTIF
+  CONGE
+  SUSPENDU
+  DEMISSIONNAIRE
+  RETRAITE
+}
+
 // ─── Utilisateurs & Auth ───────────────────────────────────────────────────────
 
 model User {
@@ -71,6 +85,9 @@ model User {
 
   // Réinitialisation de mot de passe
   resetTokens   PasswordResetToken[]
+
+  // Profil enseignant
+  profil        ProfilEnseignant?
 }
 
 model PasswordResetToken {
@@ -82,6 +99,32 @@ model PasswordResetToken {
   createdAt DateTime @default(now())
 
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ─── Profil Enseignant ────────────────────────────────────────────────────────
+
+model ProfilEnseignant {
+  id            String           @id @default(cuid())
+  userId        String           @unique
+  matricule     String           @unique
+  dateNaissance DateTime?
+  lieuNaissance String?
+  sexe          Sexe?
+  photo         String?
+  telephone     String?
+  adresse       String?
+  dateEmbauche  DateTime
+  typeContrat   TypeContrat
+  diplome       String?
+  specialite    String?
+  statut        StatutEnseignant @default(ACTIF)
+  salaireBase   Float?
+  numeroCNAPS   String?
+  numeroCompte  String?
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+
+  user          User             @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 // ─── Élèves ────────────────────────────────────────────────────────────────────
