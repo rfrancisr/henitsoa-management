@@ -120,7 +120,6 @@ export async function getBulletinData(
 }
 
 export function renderBulletinHTML(data: BulletinData, logoBase64?: string): string {
-  const fmt = (d: Date) => new Date(d).toLocaleDateString("fr-FR");
   const fmtNote = (n: number | null) => (n !== null ? n.toFixed(2) : "—");
   const moyColor = (m: number | null) =>
     m === null ? "#a8a29e" : m >= 14 ? "#15803d" : m >= 10 ? "#9A7428" : "#dc2626";
@@ -166,13 +165,12 @@ export function renderBulletinHTML(data: BulletinData, logoBase64?: string): str
     <div class="school-info">
       ${logoHtml}
       <div>
-        <div class="school-name">EcoleManager</div>
+        <div class="school-name">École Privée Henitsoa</div>
         <div class="school-sub">Bulletin scolaire officiel</div>
       </div>
     </div>
     <div style="text-align:right">
       <div class="badge">${data.periode.libelle}</div>
-      <div class="annee">${data.anneeScolaire.libelle}</div>
     </div>
   </div>
 
@@ -180,12 +178,11 @@ export function renderBulletinHTML(data: BulletinData, logoBase64?: string): str
     <div class="info-box">
       <div class="info-label">Élève</div>
       <div class="info-value">${data.eleve.prenom} ${data.eleve.nom}</div>
-      <div style="color:#78716c;font-size:10px;margin-top:2px">Né(e) le ${fmt(data.eleve.dateNaissance)}</div>
     </div>
     <div class="info-box">
-      <div class="info-label">Classe</div>
-      <div class="info-value">${data.classe.libelle}</div>
-      <div style="color:#78716c;font-size:10px;margin-top:2px">${data.classe.niveau.libelle}</div>
+      <div class="info-label">Année scolaire</div>
+      <div class="info-value">${data.anneeScolaire.libelle}</div>
+      <div style="color:#78716c;font-size:10px;margin-top:2px">${data.classe.libelle} — ${data.classe.niveau.libelle}</div>
     </div>
     <div class="info-box">
       <div class="info-label">Rang dans la classe</div>
@@ -242,7 +239,7 @@ export function renderBulletinHTML(data: BulletinData, logoBase64?: string): str
   </div>
 
   <div class="footer">
-    Bulletin généré par EcoleManager · ${new Date().toLocaleDateString("fr-FR")}
+    Bulletin généré par École Privée Henitsoa · ${new Date().toLocaleDateString("fr-FR")}
   </div>
 </body>
 </html>`;
