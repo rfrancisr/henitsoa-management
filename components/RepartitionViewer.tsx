@@ -3,13 +3,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import type { PeriodeInfo, SemaineData, Seance, Jour } from '@/lib/repartition';
-import { FicheDocument } from './FichePDF';
 
-// PDF ne peut pas s'exécuter côté serveur
-const PDFDownloadLink = dynamic(
-  () => import('@react-pdf/renderer').then((m) => m.PDFDownloadLink),
-  { ssr: false, loading: () => <span className="text-xs text-stone-400">Chargement PDF…</span> }
-);
+// @react-pdf/renderer est ESM pur — import dynamique obligatoire (ssr: false)
+const PDFBtnLazy = dynamic(() => import('./PDFBtnLazy'), {
+  ssr: false,
+  loading: () => (
+    <span className="text-xs text-stone-400 px-3 py-1.5">Chargement PDF…</span>
+  ),
+});
 
 // ─── Couleurs par matière ─────────────────────────────────────────────────────
 
@@ -42,28 +43,6 @@ function diffColor(d: Seance['exercices'][0]['difficulte']) {
   return 'bg-red-50 text-red-700 border border-red-200';
 }
 
-// ─── Bouton PDF ───────────────────────────────────────────────────────────────
-
-function PDFBtn({ semaine, classe, label }: { semaine: SemaineData; classe: string; label: string }) {
-  return (
-    <PDFDownloadLink
-      document={<FicheDocument semaine={semaine} classe={classe} />}
-      fileName={`fiches-${classe}-p${semaine.periode}-s${semaine.numero_semaine}.pdf`}
-    >
-      {({ loading }) => (
-        <button
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-stone-900 text-white hover:bg-stone-700 transition-colors disabled:opacity-60"
-          disabled={loading}
-        >
-          <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path d="M3 12.5h10M8 3v7.5m0 0L5.5 8M8 10.5L10.5 8" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          {loading ? 'Génération…' : label}
-        </button>
-      )}
-    </PDFDownloadLink>
-  );
-}
 
 // ─── Vue d'une séance ─────────────────────────────────────────────────────────
 
@@ -227,7 +206,7 @@ function JourView({ jour, semaine, classe }: { jour: Jour; semaine: SemaineData;
           <span className="text-stone-400 text-xs">{nonRecre.length} séances</span>
         </div>
         <div className="flex items-center gap-2">
-          <PDFBtn semaine={semaine} classe={classe} label="PDF du jour" />
+          <PDFBtnLazy semaine={semaine} classe={classe} label="PDF du jour" />
           <svg
             className={`w-4 h-4 text-stone-400 transition-transform ${open ? 'rotate-180' : ''}`}
             viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2"
@@ -324,7 +303,7 @@ export default function RepartitionViewer({
                 )}
                 <p className="text-xs text-stone-500 mt-2 font-mono">Semaine du {semaineData.date_debut_semaine}</p>
               </div>
-              <PDFBtn semaine={semaineData} classe={classe} label="PDF semaine" />
+              <PDFBtnLazy semaine={semaineData} classe={classe} label="PDF semaine" />
             </div>
 
             {/* Résumé heures par matière */}
