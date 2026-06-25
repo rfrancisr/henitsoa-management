@@ -45,3 +45,6 @@ prisma/dev.db
 prisma/dev.db-shm
 prisma/dev.db-wal
 prisma/dev.db-journal
+
+# repartition (générateurs et fichiers JSON générés, ignorés car recalculables)
+/repartition/
