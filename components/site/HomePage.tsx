@@ -257,12 +257,14 @@ function HomeContent() {
               </Reveal>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
               {[
-                { src: "/site/foot.jpg",   caption: "Sport & équipe",    label: "Football" },
-                { src: "/site/art.jpg",    caption: "Créativité",        label: "Arts plastiques" },
-                { src: "/site/sakafo.jpg", caption: "Partage",           label: "Vie en communauté" },
-                { src: "/site/rova2.jpg",  caption: "Découverte",        label: "Sorties culturelles" },
+                { src: "/site/foot.jpg",         caption: "Sport & équipe",    label: "Football" },
+                { src: "/site/art.jpg",          caption: "Créativité",        label: "Arts plastiques" },
+                { src: "/site/sakafo.jpg",       caption: "Partage",           label: "Vie en communauté" },
+                { src: "/site/rova2.jpg",        caption: "Découverte",        label: "Sorties culturelles" },
+                { src: "/site/informatique.jpg", caption: "Technologie",       label: "Informatique" },
+                { src: "/site/foot2.jpg",        caption: "Compétition",       label: "Tournoi inter-écoles" },
               ].map((item, i) => (
                 <Reveal key={i} delay={120 + i * 80}>
                   <div className="relative aspect-[3/4] overflow-hidden group rounded-[18px]">

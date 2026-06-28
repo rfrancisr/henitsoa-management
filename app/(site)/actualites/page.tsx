@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useLang } from "@/components/site/LanguageContext";
 import { Reveal } from "@/components/site/Reveal";
 
@@ -10,6 +11,7 @@ const ARTICLES = [
     title: "CEPE 2026 : un élève Henitsoa lauréat — 1er au classement national",
     excerpt:
       "Une performance historique. L'un de nos élèves a décroché la 1ère place au classement national du CEPE 2026, devenant lauréat de Madagascar. Fruit de 40 ans de rigueur pédagogique et d'un accompagnement quotidien de nos enseignants, cette distinction est une immense fierté pour toute la communauté Henitsoa.",
+    image: "/site/prof2.jpg",
     featured: true,
   },
   {
@@ -19,6 +21,7 @@ const ARTICLES = [
     title: "Inauguration du nouveau laboratoire informatique",
     excerpt:
       "Un laboratoire de 20 postes entièrement équipé ouvre ses portes aux élèves du primaire et du collège, pour les initier à la programmation dans des conditions optimales.",
+    image: "/site/informatique.jpg",
     featured: false,
   },
   {
@@ -28,6 +31,7 @@ const ARTICLES = [
     title: "Journée culturelle 2026 : une fête de la diversité",
     excerpt:
       "Danse, arts plastiques, gastronomie malgache et performances en chinois ont marqué la journée culturelle annuelle.",
+    image: "/site/art.jpg",
     featured: false,
   },
   {
@@ -37,6 +41,7 @@ const ARTICLES = [
     title: "Le mandarin dès le primaire : une première à Tsiroanomandidy",
     excerpt:
       "Première école de la région à introduire le chinois mandarin au niveau primaire, Henitsoa confirme sa vision d'une éducation tournée vers l'avenir.",
+    image: "/site/rova.jpg",
     featured: false,
   },
   {
@@ -46,6 +51,7 @@ const ARTICLES = [
     title: "Tournoi inter-écoles : Henitsoa remporte le trophée",
     excerpt:
       "L'équipe de football du collège a brillé lors du tournoi inter-écoles de Tsiroanomandidy, remportant le trophée après une finale époustouflante.",
+    image: "/site/foot2.jpg",
     featured: false,
   },
   {
@@ -55,6 +61,7 @@ const ARTICLES = [
     title: "BEPC 2025 : taux de réussite remarquable",
     excerpt:
       "Nos élèves de 3ème ont démontré leur excellence lors du BEPC 2025. Un taux de réussite dont toute l'équipe est fière.",
+    image: "/site/prof.jpg",
     featured: false,
   },
 ];
@@ -119,11 +126,14 @@ export default function ActualitesPage() {
             </Reveal>
 
             <Reveal delay={150}>
-              <div className="rounded-[18px] bg-[#f5f5f7] aspect-[4/3] flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-[10px] tracking-[0.25em] text-[#86868b] uppercase">Photo à venir</div>
-                  <div className="w-6 h-[1px] bg-[#C9A84C]/30 mx-auto mt-3" />
-                </div>
+              <div className="rounded-[18px] overflow-hidden aspect-[4/3] relative">
+                <Image
+                  src={featured.image}
+                  alt={featured.title}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
               </div>
             </Reveal>
           </div>
@@ -157,10 +167,11 @@ export default function ActualitesPage() {
                       {article.excerpt}
                     </p>
                   </div>
-                  <div className="sm:col-span-2 hidden sm:flex items-center justify-end">
-                    <span className="text-[#1d1d1f]/15 group-hover:text-[#C9A84C] transition-colors text-xl">
-                      ›
-                    </span>
+                  <div className="sm:col-span-2 hidden sm:flex items-center justify-end gap-4">
+                    <div className="relative w-14 h-14 rounded-[8px] overflow-hidden shrink-0">
+                      <Image src={article.image} alt={article.title} fill sizes="56px" className="object-cover" />
+                    </div>
+                    <span className="text-[#1d1d1f]/15 group-hover:text-[#C9A84C] transition-colors text-xl">›</span>
                   </div>
                 </div>
               </Reveal>

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useLang } from "@/components/site/LanguageContext";
 import { Reveal } from "@/components/site/Reveal";
 
@@ -186,13 +187,41 @@ export default function AProposPage() {
             </Reveal>
 
             <Reveal delay={150}>
-              <div className="rounded-[18px] overflow-hidden bg-[#161616] border border-white/5 aspect-[4/3] flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-[10px] tracking-[0.3em] text-white/20 uppercase mb-2">Photo à venir</div>
-                  <div className="w-8 h-[1px] bg-[#C9A84C]/30 mx-auto" />
-                </div>
+              <div className="rounded-[18px] overflow-hidden aspect-[4/3] relative">
+                <Image
+                  src="/site/directrice.jpg"
+                  alt="Directrice de l'École Privée Henitsoa"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
               </div>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── GALERIE — blanc ── */}
+      <section className="py-16 bg-white">
+        <div className="max-w-[980px] mx-auto px-5 sm:px-8">
+          <div className="grid grid-cols-3 gap-3">
+            {[
+              { src: "/site/rova.jpg",  alt: "Patrimoine malgache" },
+              { src: "/site/prof.jpg",  alt: "Enseignants Henitsoa" },
+              { src: "/site/prof2.jpg", alt: "Corps enseignant" },
+            ].map((photo, i) => (
+              <Reveal key={i} delay={i * 100}>
+                <div className="relative aspect-[4/3] rounded-[12px] overflow-hidden">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="33vw"
+                    className="object-cover hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
