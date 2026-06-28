@@ -24,6 +24,11 @@ async function main() {
     console.log(`ℹ️  Admin : ${adminEmail}`);
   }
 
+  if (!process.env.SEED_DEMO) {
+    console.log("ℹ️  Mode production : données de démo ignorées (utiliser SEED_DEMO=true pour les inclure)");
+    return;
+  }
+
   // Enseignant
   let profUser = await prisma.user.findUnique({ where: { email: "prof@ecole.mg" } });
   if (!profUser) {
