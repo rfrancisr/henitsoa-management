@@ -184,7 +184,7 @@ export default function ActualitesPage() {
               Restez informé
             </h2>
             <p className="text-[#6e6e73] text-[17px] mb-10 max-w-sm mx-auto leading-[1.47]">
-              Recevez les actualités de l'École Privée Henitsoa dans votre boîte mail.
+              Recevez les actualités de l&apos;École Privée Henitsoa dans votre boîte mail.
             </p>
           </Reveal>
           <Reveal delay={150}>
@@ -195,7 +195,7 @@ export default function ActualitesPage() {
                 className="flex-1 px-5 py-3.5 rounded-full bg-white/5 border border-white/10 text-white placeholder-[#86868b] text-sm focus:outline-none focus:border-[#C9A84C]/50 focus:bg-white/8 transition-all"
               />
               <button className="bg-[#0071e3] text-white px-7 py-3.5 rounded-full text-[15px] font-medium whitespace-nowrap hover:bg-[#0077ed] transition-colors duration-200">
-                S'inscrire
+                S&apos;inscrire
               </button>
             </div>
             <p className="text-[11px] text-[#86868b] mt-4">Fonctionnalité disponible prochainement.</p>

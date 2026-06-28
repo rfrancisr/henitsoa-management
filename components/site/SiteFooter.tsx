@@ -34,7 +34,7 @@ export function SiteFooter() {
               </div>
             </div>
             <p className="text-sm text-white/35 italic leading-[1.65] mb-3">
-              "{t.footer.tagline}"
+              &ldquo;{t.footer.tagline}&rdquo;
             </p>
             <p className="text-xs text-white/20">{t.footer.founded}</p>
           </div>

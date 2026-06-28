@@ -202,7 +202,7 @@ export default function AProposPage() {
         <Reveal>
           <div className="text-center">
             <p className="text-[17px] italic text-[#86868b] mb-2">
-              "Un enfant bien éduqué est un avenir assuré"
+              &ldquo;Un enfant bien éduqué est un avenir assuré&rdquo;
             </p>
             <div className="w-6 h-[1px] bg-[#C9A84C] mx-auto" />
             <p className="text-[10px] tracking-[0.2em] text-[#86868b] uppercase mt-3">

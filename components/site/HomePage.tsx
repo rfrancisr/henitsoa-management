@@ -99,7 +99,7 @@ function HomeContent() {
               className="font-semibold text-[#1D1D1F] leading-tight"
               style={{ fontSize: "clamp(1.8rem, 4.5vw, 3.75rem)", letterSpacing: "-0.025em" }}
             >
-              "{t.mission.quote}"
+              &ldquo;{t.mission.quote}&rdquo;
             </blockquote>
           </Reveal>
           <Reveal delay={200}>
@@ -224,7 +224,7 @@ function HomeContent() {
                   </span>
                 </div>
                 <p className="mt-5 text-sm text-white/32 max-w-xs" style={{ lineHeight: "1.47" }}>
-                  Le résultat de 40 ans de rigueur et d'accompagnement au quotidien.
+                  Le résultat de 40 ans de rigueur et d&apos;accompagnement au quotidien.
                 </p>
               </Reveal>
             </div>
