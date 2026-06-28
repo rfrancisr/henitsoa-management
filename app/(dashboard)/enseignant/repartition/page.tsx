@@ -37,7 +37,7 @@ export default async function EnseignantRepartitionPage({
   for (const e of ensActifs) {
     const slug = classeSlugFromLibelle(e.classe.niveau.libelle);
     if (slug && !classesDisponibles.find(c => c.slug === slug)) {
-      classesDisponibles.push({ slug, label: CLASSES_LABELS[slug], classeNom: e.classe.libelle });
+      classesDisponibles.push({ slug, label: CLASSES_LABELS[slug as ClasseSlug], classeNom: e.classe.libelle });
     }
   }
 
