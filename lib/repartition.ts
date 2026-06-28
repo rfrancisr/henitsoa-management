@@ -1,5 +1,6 @@
 'server-only';
 import { prisma } from '@/lib/prisma';
+import type { ClasseSlug } from '@/lib/repartition-types';
 
 export type {
   MatiereRepartition,
