@@ -19,8 +19,8 @@ export default async function AdminDashboard() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-stone-900 tracking-tight">Tableau de bord</h1>
-        <p className="text-stone-400 text-sm mt-1">
+        <h1 className="text-2xl font-bold tracking-tight" style={{ color: "#1D1D1F" }}>Tableau de bord</h1>
+        <p className="text-sm mt-1" style={{ color: "#86868b" }}>
           {anneeScolaireActive
             ? `Année scolaire : ${anneeScolaireActive.libelle}`
             : "Aucune année scolaire active"}
@@ -33,8 +33,8 @@ export default async function AdminDashboard() {
         <StatCard label="Classes" value={totalClasses} />
       </div>
 
-      <div className="bg-white rounded-2xl border border-stone-100 p-5" style={{ boxShadow: "0 1px 12px rgba(0,0,0,0.04)" }}>
-        <h2 className="font-semibold text-stone-900 mb-4 text-sm uppercase tracking-wider">Accès rapides</h2>
+      <div className="bg-white rounded-2xl p-5" style={{ boxShadow: "0 1px 12px rgba(0,0,0,0.04)", border: "1px solid rgba(29,29,31,0.08)" }}>
+        <h2 className="font-semibold mb-4 text-sm uppercase tracking-wider" style={{ color: "#1D1D1F" }}>Accès rapides</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <QuickLink href="/admin/utilisateurs" label="Utilisateurs" />
           <QuickLink href="/admin/eleves" label="Élèves" />
@@ -50,10 +50,10 @@ function StatCard({ label, value }: { label: string; value: number }) {
   return (
     <div
       className="bg-white rounded-2xl p-5"
-      style={{ boxShadow: "0 1px 12px rgba(0,0,0,0.04)", border: "1px solid rgba(232,212,138,0.35)" }}
+      style={{ boxShadow: "0 1px 12px rgba(0,0,0,0.04)", border: "1px solid rgba(201,168,76,0.30)" }}
     >
-      <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">{label}</p>
-      <p className="text-4xl font-bold text-stone-900 tracking-tight">{value}</p>
+      <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "#86868b" }}>{label}</p>
+      <p className="text-4xl font-bold tracking-tight" style={{ color: "#1D1D1F" }}>{value}</p>
       <div className="mt-3 h-0.5 w-8 rounded-full" style={{ background: "#C9A84C" }} />
     </div>
   );

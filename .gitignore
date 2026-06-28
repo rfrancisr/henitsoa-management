@@ -41,10 +41,10 @@ yarn-error.log*
 next-env.d.ts
 
 /app/generated/
-prisma/dev.db
-prisma/dev.db-shm
-prisma/dev.db-wal
-prisma/dev.db-journal
+prisma/*.db
+prisma/*.db-shm
+prisma/*.db-wal
+prisma/*.db-journal
 
 # repartition (générateurs et fichiers JSON générés, ignorés car recalculables)
 /repartition/

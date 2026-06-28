@@ -13,7 +13,7 @@ export default async function DashboardLayout({
   return (
     <div className="flex h-screen bg-white">
       <Sidebar user={session.user} />
-      <main className="flex-1 overflow-auto" style={{ background: "rgba(250,248,241,0.4)" }}>
+      <main className="flex-1 overflow-auto" style={{ background: "#f5f5f7" }}>
         <div className="p-6">{children}</div>
       </main>
     </div>

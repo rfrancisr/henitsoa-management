@@ -11,6 +11,9 @@ export const authConfig = {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       const isPublic =
+        nextUrl.pathname === "/" ||
+        nextUrl.pathname.startsWith("/a-propos") ||
+        nextUrl.pathname.startsWith("/actualites") ||
         nextUrl.pathname.startsWith("/login") ||
         nextUrl.pathname.startsWith("/api/auth");
       if (isPublic) return true;

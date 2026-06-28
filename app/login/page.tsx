@@ -34,7 +34,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: "#f5f5f7" }}>
       <div className="w-full max-w-md">
         <div
           className="bg-white rounded-2xl p-8"
@@ -50,8 +50,8 @@ export default function LoginPage() {
                 style={{ width: "80px", height: "80px", objectFit: "contain", display: "block" }}
               />
             </div>
-            <h1 className="text-xl font-bold text-stone-900 tracking-tight">École Privée Henitsoa</h1>
-            <p className="text-stone-400 text-sm mt-1.5 tracking-wide">
+            <h1 className="text-xl font-bold tracking-tight" style={{ color: "#1D1D1F" }}>École Privée Henitsoa</h1>
+            <p className="text-sm mt-1.5 tracking-wide" style={{ color: "#86868b" }}>
               Connectez-vous à votre espace
             </p>
           </div>
@@ -61,7 +61,8 @@ export default function LoginPage() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-xs font-semibold text-stone-500 mb-1.5 uppercase tracking-wider"
+                className="block text-xs font-semibold mb-1.5 uppercase tracking-wider"
+                style={{ color: "#6e6e73" }}
               >
                 Adresse email
               </label>
@@ -72,14 +73,21 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="vous@example.com"
-                className="w-full px-3.5 py-2.5 border border-stone-200 rounded-xl text-stone-900 placeholder-stone-300 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent text-sm bg-stone-50 transition-all"
+                className="w-full px-3.5 py-2.5 rounded-xl text-sm transition-all focus:outline-none focus:ring-2 focus:border-transparent"
+                style={{
+                  border: "1px solid rgba(29,29,31,0.12)",
+                  background: "#f5f5f7",
+                  color: "#1D1D1F",
+                  "--tw-ring-color": "#C9A84C",
+                } as React.CSSProperties}
               />
             </div>
 
             <div>
               <label
                 htmlFor="password"
-                className="block text-xs font-semibold text-stone-500 mb-1.5 uppercase tracking-wider"
+                className="block text-xs font-semibold mb-1.5 uppercase tracking-wider"
+                style={{ color: "#6e6e73" }}
               >
                 Mot de passe
               </label>
@@ -90,7 +98,13 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full px-3.5 py-2.5 border border-stone-200 rounded-xl text-stone-900 placeholder-stone-300 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent text-sm bg-stone-50 transition-all"
+                className="w-full px-3.5 py-2.5 rounded-xl text-sm transition-all focus:outline-none focus:ring-2 focus:border-transparent"
+                style={{
+                  border: "1px solid rgba(29,29,31,0.12)",
+                  background: "#f5f5f7",
+                  color: "#1D1D1F",
+                  "--tw-ring-color": "#C9A84C",
+                } as React.CSSProperties}
               />
             </div>
 
@@ -112,14 +126,15 @@ export default function LoginPage() {
           <div className="mt-6 text-center">
             <a
               href="/reset-password"
-              className="text-xs text-stone-400 hover:text-gold-dark transition-colors"
+              className="text-xs transition-colors hover:opacity-70"
+              style={{ color: "#86868b" }}
             >
               Mot de passe oublié ?
             </a>
           </div>
         </div>
 
-        <p className="text-center text-stone-300 text-xs mt-6">
+        <p className="text-center text-xs mt-6" style={{ color: "#86868b" }}>
           © {new Date().getFullYear()} École Privée Henitsoa — Tous droits réservés
         </p>
       </div>

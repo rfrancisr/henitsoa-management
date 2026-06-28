@@ -81,9 +81,9 @@ export default function Sidebar({
   const navItems = navByRole(user.role);
 
   return (
-    <aside className="w-64 bg-white border-r border-stone-100 flex flex-col h-full shrink-0">
+    <aside className="w-64 bg-white flex flex-col h-full shrink-0" style={{ borderRight: "1px solid rgba(29,29,31,0.08)" }}>
       {/* Logo */}
-      <div className="px-5 py-5 border-b border-stone-100">
+      <div className="px-5 py-5" style={{ borderBottom: "1px solid rgba(29,29,31,0.08)" }}>
         <div className="flex items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -92,7 +92,7 @@ export default function Sidebar({
             style={{ width: "40px", height: "40px", objectFit: "contain", display: "block", flexShrink: 0 }}
           />
           <div className="min-w-0">
-            <p className="font-semibold text-stone-900 text-sm leading-tight tracking-tight">École Privée</p>
+            <p className="font-semibold text-sm leading-tight tracking-tight" style={{ color: "#1D1D1F" }}>École Privée</p>
             <p className="font-bold text-sm leading-tight tracking-tight" style={{ color: "#C9A84C" }}>Henitsoa</p>
           </div>
         </div>
@@ -106,16 +106,17 @@ export default function Sidebar({
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
-                isActive
-                  ? "bg-gold-subtle text-gold-dark"
-                  : "text-stone-500 hover:bg-stone-50 hover:text-stone-900"
-              }`}
+              className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all"
+              style={isActive
+                ? { background: "rgba(201,168,76,0.10)", color: "#9A7428" }
+                : { color: "#6e6e73" }
+              }
+              onMouseEnter={e => { if (!isActive) { (e.currentTarget as HTMLElement).style.background = "#f5f5f7"; (e.currentTarget as HTMLElement).style.color = "#1D1D1F"; } }}
+              onMouseLeave={e => { if (!isActive) { (e.currentTarget as HTMLElement).style.background = ""; (e.currentTarget as HTMLElement).style.color = "#6e6e73"; } }}
             >
               <span
-                className={`w-4 h-4 shrink-0 transition-colors ${
-                  isActive ? "text-gold" : "text-stone-400"
-                }`}
+                className="w-4 h-4 shrink-0 transition-colors"
+                style={{ color: isActive ? "#C9A84C" : "#86868b" }}
               >
                 {item.icon}
               </span>
@@ -126,7 +127,7 @@ export default function Sidebar({
       </nav>
 
       {/* Profil utilisateur */}
-      <div className="px-3 py-4 border-t border-stone-100">
+      <div className="px-3 py-4" style={{ borderTop: "1px solid rgba(29,29,31,0.08)" }}>
         <div className="flex items-center gap-3 px-3 py-2 mb-1">
           <div
             className="w-8 h-8 rounded-full flex items-center justify-center font-semibold text-sm shrink-0"
@@ -135,7 +136,7 @@ export default function Sidebar({
             {user.name.charAt(0).toUpperCase()}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-stone-900 truncate">{user.name}</p>
+            <p className="text-sm font-medium truncate" style={{ color: "#1D1D1F" }}>{user.name}</p>
             <span
               className="text-xs font-medium px-1.5 py-0.5 rounded"
               style={{
@@ -150,7 +151,8 @@ export default function Sidebar({
         </div>
         <button
           onClick={() => signOut({ callbackUrl: "/login" })}
-          className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-stone-500 hover:bg-red-50 hover:text-red-600 transition-colors"
+          className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors hover:bg-red-50 hover:text-red-600"
+          style={{ color: "#6e6e73" }}
         >
           <LogoutIcon />
           Se déconnecter

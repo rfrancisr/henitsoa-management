@@ -306,3 +306,36 @@ model EvenementCalendrier {
 
   createdBy   User          @relation(fields: [createdById], references: [id])
 }
+
+// ─── Répartition hebdomadaire ──────────────────────────────────────────────────
+
+model RepartitionSemaine {
+  id        String               @id @default(cuid())
+  classe    String               // "11eme" | "7eme"
+  periode   Int
+  semaine   Int
+  dateDebut String               // "09/09/2024"
+  theme     String
+  sousTheme String
+  matieres  RepartitionMatiere[]
+  createdAt DateTime             @default(now())
+  updatedAt DateTime             @updatedAt
+
+  @@unique([classe, periode, semaine])
+}
+
+model RepartitionMatiere {
+  id           String             @id @default(cuid())
+  semaineId    String
+  matiere      String
+  topic        String
+  approche     String
+  transmission String             // JSON array serialisé
+  exercices    String             // JSON array serialisé
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+
+  semaine      RepartitionSemaine @relation(fields: [semaineId], references: [id], onDelete: Cascade)
+
+  @@unique([semaineId, matiere])
+}
