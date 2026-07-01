@@ -1,7 +1,21 @@
 import "dotenv/config";
+import path from "path";
 import { PrismaClient } from "../app/generated/prisma/client";
 
-const prisma = new PrismaClient();
+// Resolve DB URL from project root, same logic as lib/prisma.ts (avoids writing
+// to prisma/prisma/dev.db instead of prisma/dev.db).
+function resolveDbUrl(): string | undefined {
+  const url = process.env.DATABASE_URL;
+  if (!url) return undefined;
+  const rel = url.match(/^file:(\..*)/)?.[1];
+  if (rel) {
+    const abs = path.resolve(process.cwd(), rel).replace(/\\/g, "/");
+    return `file:${abs}`;
+  }
+  return url;
+}
+
+const prisma = new PrismaClient({ datasources: { db: { url: resolveDbUrl() } } });
 const args    = process.argv.slice(2);
 const DRY_RUN = args.includes("--dry-run");
 const FORCE   = args.includes("--force");
