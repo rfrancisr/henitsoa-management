@@ -1,6 +1,6 @@
 'use client';
 import { useState, useCallback } from 'react';
-import type { SemaineRepartition, MatiereRepartition, PeriodeInfo } from '@/lib/repartition-types';
+import type { SemaineRepartition, MatiereRepartition, MoisRepartitionInfo } from '@/lib/repartition-types';
 import { getMatColor } from '@/lib/repartition-types';
 
 // ─── Modal d'édition ──────────────────────────────────────────────────────────
@@ -58,89 +58,81 @@ function EditModal({
   const c = getMatColor(mat.matiere);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(26,26,24,.5)", backdropFilter: "blur(3px)" }}>
+      <div className="w-full max-w-2xl max-h-[90vh] flex flex-col" style={{ background: "var(--white)", borderRadius: "2px 12px 12px 12px", border: "1px solid var(--borderLt)", boxShadow: "0 8px 40px rgba(0,0,0,.14)" }}>
         {/* Header */}
-        <div className={`flex items-center justify-between px-6 py-4 border-b rounded-t-2xl ${c.bg}`}>
+        <div className={`flex items-center justify-between px-6 py-4 rounded-t-xl ${c.bg}`} style={{ borderBottom: "1px solid var(--borderLt)" }}>
           <div className="flex items-center gap-3">
             <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${c.badge}`}>
               {mat.matiere}
             </span>
-            <span className="text-sm font-medium text-stone-700">Modifier le contenu</span>
+            <span className="text-sm font-medium" style={{ color: "var(--inkMd)" }}>Modifier le contenu</span>
           </div>
-          <button onClick={onClose} className="text-stone-400 hover:text-stone-600 text-xl leading-none">✕</button>
+          <button onClick={onClose} style={{ color: "var(--inkLt)" }} className="text-xl leading-none">✕</button>
         </div>
 
         {/* Corps */}
         <div className="overflow-y-auto flex-1 px-6 py-5 space-y-5">
-          {/* Topic */}
           <div>
-            <label className="block text-xs font-semibold text-stone-500 uppercase tracking-wider mb-1.5">
-              Sujet / Topic
-            </label>
+            <label className="section-label" style={{ display: "block", marginBottom: "6px" }}>Sujet / Topic</label>
             <input
               value={form.topic}
               onChange={e => setForm(f => ({ ...f, topic: e.target.value }))}
-              className="w-full border border-stone-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+              style={{ width: "100%", padding: "9px 12px", border: "1px solid var(--border)", borderRadius: "6px", fontSize: "14px", fontFamily: "var(--font-sans)", color: "var(--ink)", background: "var(--white)", outline: "none" }}
+              onFocus={e => { e.currentTarget.style.outline = "2px solid var(--forest)"; e.currentTarget.style.outlineOffset = "1px"; }}
+              onBlur={e => { e.currentTarget.style.outline = "none"; }}
             />
           </div>
 
-          {/* Approche */}
           <div>
-            <label className="block text-xs font-semibold text-stone-500 uppercase tracking-wider mb-1.5">
-              Comment aborder ce sujet
-            </label>
+            <label className="section-label" style={{ display: "block", marginBottom: "6px" }}>Comment aborder ce sujet</label>
             <textarea
               value={form.approche}
               onChange={e => setForm(f => ({ ...f, approche: e.target.value }))}
               rows={4}
-              className="w-full border border-stone-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
+              style={{ width: "100%", padding: "9px 12px", border: "1px solid var(--border)", borderRadius: "6px", fontSize: "14px", fontFamily: "var(--font-sans)", color: "var(--ink)", background: "var(--white)", outline: "none", resize: "none" }}
+              onFocus={e => { e.currentTarget.style.outline = "2px solid var(--forest)"; e.currentTarget.style.outlineOffset = "1px"; }}
+              onBlur={e => { e.currentTarget.style.outline = "none"; }}
             />
           </div>
 
-          {/* Transmission */}
           <div>
-            <label className="block text-xs font-semibold text-stone-500 uppercase tracking-wider mb-1">
-              Comment le transmettre
-            </label>
-            <p className="text-xs text-stone-400 mb-1.5">Une méthode par ligne</p>
+            <label className="section-label" style={{ display: "block", marginBottom: "4px" }}>Comment le transmettre</label>
+            <p className="text-xs mb-1.5" style={{ color: "var(--inkLt)" }}>Une méthode par ligne</p>
             <textarea
               value={form.transmission}
               onChange={e => setForm(f => ({ ...f, transmission: e.target.value }))}
               rows={4}
-              className="w-full border border-stone-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
+              style={{ width: "100%", padding: "9px 12px", border: "1px solid var(--border)", borderRadius: "6px", fontSize: "14px", fontFamily: "var(--font-sans)", color: "var(--ink)", background: "var(--white)", outline: "none", resize: "none" }}
+              onFocus={e => { e.currentTarget.style.outline = "2px solid var(--forest)"; e.currentTarget.style.outlineOffset = "1px"; }}
+              onBlur={e => { e.currentTarget.style.outline = "none"; }}
             />
           </div>
 
-          {/* Exercices */}
           <div>
-            <label className="block text-xs font-semibold text-stone-500 uppercase tracking-wider mb-1">
-              Exercices d&apos;assimilation
-            </label>
-            <p className="text-xs text-stone-400 mb-1.5">Un exercice par ligne</p>
+            <label className="section-label" style={{ display: "block", marginBottom: "4px" }}>Exercices d&apos;assimilation</label>
+            <p className="text-xs mb-1.5" style={{ color: "var(--inkLt)" }}>Un exercice par ligne</p>
             <textarea
               value={form.exercices}
               onChange={e => setForm(f => ({ ...f, exercices: e.target.value }))}
               rows={5}
-              className="w-full border border-stone-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
+              style={{ width: "100%", padding: "9px 12px", border: "1px solid var(--border)", borderRadius: "6px", fontSize: "14px", fontFamily: "var(--font-sans)", color: "var(--ink)", background: "var(--white)", outline: "none", resize: "none" }}
+              onFocus={e => { e.currentTarget.style.outline = "2px solid var(--forest)"; e.currentTarget.style.outlineOffset = "1px"; }}
+              onBlur={e => { e.currentTarget.style.outline = "none"; }}
             />
           </div>
 
-          {error && <p className="text-red-600 text-sm">{error}</p>}
+          {error && <p className="text-sm" style={{ color: "var(--red)" }}>{error}</p>}
         </div>
 
         {/* Footer */}
-        <div className="flex justify-end gap-3 px-6 py-4 border-t bg-stone-50 rounded-b-2xl">
-          <button
-            onClick={onClose}
-            className="px-4 py-2 text-sm text-stone-600 hover:text-stone-800"
-          >
-            Annuler
-          </button>
+        <div className="flex justify-end gap-3 px-6 py-4 rounded-b-xl" style={{ borderTop: "1px solid var(--borderLt)", background: "var(--stoneLt)" }}>
+          <button onClick={onClose} className="btn-secondary px-4 py-2 text-sm">Annuler</button>
           <button
             onClick={handleSave}
             disabled={saving}
-            className="px-5 py-2 text-sm font-medium bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+            className="btn-primary px-5 py-2 text-sm"
+            style={saving ? { opacity: 0.5 } : {}}
           >
             {saving ? 'Sauvegarde…' : 'Sauvegarder'}
           </button>
@@ -165,37 +157,34 @@ function MatiereCard({
   const c = getMatColor(mat.matiere);
 
   return (
-    <div className={`bg-white border border-stone-100 rounded-xl shadow-sm border-l-4 ${c.border} overflow-hidden`}>
-      {/* En-tête de la carte */}
+    <div className={`paper-card border-l-4 ${c.border} overflow-hidden`}>
       <button
         onClick={() => setOpen(o => !o)}
-        className="w-full flex items-start justify-between gap-3 px-4 py-3.5 text-left hover:bg-stone-50 transition-colors"
+        className="w-full flex items-start justify-between gap-3 px-4 py-3.5 text-left"
+        style={{ background: "transparent" }}
       >
         <div className="flex items-start gap-3 min-w-0">
           <span className={`shrink-0 text-xs font-semibold px-2 py-0.5 rounded-full mt-0.5 ${c.badge}`}>
             {mat.matiere}
           </span>
-          <span className="text-sm font-medium text-stone-800 leading-snug">{mat.topic}</span>
+          <span className="text-sm font-medium leading-snug" style={{ color: "var(--ink)" }}>{mat.topic}</span>
         </div>
-        <span className={`shrink-0 text-stone-400 text-xs mt-1 transition-transform ${open ? 'rotate-180' : ''}`}>▾</span>
+        <span className={`shrink-0 text-xs mt-1 transition-transform ${open ? 'rotate-180' : ''}`} style={{ color: "var(--inkLt)" }}>▾</span>
       </button>
 
-      {/* Détails dépliés */}
       {open && (
-        <div className="px-4 pb-4 space-y-4 border-t border-stone-100 pt-3">
-          {/* Approche */}
+        <div className="px-4 pb-4 space-y-4 pt-3" style={{ borderTop: "1px solid var(--borderLt)" }}>
           <div>
-            <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-1">Comment aborder</p>
-            <p className="text-sm text-stone-700 leading-relaxed">{mat.approche}</p>
+            <p className="section-label">Comment aborder</p>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--inkMd)" }}>{mat.approche}</p>
           </div>
 
-          {/* Transmission */}
           {mat.transmission.length > 0 && (
             <div>
-              <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-1.5">Comment transmettre</p>
+              <p className="section-label">Comment transmettre</p>
               <ul className="space-y-1">
                 {mat.transmission.map((t, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-stone-700">
+                  <li key={i} className="flex items-start gap-2 text-sm" style={{ color: "var(--inkMd)" }}>
                     <span className={`shrink-0 w-5 h-5 rounded-full text-xs flex items-center justify-center font-medium mt-0.5 ${c.badge}`}>{i + 1}</span>
                     {t}
                   </li>
@@ -204,15 +193,14 @@ function MatiereCard({
             </div>
           )}
 
-          {/* Exercices */}
           {mat.exercices.length > 0 && (
             <div>
-              <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-1.5">Exercices d&apos;assimilation</p>
+              <p className="section-label">Exercices d&apos;assimilation</p>
               <ul className="space-y-1.5">
                 {mat.exercices.map((ex, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm">
-                    <span className="shrink-0 text-stone-400 font-mono text-xs mt-0.5">{i + 1}.</span>
-                    <span className="text-stone-700">{ex}</span>
+                    <span className="shrink-0 font-mono text-xs mt-0.5" style={{ color: "var(--inkLt)" }}>{i + 1}.</span>
+                    <span style={{ color: "var(--inkMd)" }}>{ex}</span>
                   </li>
                 ))}
               </ul>
@@ -221,10 +209,7 @@ function MatiereCard({
 
           {canEdit && (
             <div className="pt-1">
-              <button
-                onClick={() => onEdit(mat)}
-                className="text-xs px-3 py-1.5 rounded-lg border border-stone-200 text-stone-500 hover:border-blue-300 hover:text-blue-600 transition-colors"
-              >
+              <button onClick={() => onEdit(mat)} className="btn-secondary text-xs px-3 py-1.5">
                 ✏️ Modifier
               </button>
             </div>
@@ -239,19 +224,19 @@ function MatiereCard({
 
 type Props = {
   semaine: SemaineRepartition | null;
-  periodes: PeriodeInfo[];
-  periodeActive: number;
+  mois: MoisRepartitionInfo[];
+  moisActif: string;
   semaineActive: number;
   classeSlug: string;
   classeLabel: string;
   canEdit?: boolean;
-  basePath: string;   // "/admin/repartition" | "/enseignant/repartition"
+  basePath: string;
 };
 
 export default function RepartitionViewer({
   semaine: initialSemaine,
-  periodes,
-  periodeActive,
+  mois,
+  moisActif,
   semaineActive,
   classeSlug,
   classeLabel,
@@ -261,7 +246,8 @@ export default function RepartitionViewer({
   const [semaine, setSemaine] = useState(initialSemaine);
   const [editingMat, setEditingMat] = useState<MatiereRepartition | null>(null);
 
-  const periodeInfo = periodes.find(p => p.num === periodeActive)!;
+  const moisInfo = mois.find(m => m.libelle === moisActif)!;
+  const moisIndex = mois.findIndex(m => m.libelle === moisActif);
 
   const handleSave = useCallback((updated: MatiereRepartition) => {
     setSemaine(s => s ? {
@@ -270,50 +256,56 @@ export default function RepartitionViewer({
     } : s);
   }, []);
 
-  function navUrl(p: number, s: number) {
-    return `${basePath}?classe=${classeSlug}&periode=${p}&semaine=${s}`;
+  function navUrl(m: string, s: number) {
+    return `${basePath}?classe=${classeSlug}&mois=${encodeURIComponent(m)}&semaine=${s}`;
   }
 
-  const prevSem = semaineActive > 1 ? navUrl(periodeActive, semaineActive - 1)
-    : periodeActive > 1 ? navUrl(periodeActive - 1, periodes[periodeActive - 2].nbSemaines)
-    : null;
+  const prevUrl = semaineActive > 1
+    ? navUrl(moisActif, semaineActive - 1)
+    : moisIndex > 0
+      ? navUrl(mois[moisIndex - 1].libelle, mois[moisIndex - 1].nbSemaines)
+      : null;
 
-  const nextSem = semaineActive < periodeInfo.nbSemaines ? navUrl(periodeActive, semaineActive + 1)
-    : periodeActive < periodes.length ? navUrl(periodeActive + 1, 1)
-    : null;
+  const nextUrl = semaineActive < moisInfo.nbSemaines
+    ? navUrl(moisActif, semaineActive + 1)
+    : moisIndex < mois.length - 1
+      ? navUrl(mois[moisIndex + 1].libelle, 1)
+      : null;
 
   return (
     <div className="space-y-6">
-      {/* Navigation période / semaine */}
-      <div className="bg-white border border-stone-100 rounded-xl shadow-sm p-4">
-        {/* Périodes */}
+      {/* Navigation mois / semaine */}
+      <div className="paper-card p-4">
+        {/* Mois */}
         <div className="flex flex-wrap gap-2 mb-4">
-          {periodes.map(p => (
+          {mois.map(m => (
             <a
-              key={p.num}
-              href={navUrl(p.num, 1)}
-              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                p.num === periodeActive
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
-              }`}
+              key={m.libelle}
+              href={navUrl(m.libelle, 1)}
+              style={
+                m.libelle === moisActif
+                  ? { background: "var(--forest)", color: "var(--stoneLt)" }
+                  : { background: "var(--stoneLt)", color: "var(--inkMd)" }
+              }
+              className="px-3 py-1.5 rounded text-sm font-medium"
             >
-              P{p.num}
+              {m.libelle}
             </a>
           ))}
         </div>
 
-        {/* Semaines de la période active */}
+        {/* Semaines du mois actif */}
         <div className="flex flex-wrap gap-1.5">
-          {Array.from({ length: periodeInfo.nbSemaines }, (_, i) => i + 1).map(s => (
+          {Array.from({ length: moisInfo.nbSemaines }, (_, i) => i + 1).map(s => (
             <a
               key={s}
-              href={navUrl(periodeActive, s)}
-              className={`w-9 h-9 flex items-center justify-center rounded-lg text-sm font-medium transition-colors ${
+              href={navUrl(moisActif, s)}
+              style={
                 s === semaineActive
-                  ? 'bg-blue-100 text-blue-700 ring-2 ring-blue-400'
-                  : 'bg-stone-50 text-stone-600 hover:bg-stone-100'
-              }`}
+                  ? { background: "rgba(28,61,46,.12)", color: "var(--forest)", outline: "2px solid var(--forest)", outlineOffset: "1px" }
+                  : { background: "var(--stoneLt)", color: "var(--inkMd)" }
+              }
+              className="w-9 h-9 flex items-center justify-center rounded text-sm font-medium"
             >
               {s}
             </a>
@@ -325,35 +317,33 @@ export default function RepartitionViewer({
       <div className="flex items-start justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">
-              {periodeInfo.libelle} · Semaine {semaineActive}
-            </span>
-            <span className="text-xs text-stone-300">·</span>
-            <span className="text-xs text-stone-400">{classeLabel}</span>
+            <span className="page-eyebrow">{moisActif} · Semaine {semaineActive}</span>
+            <span className="text-xs" style={{ color: "var(--stoneDk)" }}>·</span>
+            <span className="text-xs" style={{ color: "var(--inkLt)" }}>{classeLabel}</span>
           </div>
           {semaine ? (
             <>
-              <h1 className="text-xl font-bold text-stone-800">{semaine.theme}</h1>
+              <h2 style={{ fontSize: "20px", color: "var(--ink)" }}>{semaine.theme}</h2>
               {semaine.sousTheme && (
-                <p className="text-sm text-stone-500 mt-0.5">{semaine.sousTheme}</p>
+                <p className="text-sm mt-0.5" style={{ color: "var(--inkMd)" }}>{semaine.sousTheme}</p>
               )}
             </>
           ) : (
-            <p className="text-stone-400 italic text-sm">Aucun contenu pour cette semaine.</p>
+            <p className="italic text-sm" style={{ color: "var(--inkLt)" }}>Aucun contenu pour cette semaine.</p>
           )}
         </div>
 
         {/* Prev / Next */}
         <div className="flex items-center gap-2 shrink-0">
-          {prevSem ? (
-            <a href={prevSem} className="px-3 py-1.5 rounded-lg border border-stone-200 text-stone-500 hover:border-stone-300 text-sm">← Préc.</a>
+          {prevUrl ? (
+            <a href={prevUrl} className="btn-secondary px-3 py-1.5 text-sm">← Préc.</a>
           ) : (
-            <span className="px-3 py-1.5 text-stone-300 text-sm">←</span>
+            <span className="px-3 py-1.5 text-sm" style={{ color: "var(--stoneDk)" }}>←</span>
           )}
-          {nextSem ? (
-            <a href={nextSem} className="px-3 py-1.5 rounded-lg border border-stone-200 text-stone-500 hover:border-stone-300 text-sm">Suiv. →</a>
+          {nextUrl ? (
+            <a href={nextUrl} className="btn-secondary px-3 py-1.5 text-sm">Suiv. →</a>
           ) : (
-            <span className="px-3 py-1.5 text-stone-300 text-sm">→</span>
+            <span className="px-3 py-1.5 text-sm" style={{ color: "var(--stoneDk)" }}>→</span>
           )}
         </div>
       </div>
@@ -371,14 +361,13 @@ export default function RepartitionViewer({
           ))}
         </div>
       ) : (
-        <div className="text-center py-16 text-stone-400">
+        <div className="text-center py-16" style={{ color: "var(--inkLt)" }}>
           <p className="text-4xl mb-3">📋</p>
           <p className="text-sm">Contenu non encore généré pour cette semaine.</p>
           <p className="text-xs mt-1">Lancez le script de génération pour remplir la base.</p>
         </div>
       )}
 
-      {/* Modal édition */}
       {editingMat && (
         <EditModal
           mat={editingMat}

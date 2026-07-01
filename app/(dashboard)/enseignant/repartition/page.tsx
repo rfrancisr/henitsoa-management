@@ -2,21 +2,24 @@ import { getSession } from '@/lib/session';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import {
-  PERIODES,
   getSemaine,
   CLASSES_AVEC_REPARTITION,
   CLASSES_LABELS,
+  MOIS_REPARTITION,
   classeSlugFromLibelle,
   type ClasseSlug,
 } from '@/lib/repartition';
 import RepartitionViewer from '@/components/RepartitionViewer';
+import BackLink from '@/components/ui/BackLink';
 
 export const dynamic = 'force-dynamic';
+
+const DEFAULT_MOIS = 'Septembre';
 
 export default async function EnseignantRepartitionPage({
   searchParams,
 }: {
-  searchParams: Promise<{ periode?: string; semaine?: string; classe?: string }>;
+  searchParams: Promise<{ mois?: string; semaine?: string; classe?: string }>;
 }) {
   const session = await getSession();
   if (session?.user.role !== 'ENSEIGNANT') redirect('/');
@@ -32,7 +35,6 @@ export default async function EnseignantRepartitionPage({
     e => e.classe.anneeScolaireId === anneeScolaireActive?.id,
   );
 
-  // Trouver les classes avec une répartition disponible
   const classesDisponibles: { slug: ClasseSlug; label: string; classeNom: string }[] = [];
   for (const e of ensActifs) {
     const slug = classeSlugFromLibelle(e.classe.niveau.libelle);
@@ -44,14 +46,16 @@ export default async function EnseignantRepartitionPage({
   if (classesDisponibles.length === 0) {
     return (
       <div>
+        <BackLink href="/enseignant" label="Retour à l'accueil" />
         <div className="mb-8">
-          <h1 className="text-2xl font-bold text-stone-900 tracking-tight">Répartition annuelle</h1>
-          <p className="text-stone-400 text-sm mt-1">Programme hebdomadaire par matière</p>
+          <p className="page-eyebrow mb-1">Espace enseignant</p>
+          <h1 style={{ fontSize: "32px" }}>Répartition annuelle</h1>
+          <p className="text-sm mt-1" style={{ color: "var(--inkLt)" }}>Programme hebdomadaire par matière</p>
         </div>
-        <div className="bg-white rounded-2xl px-6 py-16 text-center border border-stone-100">
+        <div className="paper-card px-6 py-16 text-center">
           <div className="text-4xl mb-4">📋</div>
-          <p className="text-stone-600 font-medium">Aucune répartition disponible pour vos classes</p>
-          <p className="text-stone-400 text-sm mt-2">
+          <p className="font-medium" style={{ color: "var(--inkMd)" }}>Aucune répartition disponible pour vos classes</p>
+          <p className="text-sm mt-2" style={{ color: "var(--inkLt)" }}>
             La répartition est disponible pour les classes{' '}
             {CLASSES_AVEC_REPARTITION.map(s => CLASSES_LABELS[s]).join(' et ')}.
             {ensActifs.length > 0 && (
@@ -67,20 +71,22 @@ export default async function EnseignantRepartitionPage({
   const activeClasse = (classesDisponibles.find(c => c.slug === params.classe)?.slug)
     ?? classesDisponibles[0].slug;
 
-  const periodeNum = Math.max(1, Math.min(5, parseInt(params.periode ?? '1') || 1));
-  const periodeInfo = PERIODES.find(p => p.num === periodeNum)!;
-  const semaineNum  = Math.max(1, Math.min(periodeInfo.nbSemaines, parseInt(params.semaine ?? '1') || 1));
+  const moisActif = MOIS_REPARTITION.find(m => m.libelle === params.mois)?.libelle ?? DEFAULT_MOIS;
+  const moisInfo  = MOIS_REPARTITION.find(m => m.libelle === moisActif)!;
+  const semaineNum = Math.max(1, Math.min(moisInfo.nbSemaines, parseInt(params.semaine ?? '1') || 1));
 
-  const semaine = await getSemaine(activeClasse, periodeNum, semaineNum);
+  const semaine = await getSemaine(activeClasse, moisActif, semaineNum);
   const activeClasseInfo = classesDisponibles.find(c => c.slug === activeClasse)!;
 
   return (
     <div>
-      <div className="mb-5">
-        <h1 className="text-2xl font-bold text-stone-900 tracking-tight">
+      <BackLink href="/enseignant" label="Retour à l'accueil" />
+      <div className="mb-8">
+        <p className="page-eyebrow mb-1">Espace enseignant</p>
+        <h1 style={{ fontSize: "32px" }}>
           Répartition — {activeClasseInfo.classeNom}
         </h1>
-        <p className="text-stone-400 text-sm mt-1">Programme hebdomadaire · Année 2025-2026</p>
+        <p className="text-sm mt-1" style={{ color: "var(--inkLt)" }}>Programme hebdomadaire · Année 2025-2026</p>
       </div>
 
       {classesDisponibles.length > 1 && (
@@ -88,12 +94,13 @@ export default async function EnseignantRepartitionPage({
           {classesDisponibles.map(({ slug, label }) => (
             <a
               key={slug}
-              href={`/enseignant/repartition?classe=${slug}&periode=1&semaine=1`}
-              className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${
+              href={`/enseignant/repartition?classe=${slug}&mois=Septembre&semaine=1`}
+              style={
                 activeClasse === slug
-                  ? 'bg-stone-900 text-white border-stone-900'
-                  : 'bg-white text-stone-600 border-stone-200 hover:border-stone-400'
-              }`}
+                  ? { background: "var(--forest)", color: "var(--stoneLt)", borderColor: "var(--forest)" }
+                  : { background: "var(--white)", color: "var(--inkMd)", borderColor: "var(--border)" }
+              }
+              className="px-3 py-1.5 rounded text-sm font-medium border"
             >
               {label}
             </a>
@@ -103,8 +110,8 @@ export default async function EnseignantRepartitionPage({
 
       <RepartitionViewer
         semaine={semaine}
-        periodes={PERIODES}
-        periodeActive={periodeNum}
+        mois={MOIS_REPARTITION}
+        moisActif={moisActif}
         semaineActive={semaineNum}
         classeSlug={activeClasse}
         classeLabel={activeClasseInfo.label}

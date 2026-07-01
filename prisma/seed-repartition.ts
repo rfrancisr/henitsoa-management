@@ -4212,20 +4212,63 @@ type SemaineRaw = {
   matieres: MatDef[];
 };
 
+const MOIS_MAP: { p: number; s: number; mois: string; n: number; date: string }[] = [
+  { p:1, s:1, mois:'Septembre', n:1, date:'01/09/2025' },
+  { p:1, s:2, mois:'Septembre', n:2, date:'08/09/2025' },
+  { p:1, s:3, mois:'Septembre', n:3, date:'15/09/2025' },
+  { p:1, s:4, mois:'Septembre', n:4, date:'22/09/2025' },
+  { p:1, s:5, mois:'Octobre',   n:1, date:'29/09/2025' },
+  { p:1, s:6, mois:'Octobre',   n:2, date:'06/10/2025' },
+  { p:1, s:7, mois:'Octobre',   n:3, date:'13/10/2025' },
+  { p:2, s:1, mois:'Octobre',   n:4, date:'27/10/2025' },
+  { p:2, s:2, mois:'Novembre',  n:1, date:'03/11/2025' },
+  { p:2, s:3, mois:'Novembre',  n:2, date:'10/11/2025' },
+  { p:2, s:4, mois:'Novembre',  n:3, date:'17/11/2025' },
+  { p:2, s:5, mois:'Novembre',  n:4, date:'24/11/2025' },
+  { p:2, s:6, mois:'Décembre',  n:1, date:'01/12/2025' },
+  { p:2, s:7, mois:'Décembre',  n:2, date:'08/12/2025' },
+  { p:3, s:1, mois:'Janvier',   n:1, date:'05/01/2026' },
+  { p:3, s:2, mois:'Janvier',   n:2, date:'12/01/2026' },
+  { p:3, s:3, mois:'Janvier',   n:3, date:'19/01/2026' },
+  { p:3, s:4, mois:'Janvier',   n:4, date:'26/01/2026' },
+  { p:3, s:5, mois:'Février',   n:1, date:'02/02/2026' },
+  { p:3, s:6, mois:'Février',   n:2, date:'09/02/2026' },
+  { p:3, s:7, mois:'Février',   n:3, date:'16/02/2026' },
+  { p:4, s:1, mois:'Février',   n:4, date:'23/02/2026' },
+  { p:4, s:2, mois:'Mars',      n:1, date:'02/03/2026' },
+  { p:4, s:3, mois:'Mars',      n:2, date:'09/03/2026' },
+  { p:4, s:4, mois:'Mars',      n:3, date:'16/03/2026' },
+  { p:4, s:5, mois:'Mars',      n:4, date:'23/03/2026' },
+  { p:4, s:6, mois:'Mars',      n:5, date:'30/03/2026' },
+  { p:5, s:1, mois:'Avril',     n:1, date:'20/04/2026' },
+  { p:5, s:2, mois:'Avril',     n:2, date:'27/04/2026' },
+  { p:5, s:3, mois:'Mai',       n:1, date:'04/05/2026' },
+  { p:5, s:4, mois:'Mai',       n:2, date:'11/05/2026' },
+  { p:5, s:5, mois:'Mai',       n:3, date:'18/05/2026' },
+  { p:5, s:6, mois:'Mai',       n:4, date:'25/05/2026' },
+  { p:5, s:7, mois:'Juin',      n:1, date:'01/06/2026' },
+  { p:5, s:8, mois:'Juin',      n:2, date:'08/06/2026' },
+  { p:5, s:9, mois:'Juin',      n:3, date:'15/06/2026' },
+];
+
 async function seedPeriode(classe: string, periode: number, semaines: SemaineRaw[]) {
   for (let i = 0; i < semaines.length; i++) {
     const s = semaines[i];
-    const semaine = i + 1;
+    const semaineNum = s.n || (i + 1);
+    const entry = MOIS_MAP.find(e => e.p === periode && e.s === semaineNum);
+    if (!entry) {
+      console.warn(`  WARN: pas de mapping mois pour P${periode}S${semaineNum}`);
+      continue;
+    }
     if (DRY_RUN) {
-      console.log(`  [dry] P${periode} S${semaine} — ${s.theme}`);
+      console.log(`  [dry] ${entry.mois} S${entry.n} — ${s.theme}`);
       continue;
     }
     const row = await prisma.repartitionSemaine.upsert({
-      where: { classe_periode_semaine: { classe, periode, semaine } },
-      create: { classe, periode, semaine, dateDebut: s.dateDebut, theme: s.theme, sousTheme: s.sousTheme },
-      update: { dateDebut: s.dateDebut, theme: s.theme, sousTheme: s.sousTheme },
+      where: { classe_mois_semaine: { classe, mois: entry.mois, semaine: entry.n } },
+      create: { classe, mois: entry.mois, semaine: entry.n, dateDebut: entry.date, theme: s.theme, sousTheme: s.sousTheme },
+      update: { dateDebut: entry.date, theme: s.theme, sousTheme: s.sousTheme },
     });
-    // supprimer les matières existantes et recréer
     await prisma.repartitionMatiere.deleteMany({ where: { semaineId: row.id } });
     await prisma.repartitionMatiere.createMany({
       data: s.matieres.map(md => ({
@@ -4237,7 +4280,7 @@ async function seedPeriode(classe: string, periode: number, semaines: SemaineRaw
         exercices: JSON.stringify(md.exercices),
       })),
     });
-    console.log(`  ✓ ${classe} P${periode} S${semaine} — ${s.theme} (${s.matieres.length} matières)`);
+    console.log(`  ✓ ${classe} ${entry.mois} S${entry.n} — ${s.theme} (${s.matieres.length} matières)`);
   }
 }
 

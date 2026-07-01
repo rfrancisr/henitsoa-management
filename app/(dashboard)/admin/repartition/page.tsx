@@ -1,14 +1,17 @@
 import { getSession } from '@/lib/session';
 import { redirect } from 'next/navigation';
-import { PERIODES, getSemaine, CLASSES_AVEC_REPARTITION, CLASSES_LABELS } from '@/lib/repartition';
+import { getSemaine, CLASSES_AVEC_REPARTITION, CLASSES_LABELS, MOIS_REPARTITION } from '@/lib/repartition';
 import RepartitionViewer from '@/components/RepartitionViewer';
+import BackLink from '@/components/ui/BackLink';
 
 export const dynamic = 'force-dynamic';
+
+const DEFAULT_MOIS = 'Septembre';
 
 export default async function AdminRepartitionPage({
   searchParams,
 }: {
-  searchParams: Promise<{ periode?: string; semaine?: string; classe?: string }>;
+  searchParams: Promise<{ mois?: string; semaine?: string; classe?: string }>;
 }) {
   const session = await getSession();
   if (session?.user.role !== 'ADMIN') redirect('/');
@@ -18,31 +21,36 @@ export default async function AdminRepartitionPage({
   const classe = (CLASSES_AVEC_REPARTITION as readonly string[]).includes(params.classe ?? '')
     ? params.classe!
     : '10eme';
-  const periodeNum = Math.max(1, Math.min(5, parseInt(params.periode ?? '1') || 1));
-  const periodeInfo = PERIODES.find(p => p.num === periodeNum)!;
-  const semaineNum  = Math.max(1, Math.min(periodeInfo.nbSemaines, parseInt(params.semaine ?? '1') || 1));
 
-  const semaine = await getSemaine(classe, periodeNum, semaineNum);
+  const moisActif = MOIS_REPARTITION.find(m => m.libelle === params.mois)?.libelle ?? DEFAULT_MOIS;
+  const moisInfo  = MOIS_REPARTITION.find(m => m.libelle === moisActif)!;
+  const semaineNum = Math.max(1, Math.min(moisInfo.nbSemaines, parseInt(params.semaine ?? '1') || 1));
+
+  const semaine = await getSemaine(classe, moisActif, semaineNum);
   const classeLabel = CLASSES_LABELS[classe as keyof typeof CLASSES_LABELS] ?? classe;
 
   return (
     <div>
-      <div className="mb-5">
-        <h1 className="text-2xl font-bold text-stone-900 tracking-tight">Répartition annuelle</h1>
-        <p className="text-stone-400 text-sm mt-1">Année scolaire 2025-2026</p>
+      <BackLink />
+      <div className="mb-8 mt-5">
+        <p className="page-eyebrow mb-1">Administration — Rentrée</p>
+        <h1 style={{ fontSize: "28px" }}>Répartition annuelle</h1>
+        <p className="mt-2" style={{ color: "var(--inkLt)", fontSize: "14px" }}>
+          Programme hebdomadaire par classe
+        </p>
       </div>
 
-      {/* Sélecteur de classe */}
       <div className="flex gap-2 mb-4 flex-wrap">
         {CLASSES_AVEC_REPARTITION.map(slug => (
           <a
             key={slug}
-            href={`/admin/repartition?classe=${slug}&periode=1&semaine=1`}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${
+            href={`/admin/repartition?classe=${slug}&mois=Septembre&semaine=1`}
+            style={
               classe === slug
-                ? 'bg-stone-900 text-white border-stone-900'
-                : 'bg-white text-stone-600 border-stone-200 hover:border-stone-400'
-            }`}
+                ? { background: "var(--forest)", color: "var(--stoneLt)", borderColor: "var(--forest)" }
+                : { background: "var(--white)", color: "var(--inkMd)", borderColor: "var(--border)" }
+            }
+            className="px-3 py-1.5 rounded text-sm font-medium border"
           >
             {CLASSES_LABELS[slug]}
           </a>
@@ -51,8 +59,8 @@ export default async function AdminRepartitionPage({
 
       <RepartitionViewer
         semaine={semaine}
-        periodes={PERIODES}
-        periodeActive={periodeNum}
+        mois={MOIS_REPARTITION}
+        moisActif={moisActif}
         semaineActive={semaineNum}
         classeSlug={classe}
         classeLabel={classeLabel}

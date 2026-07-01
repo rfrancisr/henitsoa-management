@@ -8,14 +8,14 @@ export async function GET(req: NextRequest) {
 
   const { searchParams } = req.nextUrl;
   const classe  = searchParams.get('classe');
-  const periode = Number(searchParams.get('periode'));
+  const mois    = searchParams.get('mois');
   const semaine = Number(searchParams.get('semaine'));
 
-  if (!classe || !periode || !semaine) {
+  if (!classe || !mois || !semaine) {
     return NextResponse.json({ error: 'Paramètres manquants' }, { status: 400 });
   }
 
-  const data = await getSemaine(classe, periode, semaine);
+  const data = await getSemaine(classe, mois, semaine);
   if (!data) return NextResponse.json({ error: 'Semaine introuvable' }, { status: 404 });
 
   return NextResponse.json(data);

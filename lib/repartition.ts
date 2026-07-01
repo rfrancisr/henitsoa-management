@@ -6,6 +6,7 @@ export type {
   MatiereRepartition,
   SemaineRepartition,
   PeriodeInfo,
+  MoisRepartitionInfo,
   ClasseSlug,
 } from '@/lib/repartition-types';
 
@@ -13,6 +14,9 @@ export {
   CLASSES_AVEC_REPARTITION,
   CLASSES_LABELS,
   PERIODES,
+  MOIS_REPARTITION,
+  MOIS_LABELS,
+  getMoisInfo,
   MAT_COLORS,
   DEFAULT_COLOR,
   getMatColor,
@@ -42,18 +46,18 @@ function deserialize(row: {
 
 export async function getSemaine(
   classe: string,
-  periode: number,
+  mois: string,
   semaine: number,
 ): Promise<SemaineRepartition | null> {
   const row = await prisma.repartitionSemaine.findUnique({
-    where: { classe_periode_semaine: { classe, periode, semaine } },
+    where: { classe_mois_semaine: { classe, mois, semaine } },
     include: { matieres: { orderBy: { matiere: 'asc' } } },
   });
   if (!row) return null;
   return {
     id: row.id,
     classe: row.classe,
-    periode: row.periode,
+    mois: row.mois,
     semaine: row.semaine,
     dateDebut: row.dateDebut,
     theme: row.theme,

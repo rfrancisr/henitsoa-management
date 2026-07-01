@@ -12,7 +12,7 @@ export type MatiereRepartition = {
 export type SemaineRepartition = {
   id: string;
   classe: string;
-  periode: number;
+  mois: string;
   semaine: number;
   dateDebut: string;
   theme: string;
@@ -27,6 +27,41 @@ export type PeriodeInfo = {
   nbSemaines: number;
 };
 
+export type MoisRepartitionInfo = {
+  libelle: string;       // "Septembre", "Octobre", …
+  nbSemaines: number;    // school weeks in this month
+};
+
+// Academic périodes — kept for grades, evaluations, bulletins
+export const PERIODES: PeriodeInfo[] = [
+  { num: 1, libelle: '1ère Période', debut: '01/09/2025', nbSemaines: 7 },
+  { num: 2, libelle: '2ème Période', debut: '27/10/2025', nbSemaines: 7 },
+  { num: 3, libelle: '3ème Période', debut: '05/01/2026', nbSemaines: 7 },
+  { num: 4, libelle: '4ème Période', debut: '23/02/2026', nbSemaines: 6 },
+  { num: 5, libelle: '5ème Période', debut: '20/04/2026', nbSemaines: 9 },
+];
+
+// Répartition months — primary navigation unit for programme
+// Total: 4+4+4+2+4+4+5+2+4+3 = 36 school weeks
+export const MOIS_REPARTITION: MoisRepartitionInfo[] = [
+  { libelle: 'Septembre', nbSemaines: 4 },
+  { libelle: 'Octobre',   nbSemaines: 4 },
+  { libelle: 'Novembre',  nbSemaines: 4 },
+  { libelle: 'Décembre',  nbSemaines: 2 },
+  { libelle: 'Janvier',   nbSemaines: 4 },
+  { libelle: 'Février',   nbSemaines: 4 },
+  { libelle: 'Mars',      nbSemaines: 5 },
+  { libelle: 'Avril',     nbSemaines: 2 },
+  { libelle: 'Mai',       nbSemaines: 4 },
+  { libelle: 'Juin',      nbSemaines: 3 },
+];
+
+export const MOIS_LABELS = MOIS_REPARTITION.map(m => m.libelle);
+
+export function getMoisInfo(mois: string): MoisRepartitionInfo | undefined {
+  return MOIS_REPARTITION.find(m => m.libelle === mois);
+}
+
 export const CLASSES_AVEC_REPARTITION = ['10eme', '9eme'] as const;
 export type ClasseSlug = typeof CLASSES_AVEC_REPARTITION[number];
 
@@ -34,14 +69,6 @@ export const CLASSES_LABELS: Record<ClasseSlug, string> = {
   '10eme': '10ème (CE1)',
   '9eme':  '9ème (CE2)',
 };
-
-export const PERIODES: PeriodeInfo[] = [
-  { num: 1, libelle: '1ère Période',  debut: '01/09/2025', nbSemaines: 7 },
-  { num: 2, libelle: '2ème Période',  debut: '27/10/2025', nbSemaines: 7 },
-  { num: 3, libelle: '3ème Période',  debut: '05/01/2026', nbSemaines: 7 },
-  { num: 4, libelle: '4ème Période',  debut: '23/02/2026', nbSemaines: 6 },
-  { num: 5, libelle: '5ème Période',  debut: '20/04/2026', nbSemaines: 9 },
-];
 
 export const MAT_COLORS: Record<string, { border: string; badge: string; text: string; bg: string }> = {
   ARITHMÉTIQUE: { border: 'border-l-blue-500',    badge: 'bg-blue-50 text-blue-700 border border-blue-200',       text: 'text-blue-700',    bg: 'bg-blue-50' },

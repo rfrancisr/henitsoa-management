@@ -311,17 +311,17 @@ model EvenementCalendrier {
 
 model RepartitionSemaine {
   id        String               @id @default(cuid())
-  classe    String               // "11eme" | "7eme"
-  periode   Int
-  semaine   Int
-  dateDebut String               // "09/09/2024"
+  classe    String               // "11eme" | "9eme" | "10eme"
+  mois      String               // "Septembre" | "Octobre" | … | "Juin"
+  semaine   Int                  // position within the month (1-based)
+  dateDebut String               // "01/09/2025"
   theme     String
   sousTheme String
   matieres  RepartitionMatiere[]
   createdAt DateTime             @default(now())
   updatedAt DateTime             @updatedAt
 
-  @@unique([classe, periode, semaine])
+  @@unique([classe, mois, semaine])
 }
 
 model RepartitionMatiere {
