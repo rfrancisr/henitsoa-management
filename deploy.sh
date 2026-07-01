@@ -27,6 +27,9 @@ if ! ls .next/server/app/\(dashboard\)/ 2>/dev/null | grep -q manifest; then
   exit 1
 fi
 
+echo "==> Backup DB (pré-déploiement)..."
+bash /opt/ecole/app/backup.sh "pre-deploy"
+
 echo "==> DB..."
 npx prisma db push
 npx tsx prisma/seed.ts
