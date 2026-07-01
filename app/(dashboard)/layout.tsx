@@ -1,6 +1,6 @@
 import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
-import Sidebar from "@/components/Sidebar";
+import AdminHeader from "@/components/AdminHeader";
 
 export default async function DashboardLayout({
   children,
@@ -11,11 +11,12 @@ export default async function DashboardLayout({
   if (!session) redirect("/login");
 
   return (
-    <div className="flex h-screen bg-white">
-      <Sidebar user={session.user} />
-      <main className="flex-1 overflow-auto" style={{ background: "#f5f5f7" }}>
-        <div className="p-6">{children}</div>
-      </main>
+    <div style={{ minHeight: "100vh", background: "var(--stone)", overflowX: "hidden" }}>
+      <div className="top-accent-line" />
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 clamp(18px, 4vw, 64px) 80px" }}>
+        <AdminHeader user={session.user} />
+        <main>{children}</main>
+      </div>
     </div>
   );
 }

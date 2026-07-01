@@ -77,57 +77,82 @@ export default function UtilisateursClient({ utilisateurs }: { utilisateurs: Use
 
   return (
     <>
-      <div className="bg-white rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(232,212,138,0.3)", boxShadow: "0 1px 12px rgba(0,0,0,0.04)" }}>
-        <div className="px-5 py-4 border-b border-stone-100 flex items-center gap-3">
+      <div className="paper-card overflow-hidden">
+        <div
+          className="px-5 py-4 flex items-center gap-3"
+          style={{ borderBottom: "1px solid var(--borderLt)" }}
+        >
           <input
             type="text"
             placeholder="Rechercher..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="flex-1 px-3 py-2 border border-stone-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold bg-stone-50 text-stone-900 placeholder-stone-300"
+            className="flex-1"
+            style={{
+              padding: "9px 12px",
+              border: "1px solid var(--border)",
+              borderRadius: "6px",
+              fontSize: "14px",
+              fontFamily: "var(--font-sans)",
+              background: "var(--white)",
+              color: "var(--ink)",
+              outline: "none",
+            }}
+            onFocus={(e) => {
+              e.currentTarget.style.outline = "2px solid var(--forest)";
+              e.currentTarget.style.outlineOffset = "1px";
+            }}
+            onBlur={(e) => { e.currentTarget.style.outline = "none"; }}
           />
           <button
             onClick={() => setShowCreate(true)}
-            className="btn-gold text-sm px-4 py-2 rounded-xl whitespace-nowrap"
+            className="btn-primary text-sm px-4 py-2 whitespace-nowrap"
           >
             + Nouveau compte
           </button>
         </div>
 
-        <div className="divide-y divide-stone-50">
+        <div>
           {filtered.length === 0 ? (
-            <p className="px-5 py-8 text-stone-300 text-sm text-center">Aucun utilisateur trouvé.</p>
+            <p className="px-5 py-8 text-sm text-center" style={{ color: "var(--inkLt)" }}>
+              Aucun utilisateur trouvé.
+            </p>
           ) : (
             filtered.map((u) => (
-              <div key={u.id} className="px-5 py-3.5 flex items-center gap-4">
-                <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center font-semibold text-sm shrink-0"
-                  style={{ background: "rgba(201,168,76,0.12)", color: "#9A7428" }}
-                >
+              <div
+                key={u.id}
+                className="px-5 py-3.5 flex items-center gap-4"
+                style={{ borderBottom: "1px solid var(--borderLt)" }}
+              >
+                <div className="avatar avatar-forest w-9 h-9 shrink-0" style={{ fontSize: "13px" }}>
                   {u.prenom.charAt(0)}{u.nom.charAt(0)}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-medium text-stone-900 text-sm">
+                  <p style={{ fontWeight: 600, fontSize: 16, color: "var(--ink)" }}>
                     {u.prenom} {u.nom}
                   </p>
-                  <p className="text-stone-400 text-xs truncate">{u.email}</p>
+                  <p style={{ fontSize: 12.5, color: "var(--inkLt)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{u.email}</p>
                 </div>
-                <Badge color="gold">{ROLE_LABELS[u.role]}</Badge>
+                <Badge color={ROLE_COLORS[u.role]}>{ROLE_LABELS[u.role]}</Badge>
                 {!u.actif && <Badge color="red">Désactivé</Badge>}
                 <div className="flex items-center gap-2 shrink-0">
                   <button
                     onClick={() => { setResetId(u.id); setNewPassword(""); }}
-                    className="btn-glass text-xs px-2 py-1 rounded-lg font-medium"
+                    className="btn-secondary text-sm px-3 py-2"
                   >
                     Mot de passe
                   </button>
                   <button
                     onClick={() => handleToggle(u.id, u.actif)}
-                    className={`text-xs px-2 py-1 rounded-lg transition-colors ${
-                      u.actif
-                        ? "text-stone-400 hover:text-red-600 hover:bg-red-50"
-                        : "text-stone-400 hover:text-emerald-600 hover:bg-emerald-50"
-                    }`}
+                    className="text-sm px-3 py-2 rounded transition-colors"
+                    style={{ color: "var(--inkLt)" }}
+                    onMouseEnter={(e) => {
+                      const c = u.actif ? "var(--red)" : "var(--green)";
+                      (e.currentTarget as HTMLElement).style.color = c;
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "var(--inkLt)";
+                    }}
                   >
                     {u.actif ? "Désactiver" : "Activer"}
                   </button>
@@ -138,7 +163,6 @@ export default function UtilisateursClient({ utilisateurs }: { utilisateurs: Use
         </div>
       </div>
 
-      {/* Modal création */}
       {showCreate && (
         <Modal title="Nouveau compte" onClose={() => setShowCreate(false)}>
           <form onSubmit={handleCreate} className="space-y-4">
@@ -164,13 +188,23 @@ export default function UtilisateursClient({ utilisateurs }: { utilisateurs: Use
                 <option value="ADMIN">Administrateur</option>
               </Select>
             </FormField>
-            {error && <p className="text-red-600 text-sm">{error}</p>}
+            {error && (
+              <p
+                className="text-sm rounded px-3 py-2"
+                style={{
+                  color: "var(--red)",
+                  background: "rgba(139,42,42,.08)",
+                  border: "1px solid rgba(139,42,42,.2)",
+                }}
+              >
+                {error}
+              </p>
+            )}
             <SubmitButton loading={loading}>Créer le compte</SubmitButton>
           </form>
         </Modal>
       )}
 
-      {/* Modal reset password */}
       {resetId && (
         <Modal title="Réinitialiser le mot de passe" onClose={() => setResetId(null)}>
           <form onSubmit={handleReset} className="space-y-4">

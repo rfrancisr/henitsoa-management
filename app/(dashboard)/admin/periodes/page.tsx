@@ -1,7 +1,8 @@
-﻿import { getSession } from "@/lib/session";
+import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import PeriodesClient from "./PeriodesClient";
+import BackLink from "@/components/ui/BackLink";
 
 export default async function PeriodesPage() {
   const session = await getSession();
@@ -19,9 +20,18 @@ export default async function PeriodesPage() {
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-stone-900">Périodes d&apos;évaluation</h1>
-        <p className="text-stone-500 text-sm mt-1">Trimestres et semestres</p>
+      <BackLink />
+      <div style={{ marginBottom: 28 }}>
+        <p style={{ fontSize: 11.5, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "var(--inkLt)", marginBottom: 6 }}>
+          Administration — Début d&apos;année
+        </p>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontSize: 28, fontWeight: 400, color: "var(--ink)", marginBottom: 4 }}>
+          Périodes d&apos;évaluation
+        </h1>
+        <p style={{ fontSize: 14, color: "var(--inkLt)" }}>
+          {periodes.length} période{periodes.length !== 1 ? "s" : ""} configurée{periodes.length !== 1 ? "s" : ""} ·
+          Définissez les trimestres ou semestres de l&apos;année scolaire
+        </p>
       </div>
       <PeriodesClient
         periodes={periodes}

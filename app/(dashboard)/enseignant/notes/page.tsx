@@ -2,6 +2,7 @@
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import NotesClient from "./NotesClient";
+import BackLink from "@/components/ui/BackLink";
 
 export default async function NotesPage({
   searchParams,
@@ -108,10 +109,9 @@ export default async function NotesPage({
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-stone-900">Saisie des notes</h1>
-      </div>
+      <BackLink href="/enseignant" label="Retour à l'accueil" />
       <NotesClient
+        key={`${classeId}-${periodeId}`}
         classes={classesDisponibles}
         periodes={periodes}
         classeSelectionnee={classeSelectionnee}

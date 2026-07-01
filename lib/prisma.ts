@@ -10,7 +10,11 @@ function resolveDbUrl(): string | undefined {
   const url = process.env.DATABASE_URL;
   if (!url) return undefined;
   const rel = url.match(/^file:(\..*)/)?.[1];
-  if (rel) return `file:${path.resolve(process.cwd(), rel)}`;
+  if (rel) {
+    // path.resolve returns backslashes on Windows; Prisma SQLite needs forward slashes
+    const abs = path.resolve(process.cwd(), rel).replace(/\\/g, '/');
+    return `file:${abs}`;
+  }
   return url;
 }
 

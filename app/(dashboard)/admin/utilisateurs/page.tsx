@@ -1,7 +1,8 @@
-﻿import { getSession } from "@/lib/session";
+import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import UtilisateursClient from "./UtilisateursClient";
+import BackLink from "@/components/ui/BackLink";
 
 export default async function UtilisateursPage() {
   const session = await getSession();
@@ -11,13 +12,22 @@ export default async function UtilisateursPage() {
     orderBy: [{ role: "asc" }, { nom: "asc" }],
   });
 
+  const actifs = utilisateurs.filter((u) => u.actif).length;
+
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="text-2xl font-bold text-stone-900">Utilisateurs</h1>
-          <p className="text-stone-500 text-sm mt-1">{utilisateurs.length} compte(s)</p>
-        </div>
+      <BackLink />
+      <div style={{ marginBottom: 28 }}>
+        <p style={{ fontSize: 11.5, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "var(--inkLt)", marginBottom: 6 }}>
+          Administration — Comptes
+        </p>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontSize: 28, fontWeight: 400, color: "var(--ink)", marginBottom: 4 }}>
+          Comptes utilisateurs
+        </h1>
+        <p style={{ fontSize: 14, color: "var(--inkLt)" }}>
+          {actifs} compte{actifs !== 1 ? "s" : ""} actif{actifs !== 1 ? "s" : ""} sur {utilisateurs.length} ·
+          Créez les accès à l&apos;application pour les enseignants, les parents et les directeurs
+        </p>
       </div>
       <UtilisateursClient utilisateurs={utilisateurs} />
     </div>

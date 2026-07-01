@@ -1,7 +1,8 @@
-﻿import { getSession } from "@/lib/session";
+import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import MatieresClient from "./MatieresClient";
+import BackLink from "@/components/ui/BackLink";
 
 export default async function MatieresPage() {
   const session = await getSession();
@@ -17,9 +18,18 @@ export default async function MatieresPage() {
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-stone-900">Matières</h1>
-        <p className="text-stone-500 text-sm mt-1">{matieres.length} matière(s)</p>
+      <BackLink />
+      <div style={{ marginBottom: 28 }}>
+        <p style={{ fontSize: 11.5, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "var(--inkLt)", marginBottom: 6 }}>
+          Administration — Début d&apos;année
+        </p>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontSize: 28, fontWeight: 400, color: "var(--ink)", marginBottom: 4 }}>
+          Matières
+        </h1>
+        <p style={{ fontSize: 14, color: "var(--inkLt)" }}>
+          {matieres.length} matière{matieres.length !== 1 ? "s" : ""} configurée{matieres.length !== 1 ? "s" : ""} ·
+          Ajoutez ou modifiez les matières enseignées dans l&apos;école
+        </p>
       </div>
       <MatieresClient matieres={matieres} niveaux={niveaux} />
     </div>

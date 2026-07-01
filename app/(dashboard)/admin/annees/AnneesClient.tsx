@@ -49,31 +49,37 @@ export default function AnneesClient({ annees }: { annees: Annee[] }) {
 
   return (
     <>
-      <div
-        className="bg-white rounded-2xl overflow-hidden"
-        style={{ border: "1px solid rgba(232,212,138,0.3)", boxShadow: "0 1px 12px rgba(0,0,0,0.04)" }}
-      >
-        <div className="px-5 py-4 border-b border-stone-100 flex justify-end">
+      <div className="paper-card overflow-hidden">
+        <div
+          className="px-5 py-4 flex justify-end"
+          style={{ borderBottom: "1px solid var(--borderLt)" }}
+        >
           <button
             onClick={() => setShowCreate(true)}
-            className="btn-gold text-sm px-4 py-2 rounded-xl"
+            className="btn-primary text-sm px-4 py-2"
           >
             + Nouvelle année
           </button>
         </div>
 
-        <div className="divide-y divide-stone-50">
+        <div>
           {annees.length === 0 ? (
-            <p className="px-5 py-8 text-stone-300 text-sm text-center">Aucune année scolaire.</p>
+            <p className="px-5 py-8 text-sm text-center" style={{ color: "var(--inkLt)" }}>
+              Aucune année scolaire.
+            </p>
           ) : (
             annees.map((a) => (
-              <div key={a.id} className="px-5 py-4 flex items-center gap-4">
+              <div
+                key={a.id}
+                className="px-5 py-4 flex items-center gap-4"
+                style={{ borderBottom: "1px solid var(--borderLt)" }}
+              >
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-0.5">
-                    <span className="font-semibold text-stone-900">{a.libelle}</span>
+                    <span style={{ fontWeight: 600, fontSize: 16, color: "var(--ink)" }}>{a.libelle}</span>
                     {a.active && <Badge color="green">Active</Badge>}
                   </div>
-                  <p className="text-stone-400 text-xs">
+                  <p style={{ fontSize: 12.5, color: "var(--inkLt)" }}>
                     {fmt(a.dateDebut)} → {fmt(a.dateFin)}
                     {" · "}
                     {a._count.classes} classe(s) · {a._count.periodes} période(s)
@@ -83,7 +89,10 @@ export default function AnneesClient({ annees }: { annees: Annee[] }) {
                   {!a.active && (
                     <button
                       onClick={() => handleActiver(a.id, a.libelle)}
-                      className="text-xs text-stone-400 hover:text-emerald-600 px-2 py-1 rounded-lg hover:bg-emerald-50 transition-colors"
+                      className="text-sm px-3 py-2 rounded transition-colors"
+                      style={{ color: "var(--inkLt)" }}
+                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--green)"; }}
+                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--inkLt)"; }}
                     >
                       Activer
                     </button>
@@ -91,7 +100,10 @@ export default function AnneesClient({ annees }: { annees: Annee[] }) {
                   {!a.active && (
                     <button
                       onClick={() => handleDelete(a.id, a.libelle, a._count)}
-                      className="text-xs text-stone-400 hover:text-red-600 px-2 py-1 rounded-lg hover:bg-red-50 transition-colors"
+                      className="text-sm px-3 py-2 rounded transition-colors"
+                      style={{ color: "var(--inkLt)" }}
+                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--red)"; }}
+                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--inkLt)"; }}
                     >
                       Supprimer
                     </button>

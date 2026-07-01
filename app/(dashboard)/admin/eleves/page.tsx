@@ -1,7 +1,8 @@
-﻿import { getSession } from "@/lib/session";
+import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import ElevesClient from "./ElevesClient";
+import BackLink from "@/components/ui/BackLink";
 
 export default async function ElevesPage() {
   const session = await getSession();
@@ -35,13 +36,22 @@ export default async function ElevesPage() {
       })
     : [];
 
+  const actifs = eleves.filter((e) => e.actif).length;
+
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="text-2xl font-bold text-stone-900">Élèves</h1>
-          <p className="text-stone-500 text-sm mt-1">{eleves.filter((e) => e.actif).length} élève(s) actif(s)</p>
-        </div>
+      <BackLink />
+      <div style={{ marginBottom: 28 }}>
+        <p style={{ fontSize: 11.5, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "var(--inkLt)", marginBottom: 6 }}>
+          Administration — Rentrée
+        </p>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontSize: 28, fontWeight: 400, color: "var(--ink)", marginBottom: 4 }}>
+          Élèves
+        </h1>
+        <p style={{ fontSize: 14, color: "var(--inkLt)" }}>
+          {actifs} élève{actifs !== 1 ? "s" : ""} inscrit{actifs !== 1 ? "s" : ""} ·
+          Ajoutez ou modifiez les fiches et associez chaque élève à un parent
+        </p>
       </div>
       <ElevesClient
         eleves={eleves}

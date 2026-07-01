@@ -9,33 +9,84 @@ export function FormField({
 }) {
   return (
     <div>
-      <label className="block text-xs font-semibold text-stone-500 mb-1.5 uppercase tracking-wider">{label}</label>
+      <label
+        className="block mb-1.5"
+        style={{
+          fontFamily: "var(--font-sans)",
+          fontSize: "13px",
+          fontWeight: 600,
+          letterSpacing: "0.6px",
+          textTransform: "uppercase",
+          color: "var(--inkLt)",
+        }}
+      >
+        {label}
+      </label>
       {children}
-      {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+      {error && (
+        <p
+          className="mt-2 text-sm rounded px-3 py-2"
+          style={{
+            color: "var(--red)",
+            background: "rgba(139,42,42,.08)",
+            border: "1px solid rgba(139,42,42,.2)",
+          }}
+        >
+          {error}
+        </p>
+      )}
     </div>
   );
 }
 
+const inputBase: React.CSSProperties = {
+  width: "100%",
+  padding: "11px 14px",
+  border: "1px solid var(--border)",
+  borderRadius: "6px",
+  background: "var(--white)",
+  fontSize: "15px",
+  fontFamily: "var(--font-sans)",
+  color: "var(--ink)",
+  outline: "none",
+  transition: "outline-color 0.1s ease",
+  appearance: "auto",
+};
+
 export function Input({
-  className = "",
+  style,
   ...props
 }: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <input
-      className={`w-full px-3.5 py-2.5 border border-stone-200 rounded-xl text-stone-900 placeholder-stone-300 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent text-sm bg-stone-50 transition-all ${className}`}
+      style={{ ...inputBase, ...style }}
+      onFocus={(e) => {
+        (e.currentTarget as HTMLElement).style.outline = "2px solid var(--forest)";
+        (e.currentTarget as HTMLElement).style.outlineOffset = "1px";
+      }}
+      onBlur={(e) => {
+        (e.currentTarget as HTMLElement).style.outline = "none";
+      }}
       {...props}
     />
   );
 }
 
 export function Select({
-  className = "",
+  style,
   children,
   ...props
 }: React.SelectHTMLAttributes<HTMLSelectElement>) {
   return (
     <select
-      className={`w-full px-3.5 py-2.5 border border-stone-200 rounded-xl text-stone-900 focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent text-sm bg-stone-50 transition-all ${className}`}
+      style={{ ...inputBase, ...style }}
+      onFocus={(e) => {
+        (e.currentTarget as HTMLElement).style.outline = "2px solid var(--forest)";
+        (e.currentTarget as HTMLElement).style.outlineOffset = "1px";
+      }}
+      onBlur={(e) => {
+        (e.currentTarget as HTMLElement).style.outline = "none";
+      }}
       {...props}
     >
       {children}
@@ -54,7 +105,7 @@ export function SubmitButton({
     <button
       type="submit"
       disabled={loading}
-      className="btn-gold w-full py-2.5 px-4 rounded-xl text-sm"
+      className="btn-primary w-full py-3 px-4"
     >
       {loading ? "Chargement…" : children}
     </button>
@@ -68,25 +119,56 @@ export function Badge({
   children: React.ReactNode;
   color?: "slate" | "green" | "red" | "blue" | "purple" | "orange" | "gold";
 }) {
-  const colors: Record<string, string> = {
-    slate:  "bg-stone-100 text-stone-600",
-    green:  "bg-emerald-50 text-emerald-700 border border-emerald-100",
-    red:    "bg-red-50 text-red-600 border border-red-100",
-    blue:   "bg-stone-100 text-stone-700",
-    purple: "bg-stone-100 text-stone-700",
-    orange: "bg-stone-100 text-stone-700",
-    gold:   "border text-[#9A7428]",
+  const styles: Record<string, React.CSSProperties> = {
+    slate: {
+      background: "rgba(122,117,108,.10)",
+      color: "var(--inkMd)",
+    },
+    green: {
+      background: "rgba(28,77,48,.10)",
+      color: "var(--green)",
+      border: "1px solid rgba(28,77,48,.18)",
+    },
+    red: {
+      background: "rgba(139,42,42,.10)",
+      color: "var(--red)",
+      border: "1px solid rgba(139,42,42,.18)",
+    },
+    blue: {
+      background: "rgba(28,61,46,.10)",
+      color: "var(--forest)",
+      border: "1px solid rgba(28,61,46,.18)",
+    },
+    purple: {
+      background: "rgba(28,61,46,.10)",
+      color: "var(--forest)",
+      border: "1px solid rgba(28,61,46,.18)",
+    },
+    orange: {
+      background: "rgba(122,92,0,.10)",
+      color: "var(--amber)",
+      border: "1px solid rgba(122,92,0,.18)",
+    },
+    gold: {
+      background: "rgba(28,61,46,.10)",
+      color: "var(--forest)",
+      border: "1px solid rgba(28,61,46,.18)",
+    },
   };
-
-  const goldStyle =
-    color === "gold"
-      ? { background: "rgba(201,168,76,0.10)", borderColor: "rgba(201,168,76,0.30)" }
-      : undefined;
 
   return (
     <span
-      className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${colors[color] ?? colors.slate}`}
-      style={goldStyle}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        padding: "2px 8px",
+        borderRadius: "4px",
+        fontSize: "11.5px",
+        fontFamily: "var(--font-sans)",
+        fontWeight: 600,
+        letterSpacing: "0.3px",
+        ...styles[color],
+      }}
     >
       {children}
     </span>

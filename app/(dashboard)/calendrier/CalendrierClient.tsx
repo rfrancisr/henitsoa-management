@@ -107,7 +107,7 @@ export default function CalendrierClient({ canEdit }: { canEdit: boolean }) {
   }
 
   return (
-    <div className="bg-white rounded-2xl p-4" style={{ border: "1px solid rgba(232,212,138,0.3)", boxShadow: "0 1px 12px rgba(0,0,0,0.04)" }}>
+    <div className="paper-card p-4">
       {/* Légende */}
       <div className="flex flex-wrap gap-3 mb-4 text-xs">
         {Object.entries(TYPE_LABELS).map(([type, label]) => (
@@ -120,7 +120,7 @@ export default function CalendrierClient({ canEdit }: { canEdit: boolean }) {
           </span>
         ))}
         {canEdit && (
-          <span className="text-stone-300 ml-2">· Cliquez sur une date pour ajouter un événement</span>
+          <span className="ml-2" style={{ color: "var(--inkLt)" }}>· Cliquez sur une date pour ajouter un événement</span>
         )}
       </div>
 
@@ -192,7 +192,15 @@ export default function CalendrierClient({ canEdit }: { canEdit: boolean }) {
                 onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
                 rows={2}
                 placeholder="Détails supplémentaires…"
-                className="w-full px-3.5 py-2.5 border border-stone-200 rounded-xl text-stone-900 placeholder-stone-300 focus:outline-none focus:ring-2 focus:ring-gold text-sm resize-none bg-stone-50"
+                style={{
+                width: "100%", padding: "11px 14px",
+                border: "1px solid var(--border)", borderRadius: "6px",
+                fontSize: "13px", fontFamily: "var(--font-sans)",
+                color: "var(--ink)", background: "var(--white)",
+                outline: "none", resize: "none",
+              }}
+              onFocus={(e) => { e.currentTarget.style.outline = "2px solid var(--forest)"; e.currentTarget.style.outlineOffset = "1px"; }}
+              onBlur={(e) => { e.currentTarget.style.outline = "none"; }}
               />
             </FormField>
             <div className="flex gap-3">
@@ -200,7 +208,7 @@ export default function CalendrierClient({ canEdit }: { canEdit: boolean }) {
                 <button
                   type="button"
                   onClick={handleDelete}
-                  className="px-4 py-2.5 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg transition-colors border border-red-200"
+                  className="btn-danger px-4 py-2.5 text-sm"
                 >
                   Supprimer
                 </button>

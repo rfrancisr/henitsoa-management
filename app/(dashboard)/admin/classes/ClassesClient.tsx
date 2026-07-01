@@ -68,35 +68,46 @@ export default function ClassesClient({
 
   return (
     <>
-      <div className="bg-white rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(232,212,138,0.3)", boxShadow: "0 1px 12px rgba(0,0,0,0.04)" }}>
-        <div className="px-5 py-4 border-b border-stone-100 flex justify-end">
+      <div className="paper-card overflow-hidden">
+        <div
+          className="px-5 py-4 flex justify-end"
+          style={{ borderBottom: "1px solid var(--borderLt)" }}
+        >
           <button
             onClick={() => setShowCreate(true)}
-            className="btn-gold text-sm px-4 py-2 rounded-xl"
+            className="btn-primary text-sm px-4 py-2"
           >
             + Nouvelle classe
           </button>
         </div>
 
-        <div className="divide-y divide-stone-50">
+        <div style={{ borderTop: "none" }}>
           {classes.length === 0 ? (
-            <p className="px-5 py-8 text-stone-300 text-sm text-center">Aucune classe créée.</p>
+            <p className="px-5 py-8 text-sm text-center" style={{ color: "var(--stoneDk)" }}>
+              Aucune classe créée.
+            </p>
           ) : (
             classes.map((c) => (
-              <div key={c.id} className="px-5 py-4 flex items-center gap-4">
+              <div
+                key={c.id}
+                className="px-5 py-4 flex items-center gap-4"
+                style={{ borderBottom: "1px solid var(--borderLt)" }}
+              >
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-0.5">
-                    <span className="font-medium text-stone-900">{c.libelle}</span>
-                    <Badge color="gold">{c.niveau.libelle}</Badge>
+                    <span style={{ fontWeight: 600, fontSize: 16, color: "var(--ink)" }}>
+                      {c.libelle}
+                    </span>
+                    <Badge color="blue">{c.niveau.libelle}</Badge>
                   </div>
-                  <p className="text-stone-400 text-xs">
+                  <p style={{ fontSize: 12.5, color: "var(--inkLt)" }}>
                     {c._count.eleves} élève{c._count.eleves > 1 ? "s" : ""} ·{" "}
                     {c.enseignements.length} enseignement{c.enseignements.length > 1 ? "s" : ""}
                   </p>
                 </div>
                 <button
                   onClick={() => setDetailClasse(c)}
-                  className="btn-glass text-sm px-3 py-1.5 rounded-lg font-medium"
+                  className="btn-secondary text-sm px-3 py-1.5"
                 >
                   Gérer
                 </button>
@@ -138,18 +149,26 @@ export default function ClassesClient({
           onClose={() => setDetailClasse(null)}
         >
           <div className="space-y-4">
-            {/* Liste des enseignements */}
-            <div className="bg-stone-50 rounded-xl divide-y divide-stone-100">
+            <div
+              className="rounded-md overflow-hidden"
+              style={{ border: "1px solid var(--borderLt)" }}
+            >
               {detailClasse.enseignements.length === 0 ? (
-                <p className="px-4 py-3 text-stone-300 text-sm text-center">
+                <p className="px-4 py-3 text-sm text-center" style={{ color: "var(--inkLt)" }}>
                   Aucun enseignant affecté.
                 </p>
               ) : (
                 detailClasse.enseignements.map((ens) => (
-                  <div key={`${ens.user.id}-${ens.matiere.id}`} className="px-4 py-2.5 flex items-center justify-between">
+                  <div
+                    key={`${ens.user.id}-${ens.matiere.id}`}
+                    className="px-4 py-2.5 flex items-center justify-between"
+                    style={{ borderBottom: "1px solid var(--borderLt)" }}
+                  >
                     <div>
-                      <span className="text-sm font-medium text-stone-900">{ens.matiere.libelle}</span>
-                      <span className="text-stone-400 text-xs ml-2">
+                      <span className="text-sm font-medium" style={{ color: "var(--ink)" }}>
+                        {ens.matiere.libelle}
+                      </span>
+                      <span className="text-xs ml-2" style={{ color: "var(--inkLt)" }}>
                         — {ens.user.prenom} {ens.user.nom}
                       </span>
                     </div>
@@ -161,7 +180,8 @@ export default function ClassesClient({
                           classeId: detailClasse.id,
                         })
                       }
-                      className="text-red-400 hover:text-red-600 text-xs transition-colors"
+                      className="text-sm transition-colors"
+                      style={{ color: "var(--red)" }}
                     >
                       Retirer
                     </button>
@@ -170,9 +190,8 @@ export default function ClassesClient({
               )}
             </div>
 
-            {/* Ajouter un enseignement */}
             <form onSubmit={handleAffecterEnseignant} className="space-y-3">
-              <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Ajouter un enseignant</p>
+              <p className="section-label">Ajouter un enseignant</p>
               <FormField label="Matière">
                 <Select name="matiereId" required>
                   <option value="">-- Choisir --</option>

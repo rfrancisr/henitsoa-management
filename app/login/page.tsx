@@ -34,109 +34,184 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{ background: "#f5f5f7" }}>
-      <div className="w-full max-w-md">
-        <div
-          className="bg-white rounded-2xl p-8"
-          style={{ boxShadow: "0 1px 40px rgba(0,0,0,0.07), 0 1px 8px rgba(0,0,0,0.04)" }}
-        >
-          {/* En-tête */}
-          <div className="text-center mb-8">
-            <div className="w-20 h-20 mx-auto mb-5 flex items-center justify-center">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/LogoHenitsoa.png"
-                alt=""
-                style={{ width: "80px", height: "80px", objectFit: "contain", display: "block" }}
-              />
-            </div>
-            <h1 className="text-xl font-bold tracking-tight" style={{ color: "#1D1D1F" }}>École Privée Henitsoa</h1>
-            <p className="text-sm mt-1.5 tracking-wide" style={{ color: "#86868b" }}>
-              Connectez-vous à votre espace
-            </p>
-          </div>
+    <div
+      className="min-h-screen flex flex-col"
+      style={{ background: "var(--stone)" }}
+    >
+      {/* 3px forest accent line */}
+      <div className="top-accent-line" />
 
-          {/* Formulaire */}
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-xs font-semibold mb-1.5 uppercase tracking-wider"
-                style={{ color: "#6e6e73" }}
-              >
-                Adresse email
-              </label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="vous@example.com"
-                className="w-full px-3.5 py-2.5 rounded-xl text-sm transition-all focus:outline-none focus:ring-2 focus:border-transparent"
-                style={{
-                  border: "1px solid rgba(29,29,31,0.12)",
-                  background: "#f5f5f7",
-                  color: "#1D1D1F",
-                  "--tw-ring-color": "#C9A84C",
-                } as React.CSSProperties}
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-xs font-semibold mb-1.5 uppercase tracking-wider"
-                style={{ color: "#6e6e73" }}
-              >
-                Mot de passe
-              </label>
-              <input
-                id="password"
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="w-full px-3.5 py-2.5 rounded-xl text-sm transition-all focus:outline-none focus:ring-2 focus:border-transparent"
-                style={{
-                  border: "1px solid rgba(29,29,31,0.12)",
-                  background: "#f5f5f7",
-                  color: "#1D1D1F",
-                  "--tw-ring-color": "#C9A84C",
-                } as React.CSSProperties}
-              />
-            </div>
-
-            {error && (
-              <div className="bg-red-50 border border-red-100 text-red-600 text-sm rounded-xl px-4 py-3">
-                {error}
+      <div className="flex-1 flex items-center justify-center p-4">
+        <div className="w-full max-w-sm">
+          {/* Card */}
+          <div className="paper-card p-8">
+            {/* Header */}
+            <div className="text-center mb-8">
+              <div className="mx-auto mb-5 flex items-center justify-center" style={{ width: 72, height: 72 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/LogoHenitsoa.png"
+                  alt=""
+                  style={{ width: "72px", height: "72px", objectFit: "contain" }}
+                />
               </div>
-            )}
+              <p
+                className="page-eyebrow mb-2"
+              >
+                École Privée Henitsoa
+              </p>
+              <h1
+                style={{
+                  fontFamily: "var(--font-serif)",
+                  fontSize: "28px",
+                  fontWeight: 400,
+                  color: "var(--ink)",
+                  lineHeight: 1.2,
+                }}
+              >
+                Connexion
+              </h1>
+              <p
+                className="mt-2 text-sm"
+                style={{ color: "var(--inkLt)" }}
+              >
+                Connectez-vous à votre espace
+              </p>
+            </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="btn-gold w-full py-2.5 px-4 rounded-xl text-sm"
-            >
-              {loading ? "Connexion…" : "Se connecter"}
-            </button>
-          </form>
+            {/* Form */}
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label
+                  htmlFor="email"
+                  style={{
+                    display: "block",
+                    marginBottom: "6px",
+                    fontFamily: "var(--font-sans)",
+                    fontSize: "11.5px",
+                    fontWeight: 600,
+                    letterSpacing: "0.8px",
+                    textTransform: "uppercase",
+                    color: "var(--inkLt)",
+                  }}
+                >
+                  Adresse email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="vous@example.com"
+                  style={{
+                    width: "100%",
+                    padding: "11px 14px",
+                    border: "1px solid var(--border)",
+                    borderRadius: "6px",
+                    background: "var(--white)",
+                    fontSize: "15px",
+                    fontFamily: "var(--font-sans)",
+                    color: "var(--ink)",
+                    outline: "none",
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.outline = "2px solid var(--forest)";
+                    e.currentTarget.style.outlineOffset = "1px";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.outline = "none";
+                  }}
+                />
+              </div>
 
-          <div className="mt-6 text-center">
-            <a
-              href="/reset-password"
-              className="text-xs transition-colors hover:opacity-70"
-              style={{ color: "#86868b" }}
-            >
-              Mot de passe oublié ?
-            </a>
+              <div>
+                <label
+                  htmlFor="password"
+                  style={{
+                    display: "block",
+                    marginBottom: "6px",
+                    fontFamily: "var(--font-sans)",
+                    fontSize: "11.5px",
+                    fontWeight: 600,
+                    letterSpacing: "0.8px",
+                    textTransform: "uppercase",
+                    color: "var(--inkLt)",
+                  }}
+                >
+                  Mot de passe
+                </label>
+                <input
+                  id="password"
+                  type="password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  style={{
+                    width: "100%",
+                    padding: "11px 14px",
+                    border: "1px solid var(--border)",
+                    borderRadius: "6px",
+                    background: "var(--white)",
+                    fontSize: "15px",
+                    fontFamily: "var(--font-sans)",
+                    color: "var(--ink)",
+                    outline: "none",
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.outline = "2px solid var(--forest)";
+                    e.currentTarget.style.outlineOffset = "1px";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.outline = "none";
+                  }}
+                />
+              </div>
+
+              {error && (
+                <div
+                  style={{
+                    padding: "12px 14px",
+                    borderRadius: "6px",
+                    border: "1px solid rgba(139,42,42,.20)",
+                    background: "rgba(139,42,42,.06)",
+                    color: "var(--red)",
+                    fontSize: "14px",
+                    fontFamily: "var(--font-sans)",
+                  }}
+                >
+                  {error}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn-primary w-full py-3 px-4"
+              >
+                {loading ? "Connexion…" : "Se connecter"}
+              </button>
+            </form>
+
+            <div className="mt-6 text-center">
+              <a
+                href="/reset-password"
+                className="text-xs transition-opacity hover:opacity-70"
+                style={{ color: "var(--inkLt)" }}
+              >
+                Mot de passe oublié ?
+              </a>
+            </div>
           </div>
-        </div>
 
-        <p className="text-center text-xs mt-6" style={{ color: "#86868b" }}>
-          © {new Date().getFullYear()} École Privée Henitsoa — Tous droits réservés
-        </p>
+          <p
+            className="text-center text-xs mt-6"
+            style={{ color: "var(--inkLt)" }}
+          >
+            © {new Date().getFullYear()} École Privée Henitsoa — Tous droits réservés
+          </p>
+        </div>
       </div>
     </div>
   );

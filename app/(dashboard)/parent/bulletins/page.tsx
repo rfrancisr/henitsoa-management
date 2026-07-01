@@ -1,6 +1,7 @@
 import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import BackLink from "@/components/ui/BackLink";
 
 export default async function ParentBulletinsPage({
   searchParams,
@@ -39,16 +40,15 @@ export default async function ParentBulletinsPage({
 
   return (
     <div>
+      <BackLink href="/parent" label="Retour à l'accueil" />
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-stone-900 tracking-tight">Bulletins scolaires</h1>
+        <p className="page-eyebrow mb-1">Espace parent</p>
+        <h1 style={{ fontSize: "32px" }}>Bulletins scolaires</h1>
       </div>
 
       {enfants.length === 0 ? (
-        <div
-          className="bg-white rounded-2xl p-8 text-center"
-          style={{ border: "1px solid rgba(232,212,138,0.3)" }}
-        >
-          <p className="text-stone-300 text-sm">Aucun enfant associé à votre compte.</p>
+        <div className="paper-card p-8 text-center">
+          <p className="text-sm" style={{ color: "var(--inkLt)" }}>Aucun enfant associé à votre compte.</p>
         </div>
       ) : (
         <div className="space-y-4">
@@ -59,11 +59,7 @@ export default async function ParentBulletinsPage({
                 <a
                   key={eleve.id}
                   href={`/parent/bulletins?eleveId=${eleve.id}`}
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                    eleve.id === eleveId
-                      ? "btn-gold"
-                      : "bg-white border border-stone-200 text-stone-600 hover:bg-stone-50"
-                  }`}
+                  className={eleve.id === eleveId ? "btn-primary px-4 py-2 text-sm" : "btn-secondary px-4 py-2 text-sm"}
                 >
                   {eleve.prenom} {eleve.nom}
                 </a>
@@ -73,34 +69,28 @@ export default async function ParentBulletinsPage({
 
           {/* Bulletins disponibles */}
           {!derniereClasse ? (
-            <div
-              className="bg-white rounded-2xl p-8 text-center"
-              style={{ border: "1px solid rgba(232,212,138,0.3)" }}
-            >
-              <p className="text-stone-300 text-sm">Votre enfant n&apos;est pas encore affecté à une classe.</p>
+            <div className="paper-card p-8 text-center">
+              <p className="text-sm" style={{ color: "var(--inkLt)" }}>Votre enfant n&apos;est pas encore affecté à une classe.</p>
             </div>
           ) : (
-            <div
-              className="bg-white rounded-2xl overflow-hidden"
-              style={{ border: "1px solid rgba(232,212,138,0.3)", boxShadow: "0 1px 12px rgba(0,0,0,0.04)" }}
-            >
-              <div className="px-5 py-4 border-b border-stone-100">
-                <h2 className="font-semibold text-stone-900">
+            <div className="paper-card overflow-hidden">
+              <div className="px-5 py-4" style={{ borderBottom: "1px solid var(--borderLt)" }}>
+                <h2 className="font-semibold" style={{ color: "var(--ink)" }}>
                   {enfant?.eleve.prenom} {enfant?.eleve.nom} — {derniereClasse.classe.anneeScolaire.libelle}
                 </h2>
-                <p className="text-stone-400 text-xs mt-0.5">Classe : {derniereClasse.classe.libelle}</p>
+                <p className="text-xs mt-0.5" style={{ color: "var(--inkLt)" }}>Classe : {derniereClasse.classe.libelle}</p>
               </div>
-              <div className="divide-y divide-stone-50">
+              <div>
                 {periodes.length === 0 ? (
-                  <p className="px-5 py-8 text-stone-300 text-sm text-center">
+                  <p className="px-5 py-8 text-sm text-center" style={{ color: "var(--inkLt)" }}>
                     Aucune période d&apos;évaluation disponible.
                   </p>
                 ) : (
                   periodes.map((p) => (
-                    <div key={p.id} className="px-5 py-4 flex items-center justify-between">
+                    <div key={p.id} className="px-5 py-4 flex items-center justify-between" style={{ borderBottom: "1px solid var(--borderLt)" }}>
                       <div>
-                        <p className="font-medium text-stone-900">{p.libelle}</p>
-                        <p className="text-stone-400 text-xs">
+                        <p className="font-medium" style={{ color: "var(--ink)" }}>{p.libelle}</p>
+                        <p className="text-xs" style={{ color: "var(--inkLt)" }}>
                           {p.close ? "Clôturée" : "En cours"}
                         </p>
                       </div>
@@ -110,11 +100,11 @@ export default async function ParentBulletinsPage({
                             href={`/api/bulletin?eleveId=${eleveId}&classeId=${derniereClasse.classeId}&periodeId=${p.id}&format=html`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-glass flex items-center gap-2 text-sm px-4 py-2 rounded-xl font-semibold"
+                            className="btn-secondary flex items-center gap-2 text-sm px-4 py-2"
                           >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                              <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                             </svg>
                             Voir
                           </a>
@@ -122,16 +112,16 @@ export default async function ParentBulletinsPage({
                             href={`/api/bulletin?eleveId=${eleveId}&classeId=${derniereClasse.classeId}&periodeId=${p.id}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-gold flex items-center gap-2 text-sm px-4 py-2 rounded-xl"
+                            className="btn-primary flex items-center gap-2 text-sm px-4 py-2"
                           >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                             </svg>
                             PDF
                           </a>
                         </div>
                       ) : (
-                        <span className="text-stone-300 text-sm">Disponible après clôture</span>
+                        <span className="text-sm" style={{ color: "var(--stoneDk)" }}>Disponible après clôture</span>
                       )}
                     </div>
                   ))

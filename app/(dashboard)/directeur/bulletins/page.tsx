@@ -2,6 +2,7 @@
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import BulletinsClient from "./BulletinsClient";
+import BackLink from "@/components/ui/BackLink";
 
 export default async function BulletinsPage() {
   const session = await getSession();
@@ -27,9 +28,15 @@ export default async function BulletinsPage() {
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-stone-900">Bulletins scolaires</h1>
-        <p className="text-stone-500 text-sm mt-1">
+      <BackLink href={session.user.role === "ADMIN" ? "/admin" : "/directeur"} label="Retour à l'accueil" />
+      <div style={{ marginBottom: 28 }}>
+        <p style={{ fontSize: 11.5, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase", color: "var(--inkLt)", marginBottom: 6 }}>
+          Direction
+        </p>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontSize: 28, fontWeight: 400, color: "var(--ink)", marginBottom: 4 }}>
+          Bulletins scolaires
+        </h1>
+        <p style={{ fontSize: 14, color: "var(--inkLt)" }}>
           {anneeScolaireActive?.libelle ?? "Aucune année scolaire active"}
         </p>
       </div>

@@ -22,21 +22,47 @@ export default function Modal({
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ background: "rgba(0,0,0,0.35)", backdropFilter: "blur(4px)" }}
+      style={{ background: "rgba(26,26,24,.5)", backdropFilter: "blur(3px)" }}
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div
-        className="bg-white rounded-2xl w-full max-w-lg"
-        style={{ boxShadow: "0 8px 60px rgba(0,0,0,0.12), 0 1px 8px rgba(0,0,0,0.06)" }}
+        className="w-full max-w-md"
+        style={{
+          background: "var(--white)",
+          border: "1px solid var(--borderLt)",
+          borderRadius: "2px 12px 12px 12px",
+          boxShadow: "0 1px 4px rgba(26,26,24,.06), 0 8px 40px rgba(26,26,24,.16)",
+        }}
       >
-        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-100">
-          <h2 className="font-semibold text-stone-900 tracking-tight">{title}</h2>
+        <div
+          className="flex items-center justify-between px-6 py-4"
+          style={{ borderBottom: "1px solid var(--borderLt)" }}
+        >
+          <h2
+            style={{
+              fontFamily: "var(--font-serif)",
+              fontSize: "18px",
+              fontWeight: 400,
+              color: "var(--ink)",
+            }}
+          >
+            {title}
+          </h2>
           <button
             onClick={onClose}
-            className="text-stone-300 hover:text-stone-600 transition-colors rounded-lg p-1 hover:bg-stone-50"
+            className="rounded p-1 transition-colors"
+            style={{ color: "var(--inkLt)" }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.color = "var(--ink)";
+              (e.currentTarget as HTMLElement).style.background = "var(--stoneLt)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.color = "var(--inkLt)";
+              (e.currentTarget as HTMLElement).style.background = "";
+            }}
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>

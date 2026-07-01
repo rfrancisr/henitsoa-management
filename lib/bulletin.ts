@@ -135,6 +135,11 @@ export function renderBulletinHTML(data: BulletinData, logoBase64?: string): str
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; color: #1a1a1a; background: white; padding: 32px; }
+  .preview-bar { display: flex; align-items: center; justify-content: space-between; background: #1C3D2E; color: #fff; padding: 10px 20px; margin: -32px -32px 28px -32px; font-family: 'Segoe UI', Arial, sans-serif; }
+  .preview-bar a { color: #C9A84C; text-decoration: none; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .preview-bar a:hover { color: #E8D48A; }
+  .preview-bar span { font-size: 12px; opacity: 0.65; }
+  @media print { .preview-bar { display: none !important; } }
   h2 { font-size: 11px; font-weight: 700; margin-bottom: 8px; color: #0a0a0a; text-transform: uppercase; letter-spacing: 0.07em; }
   .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #C9A84C; padding-bottom: 16px; margin-bottom: 20px; }
   .school-info { display: flex; align-items: center; gap: 12px; }
@@ -161,6 +166,13 @@ export function renderBulletinHTML(data: BulletinData, logoBase64?: string): str
 </style>
 </head>
 <body>
+  <div class="preview-bar">
+    <a href="/directeur/bulletins">
+      <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      Retour aux bulletins
+    </a>
+    <span>Aperçu — cliquez Retour aux bulletins pour revenir à la liste</span>
+  </div>
   <div class="header">
     <div class="school-info">
       ${logoHtml}

@@ -56,7 +56,7 @@ export default function MatieresClient({
         <div className="flex justify-end">
           <button
             onClick={() => setShowCreate(true)}
-            className="btn-gold text-sm px-4 py-2 rounded-xl"
+            className="btn-primary text-sm px-4 py-2"
           >
             + Nouvelle matière
           </button>
@@ -64,30 +64,44 @@ export default function MatieresClient({
 
         {grouped.map(({ niveau, matieres: ms }) =>
           ms.length === 0 ? null : (
-            <div
-              key={niveau.id}
-              className="bg-white rounded-2xl overflow-hidden"
-              style={{ border: "1px solid rgba(232,212,138,0.3)", boxShadow: "0 1px 12px rgba(0,0,0,0.04)" }}
-            >
-              <div className="px-5 py-3 border-b border-stone-50" style={{ background: "rgba(201,168,76,0.04)" }}>
-                <h3 className="font-semibold text-stone-600 text-xs uppercase tracking-wider">{niveau.libelle}</h3>
+            <div key={niveau.id} className="paper-card overflow-hidden">
+              <div
+                className="px-5 py-3"
+                style={{
+                  background: "var(--stoneLt)",
+                  borderBottom: "1px solid var(--borderLt)",
+                }}
+              >
+                <h3 className="text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--inkMd)" }}>
+                  {niveau.libelle}
+                </h3>
               </div>
-              <div className="divide-y divide-stone-50">
+              <div>
                 {ms.map((m) => (
-                  <div key={m.id} className="px-5 py-3 flex items-center justify-between">
+                  <div
+                    key={m.id}
+                    className="px-5 py-3 flex items-center justify-between"
+                    style={{ borderBottom: "1px solid var(--borderLt)" }}
+                  >
                     <div className="flex items-center gap-3">
-                      <span className="font-medium text-stone-900 text-sm">{m.libelle}</span>
+                      <span style={{ fontWeight: 600, fontSize: 15, color: "var(--ink)" }}>
+                        {m.libelle}
+                      </span>
                       <span
                         className="text-xs px-2 py-0.5 rounded font-medium"
-                        style={{ background: "rgba(201,168,76,0.10)", color: "#9A7428" }}
+                        style={{
+                          background: "rgba(28,61,46,.10)",
+                          color: "var(--forest)",
+                          border: "1px solid rgba(28,61,46,.15)",
+                        }}
                       >
-                        coeff. {m.coefficient}
+                        coeff.&nbsp;{m.coefficient}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => setEditMatiere(m)}
-                        className="btn-glass text-xs px-2 py-1 rounded-lg font-medium"
+                        className="btn-secondary text-sm px-3 py-2"
                       >
                         Modifier
                       </button>
@@ -95,7 +109,10 @@ export default function MatieresClient({
                         onClick={async () => {
                           if (confirm(`Supprimer "${m.libelle}" ?`)) await deleteMatiere(m.id);
                         }}
-                        className="text-xs text-stone-400 hover:text-red-600 px-2 py-1 rounded-lg hover:bg-red-50 transition-colors"
+                        className="text-sm px-3 py-2 rounded transition-colors"
+                        style={{ color: "var(--inkLt)" }}
+                        onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--red)"; }}
+                        onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--inkLt)"; }}
                       >
                         Supprimer
                       </button>
@@ -108,8 +125,8 @@ export default function MatieresClient({
         )}
 
         {matieres.length === 0 && (
-          <div className="bg-white rounded-2xl p-8 text-center" style={{ border: "1px solid rgba(232,212,138,0.3)" }}>
-            <p className="text-stone-300 text-sm">Aucune matière créée.</p>
+          <div className="paper-card p-8 text-center">
+            <p className="text-sm" style={{ color: "var(--inkLt)" }}>Aucune matière créée.</p>
           </div>
         )}
       </div>

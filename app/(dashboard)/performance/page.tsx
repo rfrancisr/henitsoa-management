@@ -1,4 +1,4 @@
-﻿import { getSession } from "@/lib/session";
+import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import PerformanceClient from "./PerformanceClient";
@@ -6,18 +6,16 @@ import PerformanceClient from "./PerformanceClient";
 export default async function PerformancePage({
   searchParams,
 }: {
-  searchParams: Promise<{ e?: string }>;
+  searchParams: Promise<{ e?: string; c?: string }>;
 }) {
   const session = await getSession();
   if (!session) redirect("/login");
 
   const role = session.user.role;
   const userId = session.user.id;
-  const { e: selectedEleveId } = await searchParams;
+  const { e: selectedEleveId, c: selectedClasseId } = await searchParams;
 
   const anneeScolaire = await prisma.anneeScolaire.findFirst({ where: { active: true } });
-
-  // ── Liste d'élèves selon le rôle ──────────────────────────────────────────
 
   const includeClasse = anneeScolaire
     ? { where: { anneeScolaireId: anneeScolaire.id }, include: { classe: { include: { niveau: true } } } }
@@ -31,12 +29,31 @@ export default async function PerformancePage({
     classes: { classe: { libelle: string; niveau: { libelle: string } } }[];
   }[] = [];
 
+  let classes: { id: string; libelle: string; niveau: { libelle: string } }[] = [];
+
   if (role === "ADMIN") {
-    eleves = await prisma.eleve.findMany({
-      where: { actif: true },
-      include: { classes: includeClasse },
-      orderBy: [{ nom: "asc" }, { prenom: "asc" }],
-    });
+    const classeWhereFilter =
+      selectedClasseId && anneeScolaire
+        ? { classes: { some: { classeId: selectedClasseId, anneeScolaireId: anneeScolaire.id } } }
+        : {};
+
+    const classesQuery: Promise<{ id: string; libelle: string; niveau: { libelle: string } }[]> =
+      anneeScolaire
+        ? prisma.classe.findMany({
+            where: { anneeScolaireId: anneeScolaire.id },
+            include: { niveau: true },
+            orderBy: { libelle: "asc" },
+          })
+        : Promise.resolve([]);
+
+    [eleves, classes] = await Promise.all([
+      prisma.eleve.findMany({
+        where: { actif: true, ...classeWhereFilter },
+        include: { classes: includeClasse },
+        orderBy: [{ nom: "asc" }, { prenom: "asc" }],
+      }),
+      classesQuery,
+    ]);
   } else if (role === "PARENT") {
     eleves = await prisma.eleve.findMany({
       where: { actif: true, parents: { some: { userId } } },
@@ -44,18 +61,32 @@ export default async function PerformancePage({
       orderBy: [{ nom: "asc" }, { prenom: "asc" }],
     });
   } else if (role === "ENSEIGNANT") {
-    const classeIds = (
+    const ensClasseIds = (
       await prisma.enseignement.findMany({ where: { userId }, select: { classeId: true } })
     ).map((e) => e.classeId);
+    const uniqueClasseIds = [...new Set(ensClasseIds)];
 
-    const elevesClasses = await prisma.eleveClasse.findMany({
-      where: {
-        classeId: { in: [...new Set(classeIds)] },
-        ...(anneeScolaire ? { anneeScolaireId: anneeScolaire.id } : {}),
-      },
-      include: { eleve: { include: { classes: includeClasse } } },
-    });
+    const activeClasseIds =
+      selectedClasseId && uniqueClasseIds.includes(selectedClasseId)
+        ? [selectedClasseId]
+        : uniqueClasseIds;
 
+    const [elevesClasses, classesList] = await Promise.all([
+      prisma.eleveClasse.findMany({
+        where: {
+          classeId: { in: activeClasseIds },
+          ...(anneeScolaire ? { anneeScolaireId: anneeScolaire.id } : {}),
+        },
+        include: { eleve: { include: { classes: includeClasse } } },
+      }),
+      prisma.classe.findMany({
+        where: { id: { in: uniqueClasseIds } },
+        include: { niveau: true },
+        orderBy: { libelle: "asc" },
+      }),
+    ]);
+
+    classes = classesList;
     const seen = new Set<string>();
     for (const ec of elevesClasses) {
       if (ec.eleve.actif && !seen.has(ec.eleve.id)) {
@@ -95,7 +126,6 @@ export default async function PerformancePage({
     performance = { notes, periodes, appreciations };
   }
 
-  // Auto-sélectionner si un seul élève (parent avec un seul enfant)
   const autoSelectId =
     !selectedEleveId && eleves.length === 1 ? eleves[0].id : null;
 
@@ -112,6 +142,8 @@ export default async function PerformancePage({
         selectedEleveId={selectedEleveId ?? autoSelectId}
         performance={performance}
         role={role}
+        classes={classes}
+        selectedClasseId={selectedClasseId ?? null}
       />
     </div>
   );
