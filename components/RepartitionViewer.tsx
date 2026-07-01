@@ -1,5 +1,5 @@
 'use client';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import type { SemaineRepartition, MatiereRepartition, MoisRepartitionInfo } from '@/lib/repartition-types';
 import { getMatColor } from '@/lib/repartition-types';
 
@@ -245,6 +245,37 @@ export default function RepartitionViewer({
 }: Props) {
   const [semaine, setSemaine] = useState(initialSemaine);
   const [editingMat, setEditingMat] = useState<MatiereRepartition | null>(null);
+  const [pdfMatiere, setPdfMatiere] = useState(initialSemaine?.matieres[0]?.matiere ?? '');
+  const [downloading, setDownloading] = useState(false);
+
+  useEffect(() => {
+    if (!semaine) return;
+    const names = semaine.matieres.map(m => m.matiere);
+    if (!pdfMatiere || !names.includes(pdfMatiere)) {
+      setPdfMatiere(names[0] ?? '');
+    }
+  }, [semaine]);
+
+  async function handleDownloadPDF() {
+    if (!pdfMatiere) return;
+    setDownloading(true);
+    try {
+      const url = `/api/repartition/pdf?classe=${encodeURIComponent(classeSlug)}&mois=${encodeURIComponent(moisActif)}&matiere=${encodeURIComponent(pdfMatiere)}`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Erreur');
+      const blob = await res.blob();
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `repartition-${classeSlug}-${moisActif}-${pdfMatiere}.pdf`
+        .toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-_.]/g, '');
+      a.click();
+      URL.revokeObjectURL(a.href);
+    } catch {
+      // silently fail — server error already handled
+    } finally {
+      setDownloading(false);
+    }
+  }
 
   const moisInfo = mois.find(m => m.libelle === moisActif)!;
   const moisIndex = mois.findIndex(m => m.libelle === moisActif);
@@ -312,6 +343,35 @@ export default function RepartitionViewer({
           ))}
         </div>
       </div>
+
+      {/* Télécharger PDF du mois */}
+      {semaine && semaine.matieres.length > 0 && (
+        <div className="paper-card p-3 flex items-center gap-3 flex-wrap">
+          <span className="text-sm shrink-0" style={{ color: 'var(--inkMd)' }}>PDF du mois —</span>
+          <select
+            value={pdfMatiere}
+            onChange={e => setPdfMatiere(e.target.value)}
+            style={{
+              flex: 1, minWidth: '140px', padding: '6px 10px',
+              border: '1px solid var(--border)', borderRadius: '6px',
+              fontSize: '13px', color: 'var(--ink)', background: 'var(--white)',
+              fontFamily: 'var(--font-sans)',
+            }}
+          >
+            {semaine.matieres.map(m => (
+              <option key={m.matiere} value={m.matiere}>{m.matiere}</option>
+            ))}
+          </select>
+          <button
+            onClick={handleDownloadPDF}
+            disabled={downloading}
+            className="btn-secondary px-4 py-1.5 text-sm shrink-0"
+            style={downloading ? { opacity: 0.5, cursor: 'not-allowed' } : {}}
+          >
+            {downloading ? 'Génération…' : '⬇ Télécharger'}
+          </button>
+        </div>
+      )}
 
       {/* En-tête de la semaine */}
       <div className="flex items-start justify-between gap-4">
