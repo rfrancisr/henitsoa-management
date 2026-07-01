@@ -62,12 +62,14 @@ export function getMoisInfo(mois: string): MoisRepartitionInfo | undefined {
   return MOIS_REPARTITION.find(m => m.libelle === mois);
 }
 
-export const CLASSES_AVEC_REPARTITION = ['10eme', '9eme'] as const;
+export const CLASSES_AVEC_REPARTITION = ['10eme', '9eme', '8eme', '7eme'] as const;
 export type ClasseSlug = typeof CLASSES_AVEC_REPARTITION[number];
 
 export const CLASSES_LABELS: Record<ClasseSlug, string> = {
   '10eme': '10ème (CE1)',
   '9eme':  '9ème (CE2)',
+  '8eme':  '8ème (CM1)',
+  '7eme':  '7ème (CM2)',
 };
 
 export const MAT_COLORS: Record<string, { border: string; badge: string; text: string; bg: string }> = {
