@@ -2,6 +2,9 @@ import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import PerformanceClient from "./PerformanceClient";
+import BackLink from "@/components/ui/BackLink";
+
+const HOME: Record<string, string> = { ADMIN: "/admin", PARENT: "/parent", ENSEIGNANT: "/enseignant" };
 
 export default async function PerformancePage({
   searchParams,
@@ -131,6 +134,7 @@ export default async function PerformancePage({
 
   return (
     <div>
+      <BackLink href={HOME[role] ?? "/"} />
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-stone-900">Performance des élèves</h1>
         <p className="text-stone-500 text-sm mt-1">
