@@ -62,14 +62,16 @@ export function getMoisInfo(mois: string): MoisRepartitionInfo | undefined {
   return MOIS_REPARTITION.find(m => m.libelle === mois);
 }
 
-export const CLASSES_AVEC_REPARTITION = ['10eme', '9eme', '8eme', '7eme'] as const;
+export const CLASSES_AVEC_REPARTITION = ['10eme', '9eme', '8eme', '7eme', '11eme', '12eme'] as const;
 export type ClasseSlug = typeof CLASSES_AVEC_REPARTITION[number];
 
 export const CLASSES_LABELS: Record<ClasseSlug, string> = {
-  '10eme': '10ème (CE1)',
-  '9eme':  '9ème (CE2)',
-  '8eme':  '8ème (CM1)',
-  '7eme':  '7ème (CM2)',
+  '10eme': '10ème',
+  '9eme':  '9ème',
+  '8eme':  '8ème',
+  '7eme':  '7ème',
+  '11eme': '11ème',
+  '12eme': '12ème',
 };
 
 export const MAT_COLORS: Record<string, { border: string; badge: string; text: string; bg: string }> = {
@@ -94,6 +96,28 @@ export const MAT_COLORS: Record<string, { border: string; badge: string; text: s
   ARTS:         { border: 'border-l-indigo-400',   badge: 'bg-indigo-50 text-indigo-700 border border-indigo-200', text: 'text-indigo-700',  bg: 'bg-indigo-50' },
   SARY:         { border: 'border-l-teal-400',     badge: 'bg-teal-50 text-teal-700 border border-teal-200',       text: 'text-teal-700',    bg: 'bg-teal-50' },
   CU:           { border: 'border-l-sky-500',      badge: 'bg-sky-50 text-sky-700 border border-sky-200',          text: 'text-sky-700',     bg: 'bg-sky-50' },
+  // 11ème
+  'HYGIÈNE':          { border: 'border-l-rose-400',    badge: 'bg-rose-50 text-rose-700 border border-rose-200',        text: 'text-rose-700',    bg: 'bg-rose-50' },
+  'I.C':              { border: 'border-l-blue-700',    badge: 'bg-blue-100 text-blue-800 border border-blue-300',       text: 'text-blue-800',    bg: 'bg-blue-100' },
+  'MORAL':            { border: 'border-l-amber-500',   badge: 'bg-amber-50 text-amber-700 border border-amber-200',     text: 'text-amber-700',   bg: 'bg-amber-50' },
+  'CONTE':            { border: 'border-l-yellow-600',  badge: 'bg-yellow-50 text-yellow-800 border border-yellow-200',  text: 'text-yellow-800',  bg: 'bg-yellow-50' },
+  'LECTURE-ÉCRITURE': { border: 'border-l-emerald-500', badge: 'bg-emerald-50 text-emerald-700 border border-emerald-200', text: 'text-emerald-700', bg: 'bg-emerald-50' },
+  'NUMÉRATION':       { border: 'border-l-sky-600',     badge: 'bg-sky-100 text-sky-800 border border-sky-300',          text: 'text-sky-800',     bg: 'bg-sky-100' },
+  'MATHS':            { border: 'border-l-blue-600',    badge: 'bg-blue-100 text-blue-800 border border-blue-200',       text: 'text-blue-800',    bg: 'bg-blue-100' },
+  'LANGAGE':          { border: 'border-l-orange-400',  badge: 'bg-orange-50 text-orange-700 border border-orange-200',  text: 'text-orange-700',  bg: 'bg-orange-50' },
+  'VAKITENY':         { border: 'border-l-red-400',     badge: 'bg-red-50 text-red-700 border border-red-200',           text: 'text-red-700',     bg: 'bg-red-50' },
+  'ENVIRONNEMENT':    { border: 'border-l-lime-500',    badge: 'bg-lime-50 text-lime-700 border border-lime-200',        text: 'text-lime-700',    bg: 'bg-lime-50' },
+  'DESSIN':           { border: 'border-l-pink-400',    badge: 'bg-pink-50 text-pink-700 border border-pink-200',        text: 'text-pink-700',    bg: 'bg-pink-50' },
+  'CHANT':            { border: 'border-l-indigo-400',  badge: 'bg-indigo-50 text-indigo-700 border border-indigo-200',  text: 'text-indigo-700',  bg: 'bg-indigo-50' },
+  'RÉCITATION':       { border: 'border-l-fuchsia-500', badge: 'bg-fuchsia-50 text-fuchsia-700 border border-fuchsia-200', text: 'text-fuchsia-700', bg: 'bg-fuchsia-50' },
+  'T.M':              { border: 'border-l-stone-500',   badge: 'bg-stone-100 text-stone-700 border border-stone-300',    text: 'text-stone-700',   bg: 'bg-stone-100' },
+  // 12ème
+  'LECTURE':          { border: 'border-l-emerald-600', badge: 'bg-emerald-100 text-emerald-800 border border-emerald-300', text: 'text-emerald-800', bg: 'bg-emerald-100' },
+  'ÉCRITURE':         { border: 'border-l-teal-500',    badge: 'bg-teal-50 text-teal-700 border border-teal-200',        text: 'text-teal-700',    bg: 'bg-teal-50' },
+  'PRE-MATH':         { border: 'border-l-cyan-500',    badge: 'bg-cyan-50 text-cyan-700 border border-cyan-200',        text: 'text-cyan-700',    bg: 'bg-cyan-50' },
+  'MORALE':           { border: 'border-l-violet-400',  badge: 'bg-violet-50 text-violet-700 border border-violet-200',  text: 'text-violet-700',  bg: 'bg-violet-50' },
+  'RECITATION':       { border: 'border-l-fuchsia-400', badge: 'bg-fuchsia-50 text-fuchsia-700 border border-fuchsia-200', text: 'text-fuchsia-700', bg: 'bg-fuchsia-50' },
+  'TRAVAUX MANUELS':  { border: 'border-l-stone-400',   badge: 'bg-stone-50 text-stone-600 border border-stone-200',     text: 'text-stone-600',   bg: 'bg-stone-50' },
 };
 
 export const DEFAULT_COLOR = {

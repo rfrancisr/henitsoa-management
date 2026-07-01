@@ -72,5 +72,7 @@ export function classeSlugFromLibelle(libelle: string): ClasseSlug | null {
   if (l === '9')  return '9eme';
   if (l === '8')  return '8eme';
   if (l === '7')  return '7eme';
+  if (l === '11') return '11eme';
+  if (l === '12') return '12eme';
   return null;
 }

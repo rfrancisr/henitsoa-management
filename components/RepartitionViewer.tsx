@@ -305,9 +305,9 @@ export default function RepartitionViewer({
                   ? { background: "rgba(28,61,46,.12)", color: "var(--forest)", outline: "2px solid var(--forest)", outlineOffset: "1px" }
                   : { background: "var(--stoneLt)", color: "var(--inkMd)" }
               }
-              className="w-9 h-9 flex items-center justify-center rounded text-sm font-medium"
+              className="px-3 h-9 flex items-center justify-center rounded text-sm font-medium"
             >
-              {s}
+              Semaine {s}
             </a>
           ))}
         </div>
