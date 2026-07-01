@@ -1,4 +1,4 @@
-import "dotenv/config";
+﻿import "dotenv/config";
 import path from "path";
 import { PrismaClient } from "../app/generated/prisma/client";
 
@@ -51,57 +51,17 @@ const P1: Array<{
 // ── S1 : Semaine d'orientation ───────────────────────────────────────────────
 {
   n: 1, dateDebut: "2025/09/01",
-  theme: "Semaine d'orientation — Test de pré-requis",
-  sousTheme: "Accueil, découverte de la classe, évaluation diagnostique",
+  theme: "Semaine d'orientation",
+  sousTheme: "Accueil des élèves, règles de vie et test de pré-requis en langage",
   matieres: [
-    m("ARITHMÉTIQUE","Test de pré-requis : nombres et calculs",
-      "Évaluer les acquis de l'année précédente par un test oral puis écrit pour identifier les lacunes.",
-      ["Accueillir les élèves, faire les présentations","Distribuer la liste des règles de vie en classe","Test oral : compter de 0 à 20","Test écrit : additions simples (moins de 10)","Correction collective immédiate","Identifier les élèves en difficulté","Constituer les groupes de travail"],
-      ["Calcule : 4+3=? → Corrigé : 7","Calcule : 8−2=? → Corrigé : 6","Écris en chiffres : cinq, deux, huit → Corrigé : 5, 2, 8"]),
-    m("MESURE","Test de pré-requis : mesures",
-      "Évaluer les notions de longueur et de masse acquises en 11ème.",
-      ["Questions orales : 'Qu'est-ce qu'un centimètre ?'","Montrer une règle graduée","Faire mesurer un objet simple","Comparer deux longueurs","Synthèse des acquis","Noter les lacunes à combler","Définir les objectifs de la période"],
-      ["Mesure ce crayon avec ta règle → Corrigé : environ 17 cm","Lequel est le plus lourd : 1 kg de riz ou 500 g de farine ? → Corrigé : 1 kg de riz","Cite deux objets que l'on mesure en cm → Corrigé : un livre, un cahier"]),
-    m("GÉOMÉTRIE","Test de pré-requis : formes et lignes",
-      "Évaluer la reconnaissance des formes et des lignes de base.",
-      ["Montrer des formes au tableau","Demander de nommer chaque forme","Faire tracer une ligne droite","Faire tracer un cercle","Identifier le matériel disponible","Distribuer les règles et équerres","Prendre les mesures des tables"],
-      ["Dessine un carré et un triangle → Corrigé : vérifier le tracé","Qu'est-ce qu'une ligne droite ? → Corrigé : Une ligne que l'on trace avec une règle","Nomme ces 3 formes : ○ △ □ → Corrigé : cercle, triangle, carré"]),
-    m("PROBLÈME","Test de pré-requis : lecture d'un problème",
-      "Vérifier si les élèves savent lire un énoncé simple et identifier les données.",
-      ["Rappel : un problème a des données et une question","Lire un énoncé à voix haute","Demander d'identifier les nombres importants","Faire écrire l'opération","Calcul et réponse","Correction collective","Montrer la méthode DICO : Données / Inconnue / Calcul / Opération"],
-      ["Marie a 5 mangues. Elle en mange 2. Combien en reste-t-il ? → Corrigé : 5−2=3 mangues","Paul reçoit 3 bonbons et Jean reçoit 4 bonbons. Combien en ont-ils en tout ? → Corrigé : 3+4=7 bonbons","Un sac coûte 200 Ar, un stylo 50 Ar. Quel est le total ? → Corrigé : 200+50=250 Ar"]),
-    m("SCIENCES","Test de pré-requis : le corps humain",
-      "Évaluer les connaissances sur le corps humain acquises en 11ème.",
-      ["Montrer un dessin du corps humain","Demander de nommer les parties","Questions orales sur l'hygiène","Identifier ce que les élèves savent déjà","Lister les règles d'hygiène","Préparer un affichage du corps humain","Constituer le coin sciences"],
-      ["Nomme 5 parties du corps → Corrigé : tête, bras, jambe, pied, main","Pourquoi faut-il se laver les mains ? → Corrigé : Pour éliminer les microbes et éviter les maladies","Quels sont les 5 sens ? → Corrigé : la vue, l'ouïe, le toucher, le goût, l'odorat"]),
-    m("GÉOGRAPHIE","Test de pré-requis : mon environnement",
-      "Évaluer la connaissance de l'environnement proche : maison, école, village.",
-      ["Demander aux élèves de décrire le chemin de leur maison à l'école","Faire un plan simple au tableau","Identifier les points de repère","Situer l'école sur un plan","Parler des directions (gauche, droite)","Préparer la carte de Madagascar","Afficher la carte de la salle"],
-      ["Décris ton chemin de ta maison jusqu'à l'école → Corrigé : réponse individuelle","Dans quel quartier se trouve ton école ? → Corrigé : réponse individuelle","Cite 3 bâtiments importants près de l'école → Corrigé : réponse individuelle"]),
-    m("TANTARA","Test de pré-requis : ny tantara",
-      "Évaluer ce que les élèves savent de leur histoire personnelle et scolaire.",
-      ["Demander aux élèves de se présenter en malagasy","Faire dire leur nom complet, date et lieu de naissance","Parler de leurs parents et grands-parents","Expliquer ce qu'est l'histoire","Distinguer passé, présent, futur","Faire raconter un souvenir de l'année précédente","Synthèse"],
-      ["Dis ton nom complet → Corrigé : réponse individuelle","Quelle est ta date de naissance ? → Corrigé : réponse individuelle","Raconte un souvenir de l'année dernière à l'école → Corrigé : réponse individuelle"]),
-    m("MALAGASY","Test de pré-requis : teny malagasy",
-      "Évaluer les acquis en lecture, écriture et grammaire malagasy.",
-      ["Lecture d'un texte court à voix haute","Questions de compréhension orales","Épellation : nommer les lettres de l'alphabet malagasy","Écrire une phrase dictée","Identifier les fautes","Correction collective","Fixer les objectifs de la période"],
-      ["Lis ce mot et épelle-le : SEKOLY → Corrigé : S-E-K-O-L-Y, sekoly","Écris une phrase avec le mot 'mpianatra' → Corrigé : Ny mpianatra mianatra eo am-pianarana","Qu'est-ce qu'un 'fehezanteny' ? → Corrigé : Misy lohahevitra iray tanteraka (une phrase complète)"]),
-    m("FRANÇAIS","Test de pré-requis : lecture et écriture",
-      "Évaluer le niveau de lecture et d'écriture en français des élèves.",
-      ["Lire un texte de 4 phrases à voix haute","Questions de compréhension orales","Écrire son prénom et son nom en majuscules et minuscules","Dicter 5 mots simples","Corriger ensemble","Évaluer le niveau de chaque élève","Préparer les groupes de lecture"],
-      ["Lis ce texte à voix haute : 'Le chien court dans la rue.' → Corrigé : évaluer la fluidité","Écris ces mots : chat, maison, école → Corrigé : chat, maison, école","Trouve le contraire de 'grand' → Corrigé : petit"]),
-    m("ANGLAIS","Test de pré-requis : English",
-      "Évaluer les connaissances en anglais des élèves entrant en 10ème.",
-      ["Greeting : 'Good morning' — faire répéter","Demander 'What is your name?' en chaîne","Compter de 1 à 10 ensemble","Vérifier la mémorisation des couleurs","Évaluer le vocabulaire de base","Corriger la prononciation","Fixer les objectifs"],
-      ["How do you say 'bonjour' in English? → Corrigé : Good morning / Hello","Count from 1 to 5 in English → Corrigé : one, two, three, four, five","What color is the sky? → Corrigé : blue"]),
-    m("FFMOM","Test de pré-requis : ny fitsipika sy ny soatoavina",
-      "Rappeler les règles de vie en classe et à l'école.",
-      ["Distribuer le règlement intérieur","Lire les règles ensemble","Discuter : pourquoi ces règles ?","Faire signer un 'contrat de classe'","Parler du respect mutuel","Définir les sanctions en cas de non-respect","Afficher les règles en classe"],
-      ["Cite 3 règles importantes en classe → Corrigé : Se lever pour parler, ne pas déranger les autres, rendre ses devoirs à temps","Pourquoi faut-il arriver à l'heure ? → Corrigé : Pour ne pas déranger les autres et ne pas rater le début du cours","Que fais-tu si tu ne comprends pas ? → Corrigé : Je lève la main et j'attends que le professeur me donne la parole"]),
-    m("EPS","Test de pré-requis : EPS et activités",
-      "Évaluer les capacités physiques de base et présenter le programme.",
-      ["Expliquer les règles de sécurité en EPS","Faire une marche rapide autour de la cour","Observer les capacités de coordination","Jeu libre pour évaluer les capacités motrices","Distribuer les rôles (capitaine, arbitre)","Présenter le programme EPS de l'année","Ranger le matériel en ordre"],
-      ["Combien de secondes peux-tu tenir en équilibre sur un pied ? → Corrigé : évaluation individuelle","Course 50 m : qui arrive en premier ? → Corrigé : évaluation individuelle","Nomme un sport que tu pratiques → Corrigé : réponse individuelle"]),
+    m("PROBLÈME","Semaine d'orientation — présentation de la classe et du programme",
+      "Accueillir les élèves, présenter le fonctionnement de la classe, distribuer les emplois du temps et familiariser les élèves avec la méthode de résolution de problèmes utilisée tout au long de l'année.",
+      ["Accueil des élèves : tour de table des présentations (prénom, famille, loisirs)","Distribuer et lire ensemble le règlement intérieur","Présenter l'organisation de l'année scolaire : périodes, évaluations, congés","Expliquer la méthode DICO : Données / Inconnue / Calcul / Réponse","Lire collectivement un problème simple pour illustrer la méthode","Distribuer les cahiers, étiqueter le matériel, organiser les tables","Afficher le planning de la semaine au tableau"],
+      ["Lis ce problème et identifie les données : 'Marie a 5 mangues et en reçoit 3. Combien en a-t-elle ?' → Corrigé : données = 5 et 3 ; question = combien en tout","Quelle opération utilise-t-on pour réunir deux quantités ? → Corrigé : l'addition","Cite une règle importante de la classe → Corrigé : réponse individuelle"]),
+    m("FRANÇAIS","LANGAGE : Test Pré-requis — présentation et expression orale",
+      "Évaluer le niveau d'expression orale en français : se présenter, formuler une phrase complète, comprendre et répondre à des questions simples.",
+      ["Modèle enseignant : 'Je m'appelle ..., j'ai ... ans, j'habite à ..., j'aime ...'","Chaque élève se présente à tour de rôle devant la classe","Poser des questions individuelles : 'Comment t'appelles-tu ? Quel âge as-tu ? Où habites-tu ?'","Observer la capacité à formuler des phrases complètes (sujet + verbe + complément)","Identifier les élèves avec des difficultés d'expression et noter","Correction collective de la prononciation des sons difficiles","Fixer les objectifs de la période pour le langage oral"],
+      ["Présente-toi en 2 phrases complètes → Corrigé : réponse individuelle évaluée","Réponds en phrase complète : 'Où habites-tu ?' → Corrigé : J'habite à [lieu].","Forme une phrase avec le mot 'école' → Corrigé : exemple : Je vais à l'école chaque matin."]),
   ],
 },
 
@@ -1863,7 +1823,7 @@ const P5: SemaineRaw[] = [
       ["Identifie ton erreur dans le problème raté → Corrigé : analyse individuelle","Refais le problème en utilisant la méthode DICO → Corrigé : pratique","À quoi faire attention dans un problème à 2 étapes ? → Corrigé : bien identifier les 2 étapes avant de calculer"]),
     m("SCIENCES","Correction et remédiation — sciences · Prévision 9ème",
       "Correction sciences. Présentation du programme de 9ème.",
-      ["Retour des copies sciences","Analyse des erreurs","Remédiation : réviser les notions mal acquises","Présentation du programme de sciences de 9ème (CE2)","Nouveaux sujets à venir : corps humain plus approfondi, géologie, météo","Conseils de préparation","Encouragements"],
+      ["Retour des copies sciences","Analyse des erreurs","Remédiation : réviser les notions mal acquises","Présentation du programme de sciences de 9ème (9ème)","Nouveaux sujets à venir : corps humain plus approfondi, géologie, météo","Conseils de préparation","Encouragements"],
       ["Quelle notion de sciences as-tu trouvée la plus difficile ? → Corrigé : réponse individuelle","Cite 3 sujets nouveaux que tu verras en 9ème → Corrigé : géologie, météo, biologie approfondie (anticipation)","Comment vas-tu réviser les sciences pendant les vacances ? → Corrigé : réponse individuelle"]),
     m("GÉOGRAPHIE","Correction et remédiation · Présentation géo 9ème",
       "Correction géo-histoire et présentation de la géographie de 9ème.",
@@ -1961,7 +1921,7 @@ const P5: SemaineRaw[] = [
   matieres: [
     m("ARITHMÉTIQUE","Jeux mathématiques de fin d'année",
       "Jeux mathématiques pour les élèves en attente des résultats.",
-      ["Jeu de sudoku simple (niveau CE1)","Jeu des 24 : trouver 24 avec 4 chiffres et les 4 opérations","Jeu du marchand : acheter et rendre la monnaie","Puzzles mathématiques","Activité libre mathématique","Bilan","Félicitations"],
+      ["Jeu de sudoku simple (niveau débutant)","Jeu des 24 : trouver 24 avec 4 chiffres et les 4 opérations","Jeu du marchand : acheter et rendre la monnaie","Puzzles mathématiques","Activité libre mathématique","Bilan","Félicitations"],
       ["Résous ce sudoku simple → Corrigé : évaluation du résultat","Avec 4, 3, 2, 1 → faire 24 → Corrigé : (4−1)×(3+5)... trouver une solution","5 000 Ar donnés pour payer 3 500 Ar. Monnaie ? → Corrigé : 1 500 Ar"]),
     m("MESURE","Mesures dans la vie quotidienne — jeux pratiques",
       "Activités pratiques de mesure.",
@@ -2127,7 +2087,7 @@ const P5: SemaineRaw[] = [
 ]; // fin P5
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// 9ème — CE2 (8-9 ans) — Année scolaire 2025-2026
+// 9ème — Année scolaire 2025-2026
 // ═══════════════════════════════════════════════════════════════════════════════
 
 // ─── 9ème Période 1 — Septembre S1 → Octobre S2 (7 semaines) ─────────────────
@@ -2137,64 +2097,20 @@ const P1_9: SemaineRaw[] = [
 // ── P1 S1 : Semaine d'orientation ────────────────────────────────────────────
 {
   n: 1, dateDebut: "2025/09/01",
-  theme: "Rentrée CE2 — Orientation et bilan CE1",
-  sousTheme: "Test de positionnement · Règles de vie · Présentation du programme CE2",
+  theme: "Semaine d'orientation",
+  sousTheme: "Accueil des élèves, règles de vie et prise de contact en arithmétique",
   matieres: [
-    m("ARITHMÉTIQUE","Bilan CE1 — nombres jusqu'à 1 000, tables de multiplication",
-      "Évaluer les acquis de CE1. Identifier les lacunes avant d'aborder CE2.",
-      ["Test d'entrée : écrire les nombres de 0 à 1 000","Rappel des opérations + − × : revoir les techniques","Quiz oral : tables ×1 à ×10","Correction collective","Identifier les élèves en difficulté","Présenter le cap de CE2 : jusqu'à 10 000","Objectifs de l'année : multiplication posée, division, fractions, décimaux"],
-      ["Écris en chiffres : sept cent quatre-vingt-treize → Corrigé : 793","Calcule : 648 + 257 = ? → Corrigé : 905","Table ×7 : 7×8 = ? → Corrigé : 56"]),
-    m("MESURE","Bilan CE1 — unités de mesure et conversions simples",
-      "Évaluer les acquis en mesure. Rappel des unités fondamentales.",
-      ["Test : conversions cm↔m, g↔kg, mL↔L","Quiz : lire une règle, une balance, une horloge","Rappel : les 5 types de mesures (longueur, masse, capacité, temps, aire)","Ce qui est nouveau en CE2 : km, tonne, hectolitre, m²","Exercice de révision","Correction","Objectifs mesure pour l'année"],
-      ["1 m = ___ cm → Corrigé : 100 cm","2 kg 500 g = ___ g → Corrigé : 2 500 g","Quelle heure est-il si l'aiguille des heures est sur 3 et celle des minutes sur 12 ? → Corrigé : 3 h 00"]),
-    m("GÉOMÉTRIE","Bilan CE1 — figures planes et solides",
-      "Évaluer les acquis en géométrie. Rappel des figures et solides.",
-      ["Test : nommer et tracer les figures planes (carré, rectangle, triangle, cercle)","Propriétés : nombre de côtés, angles droits","Solides : cube, pavé, sphère, cylindre","Ce qui est nouveau en CE2 : symétrie avancée, angle aigu/obtus, périmètre de tout polygone, aire","Exercice de reconnaissance","Correction","Objectifs géométrie CE2"],
-      ["Nomme cette figure : 4 côtés égaux, 4 angles droits → Corrigé : carré","Combien de faces a un pavé ? → Corrigé : 6","Qu'est-ce qu'un angle droit ? → Corrigé : Un angle de 90°, comme le coin d'une feuille"]),
-    m("PROBLÈME","Méthode de résolution de problèmes — rappel et approfondissement",
-      "Rappeler la méthode DICO. Présenter les nouveaux types de problèmes CE2.",
-      ["Rappel de la méthode DICO (Données / Inconnue / Calcul / Opération)","Exercice : 2 problèmes à 2 étapes (niveau CE1)","Correction","Ce qui est nouveau : problèmes à 3 étapes, problèmes inversés, vérification","Résoudre un problème à 3 étapes guidé","Correction","Conseils pour l'année"],
-      ["Un fermier récolte 350 kg de riz le lundi et 490 kg le mardi. Il en vend 620 kg. Reste ? → Corrigé : 350+490=840 ; 840−620=220 kg","Un rectangle a un périmètre de 48 cm. Sa largeur est 10 cm. Sa longueur ? → Corrigé : P=2×(L+l) ; 48=2×(L+10) ; L=14 cm","Écris un problème dont la réponse est 36 → Corrigé : réponse créative libre"]),
-    m("SCIENCES","Introduction CE2 — sciences : corps humain, écologie, matière",
-      "Présenter les thèmes de sciences de CE2. Test de connaissances initiales.",
-      ["Test de positionnement sciences : 15 questions","Corps humain : révision des organes","Nouveautés CE2 : système digestif, respiratoire, osseux, circulatoire","Écologie : chaîne alimentaire, biodiversité, pollution, solutions","Matière : solide, liquide, gaz, mélanges","Présentation du programme","Objectifs"],
-      ["Cite 5 organes du corps humain → Corrigé : cœur, poumons, estomac, cerveau, reins (exemples)","Qu'est-ce que la digestion ? → Corrigé : Transformer les aliments pour que le corps puisse les utiliser","Cite 3 êtres vivants d'une forêt et relie-les dans une chaîne alimentaire → Corrigé : feuilles → insecte → grenouille (exemple)"]),
-    m("GÉOGRAPHIE","Introduction CE2 — Madagascar, l'Afrique et le monde",
-      "Présenter la géographie de CE2. Révision de la carte de Madagascar.",
-      ["Révision : carte de Madagascar (provinces, villes, relief)","Nouveautés CE2 : géographie de l'Afrique, les continents en détail","Quiz : localiser 10 villes de Madagascar","Comparer Madagascar aux pays voisins","Présentation du programme","Objectifs","Cahier de géographie"],
-      ["Cite les 6 provinces de Madagascar → Corrigé : Antananarivo, Fianarantsoa, Toamasina, Mahajanga, Toliara, Antsiranana","Quel est le plus grand lac de Madagascar ? → Corrigé : Lac Alaotra","Madagascar fait partie de quel océan ? → Corrigé : l'océan Indien"]),
-    m("TANTARA","Introduction CE2 — histoire de Madagascar et du monde",
-      "Présenter l'histoire CE2. Rappel des grandes périodes.",
-      ["Révision : ligne du temps de l'histoire de Madagascar (CE1)","Nouveautés CE2 : histoire de l'Afrique, de l'Antiquité au monde moderne","Présenter les 5 grandes périodes de l'histoire de l'humanité","Quiz de révision histoire CE1","Discussion : 'Qu'est-ce que l'histoire nous apprend ?'","Présentation du programme","Objectifs"],
-      ["Quand Madagascar a-t-il obtenu son indépendance ? → Corrigé : 26 juin 1960","Cite 3 royaumes importants de l'histoire de Madagascar → Corrigé : Imerina, Sakalava, Betsileo","Que signifie le mot 'histoire' ? → Corrigé : Récit du passé ; ensemble des événements qui se sont passés"]),
-    m("MALAGASY","Accueil en malagasy — révision et présentation programme CE2",
-      "Révision de la langue malagasy. Présentation du programme CE2.",
-      ["Accueil en malagasy : 'Tongasoa ! Inona vaovao ?'","Révision CE1 : alphabet, types de phrases, compléments","Nouveautés CE2 : textes plus longs, vocabulaire étendu, récit, discours direct","Dictée de révision : 10 mots de CE1","Quiz oral de la grammaire de base","Présentation du programme malagasy","Objectifs"],
-      ["Forme une phrase interrogative en malagasy → Corrigé : 'Aiza ny mpampianatra ?' (exemple)","Identifie le sujet : 'Ny ankizy dia miteny malagasy' → Corrigé : sujet = ny ankizy","Que signifie 'fihavanana' ? → Corrigé : Solidarité, lien entre les êtres humains — valeur fondamentale malagasy"]),
-    m("FRANÇAIS","Accueil en français — révision CE1 et présentation CE2",
-      "Révision du programme de français CE1. Présentation des objectifs CE2.",
-      ["Accueil en français : conversation libre","Révision : conjugaison présent (être, avoir, aller, venir, verbes en -er)","Nouveautés CE2 : passé composé, imparfait, futur simple, discours direct/indirect","Dictée de 6 mots de révision","Lecture d'un texte : compréhension","Présentation du programme","Objectifs"],
-      ["Conjugue 'partir' au présent → Corrigé : je pars, tu pars, il part, nous partons, vous partez, ils partent","Accorde : 'un ___ garçon' (beau) → Corrigé : un beau garçon","Quel est le contraire de 'sombre' ? → Corrigé : clair / lumineux"]),
-    m("ANGLAIS","Welcome back! Revision and CE2 English programme",
-      "Révision de l'anglais CE1. Présentation du programme CE2.",
-      ["Welcome back! Conversation : 'How was your holiday?'","CE1 revision : numbers, family, colors, animals, daily actions","New in CE2 : past tense ('I went'), describing places, storytelling","Quick quiz : 20 vocabulary words from CE1","Listening : simple dialogue","Programme overview","English goals for the year"],
-      ["Count from 1 to 20 → Corrigé : one, two, three... twenty","Name 5 animals from Madagascar → Corrigé : lemur, chameleon, fossa, gecko, sifaka","Write a sentence using 'I like' → Corrigé : I like reading. (réponse libre)"]),
-    m("FFMOM","Règles de vie et valeurs pour une belle année de CE2",
-      "Établir les règles de vie. Fixer les engagements pour l'année.",
-      ["Rappel des règles de vie de l'école","Élaborer collectivement les règles de la classe","Voter pour les règles : top 5","Les valeurs du CE2 : responsabilité, persévérance, curiosité, respect, générosité","Chaque élève choisit sa valeur de l'année","Afficher le contrat de classe","Chant national"],
-      ["Cite 3 règles de vie importantes dans la classe → Corrigé : écouter quand quelqu'un parle, lever la main avant de parler, respecter le matériel","Quelle est ta valeur de l'année ? Pourquoi ? → Corrigé : réponse individuelle","Qu'est-ce que la responsabilité ? → Corrigé : Assumer ses actes et ses devoirs"]),
-    m("EPS","EPS — bilan physique CE1 et objectifs CE2",
-      "Évaluer les acquis physiques. Fixer les objectifs sportifs de l'année.",
-      ["Test physique : course 50 m, saut en longueur, lancer","Activité de cohésion : jeu collectif","Rappel des règles de sécurité","Objectifs EPS CE2 : améliorer endurance, coordination, travail d'équipe","Présenter les activités de l'année","Chant : hymne sportif de la classe","Encouragements"],
-      ["Quel record de saut en longueur obtiens-tu au départ de l'année ? → Corrigé : mesurer et noter pour comparaison en fin d'année","Cite les 3 règles de sécurité en EPS → Corrigé : ne pas bousculer, écouter le professeur, utiliser le matériel correctement","Quel sport aimerais-tu pratiquer cette année ? → Corrigé : réponse individuelle"]),
+    m("ARITHMÉTIQUE","Prise de contact et test de pré-requis",
+      "Accueillir les élèves, présenter l'organisation de l'année et évaluer les acquis antérieurs en calcul pour identifier les besoins avant d'aborder le programme de 9ème.",
+      ["Accueil des élèves : tour de table des présentations (prénom, quartier, loisirs)","Présenter l'organisation de l'année scolaire : périodes, évaluations, congés","Distribuer et lire ensemble le règlement intérieur de la classe","Test de pré-requis écrit : opérations (+, −, ×), numération, notions de base","Correction collective et identification des lacunes prioritaires","Présenter les objectifs de la 9ème en mathématiques","Distribuer les cahiers, étiqueter le matériel, organiser la classe"],
+      ["Calcule : 456 + 378 = ? → Corrigé : 834","Calcule : 823 − 547 = ? → Corrigé : 276","Calcule : 24 × 6 = ? → Corrigé : 144"]),
   ],
 },
 
 // ── P1 S2 : Rentrée — nombres jusqu'à 10 000 ─────────────────────────────────
 {
   n: 2, dateDebut: "2025/09/08",
-  theme: "CE2 — Nombres jusqu'à 10 000 · Corps humain : systèmes",
+  theme: "Nombres jusqu'à 10 000 · Corps humain : systèmes",
   sousTheme: "Numération 10 000 · Lecture et écriture de grands nombres",
   matieres: [
     m("ARITHMÉTIQUE","Numération : les nombres de 1 000 à 10 000",
@@ -2251,7 +2167,7 @@ const P1_9: SemaineRaw[] = [
 // ── P1 S3 : Opérations avec grands nombres ────────────────────────────────────
 {
   n: 3, dateDebut: "2025/09/15",
-  theme: "CE2 — Addition et soustraction jusqu'à 10 000 · Système respiratoire",
+  theme: "Addition et soustraction jusqu'à 10 000 · Système respiratoire",
   sousTheme: "Opérations posées avec retenues · Problèmes de grands nombres",
   matieres: [
     m("ARITHMÉTIQUE","Addition et soustraction posées jusqu'à 10 000",
@@ -2308,12 +2224,12 @@ const P1_9: SemaineRaw[] = [
 // ── P1 S4 : Multiplication posée ─────────────────────────────────────────────
 {
   n: 4, dateDebut: "2025/09/22",
-  theme: "CE2 — Multiplication posée · Système circulatoire",
+  theme: "Multiplication posée · Système circulatoire",
   sousTheme: "Multiplication 3 chiffres × 1 chiffre · Le cœur et le sang",
   matieres: [
     m("ARITHMÉTIQUE","Multiplication posée — 3 chiffres × 1 chiffre",
       "Maîtriser la multiplication posée à 3 chiffres par 1 chiffre.",
-      ["Rappel : multiplication à 2 chiffres × 1 chiffre (CE1)","Présenter la technique à 3 chiffres × 1 chiffre","Exemple guidé : 356 × 7","Exercice : 6 multiplications posées","Technique de vérification par estimation","Correction","Exercice de rapidité"],
+      ["Rappel : multiplication à 2 chiffres × 1 chiffre (10ème)","Présenter la technique à 3 chiffres × 1 chiffre","Exemple guidé : 356 × 7","Exercice : 6 multiplications posées","Technique de vérification par estimation","Correction","Exercice de rapidité"],
       ["Calcule : 423 × 6 = ? → Corrigé : 2 538","Calcule : 785 × 9 = ? → Corrigé : 7 065","Estime : 389 × 4 ≈ ? (arrondir à la centaine) → Corrigé : 400×4=1 600 — résultat exact=1 556"]),
     m("MESURE","L'hectare — mesure de surface agraire",
       "Introduire l'hectare (ha). Conversions ha ↔ m².",
@@ -2365,7 +2281,7 @@ const P1_9: SemaineRaw[] = [
 // ── P1 S5 : Division posée ────────────────────────────────────────────────────
 {
   n: 5, dateDebut: "2025/09/29",
-  theme: "CE2 — Division posée · Système osseux et musculaire",
+  theme: "Division posée · Système osseux et musculaire",
   sousTheme: "Division 3 chiffres ÷ 1 chiffre · Le squelette et les muscles",
   matieres: [
     m("ARITHMÉTIQUE","Division posée — 3 chiffres ÷ 1 chiffre avec reste",
@@ -2422,7 +2338,7 @@ const P1_9: SemaineRaw[] = [
 // ── P1 S6 : Fractions et géométrie avancée ───────────────────────────────────
 {
   n: 6, dateDebut: "2025/10/06",
-  theme: "CE2 — Fractions simples et aire du cercle · Système sensoriel",
+  theme: "Fractions simples et aire du cercle · Système sensoriel",
   sousTheme: "Fractions : comparer, additionner · Les sens du corps humain",
   matieres: [
     m("ARITHMÉTIQUE","Les fractions — lire, écrire, comparer, simplifier",
@@ -2479,7 +2395,7 @@ const P1_9: SemaineRaw[] = [
 // ── P1 S7 : Consolidation et évaluation P1 ────────────────────────────────────
 {
   n: 7, dateDebut: "2025/10/13",
-  theme: "CE2 — Consolidation P1 · Évaluation bilan",
+  theme: "Consolidation P1 · Évaluation bilan",
   sousTheme: "Révision P1 · Évaluation formative · Bilan avant vacances",
   matieres: [
     m("ARITHMÉTIQUE","Évaluation formative P1 — arithmétique",
@@ -2542,7 +2458,7 @@ const P2_9: SemaineRaw[] = [
 // ── P2 S1 : Bilan P1 + multiplication 2×2 chiffres ───────────────────────────
 {
   n: 1, dateDebut: "2025/10/27",
-  theme: "CE2 P2 — Bilan P1 · Multiplication posée 2 chiffres × 2 chiffres",
+  theme: "Bilan P1 · Multiplication posée 2 chiffres × 2 chiffres",
   sousTheme: "Retour de vacances · Évaluation différée P1 · Nouvelle technique",
   matieres: [
     m("ARITHMÉTIQUE","Multiplication posée : 2 chiffres × 2 chiffres",
@@ -2591,7 +2507,7 @@ const P2_9: SemaineRaw[] = [
       ["Qu'est-ce que la justice ? → Corrigé : Traiter chacun selon ce qu'il mérite, dans l'équité et le respect des droits","Cite 3 droits fondamentaux des enfants → Corrigé : droit à l'éducation, à la santé, à la protection contre la violence","Quelle est la différence entre justice et vengeance ? → Corrigé : La justice cherche à rétablir l'équilibre ; la vengeance cherche à faire souffrir en retour"]),
     m("EPS","Gymnase — roulades et appuis",
       "Développer les habiletés gymniques. Roulades avant et arrière.",
-      ["Rappel de la roulade avant (CE1)","Introduire la roulade arrière (guidée)","Technique : tête rentrée, mains en appui","Exercice : 5 roulades chacun","Appuis sur les mains (avec aide)","Jeu d'équilibre","Bilan et sécurité"],
+      ["Rappel de la roulade avant (10ème)","Introduire la roulade arrière (guidée)","Technique : tête rentrée, mains en appui","Exercice : 5 roulades chacun","Appuis sur les mains (avec aide)","Jeu d'équilibre","Bilan et sécurité"],
       ["Décris les étapes d'une roulade avant → Corrigé : s'accroupir, mains au sol, tête rentrée, pousser les jambes, rouler sur le dos, se relever","Quelle est la règle de sécurité principale en gym ? → Corrigé : Ne jamais mettre la tête en extension — toujours la rentrer pour les roulades","Quelle est la différence entre roulade avant et arrière ? → Corrigé : La direction du mouvement — avant vers l'avant, arrière vers l'arrière"]),
   ],
 },
@@ -2599,7 +2515,7 @@ const P2_9: SemaineRaw[] = [
 // ── P2 S2 : Novembre — Multiplication avancée + nutrition ─────────────────────
 {
   n: 2, dateDebut: "2025/11/03",
-  theme: "CE2 P2 — Multiplication 3×2 chiffres · Alimentation et santé",
+  theme: "Multiplication 3×2 chiffres · Alimentation et santé",
   sousTheme: "Technique avancée · Groupes d'aliments · L'Afrique du Nord",
   matieres: [
     m("ARITHMÉTIQUE","Multiplication posée : 3 chiffres × 2 chiffres",
@@ -2656,7 +2572,7 @@ const P2_9: SemaineRaw[] = [
 // ── P2 S3 : Novembre — Division avancée + états de la matière ─────────────────
 {
   n: 3, dateDebut: "2025/11/10",
-  theme: "CE2 P2 — Division avancée · États de la matière",
+  theme: "Division avancée · États de la matière",
   sousTheme: "Division 4 chiffres ÷ 1 chiffre · Solide, liquide, gaz",
   matieres: [
     m("ARITHMÉTIQUE","Division posée : 4 chiffres ÷ 1 chiffre",
@@ -2713,7 +2629,7 @@ const P2_9: SemaineRaw[] = [
 // ── P2 S4 : Novembre — Nombres décimaux + maladies ───────────────────────────
 {
   n: 4, dateDebut: "2025/11/17",
-  theme: "CE2 P2 — Nombres décimaux · Maladies et prévention",
+  theme: "Nombres décimaux · Maladies et prévention",
   sousTheme: "Lire et écrire les décimaux · Système immunitaire",
   matieres: [
     m("ARITHMÉTIQUE","Introduction aux nombres décimaux — dixièmes et centièmes",
@@ -2770,7 +2686,7 @@ const P2_9: SemaineRaw[] = [
 // ── P2 S5 : Novembre — Opérations sur décimaux + changements d'état ───────────
 {
   n: 5, dateDebut: "2025/11/24",
-  theme: "CE2 P2 — Opérations sur décimaux · Changements d'état de la matière",
+  theme: "Opérations sur décimaux · Changements d'état de la matière",
   sousTheme: "Addition et soustraction décimale · Fusion, solidification, évaporation",
   matieres: [
     m("ARITHMÉTIQUE","Addition et soustraction de nombres décimaux",
@@ -2827,7 +2743,7 @@ const P2_9: SemaineRaw[] = [
 // ── P2 S6 : Décembre — Révision P2 + bilan ───────────────────────────────────
 {
   n: 6, dateDebut: "2025/12/01",
-  theme: "CE2 P2 — Révision générale P2 · Bilan avant Noël",
+  theme: "Révision générale P2 · Bilan avant Noël",
   sousTheme: "Révision mathématiques · Corps humain complet · Afrique",
   matieres: [
     m("ARITHMÉTIQUE","Révision P2 — multiplication et division avancées, décimaux",
@@ -2884,7 +2800,7 @@ const P2_9: SemaineRaw[] = [
 // ── P2 S7 : Décembre — Évaluation P2 ─────────────────────────────────────────
 {
   n: 7, dateDebut: "2025/12/08",
-  theme: "CE2 P2 — Évaluation de fin de Période 2",
+  theme: "Évaluation de fin de Période 2",
   sousTheme: "Évaluation bilan P2 · Remédiation · Préparation P3",
   matieres: [
     m("ARITHMÉTIQUE","Évaluation bilan P2 — arithmétique",
@@ -2947,7 +2863,7 @@ const P3_9: SemaineRaw[] = [
 // ── P3 S1 : Rentrée janvier — multiplication par 10, 100, 1000 ───────────────
 {
   n: 1, dateDebut: "2026/01/05",
-  theme: "CE2 P3 — Rentrée janvier · × et ÷ par 10, 100, 1000 · Cycle de l'eau",
+  theme: "Rentrée janvier · × et ÷ par 10, 100, 1000 · Cycle de l'eau",
   sousTheme: "Retour de vacances · Règle du déplacement de virgule · Le cycle de l'eau",
   matieres: [
     m("ARITHMÉTIQUE","Multiplier et diviser par 10, 100, 1000 — déplacement de virgule",
@@ -3004,7 +2920,7 @@ const P3_9: SemaineRaw[] = [
 // ── P3 S2 : Janvier — Division décimale + composition de l'air ───────────────
 {
   n: 2, dateDebut: "2026/01/12",
-  theme: "CE2 P3 — Division décimale · Composition de l'air · L'Asie du Sud",
+  theme: "Division décimale · Composition de l'air · L'Asie du Sud",
   sousTheme: "Division d'un décimal · O₂ N₂ CO₂ · Inde et Himalaya",
   matieres: [
     m("ARITHMÉTIQUE","Diviser un nombre décimal par un entier",
@@ -3061,7 +2977,7 @@ const P3_9: SemaineRaw[] = [
 // ── P3 S3 : Janvier — Multiplication décimale + électricité ───────────────────
 {
   n: 3, dateDebut: "2026/01/19",
-  theme: "CE2 P3 — Multiplication décimale · Électricité · L'Asie de l'Est",
+  theme: "Multiplication décimale · Électricité · L'Asie de l'Est",
   sousTheme: "Décimal × décimal · Circuit électrique simple · Chine, Japon",
   matieres: [
     m("ARITHMÉTIQUE","Multiplier deux nombres décimaux",
@@ -3118,7 +3034,7 @@ const P3_9: SemaineRaw[] = [
 // ── P3 S4 : Janvier — Ordre de grandeur + environnement ──────────────────────
 {
   n: 4, dateDebut: "2026/01/26",
-  theme: "CE2 P3 — Ordre de grandeur · Environnement · L'Europe",
+  theme: "Ordre de grandeur · Environnement · L'Europe",
   sousTheme: "Estimation et arrondi · Pollution et solutions · Union Européenne",
   matieres: [
     m("ARITHMÉTIQUE","L'ordre de grandeur — arrondir et estimer",
@@ -3175,7 +3091,7 @@ const P3_9: SemaineRaw[] = [
 // ── P3 S5 : Février — Révision mi-P3 + biodiversité ──────────────────────────
 {
   n: 5, dateDebut: "2026/02/02",
-  theme: "CE2 P3 — Révision mi-P3 · Biodiversité · Les Amériques",
+  theme: "Révision mi-P3 · Biodiversité · Les Amériques",
   sousTheme: "Consolidation mathématiques · Espèces endémiques · Amérique du Nord et du Sud",
   matieres: [
     m("ARITHMÉTIQUE","Révision mi-P3 — toutes opérations sur décimaux",
@@ -3232,7 +3148,7 @@ const P3_9: SemaineRaw[] = [
 // ── P3 S6 : Février — Problèmes complexes + énergie ──────────────────────────
 {
   n: 6, dateDebut: "2026/02/09",
-  theme: "CE2 P3 — Problèmes complexes · Énergie renouvelable · Océanie",
+  theme: "Problèmes complexes · Énergie renouvelable · Océanie",
   sousTheme: "Résolution avancée · Solaire, éolien, hydro · Australie, Pacifique",
   matieres: [
     m("ARITHMÉTIQUE","Les fractions décimales — lien entre fractions et décimaux",
@@ -3289,7 +3205,7 @@ const P3_9: SemaineRaw[] = [
 // ── P3 S7 : Février — Évaluation P3 ──────────────────────────────────────────
 {
   n: 7, dateDebut: "2026/02/16",
-  theme: "CE2 P3 — Évaluation bilan de Période 3",
+  theme: "Évaluation bilan de Période 3",
   sousTheme: "Évaluation complète P3 · Remédiation · Préparation P4",
   matieres: [
     m("ARITHMÉTIQUE","Évaluation bilan P3 — arithmétique décimale",
@@ -3354,7 +3270,7 @@ const P4_9: SemaineRaw[] = [
 // ── P4 S1 : Semaine du 23 février — Révision P3 + Squelette ─────────────────
 {
   n: 1, dateDebut: "2026/02/23",
-  theme: "CE2 P4 — Retour de vacances · Révision P3 + Système osseux",
+  theme: "Retour de vacances · Révision P3 + Système osseux",
   sousTheme: "Rappel P3 décimaux · Les os et les articulations · Développement durable",
   matieres: [
     m("ARITHMÉTIQUE","Révision P3 — opérations décimales et bilan d'entrée P4",
@@ -3411,7 +3327,7 @@ const P4_9: SemaineRaw[] = [
 // ── P4 S2 : Semaine du 2 mars — Proportionnalité + Système nerveux ───────────
 {
   n: 2, dateDebut: "2026/03/02",
-  theme: "CE2 P4 — Proportionnalité · Système nerveux · Citoyenneté",
+  theme: "Proportionnalité · Système nerveux · Citoyenneté",
   sousTheme: "Tableaux de proportionnalité · Cerveau et nerfs · Droits et devoirs",
   matieres: [
     m("ARITHMÉTIQUE","La proportionnalité — tableaux et règle de trois",
@@ -3468,7 +3384,7 @@ const P4_9: SemaineRaw[] = [
 // ── P4 S3 : Semaine du 9 mars — Calcul mental + La peau ──────────────────────
 {
   n: 3, dateDebut: "2026/03/09",
-  theme: "CE2 P4 — Calcul mental · La peau et les sens · Environnement",
+  theme: "Calcul mental · La peau et les sens · Environnement",
   sousTheme: "Stratégies de calcul mental · Les 5 sens · Écologie à Madagascar",
   matieres: [
     m("ARITHMÉTIQUE","Le calcul mental — stratégies et rapidité",
@@ -3525,7 +3441,7 @@ const P4_9: SemaineRaw[] = [
 // ── P4 S4 : Semaine du 16 mars — Fractions irréductibles + Justice ────────────
 {
   n: 4, dateDebut: "2026/03/16",
-  theme: "CE2 P4 — Fractions irréductibles · Système musculaire · Justice sociale",
+  theme: "Fractions irréductibles · Système musculaire · Justice sociale",
   sousTheme: "Simplification · Muscles du corps · Économie de Madagascar",
   matieres: [
     m("ARITHMÉTIQUE","Les fractions irréductibles — simplification",
@@ -3582,7 +3498,7 @@ const P4_9: SemaineRaw[] = [
 // ── P4 S5 : Semaine du 23 mars — Priorité des opérations + Citoyenneté ────────
 {
   n: 5, dateDebut: "2026/03/23",
-  theme: "CE2 P4 — Priorité des opérations · Santé et hygiène · Mondialisation",
+  theme: "Priorité des opérations · Santé et hygiène · Mondialisation",
   sousTheme: "Règles de priorité · Prévention des maladies · Libertés et responsabilités",
   matieres: [
     m("ARITHMÉTIQUE","Priorité des opérations — règles et exercices",
@@ -3639,7 +3555,7 @@ const P4_9: SemaineRaw[] = [
 // ── P4 S6 : Semaine du 30 mars — Évaluation bilan P4 ─────────────────────────
 {
   n: 6, dateDebut: "2026/03/30",
-  theme: "CE2 P4 — Évaluation bilan · Clôture de Période 4",
+  theme: "Évaluation bilan · Clôture de Période 4",
   sousTheme: "Évaluation complète P4 · Remédiation · Préparation P5",
   matieres: [
     m("ARITHMÉTIQUE","Évaluation bilan P4 — arithmétique avancée",
@@ -3704,19 +3620,19 @@ const P5_9: SemaineRaw[] = [
 // ── P5 S1 : Semaine du 20 avril — Révision générale 1 : Arithmétique ──────────
 {
   n: 1, dateDebut: "2026/04/20",
-  theme: "CE2 P5 — Retour de vacances · Révision Arithmétique et Mesures",
+  theme: "Retour de vacances · Révision Arithmétique et Mesures",
   sousTheme: "Révision complète des 4 opérations · Proportionnalité · Fractions · Décimaux",
   matieres: [
-    m("ARITHMÉTIQUE","Révision générale — toutes les opérations CE2",
-      "Révision complète de l'arithmétique de CE2.",
+    m("ARITHMÉTIQUE","Révision générale — toutes les opérations 9ème",
+      "Révision complète de l'arithmétique de 9ème.",
       ["Les 4 opérations : + − × ÷ avec grands nombres et décimaux","Tables de multiplication : quiz toutes les tables","Fractions : simplification, addition, soustraction","Décimaux : +, −, ×, ÷","Proportionnalité : règle de trois","Priorité des opérations","Quiz chronométré : 30 questions"],
       ["Calcule : 2 450 + 3 875 − 1 240 = ? → Corrigé : 5 085","Calcule : 4,5 × 3,6 = ? → Corrigé : 16,2","Règle de trois : 4 kg de riz coûtent 7 200 Ar. Prix de 7 kg ? → Corrigé : 7 200÷4×7=12 600 Ar"]),
     m("MESURE","Révision générale — toutes les unités de mesure",
-      "Révision de toutes les unités et conversions de CE2.",
+      "Révision de toutes les unités et conversions de 9ème.",
       ["Longueur : mm, cm, m, km","Masse : g, kg, t","Capacité : mL, L","Temps : s, min, h","Aire : cm², m²","Volume : cm³, dm³, m³","Quiz de conversion : 15 exercices"],
       ["Convertis : 3,5 km = ___ m → Corrigé : 3 500 m","Convertis : 2 750 mL = ___ L → Corrigé : 2,75 L","Calcule l'aire d'un carré de 7,5 cm de côté → Corrigé : 56,25 cm²"]),
     m("GÉOMÉTRIE","Révision générale — figures, solides et transformations",
-      "Révision de toute la géométrie de CE2.",
+      "Révision de toute la géométrie de 9ème.",
       ["Figures planes : carré, rectangle, triangle, cercle, polygones réguliers","Solides : cube, pavé, cylindre, prisme, pyramide","Angles : droit, aigu, obtus ; somme dans un triangle = 180°","Symétrie axiale et centrale","Agrandissement et réduction","Périmètre, aire, volume","Quiz de reconnaissance"],
       ["Calcule l'aire d'un cercle de rayon 5 cm → Corrigé : 3,14×25=78,5 cm²","Somme des angles d'un quadrilatère → Corrigé : 360°","Un prisme triangulaire a combien de faces ? → Corrigé : 5 faces (2 triangles + 3 rectangles)"]),
     m("PROBLÈME","Révision générale — problèmes complexes à 3 étapes",
@@ -3724,44 +3640,44 @@ const P5_9: SemaineRaw[] = [
       ["Rappel de la méthode DICO","3 problèmes à 3 étapes","2 problèmes inversés","1 problème de proportionnalité","Correction","Discussion des stratégies","Bilan"],
       ["Un agriculteur vend 3/4 de sa récolte de 1 680 kg à 850 Ar/kg, puis le reste à 900 Ar/kg. Total de la vente ? → Corrigé : 3/4=1 260 kg→1 071 000 Ar ; 1/4=420 kg→378 000 Ar ; total=1 449 000 Ar","Un réservoir perd 1/5 de son contenu en 2h. Si initialement 60 L, combien reste-t-il après 6h ? → Corrigé : perd 12 L/2h=6 L/h ; après 6h : 60−36=24 L","Problème inversé : un nombre multiplié par 6 puis augmenté de 15 donne 75. Quel est ce nombre ? → Corrigé : (75−15)÷6=10"]),
     m("SCIENCES","Révision générale — corps humain : les 6 systèmes étudiés",
-      "Révision de tous les systèmes du corps humain de CE2.",
+      "Révision de tous les systèmes du corps humain de 9ème.",
       ["Système digestif : bouche → intestin","Système respiratoire : poumons, O₂/CO₂","Système circulatoire : cœur, sang","Système osseux : squelette, 206 os","Système musculaire : 600 muscles","Système nerveux + peau/sens","Quiz 30 questions"],
-      ["Cite les 6 systèmes du corps humain étudiés en CE2 → Corrigé : digestif, respiratoire, circulatoire, osseux, musculaire, nerveux (+ peau)","Quel organe pompe le sang dans tout le corps ? → Corrigé : le cœur","Quel est le rôle des poumons ? → Corrigé : Capter l'O₂ de l'air et rejeter le CO₂ — l'échange gazeux se fait dans les alvéoles pulmonaires"]),
+      ["Cite les 6 systèmes du corps humain étudiés en 9ème → Corrigé : digestif, respiratoire, circulatoire, osseux, musculaire, nerveux (+ peau)","Quel organe pompe le sang dans tout le corps ? → Corrigé : le cœur","Quel est le rôle des poumons ? → Corrigé : Capter l'O₂ de l'air et rejeter le CO₂ — l'échange gazeux se fait dans les alvéoles pulmonaires"]),
     m("GÉOGRAPHIE","Révision géographie — Madagascar et le monde",
-      "Révision de toute la géographie de CE2.",
+      "Révision de toute la géographie de 9ème.",
       ["Madagascar : régions, provinces, villes, relief, côtes, économie","Les continents et océans","Les pays d'Afrique","L'Europe, l'Asie, les Amériques, l'Océanie","Le développement durable et les ODD","Carte muette mondiale","Correction"],
       ["Cite les 6 provinces de Madagascar → Corrigé : Antananarivo, Fianarantsoa, Toamasina, Mahajanga, Toliara, Antsiranana","Quel est le plus grand continent ? → Corrigé : l'Asie","Cite un ODD lié à l'environnement → Corrigé : ODD 13 (Lutte contre les changements climatiques), ODD 14 (Vie aquatique), ODD 15 (Vie terrestre)"]),
     m("TANTARA","Révision histoire — de la Préhistoire à aujourd'hui",
-      "Révision complète de l'histoire de CE2.",
+      "Révision complète de l'histoire de 9ème.",
       ["Ligne du temps interactive : des origines à nos jours","La Préhistoire : feu, outils, sédentarisation","L'Antiquité : premières civilisations, écriture","Le Moyen Âge et les Temps modernes","Le XIXe et XXe siècles : industrialisation, guerres, indépendances","Madagascar : arrivée des premiers habitants, royaumes, colonisation, indépendance","Quiz 20 questions"],
       ["Quelles sont les 5 grandes périodes de l'histoire ? → Corrigé : Préhistoire, Antiquité, Moyen Âge, Temps modernes, Époque contemporaine","Quand Madagascar a-t-il obtenu son indépendance ? → Corrigé : 26 juin 1960","Cite une grande invention du XXe siècle et son impact → Corrigé : internet (révolution de la communication et de l'accès à l'information)"]),
     m("MALAGASY","Révision générale malagasy — expression et grammaire",
-      "Révision de toute la langue malagasy de CE2.",
+      "Révision de toute la langue malagasy de 9ème.",
       ["Révision : alphabet, types de phrases","Compléments : lieu, temps, manière","Discours direct et indirect","Argumentation","Vocabulaire : 20 mots de révision","Dictée de révision","Bilan"],
       ["Cite les 4 types de phrases en malagasy → Corrigé : filazana, fi-pangalana, mangataka, maneho","Transforme en discours indirect : 'Hoy izy : « Mianatra aho. »' → Corrigé : Nilaza izy fa mianatra izy.","Rédige 3 arguments pour défendre : 'Ny fianarankely dia zava-dehibe' → Corrigé : évaluation libre"]),
     m("FRANÇAIS","Révision générale français — conjugaison et grammaire",
-      "Révision de tout le programme français de CE2.",
+      "Révision de tout le programme français de 9ème.",
       ["Conjugaison : passé composé (avoir et être), imparfait, futur, conditionnel, subjonctif","Grammaire : sujet, verbe, COD, COI, adjectif, CC","Discours direct et indirect","Voix passive","Accord du participe passé","Homophones","Quiz de révision"],
       ["Conjugue 'partir' au passé composé → Corrigé : je suis parti(e), tu es parti(e)...","Transforme en passif : 'L'architecte a construit ce bâtiment.' → Corrigé : Ce bâtiment a été construit par l'architecte.","Identifie COD et COI : 'Il offre des fleurs à sa mère.' → Corrigé : COD=des fleurs, COI=à sa mère"]),
-    m("ANGLAIS","Revision générale — all CE2 English topics",
-      "Révision de tout le programme d'anglais de CE2.",
+    m("ANGLAIS","Revision générale — all 9ème English topics",
+      "Révision de tout le programme d'anglais de 9ème.",
       ["Vocabulary : family, body, animals, actions, places, adjectives","Past tense : regular and irregular verbs","Passive voice","Conjunctions and complex sentences","Opinion writing","Reading and comprehension","Quiz : 30 questions"],
       ["Write 3 sentences in the past tense using irregular verbs → Corrigé : réponse libre","Convert to passive : 'Farmers grow rice in Madagascar.' → Corrigé : Rice is grown in Madagascar by farmers.","Write your opinion about the environment in 3 sentences → Corrigé : réponse libre"]),
-    m("FFMOM","Révision des valeurs — bilan annuel CE2",
+    m("FFMOM","Révision des valeurs — bilan annuel 9ème",
       "Révision de toutes les valeurs de l'année.",
-      ["P1 : responsabilité, persévérance","P2 : solidarité, empathie, paix","P3 : tolérance, gratitude, équilibre, service","P4 : honnêteté, courage, justice, liberté-responsabilité","Auto-évaluation : quelle valeur ai-je le mieux pratiquée ?","Poster 'Mes valeurs de CE2'","Engagement pour la 8ème"],
+      ["P1 : responsabilité, persévérance","P2 : solidarité, empathie, paix","P3 : tolérance, gratitude, équilibre, service","P4 : honnêteté, courage, justice, liberté-responsabilité","Auto-évaluation : quelle valeur ai-je le mieux pratiquée ?","Poster 'Mes valeurs de 9ème'","Engagement pour la 8ème"],
       ["Cite 4 valeurs de P1-P2 → Corrigé : responsabilité, persévérance, solidarité, empathie","Quelle valeur as-tu le mieux pratiquée cette année ? → Corrigé : réponse individuelle","Quel engagement de valeur prends-tu pour la 8ème ? → Corrigé : réponse individuelle"]),
     m("EPS","Retour de vacances + Bilan sportif mi-P5",
       "Retour au sport. Test de condition physique de fin d'année.",
       ["Échauffement progressif","Test final condition physique : course 50 m, saut en longueur, lancer, 1 000 m","Comparer avec les résultats de la rentrée (P1 S1)","Jeu collectif de cohésion","Présentation des activités P5","Encouragements","Bilan des progrès annuels"],
-      ["Quel est ton progrès sur le 1 000 m depuis la rentrée ? → Corrigé : comparer les temps notés","Cite 5 sports pratiqués en CE2 cette année → Corrigé : athlétisme, basketball, handball, football, volley, haies (exemples)","Quel sport as-tu le plus aimé cette année ? → Corrigé : réponse individuelle"]),
+      ["Quel est ton progrès sur le 1 000 m depuis la rentrée ? → Corrigé : comparer les temps notés","Cite 5 sports pratiqués en 9ème cette année → Corrigé : athlétisme, basketball, handball, football, volley, haies (exemples)","Quel sport as-tu le plus aimé cette année ? → Corrigé : réponse individuelle"]),
   ],
 },
 
 // ── P5 S2 : Semaine du 27 avril — Révision Géométrie + Problèmes ─────────────
 {
   n: 2, dateDebut: "2026/04/27",
-  theme: "CE2 P5 — Révision Géométrie · Sciences de la vie · Langues",
+  theme: "Révision Géométrie · Sciences de la vie · Langues",
   sousTheme: "Exercices de synthèse géométrique · Écosystèmes · Expression avancée",
   matieres: [
     m("ARITHMÉTIQUE","Exercices de synthèse — opérations et calcul mental",
@@ -3818,7 +3734,7 @@ const P5_9: SemaineRaw[] = [
 // ── P5 S3 : Semaine du 4 mai — Révision Sciences et Langues ──────────────────
 {
   n: 3, dateDebut: "2026/05/04",
-  theme: "CE2 P5 — Révision Sciences · Malagasy · Français avancés",
+  theme: "Révision Sciences · Malagasy · Français avancés",
   sousTheme: "Corps humain complet · Textes longs · Conjugaison de synthèse",
   matieres: [
     m("ARITHMÉTIQUE","Entraînement intensif — calcul et problèmes",
@@ -3829,17 +3745,17 @@ const P5_9: SemaineRaw[] = [
       "Exercices finaux de mesures en contexte réel.",
       ["Problème de construction : périmètre, aire, coût des matériaux","Problème de voyage : distances, durées, vitesses","Problème de cuisine : volume, masse, proportionnalité","Correction","Bilan mesures P5","Encouragements"],
       ["Clôturer un terrain rectangulaire de 45×30 m. Coût si 1 m de grillage = 3 500 Ar → Corrigé : P=2×(45+30)=150 m ; 150×3 500=525 000 Ar","Un voyage de 280 km à 70 km/h. Si on part à 7h30, heure d'arrivée ? → Corrigé : 280÷70=4h ; 7h30+4h=11h30","Recette pour 8 : 600 g de farine, 4 œufs, 0,5 L de lait. Quantités pour 14 ? → Corrigé : ×14/8=×1,75 ; 1 050 g farine, 7 œufs, 0,875 L lait"]),
-    m("GÉOMÉTRIE","Révision finale — géométrie CE2 complète",
-      "Révision finale de toute la géométrie CE2.",
+    m("GÉOMÉTRIE","Révision finale — géométrie 9ème complète",
+      "Révision finale de toute la géométrie 9ème.",
       ["Tracer des figures avec précision","Calculer aires et périmètres de toutes les formes","Calculer des volumes","Symétries et transformations","Angles : calculer l'angle manquant","Quiz final de géométrie","Correction"],
       ["Périmètre d'un hexagone régulier de côté 8 cm → Corrigé : 6×8=48 cm","Volume d'un cylindre r=5 cm, h=10 cm (V=π×r²×h) → Corrigé : 3,14×25×10=785 cm³","Dans un triangle, un angle = 90°, un autre = 47°. Le 3ème ? → Corrigé : 180−90−47=43°"]),
     m("PROBLÈME","Préparation à l'évaluation — problèmes types d'examen",
       "Se préparer à l'évaluation avec des problèmes types.",
-      ["Types de problèmes d'examen CE2","Stratégie : lire deux fois avant de commencer","Stratégie : écrire toutes les étapes","Stratégie : vérifier la réponse","2 problèmes types sous condition d'examen (20 min)","Correction et débriefing","Conseils pour l'évaluation"],
+      ["Types de problèmes d'examen 9ème","Stratégie : lire deux fois avant de commencer","Stratégie : écrire toutes les étapes","Stratégie : vérifier la réponse","2 problèmes types sous condition d'examen (20 min)","Correction et débriefing","Conseils pour l'évaluation"],
       ["Lit et résous ce problème en 10 min max : Un groupement achète 240 kg de riz à 1 800 Ar/kg et 80 kg de haricots à 2 500 Ar/kg. Il redistribue la totalité à 40 familles équitablement. Valeur reçue par famille ? → Corrigé : riz=432 000+haricots=200 000=632 000 Ar ; par famille=15 800 Ar","Problème 2 : une piscine de 25×10×1,5 m se remplit en 3h. Débit en L/min ? → Corrigé : V=375 m³=375 000 L ; 375 000÷180=2 083,3 L/min"]),
     m("SCIENCES","Révision corps humain — schémas et quiz final",
-      "Révision finale du corps humain en CE2.",
-      ["Schémas complets à légender : les 6 systèmes","Quiz 40 questions sur le corps humain","Comprendre les liens entre systèmes : nutrition → digestion → circulation → respiration","Les maladies : causes et prévention","Hygiène générale","Correction","Bilan sciences CE2"],
+      "Révision finale du corps humain en 9ème.",
+      ["Schémas complets à légender : les 6 systèmes","Quiz 40 questions sur le corps humain","Comprendre les liens entre systèmes : nutrition → digestion → circulation → respiration","Les maladies : causes et prévention","Hygiène générale","Correction","Bilan sciences 9ème"],
       ["Explique le lien entre les systèmes digestif et circulatoire → Corrigé : Le système digestif transforme les aliments en nutriments ; le système circulatoire transporte ces nutriments dans tout le corps","Qu'est-ce que l'immunité ? → Corrigé : La capacité du corps à reconnaître et éliminer les agents pathogènes (microbes) — les vaccins renforcent cette capacité","Cite 5 règles d'hygiène pour maintenir tous les systèmes en bonne santé → Corrigé : alimentation équilibrée, sport, sommeil, se laver, éviter la pollution"]),
     m("GÉOGRAPHIE","Révision — cartes et géopolitique mondiale",
       "Révision par les cartes. Géopolitique mondiale simplifiée.",
@@ -3849,16 +3765,16 @@ const P5_9: SemaineRaw[] = [
       "Mettre en parallèle l'histoire mondiale et l'histoire malagasy.",
       ["Tableau comparatif : événement mondial ↔ événement malagasy contemporain","Exemples : Révolution française (1789) ↔ Merina au pouvoir sous Andrianampoinimerina","XXe siècle : guerres mondiales ↔ colonisation et insurrection","Indépendances africaines ↔ indépendance de Madagascar (1960)","Mondialisation contemporaine ↔ défis actuels de Madagascar","Discussion : que retenir ?","Bilan"],
       ["Quel événement mondial se passait quand Madagascar a obtenu son indépendance (1960) ? → Corrigé : La Guerre froide (rivalité USA/URSS), les indépendances africaines en chaîne","Quel roi malagasy a unifié les hauts plateaux au début du XIXe s. ? → Corrigé : Andrianampoinimerina (règne vers 1787-1810)","Cite un défi commun à Madagascar et à d'autres pays en développement → Corrigé : pauvreté, déforestation, accès à l'éducation, santé, corruption"]),
-    m("MALAGASY","Rédaction finale — chef-d'œuvre de CE2",
-      "Produire un texte long de qualité : le 'chef-d'œuvre de CE2'.",
+    m("MALAGASY","Rédaction finale — chef-d'œuvre de 9ème",
+      "Produire un texte long de qualité : le 'chef-d'œuvre de 9ème'.",
       ["Choisir un sujet libre ou imposé","Planifier (5 min)","Rédiger 20 lignes de façon autonome","Réviser et corriger seul","Illustrer si temps disponible","Partager avec la classe (lire à voix haute)","Applaudir et valoriser"],
-      ["Rédige ton chef-d'œuvre de CE2 : 20 lignes sur le sujet de ton choix → Corrigé : évaluation libre","Lis ton texte à voix haute avec expression → Corrigé : évaluation orale","Quelle est la plus belle phrase de ton texte ? → Corrigé : réponse individuelle"]),
-    m("FRANÇAIS","Dictée préparée + rédaction finale CE2",
+      ["Rédige ton chef-d'œuvre de 9ème : 20 lignes sur le sujet de ton choix → Corrigé : évaluation libre","Lis ton texte à voix haute avec expression → Corrigé : évaluation orale","Quelle est la plus belle phrase de ton texte ? → Corrigé : réponse individuelle"]),
+    m("FRANÇAIS","Dictée préparée + rédaction finale 9ème",
       "Dictée préparée et rédaction finale en français.",
       ["Dictée préparée : 15 mots et 5 phrases complexes","Rédiger 15 lignes sur un sujet libre","Utiliser : au moins 3 temps différents, 5 connecteurs, 2 figures de style","Correction","Partager","Valoriser les progrès de l'année","Bilan"],
-      ["Écris la dictée préparée → Corrigé : selon la dictée choisie","Rédige 15 lignes libres → Corrigé : évaluation libre","Cite 3 progrès en français que tu as faits en CE2 → Corrigé : réponse individuelle"]),
-    m("ANGLAIS","My CE2 English portfolio — presentation",
-      "Créer et présenter un portfolio des acquis en anglais de CE2.",
+      ["Écris la dictée préparée → Corrigé : selon la dictée choisie","Rédige 15 lignes libres → Corrigé : évaluation libre","Cite 3 progrès en français que tu as faits en 9ème → Corrigé : réponse individuelle"]),
+    m("ANGLAIS","My 9ème English portfolio — presentation",
+      "Créer et présenter un portfolio des acquis en anglais de 9ème.",
       ["Each student creates a 1-page English portfolio","Contents : 5 vocabulary topics, 3 grammar rules, 1 favourite text read, 1 writing piece","Present to a partner","Whole class : share one thing learned","Correction","Encouragements","Goals for 8ème"],
       ["What is your best English achievement this year? → Corrigé : réponse individuelle","Write one grammar rule you now know well → Corrigé : réponse individuelle","What English goal do you have for 8ème? → Corrigé : réponse individuelle"]),
     m("FFMOM","Avancement du projet collectif · Valeur : coopération",
@@ -3875,7 +3791,7 @@ const P5_9: SemaineRaw[] = [
 // ── P5 S4 : Semaine du 11 mai — Révision intégrative + Projets ───────────────
 {
   n: 4, dateDebut: "2026/05/11",
-  theme: "CE2 P5 — Révision intégrative · Projets de classe · Langues approfondies",
+  theme: "Révision intégrative · Projets de classe · Langues approfondies",
   sousTheme: "Préparation à l'évaluation · Présentation de projets · Quiz final",
   matieres: [
     m("ARITHMÉTIQUE","Simulation d'évaluation — 45 minutes de maths",
@@ -3892,11 +3808,11 @@ const P5_9: SemaineRaw[] = [
       ["Construis un triangle de côtés 4, 5, 6 cm → Corrigé : vérifier la construction","Deux angles d'un triangle : 52° et 74°. Le 3ème ? → Corrigé : 180−52−74=54°","Agrandis un rectangle 3×5 cm par facteur 2,5. Nouvelle aire ? → Corrigé : nouvelles dimensions 7,5×12,5 ; aire=93,75 cm²"]),
     m("PROBLÈME","Préparation finale — stratégies d'examen",
       "Dernières stratégies avant les évaluations.",
-      ["Les erreurs les plus courantes en CE2 (revue collective)","Stratégie 1 : lire l'énoncé 2 fois","Stratégie 2 : écrire les étapes clairement","Stratégie 3 : vérifier l'unité de la réponse","Stratégie 4 : relire avant de rendre","2 problèmes chronométrés (15 min chacun)","Bilan et encouragements"],
+      ["Les erreurs les plus courantes en 9ème (revue collective)","Stratégie 1 : lire l'énoncé 2 fois","Stratégie 2 : écrire les étapes clairement","Stratégie 3 : vérifier l'unité de la réponse","Stratégie 4 : relire avant de rendre","2 problèmes chronométrés (15 min chacun)","Bilan et encouragements"],
       ["Un problème dit : 'le périmètre est 48 cm'. Quelle unité dans ta réponse ? → Corrigé : cm","Si une addition donne un résultat plus petit que les deux nombres ajoutés, que s'est-il passé ? → Corrigé : Erreur — la somme de deux nombres positifs est toujours plus grande que chacun","Problème chronométré (15 min) : ... → Corrigé : selon le problème proposé"]),
     m("SCIENCES","Présentation du projet de sciences — recherche et exposé",
       "Chaque groupe présente un exposé de sciences.",
-      ["En groupe de 3 : choisir un thème de sciences CE2","Préparer un exposé de 5 min avec affiche ou schéma","Présenter devant la classe","Questions de la classe","Évaluation par les pairs","Correction et compléments","Bilan"],
+      ["En groupe de 3 : choisir un thème de sciences 9ème","Préparer un exposé de 5 min avec affiche ou schéma","Présenter devant la classe","Questions de la classe","Évaluation par les pairs","Correction et compléments","Bilan"],
       ["Présente ton exposé de sciences de 5 minutes → Corrigé : évaluation orale","Pose une question à un autre groupe → Corrigé : réponse libre","Cite 2 points forts de la présentation d'un camarade → Corrigé : réponse individuelle"]),
     m("GÉOGRAPHIE","Projet géographie — carte murale de Madagascar",
       "Créer collectivement une carte murale de Madagascar.",
@@ -3932,30 +3848,30 @@ const P5_9: SemaineRaw[] = [
 // ── P5 S5 : Semaine du 18 mai — Évaluation de passage (1re partie) ────────────
 {
   n: 5, dateDebut: "2026/05/18",
-  theme: "CE2 P5 — Évaluation de passage — Partie 1 : Mathématiques et Sciences",
+  theme: "Évaluation de passage — Partie 1 : Mathématiques et Sciences",
   sousTheme: "Évaluation certificative — Arithmétique · Mesures · Géométrie · Sciences",
   matieres: [
-    m("ARITHMÉTIQUE","ÉVALUATION DE PASSAGE — Arithmétique CE2",
+    m("ARITHMÉTIQUE","ÉVALUATION DE PASSAGE — Arithmétique 9ème",
       "Évaluation certificative de fin d'année — Arithmétique.",
       ["ÉVALUATION OFFICIELLE — 45 minutes","Partie 1 : calcul (10 opérations variées) — 20 points","Partie 2 : fractions et décimaux — 10 points","Partie 3 : proportionnalité — 10 points","Partie 4 : problème à 3 étapes — 20 points","Partie 5 : calcul mental — 10 points","Total : 70 points"],
       ["Évaluation : calcule 4,85 × 2,4 = ? → Corrigé : 11,64","Évaluation : simplifier 36/48 → Corrigé : 3/4","Évaluation : Si 5 cahiers coûtent 3 500 Ar, prix de 8 cahiers ? → Corrigé : 5 600 Ar"]),
-    m("MESURE","ÉVALUATION DE PASSAGE — Mesures CE2",
+    m("MESURE","ÉVALUATION DE PASSAGE — Mesures 9ème",
       "Évaluation certificative de fin d'année — Mesures.",
       ["ÉVALUATION OFFICIELLE — 25 minutes","Conversions variées (longueur, masse, capacité, temps) — 15 points","Calcul d'aires (rectangle, triangle, cercle) — 15 points","Calcul de volume — 10 points","Problème de mesure — 10 points","Total : 50 points"],
       ["Évaluation : 3,75 km = ___ m → Corrigé : 3 750 m","Évaluation : aire d'un cercle r=7 cm → Corrigé : 3,14×49=153,86 cm²","Évaluation : volume d'un pavé 8×6×4 cm → Corrigé : 192 cm³"]),
-    m("GÉOMÉTRIE","ÉVALUATION DE PASSAGE — Géométrie CE2",
+    m("GÉOMÉTRIE","ÉVALUATION DE PASSAGE — Géométrie 9ème",
       "Évaluation certificative de fin d'année — Géométrie.",
       ["ÉVALUATION OFFICIELLE — 25 minutes","Construction géométrique — 10 points","Calcul d'angles — 10 points","Symétrie — 10 points","Reconnaissance de figures et solides — 10 points","Agrandissement — 10 points","Total : 50 points"],
       ["Évaluation : construis un triangle isocèle avec un angle au sommet de 60° et côtés égaux de 5 cm → Corrigé : vérifier la construction","Évaluation : angle manquant dans un triangle 68°, 55°, ? → Corrigé : 57°","Évaluation : image du point A(4,−2) par symétrie centrale de centre O(1,1) → Corrigé : A'(−2,4)"]),
     m("PROBLÈME","ÉVALUATION DE PASSAGE — Résolution de problèmes",
-      "Évaluation certificative — Résolution de problèmes CE2.",
+      "Évaluation certificative — Résolution de problèmes 9ème.",
       ["ÉVALUATION OFFICIELLE — 30 minutes","Problème 1 : 3 étapes — 30 points","Problème 2 : proportionnalité — 20 points","Problème 3 : inversé — 20 points","Rédiger les phrases-réponses complètes","Total : 70 points"],
       ["Évaluation P1 : Un lycée a 240 élèves. 5/8 sont des filles. 3/4 des filles participent au club de lecture. 2/3 de ces dernières viennent aussi au club de sciences. Combien ? → Corrigé : filles=150 ; club lecture=112 ; club sciences=74 ou 75","Évaluation P2 : règle de trois — selon le problème de l'examen","Évaluation P3 : inversé — selon le problème de l'examen"]),
-    m("SCIENCES","ÉVALUATION DE PASSAGE — Sciences CE2",
+    m("SCIENCES","ÉVALUATION DE PASSAGE — Sciences 9ème",
       "Évaluation certificative de fin d'année — Sciences.",
       ["ÉVALUATION OFFICIELLE — 40 minutes","Partie 1 : corps humain (schémas à légender) — 30 points","Partie 2 : plantes et animaux — 20 points","Partie 3 : matière, eau, air, énergie — 20 points","Partie 4 : écologie et environnement — 20 points","Partie 5 : santé et hygiène — 10 points","Total : 100 points"],
       ["Évaluation : légender le schéma du système digestif → Corrigé : bouche, œsophage, estomac, intestin grêle, gros intestin","Évaluation : explique le cycle de l'eau → Corrigé : évaporation→condensation→précipitation→ruissellement→infiltration","Évaluation : cite 3 énergies renouvelables → Corrigé : solaire, éolienne, hydraulique"]),
-    m("GÉOGRAPHIE","ÉVALUATION DE PASSAGE — Géographie CE2",
+    m("GÉOGRAPHIE","ÉVALUATION DE PASSAGE — Géographie 9ème",
       "Évaluation certificative de fin d'année — Géographie.",
       ["ÉVALUATION OFFICIELLE — 30 minutes","Partie 1 : Madagascar — carte muette (20 points)","Partie 2 : le monde — continents et pays (20 points)","Partie 3 : géographie humaine et ODD (20 points)","Correction après l'évaluation","Remédiation","Total : 60 points"],
       ["Évaluation : place sur la carte les 6 provinces de Madagascar → Corrigé : vérifier le positionnement","Évaluation : cite les 5 océans → Corrigé : Pacifique, Atlantique, Indien, Arctique, Antarctique","Évaluation : que signifie ODD4 ? → Corrigé : Éducation de qualité"]),
@@ -3963,15 +3879,15 @@ const P5_9: SemaineRaw[] = [
       "Évaluation certificative de fin d'année — Tantara.",
       ["ÉVALUATION OFFICIELLE — 30 minutes","Partie 1 : ligne du temps (20 points)","Partie 2 : histoire de Madagascar (25 points)","Partie 3 : histoire mondiale (25 points)","Partie 4 : éducation civique — démocratie, droits (30 points)","Total : 100 points"],
       ["Évaluation : date de l'indépendance de Madagascar → Corrigé : 26 juin 1960","Évaluation : cite les 5 grandes périodes de l'histoire → Corrigé : Préhistoire, Antiquité, Moyen Âge, Temps modernes, Époque contemporaine","Évaluation : qu'est-ce qu'un droit fondamental ? → Corrigé : Un droit garanti à toute personne humaine, inaliénable et universel"]),
-    m("MALAGASY","ÉVALUATION DE PASSAGE — Malagasy CE2",
+    m("MALAGASY","ÉVALUATION DE PASSAGE — Malagasy 9ème",
       "Évaluation certificative de fin d'année — Malagasy.",
       ["ÉVALUATION OFFICIELLE — 50 minutes","Dictée de 15 mots (15 points)","Lecture et compréhension (25 points : 8 questions)","Grammaire (30 points : 6 exercices)","Rédaction : 15 lignes (30 points)","Total : 100 points"],
-      ["Évaluation : dictée de 15 mots de CE2 → Corrigé : selon la liste de l'examen","Évaluation : transforme en discours indirect (3 phrases) → Corrigé : selon l'examen","Évaluation : rédige 15 lignes sur un sujet imposé → Corrigé : évaluation libre"]),
-    m("FRANÇAIS","ÉVALUATION DE PASSAGE — Français CE2",
+      ["Évaluation : dictée de 15 mots de 9ème → Corrigé : selon la liste de l'examen","Évaluation : transforme en discours indirect (3 phrases) → Corrigé : selon l'examen","Évaluation : rédige 15 lignes sur un sujet imposé → Corrigé : évaluation libre"]),
+    m("FRANÇAIS","ÉVALUATION DE PASSAGE — Français 9ème",
       "Évaluation certificative de fin d'année — Français.",
       ["ÉVALUATION OFFICIELLE — 50 minutes","Dictée de 10 mots + 5 phrases (20 points)","Conjugaison : 5 verbes aux temps étudiés (25 points)","Grammaire (25 points)","Rédaction : 12-15 lignes (30 points)","Total : 100 points"],
       ["Évaluation : conjugue 'vouloir' au conditionnel → Corrigé : je voudrais, tu voudrais, il voudrait, nous voudrions, vous voudriez, ils voudraient","Évaluation : transforme en passif (2 phrases) → Corrigé : selon l'examen","Évaluation : rédige 12-15 lignes → Corrigé : évaluation libre"]),
-    m("ANGLAIS","ÉVALUATION DE PASSAGE — English CE2",
+    m("ANGLAIS","ÉVALUATION DE PASSAGE — English 9ème",
       "Évaluation certificative de fin d'année — English.",
       ["ÉVALUATION OFFICIELLE — 40 minutes","Vocabulary (20 points : 20 words)","Grammar : past tense, passive, conjunctions (40 points)","Reading comprehension (20 points)","Writing : 8 sentences (20 points)","Total : 100 points"],
       ["Évaluation : write 'go', 'come', 'have', 'see', 'make' in the past tense → Corrigé : went, came, had, saw, made","Évaluation : convert to passive (3 sentences) → Corrigé : selon l'examen","Évaluation : write 8 sentences about Madagascar → Corrigé : évaluation libre"]),
@@ -3979,7 +3895,7 @@ const P5_9: SemaineRaw[] = [
       "Soutien moral pendant les évaluations. Gestion du stress.",
       ["Avant l'évaluation : exercice de respiration","Rappel : faire de son mieux est suffisant","Les erreurs font partie de l'apprentissage","Après l'évaluation : débrief émotionnel","Comment s'est passée l'évaluation ?","Encouragements mutuels","Activité de détente"],
       ["Comment gères-tu le stress d'une évaluation ? → Corrigé : réponse individuelle (respirer lentement, relire calmement, faire une chose à la fois)","Que feras-tu si tu n'as pas eu le résultat espéré ? → Corrigé : réponse individuelle (analyser les erreurs, demander de l'aide, travailler plus)","Cite une chose que tu as bien réussie dans cette évaluation → Corrigé : réponse individuelle"]),
-    m("EPS","Fête sportive de fin d'année — CE2",
+    m("EPS","Fête sportive de fin d'année — 9ème",
       "Grande fête sportive de fin d'année.",
       ["Fête sportive officielle","Épreuves individuelles : course 60 m, saut en longueur, lancer","Épreuves collectives : relais 4×50 m, match de foot 5v5","Remise des trophées et médailles","Photos de classe","Chants et hymnes","Clôture festive"],
       ["Quel est ton meilleur résultat sportif de l'année ? → Corrigé : noter et conserver","Cite les valeurs du sport que tu as pratiquées cette année → Corrigé : fair-play, persévérance, teamwork, respect","Chante l'hymne sportif de la classe → Corrigé : évaluation orale"]),
@@ -3989,40 +3905,40 @@ const P5_9: SemaineRaw[] = [
 // ── P5 S6 : Semaine du 25 mai — Évaluation de passage (2e partie) ─────────────
 {
   n: 6, dateDebut: "2026/05/25",
-  theme: "CE2 P5 — Évaluation de passage — Partie 2 + Correction",
+  theme: "Évaluation de passage — Partie 2 + Correction",
   sousTheme: "Suite des évaluations · Premières corrections · Remédiation ciblée",
   matieres: [
-    m("ARITHMÉTIQUE","Correction évaluation — Arithmétique CE2",
+    m("ARITHMÉTIQUE","Correction évaluation — Arithmétique 9ème",
       "Correction collective et remédiation — Arithmétique.",
       ["Remise des copies corrigées","Correction collective au tableau","Analyse des erreurs les plus fréquentes","Remédiation : exercices ciblés","Questions des élèves","Bilan des acquis","Objectifs 8ème"],
       ["Quelle erreur as-tu faite dans l'évaluation ? Comment la corriger ? → Corrigé : réponse individuelle","Refais cet exercice : 5,6 × 4,8 = ? → Corrigé : 26,88","Quel concept arithmétique doit encore travailler pour la 8ème ? → Corrigé : réponse individuelle"]),
-    m("MESURE","Correction évaluation — Mesures CE2",
+    m("MESURE","Correction évaluation — Mesures 9ème",
       "Correction collective et remédiation — Mesures.",
-      ["Remise des copies","Correction collective","Analyse des erreurs (conversions, aires, volumes)","Exercices de remédiation ciblés","Bilan mesures CE2","Questions","Objectifs 8ème"],
+      ["Remise des copies","Correction collective","Analyse des erreurs (conversions, aires, volumes)","Exercices de remédiation ciblés","Bilan mesures 9ème","Questions","Objectifs 8ème"],
       ["Quelle conversion t'a posé problème ? → Corrigé : réponse individuelle","Refais : 2,4 m³ = ___ dm³ = ___ L → Corrigé : 2 400 dm³ = 2 400 L","L'aire d'un triangle = base × hauteur ÷ 2. Triangle b=12 cm, h=8 cm → Corrigé : 48 cm²"]),
-    m("GÉOMÉTRIE","Correction évaluation — Géométrie CE2",
+    m("GÉOMÉTRIE","Correction évaluation — Géométrie 9ème",
       "Correction collective et remédiation — Géométrie.",
-      ["Remise des copies","Correction constructions géométriques","Angles : correction et exercices supplémentaires","Symétrie : démonstration et exercices","Bilan géométrie CE2","Questions","Objectifs 8ème"],
+      ["Remise des copies","Correction constructions géométriques","Angles : correction et exercices supplémentaires","Symétrie : démonstration et exercices","Bilan géométrie 9ème","Questions","Objectifs 8ème"],
       ["Refais la construction du triangle isocèle → Corrigé : vérifier la construction","Angle manquant : triangle avec 78° et 43°, le 3ème ? → Corrigé : 59°","Image du point B(0,3) par symétrie centrale O(2,2) → Corrigé : B'(4,1)"]),
-    m("PROBLÈME","Correction évaluation — Problèmes CE2",
+    m("PROBLÈME","Correction évaluation — Problèmes 9ème",
       "Correction collective et remédiation — Problèmes.",
       ["Remise des copies","Correction des 3 problèmes au tableau","Analyse des erreurs de méthode","Remédiation : refaire un problème similaire","Encouragements","Conseils pour la 8ème","Bilan"],
-      ["Identifie l'étape manquante dans ta résolution → Corrigé : réponse individuelle","Refais un problème inversé similaire → Corrigé : selon le problème proposé","Quels conseils donnerais-tu à un élève de CE1 pour résoudre des problèmes ? → Corrigé : réponse individuelle"]),
+      ["Identifie l'étape manquante dans ta résolution → Corrigé : réponse individuelle","Refais un problème inversé similaire → Corrigé : selon le problème proposé","Quels conseils donnerais-tu à un élève de 10ème pour résoudre des problèmes ? → Corrigé : réponse individuelle"]),
     m("SCIENCES","Correction évaluation Sciences + Exposé final",
       "Correction évaluation sciences. Exposé final sur un thème scientifique.",
-      ["Remise des copies sciences","Correction des schémas et questions","Remédiation sur les points faibles","Exposés finaux de sciences (groupes restants)","Discussion : ce que j'ai appris en sciences CE2","Bilan sciences annuel","Encouragements"],
+      ["Remise des copies sciences","Correction des schémas et questions","Remédiation sur les points faibles","Exposés finaux de sciences (groupes restants)","Discussion : ce que j'ai appris en sciences 9ème","Bilan sciences annuel","Encouragements"],
       ["Quel système du corps humain était le plus difficile à retenir ? → Corrigé : réponse individuelle","Explique la photosynthèse avec tes propres mots → Corrigé : Les plantes absorbent l'eau, le CO₂ et la lumière solaire pour fabriquer du glucose et dégager de l'O₂","Quel phénomène scientifique naturel te fascine le plus ? → Corrigé : réponse individuelle"]),
     m("GÉOGRAPHIE","Correction évaluation Géographie + Carte finale",
       "Correction évaluation géographie. Finalisation de la carte murale.",
-      ["Remise des copies géographie","Correction carte muette et questions","Remédiation : revoir les capitales, continents","Finalisation de la carte murale de la classe","Présentation de la carte aux autres classes (symbolique)","Bilan géographie CE2","Encouragements"],
+      ["Remise des copies géographie","Correction carte muette et questions","Remédiation : revoir les capitales, continents","Finalisation de la carte murale de la classe","Présentation de la carte aux autres classes (symbolique)","Bilan géographie 9ème","Encouragements"],
       ["Cite 10 capitales africaines → Corrigé : Antananarivo, Nairobi, Lagos, Le Caire, Dakar, Abidjan, Yaoundé, Kinshasa, Addis-Abeba, Johannesburg (exemples)","Quel continent te fascine le plus ? Pourquoi ? → Corrigé : réponse individuelle","Cite un fait géographique sur Madagascar que tu n'oublieras jamais → Corrigé : réponse individuelle"]),
     m("TANTARA","Correction évaluation Histoire + Frise finale",
       "Correction évaluation histoire. Présentation de la frise chronologique.",
-      ["Remise des copies","Correction ligne du temps et questions","Présentation de la grande frise chronologique murale","Chaque élève explique 1 événement","'Qu'est-ce que l'histoire nous apprend ?'","Bilan histoire CE2","Encouragements"],
+      ["Remise des copies","Correction ligne du temps et questions","Présentation de la grande frise chronologique murale","Chaque élève explique 1 événement","'Qu'est-ce que l'histoire nous apprend ?'","Bilan histoire 9ème","Encouragements"],
       ["Quel événement historique t'a le plus impressionné cette année ? → Corrigé : réponse individuelle","Cite une leçon de l'histoire que tu veux retenir → Corrigé : réponse individuelle","Si tu pouvais voyager dans le temps, à quelle époque irais-tu ? Pourquoi ? → Corrigé : réponse individuelle"]),
     m("MALAGASY","Correction évaluation Malagasy + Récitation finale",
       "Correction évaluation malagasy. Récitation et performance finale.",
-      ["Remise des copies malagasy","Correction dictée, compréhension, grammaire","Retour sur les rédactions (points forts et faibles)","Récitation de poèmes ou textes malagasy appris dans l'année","Applaudir chaque élève","Bilan malagasy CE2","Encouragements"],
+      ["Remise des copies malagasy","Correction dictée, compréhension, grammaire","Retour sur les rédactions (points forts et faibles)","Récitation de poèmes ou textes malagasy appris dans l'année","Applaudir chaque élève","Bilan malagasy 9ème","Encouragements"],
       ["Récite un texte malagasy appris cette année → Corrigé : évaluation orale","Quelle règle de grammaire malagasy retiens-tu le mieux ? → Corrigé : réponse individuelle","Que signifie 'ny fihavanana no tena harena' ? → Corrigé : La solidarité/fraternité est la vraie richesse — proverbe malagasy fondamental"]),
     m("FRANÇAIS","Correction évaluation Français + Lecture expressive",
       "Correction évaluation français. Lecture expressive finale.",
@@ -4030,12 +3946,12 @@ const P5_9: SemaineRaw[] = [
       ["Lis ce texte à voix haute avec expression → Corrigé : évaluation orale","Cite 3 règles de grammaire que tu maîtrises maintenant → Corrigé : réponse individuelle","Quelle est ton erreur classique en français ? Comment l'éviter ? → Corrigé : réponse individuelle"]),
     m("ANGLAIS","Correction évaluation English + Speaking finale",
       "Correction évaluation anglais. Expression orale finale.",
-      ["Return of corrected papers","Correction vocabulary, grammar, writing","Feedback on reading comprehension","Speaking activity : 2-minute talk about any topic in English","Applaud every student","English CE2 summary","Encouragements for 8ème"],
+      ["Return of corrected papers","Correction vocabulary, grammar, writing","Feedback on reading comprehension","Speaking activity : 2-minute talk about any topic in English","Applaud every student","English 9ème summary","Encouragements for 8ème"],
       ["What was your favourite topic in English this year? → Corrigé : réponse individuelle","Say one grammar rule you now know well in English → Corrigé : réponse individuelle","Give a 2-minute talk about Madagascar in English → Corrigé : évaluation orale"]),
-    m("FFMOM","Lettre de gratitude — valeurs vécues en CE2",
+    m("FFMOM","Lettre de gratitude — valeurs vécues en 9ème",
       "Écrire une lettre de gratitude. Bilan des valeurs de l'année.",
       ["Écrire une lettre de gratitude à quelqu'un de sa vie","Rappel de toutes les valeurs de l'année","Laquelle te définit le plus maintenant ?","Lettre à moi-même à ouvrir en 8ème","Partager des mots doux avec toute la classe","'Misaotra' — remercier","Moment de célébration"],
-      ["À qui veux-tu écrire ta lettre de gratitude et pourquoi ? → Corrigé : réponse individuelle","Cite la valeur qui te définit le plus après cette année de CE2 → Corrigé : réponse individuelle","Qu'écrirais-tu à ton futur toi en 8ème ? → Corrigé : réponse individuelle"]),
+      ["À qui veux-tu écrire ta lettre de gratitude et pourquoi ? → Corrigé : réponse individuelle","Cite la valeur qui te définit le plus après cette année de 9ème → Corrigé : réponse individuelle","Qu'écrirais-tu à ton futur toi en 8ème ? → Corrigé : réponse individuelle"]),
     m("EPS","Activités libres et détente — journée de récupération sportive",
       "Journée de détente sportive après les évaluations.",
       ["Jeux libres au choix des élèves","Ateliers sportifs libres : qui veut jouer à quoi ?","Jeux collectifs sans compétition","Jeux traditionnels malagasy : fanorona, solitaire, course en sac","Relaxation et étirements","Chants","Détente et bonne humeur"],
@@ -4046,12 +3962,12 @@ const P5_9: SemaineRaw[] = [
 // ── P5 S7 : Semaine du 1er juin — Résultats + Projets artistiques ─────────────
 {
   n: 7, dateDebut: "2026/06/01",
-  theme: "CE2 P5 — Résultats · Projets artistiques · Préparation à la 8ème",
+  theme: "Résultats · Projets artistiques · Préparation à la 8ème",
   sousTheme: "Remise des bulletins P5 · Arts et créativité · Discours de fin d'année",
   matieres: [
     m("ARITHMÉTIQUE","Mini-évaluation de remédiation — arithmétique",
       "Évaluation de remédiation pour consolider les lacunes.",
-      ["Pour les élèves en difficulté : mini-évaluation de remédiation","Pour les autres : exercices d'approfondissement (défis mathématiques)","Défi : problèmes de logique et de réflexion","Sudoku mathématique adapté CE2","Jeu de stratégie : 24 (faire 24 avec 4 chiffres)","Correction","Encouragements"],
+      ["Pour les élèves en difficulté : mini-évaluation de remédiation","Pour les autres : exercices d'approfondissement (défis mathématiques)","Défi : problèmes de logique et de réflexion","Sudoku mathématique adapté 9ème","Jeu de stratégie : 24 (faire 24 avec 4 chiffres)","Correction","Encouragements"],
       ["Défi : avec les chiffres 3, 4, 6, 8 et les 4 opérations, fais 24 → Corrigé : ex. 8÷(3−6÷4)=24... (plusieurs solutions)","Problème de logique : j'ai 36 Ar de plus que mon ami. Ensemble nous avons 120 Ar. Combien chacun ? → Corrigé : moi=78, ami=42","Sudoku 4×4 : remplir la grille → Corrigé : selon la grille proposée"]),
     m("MESURE","Défis mathématiques — mesures en contexte réel",
       "Défis de mesures en contexte réel et créatif.",
@@ -4083,11 +3999,11 @@ const P5_9: SemaineRaw[] = [
       ["Récite ton texte pour le spectacle → Corrigé : évaluation orale","Comment améliorer ta diction et ton expression → Corrigé : s'entraîner à voix haute, articuler clairement, regarder le public","Quel est le texte malagasy qui t'a le plus touché cette année ? → Corrigé : réponse individuelle"]),
     m("FRANÇAIS","Discours de fin d'année — rédiger et présenter",
       "Rédiger et présenter un discours de fin d'année en français.",
-      ["Structure d'un discours : salutation, corps (3 parties), conclusion","Rédiger un discours de fin d'année (10 lignes) sur : 'Ce que la CE2 m'a appris'","Répéter devant un camarade","Présenter à la classe","Applaudir chaque discours","'Au revoir la 9ème !' → 'Bonjour la 8ème !'","Bilan"],
-      ["Lis ton discours de fin d'année à voix haute → Corrigé : évaluation orale","Cite 3 choses que la CE2 t'a apprises → Corrigé : réponse individuelle","Quel conseil donnerais-tu à un futur élève de 9ème ? → Corrigé : réponse individuelle"]),
+      ["Structure d'un discours : salutation, corps (3 parties), conclusion","Rédiger un discours de fin d'année (10 lignes) sur : 'Ce que la 9ème m'a appris'","Répéter devant un camarade","Présenter à la classe","Applaudir chaque discours","'Au revoir la 9ème !' → 'Bonjour la 8ème !'","Bilan"],
+      ["Lis ton discours de fin d'année à voix haute → Corrigé : évaluation orale","Cite 3 choses que la 9ème t'a apprises → Corrigé : réponse individuelle","Quel conseil donnerais-tu à un futur élève de 9ème ? → Corrigé : réponse individuelle"]),
     m("ANGLAIS","Talent show — English performances",
       "Spectacle de talents en anglais. Chanter, lire, jouer.",
-      ["Talent show : students choose what to perform in English","Options : sing an English song, read a story, perform a dialogue, recite a poem","Each student performs 1-2 minutes","Class votes for categories : most expressive, most creative, etc.","All students win a 'certificate' for participation","Bilan","Goodbye to English CE2 !"],
+      ["Talent show : students choose what to perform in English","Options : sing an English song, read a story, perform a dialogue, recite a poem","Each student performs 1-2 minutes","Class votes for categories : most expressive, most creative, etc.","All students win a 'certificate' for participation","Bilan","Goodbye to English 9ème !"],
       ["Perform your English talent → Corrigé : évaluation orale","What was your best English moment this year? → Corrigé : réponse individuelle","Say goodbye to your classmates in English → Corrigé : réponse libre (Goodbye! See you next year! Thank you!)"]),
     m("FFMOM","La gratitude — écrire et dire merci",
       "Exprimer la gratitude. Remercier les personnes importantes.",
@@ -4096,14 +4012,14 @@ const P5_9: SemaineRaw[] = [
     m("EPS","Dernière séance EPS — jeux libres et bilan annuel",
       "Dernière séance d'EPS de l'année. Jeux libres et bilan.",
       ["Jeux libres au choix","Jeux traditionnels malagasy","Course finale symbolique : 'le tour de l'école'","Remise des 'médailles de champion' dessinées à la main","Bilan sportif annuel : avant/après","Chant sportif final","Au revoir terrain de sport !"],
-      ["Quel est ton record personnel à la fin de l'année (course, saut...) ? → Corrigé : noter les résultats et comparer avec P1","Quel sport découvert en CE2 continueras-tu en 8ème ? → Corrigé : réponse individuelle","Cite 5 valeurs du sport pratiquées toute l'année → Corrigé : fair-play, persévérance, esprit d'équipe, respect, courage"]),
+      ["Quel est ton record personnel à la fin de l'année (course, saut...) ? → Corrigé : noter les résultats et comparer avec P1","Quel sport découvert en 9ème continueras-tu en 8ème ? → Corrigé : réponse individuelle","Cite 5 valeurs du sport pratiquées toute l'année → Corrigé : fair-play, persévérance, esprit d'équipe, respect, courage"]),
   ],
 },
 
 // ── P5 S8 : Semaine du 8 juin — Journée des talents + Remise des bulletins ────
 {
   n: 8, dateDebut: "2026/06/08",
-  theme: "CE2 P5 — Journée des talents · Remise des bulletins annuels",
+  theme: "Journée des talents · Remise des bulletins annuels",
   sousTheme: "Spectacle de fin d'année · Résultats annuels · Célébration",
   matieres: [
     m("ARITHMÉTIQUE","Jeu mathématique final — olympiades du calcul mental",
@@ -4128,29 +4044,29 @@ const P5_9: SemaineRaw[] = [
       ["Identifie 3 plantes observées dans la cour → Corrigé : selon ce qui est trouvé","Construis une chaîne alimentaire avec les êtres vivants observés → Corrigé : selon ce qui est observé","Cite 3 gestes pour respecter la nature de ton école → Corrigé : ne pas arracher les plantes, ne pas écraser les insectes inutilement, garder l'environnement propre"]),
     m("GÉOGRAPHIE","Présentation des projets géographie — devant les parents",
       "Présentation des projets de géographie aux parents ou aux autres classes.",
-      ["Présentation de la carte murale de Madagascar","Exposé de géographie : 'Mon pays dans le monde'","Présenter aux parents (ou simuler)","Questions des 'visiteurs'","Bilan de la géographie en CE2","'Je connais mon pays, mon continent, mon monde'","Applaudir et célébrer"],
+      ["Présentation de la carte murale de Madagascar","Exposé de géographie : 'Mon pays dans le monde'","Présenter aux parents (ou simuler)","Questions des 'visiteurs'","Bilan de la géographie en 9ème","'Je connais mon pays, mon continent, mon monde'","Applaudir et célébrer"],
       ["Présente la carte murale à un visiteur → Corrigé : évaluation orale","Explique le développement durable à quelqu'un qui ne connaît pas ce concept → Corrigé : réponse individuelle","Quelle découverte géographique t'a le plus surpris cette année ? → Corrigé : réponse individuelle"]),
     m("TANTARA","Présentation de la frise chronologique — devant les parents",
       "Présentation de la frise chronologique aux parents ou aux autres classes.",
-      ["Présenter la grande frise chronologique","Chaque élève explique 1 événement à un visiteur","'L'histoire de Madagascar en 5 minutes'","Questions des visiteurs","Bilan de l'histoire CE2","'Je suis un jeune citoyen malagasy conscient de son histoire'","Applaudir"],
+      ["Présenter la grande frise chronologique","Chaque élève explique 1 événement à un visiteur","'L'histoire de Madagascar en 5 minutes'","Questions des visiteurs","Bilan de l'histoire 9ème","'Je suis un jeune citoyen malagasy conscient de son histoire'","Applaudir"],
       ["Explique 1 événement de la frise à un visiteur → Corrigé : évaluation orale","Pourquoi est-il important de partager l'histoire de son pays ? → Corrigé : Pour transmettre l'identité, la mémoire collective, et les leçons du passé","Quelle période de l'histoire aimerais-tu étudier plus en profondeur en 8ème ? → Corrigé : réponse individuelle"]),
     m("MALAGASY","Spectacle malagasy — jour de la représentation",
       "Jour du spectacle de clôture en malagasy.",
       ["Représentation du spectacle malagasy","Récitations, chants, dialogues, poèmes","Applaudissements","Remerciements en malagasy","Photos de classe","'Misaotra anao — Veloma ny 9ème !'","Moment émotionnel de clôture"],
-      ["Récite ton texte pour le spectacle → Corrigé : évaluation orale","Dis 'au revoir' à ta classe en malagasy avec une phrase originale → Corrigé : réponse créative","Quel mot malagasy symbolise le mieux cette année de CE2 pour toi ? → Corrigé : réponse individuelle"]),
+      ["Récite ton texte pour le spectacle → Corrigé : évaluation orale","Dis 'au revoir' à ta classe en malagasy avec une phrase originale → Corrigé : réponse créative","Quel mot malagasy symbolise le mieux cette année de 9ème pour toi ? → Corrigé : réponse individuelle"]),
     m("FRANÇAIS","Spectacle français — Récitations et théâtre",
       "Spectacle de clôture en français.",
       ["Représentation des discours et récitations en français","Sketches, dialogues, chants appris dans l'année","Applaudissements","'Au revoir la 9ème, bonjour la 8ème !'","Photos de classe","Moment de joie collective","Bilan final"],
       ["Présente ton discours de fin d'année → Corrigé : évaluation orale","Dis au revoir en français avec une citation → Corrigé : réponse créative","Quelle phrase en français symbolise le mieux cette année ? → Corrigé : réponse individuelle"]),
     m("ANGLAIS","English Show — songs, dialogues and poetry",
       "Spectacle de clôture en anglais.",
-      ["English performance : songs, dialogues, poems, mini-plays","Each student performs something in English","'Goodbye CE2, Hello 8ème !'","Applause and celebration","Class photo (symbolic)","'Thank you, everyone !'","Bilan"],
+      ["English performance : songs, dialogues, poems, mini-plays","Each student performs something in English","'Goodbye 9ème, Hello 8ème !'","Applause and celebration","Class photo (symbolic)","'Thank you, everyone !'","Bilan"],
       ["Perform your English piece → Corrigé : évaluation orale","Say goodbye to your class in English with a creative sentence → Corrigé : réponse créative","What English word sums up your year? → Corrigé : réponse individuelle (growth, fun, challenge, friendship...)"]),
-    m("FFMOM","Remise symbolique des diplômes de CE2 · Valeurs pour la vie",
+    m("FFMOM","Remise symbolique des diplômes de 9ème · Valeurs pour la vie",
       "Remise symbolique des diplômes. Bilan des valeurs pour la vie.",
-      ["Cérémonie symbolique de remise des diplômes de fin de CE2","Chaque élève reçoit son 'Diplôme de Réussite CE2'","Les 12 valeurs de l'année : rappel et célébration","Lettre à soi-même : scellée et remise à l'élève","Message de l'enseignant(e) : vous êtes prêts pour la 8ème","'Izaho dia tsy mba hanadino ny taona faha-9 iana'","Moment émotionnel collectif"],
-      ["Cite les 12 valeurs étudiées en CE2 → Corrigé : responsabilité, persévérance, solidarité, empathie, paix, tolérance, gratitude, équilibre, service, honnêteté, courage, justice","Quelle valeur emporteras-tu avec toi en 8ème ? → Corrigé : réponse individuelle","Quel souvenir de CE2 chériras-tu toujours ? → Corrigé : réponse individuelle"]),
-    m("EPS","Journée sportive officielle de fin d'année CE2",
+      ["Cérémonie symbolique de remise des diplômes de fin de 9ème","Chaque élève reçoit son 'Diplôme de Réussite 9ème'","Les 12 valeurs de l'année : rappel et célébration","Lettre à soi-même : scellée et remise à l'élève","Message de l'enseignant(e) : vous êtes prêts pour la 8ème","'Izaho dia tsy mba hanadino ny taona faha-9 iana'","Moment émotionnel collectif"],
+      ["Cite les 12 valeurs étudiées en 9ème → Corrigé : responsabilité, persévérance, solidarité, empathie, paix, tolérance, gratitude, équilibre, service, honnêteté, courage, justice","Quelle valeur emporteras-tu avec toi en 8ème ? → Corrigé : réponse individuelle","Quel souvenir de 9ème chériras-tu toujours ? → Corrigé : réponse individuelle"]),
+    m("EPS","Journée sportive officielle de fin d'année 9ème",
       "Grande journée sportive officielle de fin d'année.",
       ["Cérémonie d'ouverture : défilé des classes, hymne national","Épreuves officielles d'athlétisme : course 60 m, saut en longueur, lancer de balle","Épreuves collectives : relais, volleyball","Remise des médailles et trophées","Discours de clôture sportive","Hymne sportif","'Merci pour cette belle année sportive !'"],
       ["Quels sont tes meilleurs résultats sportifs de l'année ? → Corrigé : comparer tous les résultats enregistrés depuis P1","Qu'est-ce que le sport t'a appris sur toi-même ? → Corrigé : réponse individuelle","Quels sports veux-tu continuer ou découvrir en 8ème ? → Corrigé : réponse individuelle"]),
@@ -4160,13 +4076,13 @@ const P5_9: SemaineRaw[] = [
 // ── P5 S9 : Semaine du 15 juin — Clôture et passage en 8ème ──────────────────
 {
   n: 9, dateDebut: "2026/06/15",
-  theme: "CE2 P5 — Clôture · Passage en 8ème · Fête de fin d'année scolaire 2025-2026",
+  theme: "Clôture · Passage en 8ème · Fête de fin d'année scolaire 2025-2026",
   sousTheme: "Bilan annuel · Remise des bulletins · Célébration du passage en 8ème",
   matieres: [
     m("ARITHMÉTIQUE","Bilan annuel arithmétique — ce que je sais en quittant la 9ème",
-      "Bilan final des connaissances arithmétiques de CE2.",
-      ["Quiz ludique final : 20 questions de tout l'année","Chaque élève choisit sa question préférée","Les 10 'champions du calcul' de la classe","Partager ce qu'on a préféré en arithmétique","Message aux futurs élèves de CE2","Bilan annuel","Encouragements pour la 8ème"],
-      ["Quelle opération maîtrises-tu le mieux ? → Corrigé : réponse individuelle","Cite 5 notions de maths apprises en CE2 que tu ne savais pas en CE1 → Corrigé : décimaux, proportionnalité, fractions irréductibles, volume, priorité des opérations","Quel conseil mathématique donnerais-tu à un futur élève de CE2 ? → Corrigé : réponse individuelle"]),
+      "Bilan final des connaissances arithmétiques de 9ème.",
+      ["Quiz ludique final : 20 questions de tout l'année","Chaque élève choisit sa question préférée","Les 10 'champions du calcul' de la classe","Partager ce qu'on a préféré en arithmétique","Message aux futurs élèves de 9ème","Bilan annuel","Encouragements pour la 8ème"],
+      ["Quelle opération maîtrises-tu le mieux ? → Corrigé : réponse individuelle","Cite 5 notions de maths apprises en 9ème que tu ne savais pas en 10ème → Corrigé : décimaux, proportionnalité, fractions irréductibles, volume, priorité des opérations","Quel conseil mathématique donnerais-tu à un futur élève de 9ème ? → Corrigé : réponse individuelle"]),
     m("MESURE","Bilan annuel mesures — applications dans la vie réelle",
       "Bilan final des mesures. Lien avec la vie réelle.",
       ["Discussion : où utilise-t-on les mesures dans la vie ?","Exemples de métiers qui utilisent les mesures : architecte, cuisinier, ingénieur, agriculteur","Mesurer des objets réels de l'école","'Le monde est plein de mathématiques !'","Quiz final mesures","Bilan","Encouragements"],
@@ -4181,11 +4097,11 @@ const P5_9: SemaineRaw[] = [
       ["Invente un problème de la vie réelle avec une solution en 3 étapes → Corrigé : évaluation créative","La méthode DICO peut-elle s'appliquer à des problèmes de la vie courante ? → Corrigé : Oui — identifier les données, l'inconnue, calculer, vérifier l'opération s'applique à de nombreuses situations","Quel problème de la vraie vie as-tu résolu grâce aux maths cette année ? → Corrigé : réponse individuelle"]),
     m("SCIENCES","Bilan annuel sciences — je comprends mieux le monde vivant",
       "Bilan final des sciences. Comprendre le monde vivant.",
-      ["'Je comprends mieux le monde vivant grâce aux sciences'","Les 6 systèmes du corps humain en 60 secondes (défi)","Pourquoi la biodiversité de Madagascar est-elle une richesse mondiale ?","Message aux futurs élèves de CE2 en sciences","Projet : planter une graine comme symbole de croissance","Bilan annuel sciences","Encouragements"],
+      ["'Je comprends mieux le monde vivant grâce aux sciences'","Les 6 systèmes du corps humain en 60 secondes (défi)","Pourquoi la biodiversité de Madagascar est-elle une richesse mondiale ?","Message aux futurs élèves de 9ème en sciences","Projet : planter une graine comme symbole de croissance","Bilan annuel sciences","Encouragements"],
       ["Cite les 6 systèmes du corps humain en 30 secondes → Corrigé : digestif, respiratoire, circulatoire, osseux, musculaire, nerveux","Pourquoi Madagascar est-il une 'île aux trésors' pour les scientifiques ? → Corrigé : 90% d'espèces endémiques, nombreuses espèces encore non découvertes, laboratoire naturel unique","Quel être vivant te fascine le plus et pourquoi ? → Corrigé : réponse individuelle"]),
     m("GÉOGRAPHIE","Bilan annuel géographie — je suis un citoyen du monde",
       "Bilan final de la géographie. Je suis un citoyen du monde.",
-      ["'Je connais mon pays, mon continent, mon monde'","Madagascar sur le planisphère : je peux l'expliquer à n'importe qui","Ce que j'ai découvert cette année sur le monde","Les ODD : ce que je peux faire à mon niveau","Message aux futurs élèves de CE2","Bilan annuel","Encouragements"],
+      ["'Je connais mon pays, mon continent, mon monde'","Madagascar sur le planisphère : je peux l'expliquer à n'importe qui","Ce que j'ai découvert cette année sur le monde","Les ODD : ce que je peux faire à mon niveau","Message aux futurs élèves de 9ème","Bilan annuel","Encouragements"],
       ["Explique en 3 phrases où se trouve Madagascar dans le monde → Corrigé : Grande île de l'océan Indien, à 400 km de la côte mozambicaine, en Afrique de l'Est — 4ème plus grande île du monde","Que peux-tu faire, toi, pour atteindre les ODD ? → Corrigé : réponse individuelle (planter des arbres, économiser l'eau, aller à l'école, respecter l'environnement)","Quel pays aimerais-tu visiter et pourquoi ? → Corrigé : réponse individuelle"]),
     m("TANTARA","Bilan annuel histoire — je connais mon histoire, je prépare mon avenir",
       "Bilan final de l'histoire. Lien entre passé et avenir.",
@@ -4199,14 +4115,14 @@ const P5_9: SemaineRaw[] = [
       "Séance finale de français. Clôture de l'année.",
       ["Lecture du dernier texte français de l'année","Récitation collective d'un poème ou texte appris","'Ce que je retiens de la 9ème'","Message de l'enseignant(e) en français","'Au revoir la 9ème ! Bonjour la 8ème !'","Chant final choisi par la classe","Moment de joie et d'émotion"],
       ["Lis à voix haute le dernier texte de l'année → Corrigé : évaluation orale","Dis au revoir à ta classe en français : une phrase qui vient du cœur → Corrigé : réponse créative","Cite 3 choses que tu emportes de la 9ème → Corrigé : réponse individuelle"]),
-    m("ANGLAIS","Goodbye CE2 · Welcome to 8ème!",
-      "Final English lesson. Goodbye and goodbye to CE2.",
-      ["Final reading : an inspiring text about the future","Each student writes : 'In 8ème, I will...'","Share with the class","Teacher's final message in English","'You are ready for 8ème !'","Sing a final English song","Goodbye CE2 — Welcome to 8ème !"],
+    m("ANGLAIS","Goodbye 9ème · Welcome to 8ème!",
+      "Final English lesson. Goodbye and goodbye to 9ème.",
+      ["Final reading : an inspiring text about the future","Each student writes : 'In 8ème, I will...'","Share with the class","Teacher's final message in English","'You are ready for 8ème !'","Sing a final English song","Goodbye 9ème — Welcome to 8ème !"],
       ["Write : 'In 8ème, I will...' (3 sentences) → Corrigé : réponse libre (I will work hard. I will make new friends. I will learn even more English.)","Say goodbye to your class in English → Corrigé : réponse créative (Goodbye everyone! It was a great year! See you next year!)","What was your favourite English sentence this year? → Corrigé : réponse individuelle"]),
     m("FFMOM","Fête de fin d'année — Clôture officielle de la 9ème · Passage en 8ème",
       "Grande fête de fin d'année. Clôture officielle. Passage en 8ème.",
-      ["Cérémonie officielle de clôture de l'année scolaire 2025-2026","Remise des bulletins annuels","Annonce du passage en 8ème pour chaque élève","Remise des diplômes de fin de CE2","Discours de l'enseignant(e) et des élèves","'Veloma ny 9ème ! Tonga soa any amin'ny kilasy faha-8 !'","Photos, chants, larmes et sourires — une belle année !"],
-      ["Comment te sens-tu à l'idée de passer en 8ème ? → Corrigé : réponse individuelle (excité, un peu inquiet, fier, nostalgique...)","Qu'est-ce qui t'a rendu le plus fier cette année de CE2 ? → Corrigé : réponse individuelle","Quel message voudrais-tu laisser à la 9ème ? → Corrigé : réponse individuelle"]),
+      ["Cérémonie officielle de clôture de l'année scolaire 2025-2026","Remise des bulletins annuels","Annonce du passage en 8ème pour chaque élève","Remise des diplômes de fin de 9ème","Discours de l'enseignant(e) et des élèves","'Veloma ny 9ème ! Tonga soa any amin'ny kilasy faha-8 !'","Photos, chants, larmes et sourires — une belle année !"],
+      ["Comment te sens-tu à l'idée de passer en 8ème ? → Corrigé : réponse individuelle (excité, un peu inquiet, fier, nostalgique...)","Qu'est-ce qui t'a rendu le plus fier cette année de 9ème ? → Corrigé : réponse individuelle","Quel message voudrais-tu laisser à la 9ème ? → Corrigé : réponse individuelle"]),
     m("EPS","Dernier jour — Récréation libre · Hymne · Au revoir",
       "Dernier jour d'école. Récréation libre. Hymne. Au revoir.",
       ["Récréation libre de fin d'année","Jeux libres et spontanés","Rappel des hymnes de l'école et des chants sportifs","Dernier rassemblement sportif","'Merci pour cette belle année sportive !'","Photos de groupe","'À l'année prochaine en 8ème !'"],
@@ -4216,71 +4132,27 @@ const P5_9: SemaineRaw[] = [
 
 ]; // fin P5_9
 
-// ─── 8ème (CM1) — Septembre S1-S4 ────────────────────────────────────────────
+// ─── 8ème — Septembre S1-S4 ────────────────────────────────────────────
 
 const P1_8: SemaineRaw[] = [
 
-// ── CM1 S1 : Semaine d'orientation ───────────────────────────────────────────
+// ── 8ème S1 : Semaine d'orientation ───────────────────────────────────────────
 {
   n: 1, dateDebut: "2025/09/01",
-  theme: "Rentrée CM1 — Bilan CE2 et positionnement",
-  sousTheme: "Test diagnostique · Règles de vie · Programme CM1",
+  theme: "Semaine d'orientation",
+  sousTheme: "Accueil des élèves et test de pré-requis en lecture malagasy",
   matieres: [
-    m("ARITHMÉTIQUE","Bilan CE2 — nombres jusqu'à 10 000, fractions simples, décimaux",
-      "Évaluer les acquis CE2 avant d'aborder les nombres jusqu'à 100 000 et les fractions avancées.",
-      ["Test d'entrée : lire et écrire des nombres jusqu'à 10 000","Rappel des 4 opérations : calcul posé","Fractions simples : 1/2, 1/4, 3/4 — reconnaissance et représentation","Décimaux : introduire la virgule (3,5 = 3 + 5 dixièmes)","Correction collective","Classer les élèves par niveau pour le soutien","Présenter le programme CM1 : nombres jusqu'à 100 000, fractions avancées, décimaux complets"],
-      ["Écris en lettres : 9 748 → Corrigé : neuf mille sept cent quarante-huit","Calcule : 873 × 6 = ? → Corrigé : 5 238","Quelle fraction représente 2 parts sur 4 ? → Corrigé : 2/4 = 1/2"]),
-    m("MESURE","Bilan CE2 — unités de mesure et conversions",
-      "Réviser toutes les unités de CE2 et préparer les nouvelles conversions CM1.",
-      ["Longueur : km, m, dm, cm, mm — tableau de conversion","Masse : t, kg, hg, dag, g","Capacité : hL, L, dL, cL, mL","Durée : heures, minutes, secondes — additions","Quiz rapide : 10 conversions","Correction collective","Objectifs CM1 : aire (m², cm²), volume (dm³, L), conversions complexes"],
-      ["Convertis : 4 km 235 m = ___ m → Corrigé : 4 235 m","3 h 45 min + 1 h 35 min = ? → Corrigé : 5 h 20 min","5 800 g = ___ kg ___ g → Corrigé : 5 kg 800 g"]),
-    m("GÉOMÉTRIE","Bilan CE2 — figures, périmètre, symétrie et angles",
-      "Évaluer les acquis CE2 avant d'aborder aires, droites du triangle et cercle.",
-      ["Quiz : identifier et nommer figures planes et solides","Périmètre : carré, rectangle, triangle, hexagone","Axes de symétrie : tracer et identifier","Angles : droit (90°), aigu (< 90°), obtus (> 90°)","Introduction du rapporteur","Exercice de tracé","Objectifs CM1 : aire de toute figure, droites remarquables, cercle complet"],
-      ["Périmètre d'un hexagone régulier de côté 6 cm → Corrigé : 6×6 = 36 cm","Trace l'axe de symétrie du rectangle → Corrigé : 2 axes (horizontal et vertical)","Est-ce que 75° est un angle aigu ou obtus ? → Corrigé : aigu (< 90°)"]),
-    m("PROBLÈME","Méthode DICO — révision et problèmes multi-étapes",
-      "Réviser la méthode et traiter des problèmes à 3 étapes avant la proportionnalité CM1.",
-      ["Rappel de la méthode DICO","Résoudre 2 problèmes à 2 étapes : correction commentée","Résoudre 1 problème à 3 étapes","Vérification : calcul inverse et estimation","Nouveauté CM1 : proportionnalité, tableaux, graphiques","Discussion : types d'erreurs fréquentes","Objectifs CM1 : problèmes avec décimaux, pourcentages, vitesse-distance-durée"],
-      ["Un commerçant achète 8 sacs de riz à 60 000 Ar et revend chaque kg à 1 400 Ar (50 kg/sac). Bénéfice ? → Corrigé : Achat=480 000 Ar ; Vente=560 000 Ar ; Bénéfice=80 000 Ar","Invente un problème à 2 étapes dont la réponse est 250 → Corrigé : réponse libre","Identifie les données : 'Un cycliste roule à 15 km/h pendant 4 h.' → Corrigé : vitesse=15 km/h, durée=4 h"]),
-    m("SCIENCES","Bilan CE2 — corps humain, écologie et matière",
-      "Faire le point sur les acquis CE2 pour démarrer les sciences CM1.",
-      ["Quiz : les systèmes du corps humain vus en CE2","Révision : chaîne alimentaire, réseau trophique","États de la matière et changements d'état","Nouveautés CM1 : système nerveux, reproduction, énergie, environnement","Démarche scientifique : observer, questionner, émettre hypothèse, expérimenter, conclure","Présenter le programme","Objectifs sciences CM1"],
-      ["Cite 4 systèmes du corps humain → Corrigé : digestif, respiratoire, circulatoire, nerveux","Construis une chaîne alimentaire de 4 maillons → Corrigé : ex. feuilles → criquet → grenouille → héron","Qu'est-ce que l'évaporation ? → Corrigé : Transformation d'un liquide en gaz sous l'effet de la chaleur"]),
-    m("GÉOGRAPHIE","Bilan CE2 — Madagascar et l'Afrique",
-      "Évaluer les acquis géographiques et préparer l'étude des autres continents.",
-      ["Quiz muet : localiser 8 villes et régions de Madagascar","Quiz : 5 pays et capitales d'Afrique","Revoir le relief africain : Sahara, forêt équatoriale, savane","Nouveautés CM1 : les 7 continents, grandes puissances, environnement mondial","Localiser les continents sur le planisphère","Afficher la carte du monde","Objectifs CM1 : lire des cartes thématiques"],
-      ["Cite les 6 provinces de Madagascar → Corrigé : Antananarivo, Fianarantsoa, Toamasina, Mahajanga, Toliara, Antsiranana","Quel est le plus long fleuve d'Afrique ? → Corrigé : le Nil","Cite les 7 continents → Corrigé : Afrique, Amérique du Nord, Amérique du Sud, Antarctique, Asie, Europe, Océanie"]),
-    m("TANTARA","Bilan CE2 — histoire de Madagascar et du monde",
-      "Réviser la chronologie historique et préparer les thèmes approfondis de CM1.",
-      ["Ligne du temps : de la préhistoire à nos jours","Quiz : histoire de Madagascar (peuplement, royaumes, colonisation, indépendance)","Quiz : grandes périodes de l'histoire mondiale","Nouveautés CM1 : empires africains, traite négrière, colonisation, sources primaires","Analyse d'un document simple (photo, texte)","Présenter le programme","Objectifs : lire une source, comparer des époques"],
-      ["Place sur la ligne du temps : la colonisation française de Madagascar (1896) → Corrigé : fin 19ème siècle","Nomme 3 royaumes de Madagascar → Corrigé : Imerina, Sakalava, Betsileo","Qu'est-ce qu'une source primaire ? → Corrigé : Un document datant de l'époque étudiée (lettre, monnaie, dessin)"]),
-    m("MALAGASY","Bilan CE2 — texte narratif, grammaire et vocabulaire",
-      "Évaluer le niveau en malagasy et présenter les objectifs CM1.",
-      ["Lecture à voix haute : texte narratif de 12 lignes","Questions de compréhension : explicites et implicites","Grammaire : classes de mots (anarana, matoanteny, mpamaritery, mpamaritra)","Conjugaison : ankehitriny, lasa, ho avy","Dictée de 8 mots","Expression écrite : 4 phrases sur la rentrée","Objectifs CM1 : textes argumentatifs, discours direct, vocabulaire littéraire"],
-      ["Donne l'infinitif du verbe dans : 'Ny mpianatra dia nianatra tamim-pahazotoana' → Corrigé : mianatra","Écris au passé : 'Izy dia mihira hira malagasy' → Corrigé : Izy dia nihira hira malagasy","Que signifie 'kojakoja' ? → Corrigé : des affaires, des objets divers"]),
-    m("FRANÇAIS","Bilan CE2 — lecture, grammaire et expression écrite",
-      "Évaluer les acquis CE2 et présenter les objectifs CM1.",
-      ["Lecture et compréhension : texte de 15 lignes, questions explicites et implicites","Grammaire : nature des mots (noms, verbes, adjectifs, pronoms, adverbes)","Fonctions : sujet, COD, COI, CC lieu/temps/manière","Conjugaison : présent, passé composé, imparfait, futur — tous groupes","Dictée de 5 phrases de révision","Rédaction : 'Mon meilleur souvenir des vacances — 6 lignes'","Objectifs CM1 : passé simple, subjonctif, lecture analytique, rédaction argumentée"],
-      ["Nature et fonction de 'rapidement' dans 'Elle court rapidement.' → Corrigé : adverbe — CC de manière","Conjugue 'prendre' au passé composé (ils) → Corrigé : ils ont pris","Réécris au pluriel : 'Le petit chien court après le chat.' → Corrigé : Les petits chiens courent après les chats."]),
-    m("ANGLAIS","Welcome to CM1 — Revision and new English programme",
-      "Assess CE2 English level and introduce CM1 programme: past tense, storytelling, longer reading.",
-      ["Greeting and conversation: 'How was your holiday?'","CE2 revision: present simple, present continuous, future (going to)","New in CM1: simple past (regular and irregular), modal verbs (can, must, should)","Vocabulary quiz: 25 words from CE2 programme","Short reading comprehension: 10-line text","Programme overview: stories, grammar, writing, conversation","Class contract in English"],
-      ["Write 3 sentences about your last holiday in past simple → Corrigé : I visited my grandparents. I played. I read. (libre)","What is the past simple of 'go'? → Corrigé : went","Make a question: 'She likes football.' → Corrigé : Does she like football?"]),
-    m("FFMOM","Valeurs CM1 — responsabilité, citoyenneté et leadership",
-      "Renforcer les valeurs civiques et préparer les élèves à un rôle actif dans l'école.",
-      ["Rappel des valeurs fondamentales : respect, honnêteté, solidarité, travail","Nouveauté CM1 : responsabilité citoyenne et leadership","Discussion : 'Qu'est-ce qu'un bon citoyen ?'","Rôles en classe : délégué, responsable du matériel, tuteur","Élaborer la charte de classe CM1 collectivement","Signature de l'engagement","Hymne national"],
-      ["Cite 3 droits et 3 devoirs d'un citoyen → Corrigé : droits : éducation, santé, sécurité ; devoirs : respecter les lois, aider la communauté","Qu'est-ce que le leadership ? → Corrigé : La capacité à guider et motiver un groupe vers un objectif","Comment être un leader dans ta classe ? → Corrigé : être exemplaire, aider les camarades, proposer des idées"]),
-    m("EPS","Bilan physique CE2 — tests de condition physique",
-      "Évaluer les capacités physiques de base pour planifier le programme EPS CM1.",
-      ["Tests : course 100 m (chrono), saut en longueur (mesure), lancer (distance)","Test de souplesse : toucher la pointe des pieds","Test de coordination : parcours d'obstacles","Activité de cohésion : relais en équipe","Présenter le programme EPS CM1","Règles de sécurité et d'hygiène","Élire le capitaine sportif"],
-      ["Quel est ton temps sur 100 m ? → Corrigé : noter pour comparaison en fin d'année","Jusqu'où sautes-tu en longueur ? → Corrigé : mesurer et noter","Nomme les 3 principes du fair-play → Corrigé : respecter l'adversaire, accepter le résultat, jouer selon les règles"]),
+    m("MALAGASY","PRE-REQUIS ET ORIENTATION — Vakiteny",
+      "Accueillir les élèves, présenter l'organisation de l'année et évaluer les acquis antérieurs en lecture (vakiteny) malagasy pour identifier les besoins de l'année.",
+      ["Accueil des élèves : tour de table des présentations (prénom, quartier, famille)","Présenter l'organisation de l'année scolaire : périodes, évaluations, congés","Distribuer et lire ensemble le règlement intérieur de la classe","Test de pré-requis : lecture à voix haute d'un texte malagasy court","Questions de compréhension du texte : qui ? quoi ? où ? quand ?","Correction collective et identification des élèves ayant des difficultés de lecture","Distribuer les cahiers, étiqueter le matériel, organiser la classe"],
+      ["Lis ce texte à voix haute : 'Ny mpianatra dia tonga any am-pianarana maraina.' → Corrigé : lecture évaluée par l'enseignant","Réponds : Rahoviana no tonga ny mpianatra ? → Corrigé : Maraina (le matin)","Fais une phrase avec le mot 'fianarana' → Corrigé : réponse individuelle évaluée"]),
   ],
 },
 
-// ── CM1 S2 : Nombres jusqu'à 100 000 · Système nerveux · Afrique ─────────────
+// ── 8ème S2 : Nombres jusqu'à 100 000 · Système nerveux · Afrique ─────────────
 {
   n: 2, dateDebut: "2025/09/08",
-  theme: "CM1 — Nombres jusqu'à 100 000 · Système nerveux · L'Afrique",
+  theme: "Nombres jusqu'à 100 000 · Système nerveux · L'Afrique",
   sousTheme: "Numération 100 000 · Le cerveau et les nerfs · Relief et pays d'Afrique",
   matieres: [
     m("ARITHMÉTIQUE","Numération : les nombres jusqu'à 100 000",
@@ -4312,7 +4184,7 @@ const P1_8: SemaineRaw[] = [
       ["Situer dans le temps : IVe–XVIe siècles","L'empire du Ghana (IVe–XIe) : or et sel","L'empire du Mali (XIIIe–XVe) : Soundjata Keïta, Mansa Moussa","L'empire du Songhaï (XVe–XVIe) : Askia Mohamed","Le royaume du Kanem-Bornou : Lac Tchad","Commerce trans-saharien : caravanes, routes commerciales","Documenter sur la carte de l'Afrique médiévale"],
       ["Quel empire était dirigé par Mansa Moussa ? → Corrigé : l'empire du Mali","Quel produit faisait la richesse de l'empire du Ghana ? → Corrigé : l'or (et le sel)","Où se situe l'empire du Songhaï ? → Corrigé : Afrique de l'Ouest (actuel Mali/Niger)"]),
     m("MALAGASY","Lecture analytique — récit malagasy",
-      "Lire et analyser un texte narratif malagasy de niveau CM1.",
+      "Lire et analyser un texte narratif malagasy de niveau 8ème.",
       ["Lecture silencieuse puis à voix haute : texte narratif de 20 lignes","Vocabulaire : identifier les mots inconnus et les définir","Questions de compréhension littérale (qui, quoi, où, quand)","Questions d'inférence (pourquoi, comment, que penses-tu ?)","Structure du récit : situation initiale, élément perturbateur, péripéties, résolution","Identifier le narrateur et le point de vue","Rédiger un résumé de 5 lignes"],
       ["Qui est le personnage principal du récit ? → Corrigé : réponse selon le texte étudié","Identifie l'élément perturbateur du récit → Corrigé : réponse selon le texte","Résume le texte en 3 phrases → Corrigé : évaluation de la synthèse"]),
     m("FRANÇAIS","Texte descriptif — lire et produire",
@@ -4334,10 +4206,10 @@ const P1_8: SemaineRaw[] = [
   ],
 },
 
-// ── CM1 S3 : Multiplication · Fractions équivalentes · Sols ──────────────────
+// ── 8ème S3 : Multiplication · Fractions équivalentes · Sols ──────────────────
 {
   n: 3, dateDebut: "2025/09/15",
-  theme: "CM1 — Multiplication posée · Fractions · Les sols et les roches",
+  theme: "Multiplication posée · Fractions · Les sols et les roches",
   sousTheme: "Produit 2×2 chiffres · Fractions équivalentes · Types de roches",
   matieres: [
     m("ARITHMÉTIQUE","Multiplication posée : 2 nombres à 2 chiffres",
@@ -4391,15 +4263,15 @@ const P1_8: SemaineRaw[] = [
   ],
 },
 
-// ── CM1 S4 : Division euclidienne · Cercle · Colonisation ────────────────────
+// ── 8ème S4 : Division euclidienne · Cercle · Colonisation ────────────────────
 {
   n: 4, dateDebut: "2025/09/22",
-  theme: "CM1 — Division euclidienne · Le cercle · La colonisation de l'Afrique",
+  theme: "Division euclidienne · Le cercle · La colonisation de l'Afrique",
   sousTheme: "Division avec reste · Rayon, diamètre, compas · Partage du monde",
   matieres: [
     m("ARITHMÉTIQUE","Division euclidienne — diviseur à 1 puis 2 chiffres",
       "Maîtriser la division euclidienne et interpréter le quotient et le reste.",
-      ["Rappel : division sans reste (exacte) vue en CE2","Introduire le reste : 17 ÷ 5 = 3 reste 2","Vocabulaire : dividende, diviseur, quotient, reste","Division posée avec diviseur à 1 chiffre","Division posée avec diviseur à 2 chiffres (introduire)","Interpréter : reste 0 = division exacte","5 exercices de division avec correction"],
+      ["Rappel : division sans reste (exacte) vue en 9ème","Introduire le reste : 17 ÷ 5 = 3 reste 2","Vocabulaire : dividende, diviseur, quotient, reste","Division posée avec diviseur à 1 chiffre","Division posée avec diviseur à 2 chiffres (introduire)","Interpréter : reste 0 = division exacte","5 exercices de division avec correction"],
       ["Calcule : 127 ÷ 4 = ? → Corrigé : 31 reste 3 (car 31×4=124 et 127−124=3)","Vrai ou faux : 145 ÷ 7 = 20 reste 5 ? → Corrigé : Vrai (20×7=140, 145−140=5)","Résous : 84 livres à répartir en paquets de 6 ; combien de paquets complets ? → Corrigé : 84÷6=14 paquets exactement"]),
     m("MESURE","Volumes — introduction : cube et pavé",
       "Introduire la notion de volume et calculer le volume du cube et du pavé.",
@@ -4450,71 +4322,27 @@ const P1_8: SemaineRaw[] = [
 
 ]; // fin P1_8
 
-// ─── 7ème (CM2) — Septembre S1-S4 ────────────────────────────────────────────
+// ─── 7ème — Septembre S1-S4 ────────────────────────────────────────────
 
 const P1_7: SemaineRaw[] = [
 
-// ── CM2 S1 : Semaine d'orientation ───────────────────────────────────────────
+// ── 7ème S1 : Semaine d'orientation ───────────────────────────────────────────
 {
   n: 1, dateDebut: "2025/09/01",
-  theme: "Rentrée CM2 — Bilan CM1 et orientation",
-  sousTheme: "Test diagnostique · Programme CM2 · Engagement citoyen",
+  theme: "Semaine d'orientation",
+  sousTheme: "Accueil des élèves et prise de contact en calcul",
   matieres: [
-    m("ARITHMÉTIQUE","Bilan CM1 — nombres jusqu'à 100 000, fractions, décimaux",
-      "Évaluer les acquis CM1 avant d'aborder les millions, les opérations sur fractions et les décimaux CM2.",
-      ["Test d'entrée : nombres jusqu'à 100 000 — lecture, écriture, comparaison","Fractions : comparer, réduire, fractions décimales","Décimaux : lire, écrire, comparer","4 opérations sur des nombres décimaux (révision)","Correction collective","Identifier les lacunes individuelles","Présenter le programme CM2 : nombres jusqu'à 1 000 000, fractions 4 opérations, statistiques, proportionnalité"],
-      ["Décompose 83 472 en dizaines de milliers, unités de milliers, centaines, dizaines, unités → Corrigé : 8 DM + 3 UM + 4 C + 7 D + 2 U","Compare : 2/3 et 3/4 → Corrigé : 8/12 vs 9/12 → 2/3 < 3/4","Calcule : 12,7 + 8,45 = ? → Corrigé : 21,15"]),
-    m("MESURE","Bilan CM1 — unités, aires et volumes",
-      "Réviser les mesures CM1 et préparer les calculs complexes CM2.",
-      ["Révision : longueur, masse, capacité — conversions multi-étapes","Aire : rectangle, carré, triangle — formules et calculs","Volume : cube et pavé — calculs","Temps : heures, minutes, secondes et calculs complexes","Quiz de 12 questions","Correction","Objectifs CM2 : cercle (périmètre, aire), données statistiques, mesures complexes"],
-      ["Convertis : 2,5 km = ___ m → Corrigé : 2 500 m","Aire d'un triangle de base 14 cm et hauteur 9 cm → Corrigé : 14×9÷2 = 63 cm²","Volume d'un cube de côté 6 cm → Corrigé : 216 cm³"]),
-    m("GÉOMÉTRIE","Bilan CM1 — figures, angles, cercle, droites remarquables",
-      "Évaluer les acquis géométriques CM1 et préparer les constructions CM2.",
-      ["Quiz : identifier et construire des figures (compas, règle, équerre, rapporteur)","Les angles : mesurer et tracer","Le cercle : rayon, diamètre, construire","Droites parallèles et perpendiculaires","Axe de symétrie : figure symétrique","Nouveau CM2 : symétrie centrale, agrandissement/réduction, théorème de Pythagore (intro)","Exercice de construction libre"],
-      ["Trace un triangle rectangle de côtés 6 cm et 8 cm → Corrigé : vérifier le tracé à l'équerre","Mesure l'angle obtus dans ce quadrilatère (donner figure) → Corrigé : mesurer avec rapporteur","Construis la figure symétrique de ce triangle par rapport à l'axe (d) → Corrigé : vérifier la symétrie"]),
-    m("PROBLÈME","Bilan CM1 — proportionnalité et problèmes complexes",
-      "Réviser la proportionnalité et préparer les problèmes statistiques et de pourcentages CM2.",
-      ["Rappel : tableau de proportionnalité et règle de trois","Résoudre 2 problèmes de proportionnalité","Rappel : problèmes de vitesse-distance-durée","Nouveau CM2 : pourcentages, statistiques (moyenne, médiane), problèmes multi-domaines","Exercice de révision autonome","Correction","Objectifs CM2 : problèmes complexes réels (budget, consommation, elections)"],
-      ["Si 5 kg de tomates coûtent 7 500 Ar, combien coûtent 12 kg ? → Corrigé : 7500÷5×12 = 18 000 Ar","Un train parcourt 540 km en 6 h. Quelle est sa vitesse ? → Corrigé : 90 km/h","Qu'est-ce qu'un pourcentage ? → Corrigé : Une fraction de dénominateur 100 (ex : 30% = 30/100 = 0,30)"]),
-    m("SCIENCES","Bilan CM1 — systèmes, énergie, reproduction",
-      "Faire le point sur les acquis CM1 en sciences avant d'aborder la CM2.",
-      ["Quiz : le système nerveux (cerveau, moelle, nerfs, réflexes)","Quiz : la reproduction végétale et animale","L'énergie en CM1 : formes et transformations","Nouveautés CM2 : la reproduction humaine (éducation à la vie), l'électricité avancée, les machines","Démarche d'investigation : rappel et application","Présenter le programme","Objectifs : expériences, synthèses, schémas fonctionnels"],
-      ["Cite 3 types d'énergie → Corrigé : cinétique (mouvement), thermique (chaleur), lumineuse, électrique (exemples)","Qu'est-ce que la pollinisation ? → Corrigé : Transport du pollen vers le pistil pour permettre la fécondation","Quel est le rôle du cervelet ? → Corrigé : Coordonner les mouvements et l'équilibre"]),
-    m("GÉOGRAPHIE","Bilan CM1 — les continents, puissances, environnement",
-      "Réviser la géographie mondiale CM1 et préparer les sujets CM2.",
-      ["Quiz : les 7 continents — superficie, population, caractéristiques","Les grandes puissances : États-Unis, Chine, UE, Russie, Inde","L'environnement mondial : changement climatique, ressources, biodiversité","Nouveautés CM2 : mondialisation, ODD (Objectifs de Développement Durable), géographie économique","Localiser 30 pays sur le planisphère","Présenter le programme","Objectifs : lire des cartes thématiques complexes"],
-      ["Quel est le continent le plus peuplé ? → Corrigé : l'Asie (environ 4,7 milliards d'habitants)","Cite les 5 membres permanents du Conseil de sécurité de l'ONU → Corrigé : États-Unis, Russie, Chine, France, Royaume-Uni","Qu'est-ce que la mondialisation ? → Corrigé : Processus d'interconnexion économique, culturelle et politique entre les pays"]),
-    m("TANTARA","Bilan CM1 — empires africains, traite, colonisation",
-      "Réviser l'histoire CM1 et préparer les sujets CM2 : indépendances, monde contemporain.",
-      ["Quiz : les grands empires africains du Moyen Âge","Quiz : la traite négrière — faits, dates, conséquences","Quiz : la colonisation — Conférence de Berlin, formes, Madagascar 1896","Nouveautés CM2 : décolonisation, guerres mondiales, histoire contemporaine de Madagascar","Travailler sur une source : analyser une photo historique","Présenter le programme","Objectifs : dissertation historique simple, chronologie complexe"],
-      ["Quelle conférence a partagé l'Afrique entre les puissances européennes ? → Corrigé : la Conférence de Berlin (1884-1885)","Cite 2 résistances africaines à la colonisation → Corrigé : le soulèvement du 1947 à Madagascar, la résistance d'Abomey au Dahomey (exemples)","Qu'est-ce que la décolonisation ? → Corrigé : Processus par lequel les colonies obtiennent leur indépendance (surtout années 1950-1970)"]),
-    m("MALAGASY","Bilan CM1 — récit, discours direct, lettre",
-      "Réviser les acquis CM1 et présenter le programme CM2 en malagasy.",
-      ["Lecture à voix haute : texte narratif de 25 lignes","Analyse : structure du récit, personnages, point de vue","Grammaire : révision complète des classes de mots et fonctions","Discours direct et indirect : rappel","Dictée de 10 mots ou phrases courtes","Production : résumé du texte en 6 lignes","Objectifs CM2 : texte argumentatif, poésie, discours officiel, vocabulaire soutenu"],
-      ["Identifie le thème principal du texte lu → Corrigé : réponse selon le texte","Transforme en discours indirect : 'Hoy i Ravao : Mianatra aho' → Corrigé : Nilaza i Ravao fa mianatra izy","Écris 3 synonymes de 'mihaino' → Corrigé : mihaino, mandre, mandray sary (selon le contexte)"]),
-    m("FRANÇAIS","Bilan CM1 — grammaire, conjugaison, rédaction",
-      "Faire le point sur les acquis CM1 et présenter les objectifs CM2.",
-      ["Lecture analytique : texte littéraire de 20 lignes (figure de style, registre)","Grammaire : fonctions du GN, propositions, connecteurs logiques","Conjugaison : passé simple et plus-que-parfait (introduire)","Révision : accord sujet-verbe, accord des participes","Dictée de 8 lignes (texte littéraire niveau CM1)","Production : 'Ma ville idéale — 10 lignes'","Objectifs CM2 : texte argumentatif, discours, figures de style avancées"],
-      ["Identifie la proposition subordonnée : 'Je pense que tu as raison.' → Corrigé : 'que tu as raison' (subordonnée complétive)","Conjugue 'venir' au passé simple (ils) → Corrigé : ils vinrent","Quelle figure de style est utilisée dans 'Ses yeux sont des étoiles' ? → Corrigé : métaphore"]),
-    m("ANGLAIS","Welcome to CM2 — Revision and advanced programme",
-      "Assess CM1 English level and introduce CM2 programme: complex grammar, extended writing, literature.",
-      ["Conversation: 'What did you do during CM1? What was your favourite topic?'","Revision: simple past, modal verbs, conditional type 1","New in CM2: conditional type 2, reported speech, passive voice, formal writing","Reading: paragraph from a story — comprehension and vocabulary","Vocabulary quiz: 30 words from CM1","Programme overview and goals","Set up English journal"],
-      ["Translate: 'Si j'avais plus de temps, j'étudierais davantage.' → Corrigé : If I had more time, I would study more.","Change to reported speech: 'She said, I am tired.' → Corrigé : She said that she was tired.","Write a short paragraph about your ideal school in 5 sentences → Corrigé : réponse libre"]),
-    m("FFMOM","L'engagement citoyen — voter, participer, agir",
-      "Comprendre le rôle du citoyen engagé dans une démocratie.",
-      ["Rappel : démocratie — les élections, le vote","Les formes d'engagement citoyen : voter, militer, bénévolat, créer une association","À Madagascar : les élections présidentielles, législatives, communales","La société civile : rôle des ONG, des médias, des syndicats","Les jeunes citoyens : conseil municipal des jeunes, clubs scolaires","Débat : 'Quel engagement citoyen peux-tu avoir à ton âge ?'","Présenter le programme d'éducation civique CM2"],
-      ["Qu'est-ce que le suffrage universel ? → Corrigé : Droit de vote accordé à tous les citoyens adultes sans distinction","Cite 3 formes d'engagement citoyen → Corrigé : voter, faire du bénévolat, rejoindre une association","Quel est l'âge minimum pour voter à Madagascar ? → Corrigé : 18 ans"]),
-    m("EPS","Bilan physique CM1 — tests et programme EPS CM2",
-      "Évaluer les capacités physiques et présenter le programme sportif CM2.",
-      ["Tests physiques : course 100 m, saut en longueur, lancer du javelot léger","Test de résistance : course 6 minutes (distance totale)","Test de souplesse et de coordination","Activité de cohésion : tournoi en équipes","Présenter le programme EPS CM2 : athlétisme complet, sports collectifs, art du mouvement","Élire le comité sportif de la classe","Établir la charte sportive"],
-      ["Quel est ton temps sur 100 m ce début d'année ? → Corrigé : noter le résultat","Quelle distance parcours-tu en 6 minutes de course ? → Corrigé : mesurer pour progression annuelle","Propose une règle pour améliorer l'ambiance lors des matchs → Corrigé : réponse libre et collégiale"]),
+    m("CALCUL","Prise de Contact / Test de pré-requis",
+      "Accueillir les élèves, présenter l'organisation de l'année et évaluer les acquis antérieurs en calcul pour orienter le programme de 7ème.",
+      ["Accueil des élèves : tour de table des présentations (prénom, quartier, famille, loisirs)","Présenter l'organisation de l'année scolaire : périodes, évaluations, congés","Distribuer et lire ensemble le règlement intérieur de la classe","Test de pré-requis écrit : numération jusqu'à 100 000, 4 opérations, fractions simples, décimaux","Correction collective et identification des lacunes prioritaires","Présenter les objectifs de la 7ème en calcul : jusqu'au milliard, fractions avancées, statistiques","Distribuer les cahiers, étiqueter le matériel, organiser la classe"],
+      ["Décompose 83 472 en dizaines de milliers, unités de milliers, centaines, dizaines, unités → Corrigé : 8 DM + 3 UM + 4 C + 7 D + 2 U","Calcule : 12,7 + 8,45 = ? → Corrigé : 21,15","Compare : 2/3 et 3/4 → Corrigé : 8/12 vs 9/12 → 2/3 < 3/4"]),
   ],
 },
 
-// ── CM2 S2 : Nombres jusqu'à 1 000 000 · Reproduction · Continents ───────────
+// ── 7ème S2 : Nombres jusqu'à 1 000 000 · Reproduction · Continents ───────────
 {
   n: 2, dateDebut: "2025/09/08",
-  theme: "CM2 — Nombres jusqu'à 1 000 000 · La reproduction · Les continents",
+  theme: "Nombres jusqu'à 1 000 000 · La reproduction · Les continents",
   sousTheme: "Millions, milliards · Êtres vivants se perpétuent · Les 7 continents en détail",
   matieres: [
     m("ARITHMÉTIQUE","Numération : les nombres jusqu'au milliard",
@@ -4561,17 +4389,17 @@ const P1_7: SemaineRaw[] = [
       "Développer des outils pour résoudre les conflits de manière pacifique.",
       ["Définir la paix : absence de guerre et de violence, mais aussi justice sociale","Les types de conflits : personnel, familial, communautaire, international","Causes des conflits : intérêts contradictoires, mauvaise communication, injustice","Méthodes de résolution : dialogue, médiation, négociation, arbitrage","La non-violence : Gandhi, Nelson Mandela, Martin Luther King","Le rôle de l'ONU : maintien de la paix, résolution des conflits","Jeu de rôle : résoudre un conflit scolaire par le dialogue"],
       ["Cite 3 méthodes de résolution non-violente des conflits → Corrigé : dialogue, médiation, négociation","Qui est Gandhi ? → Corrigé : Leader indien qui a lutté pour l'indépendance de l'Inde par la non-violence","Quel organe de l'ONU est chargé du maintien de la paix ? → Corrigé : le Conseil de sécurité"]),
-    m("EPS","Athlétisme — décathlon CM2 : lancer de javelot",
+    m("EPS","Athlétisme — décathlon 7ème : lancer de javelot",
       "Apprendre la technique de base du lancer de javelot et progresser en précision.",
       ["Échauffement : mobilisation des épaules, course légère","Présenter le javelot : prise en main, sécurité (zones d'exclusion)","Technique de base : position latérale, bras lanceur tendu en arrière, rotation","Lancer à distance croissante : 5 m, 10 m, 15 m","Mesurer les meilleures tentatives","Travail de précision : viser une zone cible","Étirements et bilan"],
       ["Comment tenir un javelot correctement ? → Corrigé : Prise en main sur le grip (enroulement), pouce et index en appui","Pourquoi doit-on instaurer des zones d'exclusion lors du lancer ? → Corrigé : Pour éviter les blessures : personne ne doit être dans la trajectoire du javelot","Quel est ton meilleur lancer en distance ? → Corrigé : noter le résultat pour progression"]),
   ],
 },
 
-// ── CM2 S3 : Fractions 4 opérations · Énergie · Colonisation ─────────────────
+// ── 7ème S3 : Fractions 4 opérations · Énergie · Colonisation ─────────────────
 {
   n: 3, dateDebut: "2025/09/15",
-  theme: "CM2 — Fractions : 4 opérations · L'énergie · La colonisation",
+  theme: "Fractions : 4 opérations · L'énergie · La colonisation",
   sousTheme: "Addition et soustraction de fractions · Formes d'énergie · Grandes découvertes et colonisation",
   matieres: [
     m("ARITHMÉTIQUE","Fractions : addition et soustraction",
@@ -4584,7 +4412,7 @@ const P1_7: SemaineRaw[] = [
       ["Si à Antananarivo il est 14 h, quelle heure est-il à Paris (UTC+1) ? → Corrigé : 14h − 2h = 12h (car Madagascar est UTC+3)","Un avion décolle d'Antananarivo à 22 h et atterrit à Paris après 11 h de vol. Heure d'arrivée à Paris ? → Corrigé : 22h+11h=9h+1h décalage=10h à Paris","Pourquoi les fuseaux horaires existent-ils ? → Corrigé : Parce que la Terre tourne, le soleil ne brille pas au même moment partout"]),
     m("GÉOMÉTRIE","Symétrie centrale",
       "Identifier et construire l'image d'une figure par symétrie centrale.",
-      ["Définir la symétrie centrale : le centre de symétrie","Différence avec la symétrie axiale (vue en CM1)","Trouver l'image d'un point par rapport au centre O : O est le milieu de [AA']","Construire l'image d'un segment","Construire l'image d'un triangle par symétrie centrale","Figures ayant un centre de symétrie : cercle, losange, rectangle","Exercices de construction"],
+      ["Définir la symétrie centrale : le centre de symétrie","Différence avec la symétrie axiale (vue en 8ème)","Trouver l'image d'un point par rapport au centre O : O est le milieu de [AA']","Construire l'image d'un segment","Construire l'image d'un triangle par symétrie centrale","Figures ayant un centre de symétrie : cercle, losange, rectangle","Exercices de construction"],
       ["Si O est le centre et A a pour coordonnées (2;3), où est A' ? → Corrigé : A' est à (−2;−3) si O est à l'origine (symétrie par rapport à l'origine)","Le triangle ABC a-t-il un centre de symétrie ? → Corrigé : non (sauf si équilatéral — non, il n'a que des axes de symétrie)","Quelle figure simple a un nombre infini de centres de symétrie ? → Corrigé : le cercle"]),
     m("PROBLÈME","Les pourcentages — calculer une proportion",
       "Comprendre et calculer des pourcentages dans des contextes réels.",
@@ -4625,10 +4453,10 @@ const P1_7: SemaineRaw[] = [
   ],
 },
 
-// ── CM2 S4 : Décimaux avancés · Proportionnalité · Indépendances ─────────────
+// ── 7ème S4 : Décimaux avancés · Proportionnalité · Indépendances ─────────────
 {
   n: 4, dateDebut: "2025/09/22",
-  theme: "CM2 — Décimaux et pourcentages · Statistiques · Les indépendances africaines",
+  theme: "Décimaux et pourcentages · Statistiques · Les indépendances africaines",
   sousTheme: "Opérations décimales · Moyenne et données · Décolonisation d'Afrique et de Madagascar",
   matieres: [
     m("ARITHMÉTIQUE","Les décimaux — les 4 opérations et l'arrondi",
@@ -5379,10 +5207,10 @@ async function main() {
   await seedPeriode('9eme', 4, P4_9);
   await seedPeriode('9eme', 5, P5_9);
 
-  console.log('=== Seed répartition 8ème (CM1) — Septembre ===');
+  console.log('=== Seed répartition 8ème — Septembre ===');
   await seedPeriode('8eme', 1, P1_8);
 
-  console.log('=== Seed répartition 7ème (CM2) — Septembre ===');
+  console.log('=== Seed répartition 7ème — Septembre ===');
   await seedPeriode('7eme', 1, P1_7);
 
   console.log('=== Seed répartition 11ème (CP) — Septembre ===');
