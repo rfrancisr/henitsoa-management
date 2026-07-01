@@ -12,6 +12,7 @@ const ARTICLES = [
     excerpt:
       "Une performance historique. L'un de nos élèves a décroché la 1ère place au classement national du CEPE 2026, devenant lauréat de Madagascar. Fruit de 40 ans de rigueur pédagogique et d'un accompagnement quotidien de nos enseignants, cette distinction est une immense fierté pour toute la communauté Henitsoa.",
     image: "/site/prof2.jpg",
+    stripe: "#FF7043",
     featured: true,
   },
   {
@@ -22,6 +23,7 @@ const ARTICLES = [
     excerpt:
       "Un laboratoire de 20 postes entièrement équipé ouvre ses portes aux élèves du primaire et du collège, pour les initier à la programmation dans des conditions optimales.",
     image: "/site/informatique.jpg",
+    stripe: "#4FC3F7",
     featured: false,
   },
   {
@@ -32,6 +34,7 @@ const ARTICLES = [
     excerpt:
       "Danse, arts plastiques, gastronomie malgache et performances en chinois ont marqué la journée culturelle annuelle.",
     image: "/site/art.jpg",
+    stripe: "#BA68C8",
     featured: false,
   },
   {
@@ -42,6 +45,7 @@ const ARTICLES = [
     excerpt:
       "Première école de la région à introduire le chinois mandarin au niveau primaire, Henitsoa confirme sa vision d'une éducation tournée vers l'avenir.",
     image: "/site/rova.jpg",
+    stripe: "#66BB6A",
     featured: false,
   },
   {
@@ -52,6 +56,7 @@ const ARTICLES = [
     excerpt:
       "L'équipe de football du collège a brillé lors du tournoi inter-écoles de Tsiroanomandidy, remportant le trophée après une finale époustouflante.",
     image: "/site/foot2.jpg",
+    stripe: "#FFD54F",
     featured: false,
   },
   {
@@ -62,9 +67,26 @@ const ARTICLES = [
     excerpt:
       "Nos élèves de 3ème ont démontré leur excellence lors du BEPC 2025. Un taux de réussite dont toute l'équipe est fière.",
     image: "/site/prof.jpg",
+    stripe: "#FF7043",
     featured: false,
   },
 ];
+
+function WaveDivider({ from, to }: { from: string; to: string }) {
+  return (
+    <svg
+      viewBox="0 0 1440 48"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      style={{ display: "block", background: from, marginBottom: -1 }}
+    >
+      <path
+        d="M0,32 C180,0 360,48 540,24 C720,0 900,48 1080,24 C1260,0 1350,40 1440,32 L1440,48 L0,48 Z"
+        fill={to}
+      />
+    </svg>
+  );
+}
 
 export default function ActualitesPage() {
   const { t } = useLang();
@@ -72,129 +94,255 @@ export default function ActualitesPage() {
   const rest = ARTICLES.filter((a) => !a.featured);
 
   return (
-    <div className="bg-white">
+    <div style={{ background: "#FDFBF6" }}>
 
-      {/* ── HERO — noir ── */}
-      <section className="min-h-[45vh] bg-black flex flex-col items-center justify-center text-center px-5 overflow-hidden relative">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] bg-[#C9A84C]/5 rounded-full blur-[80px]" />
+      {/* ── HERO ── */}
+      <section
+        className="flex flex-col items-center justify-center text-center px-6 py-24 sm:py-32"
+        style={{ background: "#2C2C3A" }}
+      >
+        <div
+          className="animate-fade-up inline-block text-white text-[11px] font-bold tracking-[0.1em] uppercase px-4 py-1.5 rounded-full mb-6"
+          style={{ background: "#4FC3F7", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+        >
+          Vie de l&apos;école
         </div>
-        <div className="relative z-10">
-          <div className="animate-fade-up text-[10px] tracking-[0.3em] font-semibold text-[#C9A84C] uppercase mb-6">
-            École Privée Henitsoa
-          </div>
-          <h1
-            className="animate-fade-up delay-200 font-bold text-white leading-tight"
-            style={{ fontSize: "clamp(2.8rem, 8vw, 6rem)", letterSpacing: "-0.028em" }}
-          >
-            {t.actualites.title}
-          </h1>
-          <div className="animate-fade-up delay-300 w-10 h-[1px] bg-[#C9A84C] mx-auto mt-8 mb-6" />
-          <p className="animate-fade-up delay-400 font-light text-white/40 max-w-sm mx-auto text-sm leading-[1.47]">
-            {t.actualites.subtitle}
-          </p>
-        </div>
+        <h1
+          className="animate-fade-up delay-200"
+          style={{
+            fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
+            fontSize: "clamp(3rem, 10vw, 7rem)",
+            color: "#FFD54F",
+            lineHeight: 1.1,
+          }}
+        >
+          {t.actualites.title}
+        </h1>
+        <p
+          className="animate-fade-up delay-300 mt-6 max-w-sm mx-auto"
+          style={{
+            color: "rgba(255,255,255,0.6)",
+            fontSize: "clamp(1rem, 2.2vw, 1.15rem)",
+            lineHeight: 1.55,
+            fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+            fontWeight: 600,
+          }}
+        >
+          {t.actualites.subtitle}
+        </p>
       </section>
 
-      {/* ── ARTICLE VEDETTE — blanc ── */}
-      <section className="py-20 sm:py-28 bg-white">
-        <div className="max-w-[980px] mx-auto px-5 sm:px-8">
+      <WaveDivider from="#2C2C3A" to="#FDFBF6" />
+
+      {/* ── ARTICLE VEDETTE ── */}
+      <section className="py-16 sm:py-20 px-5 sm:px-8" style={{ background: "#FDFBF6" }}>
+        <div className="max-w-[960px] mx-auto">
           <Reveal>
-            <div className="text-[10px] tracking-[0.25em] font-semibold text-[#C9A84C] uppercase mb-12">
-              À la une
-            </div>
-          </Reveal>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 border-t border-[#1d1d1f]/8 pt-12">
-            <Reveal>
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#C9A84C]">
-                  {featured.category}
-                </span>
-                <span className="text-[#1d1d1f]/20">·</span>
-                <time className="text-[10px] text-[#86868b] tracking-wide">{featured.date}</time>
-              </div>
-              <h2
-                className="font-bold text-[#1d1d1f] leading-tight mb-6"
-                style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.5rem)", letterSpacing: "-0.028em" }}
+            <div className="text-center mb-10">
+              <span
+                className="inline-block text-[11px] font-bold tracking-[0.12em] uppercase px-4 py-1.5 rounded-full"
+                style={{
+                  background: "#FFCCBC",
+                  color: "#BF360C",
+                  fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                }}
               >
-                {featured.title}
-              </h2>
-              <p className="text-[17px] text-[#6e6e73] leading-[1.47] mb-8">{featured.excerpt}</p>
-              <span className="text-[17px] text-[#C9A84C] hover:opacity-70 transition-opacity cursor-pointer">
-                {t.news.read_more} ›
+                À la une
               </span>
-            </Reveal>
-
-            <Reveal delay={150}>
-              <div className="rounded-[18px] overflow-hidden aspect-[4/3] relative">
-                <Image
-                  src={featured.image}
-                  alt={featured.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ── GRILLE ARTICLES — gris Apple ── */}
-      <section className="py-16 sm:py-20 bg-[#f5f5f7]">
-        <div className="max-w-[980px] mx-auto px-5 sm:px-8">
-          <Reveal>
-            <div className="text-[10px] tracking-[0.25em] font-semibold text-[#C9A84C] uppercase mb-10">
-              Toutes les actualités
             </div>
           </Reveal>
 
-          <div className="space-y-0">
-            {rest.map((article, i) => (
-              <Reveal key={article.id} delay={i * 60}>
-                <div className="group grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 border-t border-[#1d1d1f]/8 py-8 hover:border-[#C9A84C]/40 transition-colors cursor-pointer">
-                  <div className="sm:col-span-3 flex sm:flex-col gap-3 sm:gap-1.5 items-start">
-                    <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#C9A84C]">
-                      {article.category}
-                    </span>
-                    <time className="text-[10px] text-[#86868b] tracking-wide">{article.date}</time>
+          <Reveal>
+            <div
+              className="bg-white rounded-2xl overflow-hidden transition-all duration-200 hover:-translate-y-1"
+              style={{ border: "2px solid #FFCCBC" }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(255,112,67,0.15)";
+                (e.currentTarget as HTMLElement).style.borderColor = "#FF7043";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.boxShadow = "";
+                (e.currentTarget as HTMLElement).style.borderColor = "#FFCCBC";
+              }}
+            >
+              <div style={{ height: "8px", background: featured.stripe }} />
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="p-8 lg:p-10 flex flex-col justify-center">
+                  <div
+                    className="text-[11px] font-bold uppercase tracking-[0.08em] mb-3"
+                    style={{ color: "#90A4AE", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+                  >
+                    {featured.date} · {featured.category}
                   </div>
-                  <div className="sm:col-span-7">
-                    <h3 className="text-[17px] font-semibold text-[#1d1d1f] mb-2 leading-snug group-hover:text-[#C9A84C] transition-colors">
+                  <h2
+                    className="mb-4 leading-snug"
+                    style={{
+                      fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
+                      fontSize: "clamp(1.4rem, 2.5vw, 2rem)",
+                      color: "#2C2C3A",
+                      lineHeight: 1.25,
+                    }}
+                  >
+                    {featured.title}
+                  </h2>
+                  <p
+                    className="text-[14px] leading-relaxed mb-6"
+                    style={{ color: "#666", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+                  >
+                    {featured.excerpt}
+                  </p>
+                  <span
+                    className="text-[13px] font-bold"
+                    style={{
+                      color: "#FF7043",
+                      fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {t.news.read_more} →
+                  </span>
+                </div>
+                <div className="relative aspect-[4/3] lg:aspect-auto min-h-[240px]">
+                  <Image
+                    src={featured.image}
+                    alt={featured.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── GRILLE ARTICLES ── */}
+      <WaveDivider from="#FDFBF6" to="#EFF9FE" />
+      <section className="py-16 sm:py-20 px-5 sm:px-8" style={{ background: "#EFF9FE" }}>
+        <div className="max-w-[960px] mx-auto">
+          <Reveal>
+            <div className="text-center mb-10">
+              <span
+                className="inline-block text-[11px] font-bold tracking-[0.12em] uppercase px-4 py-1.5 rounded-full mb-4"
+                style={{
+                  background: "#B3E5FC",
+                  color: "#01579B",
+                  fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                }}
+              >
+                {t.news.tag}
+              </span>
+              <h2
+                style={{
+                  fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
+                  fontSize: "clamp(1.7rem, 3.5vw, 2.4rem)",
+                  color: "#2C2C3A",
+                  lineHeight: 1.2,
+                }}
+              >
+                Toutes les actualités
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {rest.map((article, i) => (
+              <Reveal key={article.id} delay={i * 80} className="h-full">
+                <div
+                  className="bg-white rounded-2xl overflow-hidden transition-all duration-200 hover:-translate-y-1 flex flex-col h-full"
+                  style={{ border: "2px solid #B3E5FC" }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 24px rgba(79,195,247,0.18)";
+                    (e.currentTarget as HTMLElement).style.borderColor = article.stripe;
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.boxShadow = "";
+                    (e.currentTarget as HTMLElement).style.borderColor = "#B3E5FC";
+                  }}
+                >
+                  <div style={{ height: "8px", background: article.stripe }} />
+                  <div className="p-5 flex flex-col flex-1">
+                    <div
+                      className="text-[11px] font-bold uppercase tracking-[0.08em] mb-1"
+                      style={{ color: "#90A4AE", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+                    >
+                      {article.date}
+                    </div>
+                    <div
+                      className="text-[11px] font-bold uppercase tracking-[0.06em] mb-3"
+                      style={{ color: "#AAA", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+                    >
+                      {article.category}
+                    </div>
+                    <h4
+                      className="mb-3 leading-snug flex-1"
+                      style={{
+                        fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
+                        fontSize: "1.05rem",
+                        color: "#2C2C3A",
+                        lineHeight: 1.3,
+                      }}
+                    >
                       {article.title}
-                    </h3>
-                    <p className="text-sm text-[#6e6e73] leading-[1.47] line-clamp-2">
+                    </h4>
+                    <p
+                      className="text-[13px] leading-relaxed mb-4"
+                      style={{ color: "#666", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+                    >
                       {article.excerpt}
                     </p>
-                  </div>
-                  <div className="sm:col-span-2 hidden sm:flex items-center justify-end gap-4">
-                    <div className="relative w-14 h-14 rounded-[8px] overflow-hidden shrink-0">
-                      <Image src={article.image} alt={article.title} fill sizes="56px" className="object-cover" />
-                    </div>
-                    <span className="text-[#1d1d1f]/15 group-hover:text-[#C9A84C] transition-colors text-xl">›</span>
+                    <span
+                      className="text-[13px] font-bold"
+                      style={{
+                        color: "#4FC3F7",
+                        fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                        cursor: "pointer",
+                      }}
+                    >
+                      {t.news.read_more} →
+                    </span>
                   </div>
                 </div>
               </Reveal>
             ))}
-            <div className="border-t border-[#1d1d1f]/8" />
           </div>
         </div>
       </section>
 
-      {/* ── NEWSLETTER — noir ── */}
-      <section className="py-24 sm:py-28 bg-black">
-        <div className="max-w-[680px] mx-auto px-5 sm:px-8 text-center">
+      {/* ── NEWSLETTER ── */}
+      <WaveDivider from="#EFF9FE" to="#2C2C3A" />
+      <section className="py-24 sm:py-28 px-5" style={{ background: "#2C2C3A" }}>
+        <div className="max-w-[680px] mx-auto text-center">
           <Reveal>
-            <div className="text-[10px] tracking-[0.3em] font-semibold text-[#C9A84C] uppercase mb-6">
+            <span
+              className="inline-block text-[11px] font-bold tracking-[0.1em] uppercase px-4 py-1.5 rounded-full mb-6"
+              style={{
+                background: "#BA68C8",
+                color: "#fff",
+                fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+              }}
+            >
               Newsletter
-            </div>
+            </span>
             <h2
-              className="font-bold text-white leading-tight mb-4"
-              style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", letterSpacing: "-0.028em" }}
+              className="text-white mb-5"
+              style={{
+                fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
+                fontSize: "clamp(2rem, 5vw, 3rem)",
+                lineHeight: 1.2,
+              }}
             >
               Restez informé
             </h2>
-            <p className="text-[#6e6e73] text-[17px] mb-10 max-w-sm mx-auto leading-[1.47]">
+            <p
+              className="mb-10 text-[15px]"
+              style={{
+                color: "rgba(255,255,255,0.5)",
+                fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                lineHeight: 1.6,
+              }}
+            >
               Recevez les actualités de l&apos;École Privée Henitsoa dans votre boîte mail.
             </p>
           </Reveal>
@@ -203,13 +351,46 @@ export default function ActualitesPage() {
               <input
                 type="email"
                 placeholder="votre@email.com"
-                className="flex-1 px-5 py-3.5 rounded-full bg-white/5 border border-white/10 text-white placeholder-[#86868b] text-sm focus:outline-none focus:border-[#C9A84C]/50 focus:bg-white/8 transition-all"
+                className="flex-1 px-5 py-3.5 rounded-full text-white text-sm focus:outline-none transition-all"
+                style={{
+                  background: "rgba(255,255,255,0.08)",
+                  border: "2px solid rgba(255,255,255,0.12)",
+                  fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                }}
+                onFocus={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,213,79,0.5)";
+                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.12)";
+                }}
+                onBlur={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.12)";
+                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.08)";
+                }}
               />
-              <button className="bg-[#0071e3] text-white px-7 py-3.5 rounded-full text-[15px] font-medium whitespace-nowrap hover:bg-[#0077ed] transition-colors duration-200">
+              <button
+                className="font-bold px-7 py-3.5 rounded-full text-white text-[15px] whitespace-nowrap transition-all duration-150"
+                style={{
+                  fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                  background: "#FF7043",
+                  boxShadow: "0 4px 0 #BF360C",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 0 #BF360C";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.transform = "";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 0 #BF360C";
+                }}
+              >
                 S&apos;inscrire
               </button>
             </div>
-            <p className="text-[11px] text-[#86868b] mt-4">Fonctionnalité disponible prochainement.</p>
+            <p
+              className="text-[11px] mt-4"
+              style={{ color: "#888", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+            >
+              Fonctionnalité disponible prochainement.
+            </p>
           </Reveal>
         </div>
       </section>
