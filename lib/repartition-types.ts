@@ -62,16 +62,18 @@ export function getMoisInfo(mois: string): MoisRepartitionInfo | undefined {
   return MOIS_REPARTITION.find(m => m.libelle === mois);
 }
 
-export const CLASSES_AVEC_REPARTITION = ['10eme', '9eme', '8eme', '7eme', '11eme', '12eme'] as const;
+export const CLASSES_AVEC_REPARTITION = ['jardindenfant', 'maternelle', '12eme', '11eme', '10eme', '9eme', '8eme', '7eme'] as const;
 export type ClasseSlug = typeof CLASSES_AVEC_REPARTITION[number];
 
 export const CLASSES_LABELS: Record<ClasseSlug, string> = {
+  'jardindenfant': 'Jardin d\'Enfants',
+  'maternelle':    'Maternelle',
+  '12eme': '12ème',
+  '11eme': '11ème',
   '10eme': '10ème',
   '9eme':  '9ème',
   '8eme':  '8ème',
   '7eme':  '7ème',
-  '11eme': '11ème',
-  '12eme': '12ème',
 };
 
 export const MAT_COLORS: Record<string, { border: string; badge: string; text: string; bg: string }> = {
@@ -111,6 +113,19 @@ export const MAT_COLORS: Record<string, { border: string; badge: string; text: s
   'CHANT':            { border: 'border-l-indigo-400',  badge: 'bg-indigo-50 text-indigo-700 border border-indigo-200',  text: 'text-indigo-700',  bg: 'bg-indigo-50' },
   'RÉCITATION':       { border: 'border-l-fuchsia-500', badge: 'bg-fuchsia-50 text-fuchsia-700 border border-fuchsia-200', text: 'text-fuchsia-700', bg: 'bg-fuchsia-50' },
   'T.M':              { border: 'border-l-stone-500',   badge: 'bg-stone-100 text-stone-700 border border-stone-300',    text: 'text-stone-700',   bg: 'bg-stone-100' },
+  // Jardin d'Enfant & Maternelle
+  'GRAPHISME':        { border: 'border-l-pink-400',    badge: 'bg-pink-50 text-pink-700 border border-pink-200',          text: 'text-pink-700',    bg: 'bg-pink-50' },
+  'PRE-LECTURE':      { border: 'border-l-emerald-500', badge: 'bg-emerald-50 text-emerald-700 border border-emerald-200', text: 'text-emerald-700', bg: 'bg-emerald-50' },
+  'PRE-ECRITURE':     { border: 'border-l-teal-500',    badge: 'bg-teal-50 text-teal-700 border border-teal-200',          text: 'text-teal-700',    bg: 'bg-teal-50' },
+  'PRE-CALCUL':       { border: 'border-l-blue-500',    badge: 'bg-blue-50 text-blue-700 border border-blue-200',          text: 'text-blue-700',    bg: 'bg-blue-50' },
+  'PRE-MATHS':        { border: 'border-l-cyan-500',    badge: 'bg-cyan-50 text-cyan-700 border border-cyan-200',          text: 'text-cyan-700',    bg: 'bg-cyan-50' },
+  'ESPACE PHYSIQUE':  { border: 'border-l-teal-500',    badge: 'bg-teal-50 text-teal-700 border border-teal-200',          text: 'text-teal-700',    bg: 'bg-teal-50' },
+  'ESPACE SENSORIEL': { border: 'border-l-yellow-500',  badge: 'bg-yellow-50 text-yellow-700 border border-yellow-200',    text: 'text-yellow-700',  bg: 'bg-yellow-50' },
+  'EXERCICE SENSORIEL':{ border: 'border-l-yellow-500', badge: 'bg-yellow-50 text-yellow-700 border border-yellow-200',    text: 'text-yellow-700',  bg: 'bg-yellow-50' },
+  'ART PLASTIQUE':    { border: 'border-l-rose-400',    badge: 'bg-rose-50 text-rose-700 border border-rose-200',          text: 'text-rose-700',    bg: 'bg-rose-50' },
+  'TRAVAIL MANUEL':   { border: 'border-l-stone-500',   badge: 'bg-stone-100 text-stone-700 border border-stone-300',      text: 'text-stone-700',   bg: 'bg-stone-100' },
+  'DESSIN COLORIAGE': { border: 'border-l-pink-500',    badge: 'bg-pink-50 text-pink-700 border border-pink-200',          text: 'text-pink-700',    bg: 'bg-pink-50' },
+  'LES COULEURS':     { border: 'border-l-orange-400',  badge: 'bg-orange-50 text-orange-700 border border-orange-200',    text: 'text-orange-700',  bg: 'bg-orange-50' },
   // 12ème
   'LECTURE':          { border: 'border-l-emerald-600', badge: 'bg-emerald-100 text-emerald-800 border border-emerald-300', text: 'text-emerald-800', bg: 'bg-emerald-100' },
   'ÉCRITURE':         { border: 'border-l-teal-500',    badge: 'bg-teal-50 text-teal-700 border border-teal-200',        text: 'text-teal-700',    bg: 'bg-teal-50' },

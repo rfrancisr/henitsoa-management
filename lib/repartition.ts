@@ -67,7 +67,10 @@ export async function getSemaine(
 }
 
 export function classeSlugFromLibelle(libelle: string): ClasseSlug | null {
-  const l = libelle.toLowerCase().replace(/[^0-9]/g, '');
+  const lower = libelle.toLowerCase();
+  if (lower.includes('jardin')) return 'jardindenfant';
+  if (lower.includes('maternelle')) return 'maternelle';
+  const l = lower.replace(/[^0-9]/g, '');
   if (l === '10') return '10eme';
   if (l === '9')  return '9eme';
   if (l === '8')  return '8eme';
