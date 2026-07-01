@@ -1,6 +1,7 @@
 'server-only';
 import { prisma } from '@/lib/prisma';
 import type { ClasseSlug } from '@/lib/repartition-types';
+import { MOIS_REPARTITION } from '@/lib/repartition-types';
 
 export type {
   MatiereRepartition,
@@ -66,8 +67,50 @@ export async function getSemaine(
   };
 }
 
+export async function getMoisComplet(
+  classe: string,
+  mois: string,
+): Promise<SemaineRepartition[]> {
+  const moisInfo = MOIS_REPARTITION.find(m => m.libelle === mois);
+  if (!moisInfo) return [];
+
+  const rows = await prisma.repartitionSemaine.findMany({
+    where: { classe, mois },
+    include: { matieres: { orderBy: { matiere: 'asc' } } },
+    orderBy: { semaine: 'asc' },
+  });
+
+  return Array.from({ length: moisInfo.nbSemaines }, (_, i) => {
+    const s = i + 1;
+    const row = rows.find(r => r.semaine === s);
+    if (row) {
+      return {
+        id: row.id,
+        classe: row.classe,
+        mois: row.mois,
+        semaine: row.semaine,
+        dateDebut: row.dateDebut,
+        theme: row.theme,
+        sousTheme: row.sousTheme,
+        matieres: row.matieres.map(deserialize),
+      };
+    }
+    return {
+      id: `empty-${classe}-${mois}-${s}`,
+      classe,
+      mois,
+      semaine: s,
+      dateDebut: '',
+      theme: '—',
+      sousTheme: '',
+      matieres: [],
+    };
+  });
+}
+
 export function classeSlugFromLibelle(libelle: string): ClasseSlug | null {
   const lower = libelle.toLowerCase();
+  if (lower.includes('garderie')) return 'garderie';
   if (lower.includes('jardin')) return 'jardindenfant';
   if (lower.includes('maternelle')) return 'maternelle';
   const l = lower.replace(/[^0-9]/g, '');

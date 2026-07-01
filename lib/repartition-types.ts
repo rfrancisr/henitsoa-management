@@ -62,10 +62,11 @@ export function getMoisInfo(mois: string): MoisRepartitionInfo | undefined {
   return MOIS_REPARTITION.find(m => m.libelle === mois);
 }
 
-export const CLASSES_AVEC_REPARTITION = ['jardindenfant', 'maternelle', '12eme', '11eme', '10eme', '9eme', '8eme', '7eme'] as const;
+export const CLASSES_AVEC_REPARTITION = ['garderie', 'jardindenfant', 'maternelle', '12eme', '11eme', '10eme', '9eme', '8eme', '7eme'] as const;
 export type ClasseSlug = typeof CLASSES_AVEC_REPARTITION[number];
 
 export const CLASSES_LABELS: Record<ClasseSlug, string> = {
+  'garderie':      'Garderie',
   'jardindenfant': 'Jardin d\'Enfants',
   'maternelle':    'Maternelle',
   '12eme': '12ème',
@@ -113,6 +114,8 @@ export const MAT_COLORS: Record<string, { border: string; badge: string; text: s
   'CHANT':            { border: 'border-l-indigo-400',  badge: 'bg-indigo-50 text-indigo-700 border border-indigo-200',  text: 'text-indigo-700',  bg: 'bg-indigo-50' },
   'RÉCITATION':       { border: 'border-l-fuchsia-500', badge: 'bg-fuchsia-50 text-fuchsia-700 border border-fuchsia-200', text: 'text-fuchsia-700', bg: 'bg-fuchsia-50' },
   'T.M':              { border: 'border-l-stone-500',   badge: 'bg-stone-100 text-stone-700 border border-stone-300',    text: 'text-stone-700',   bg: 'bg-stone-100' },
+  // Garderie
+  'DESSIN DIRIGÉ': { border: 'border-l-purple-400',   badge: 'bg-purple-50 text-purple-700 border border-purple-200',   text: 'text-purple-700',   bg: 'bg-purple-50' },
   // Jardin d'Enfant & Maternelle
   'GRAPHISME':        { border: 'border-l-pink-400',    badge: 'bg-pink-50 text-pink-700 border border-pink-200',          text: 'text-pink-700',    bg: 'bg-pink-50' },
   'PRE-LECTURE':      { border: 'border-l-emerald-500', badge: 'bg-emerald-50 text-emerald-700 border border-emerald-200', text: 'text-emerald-700', bg: 'bg-emerald-50' },

@@ -103,21 +103,22 @@ async function main() {
   // ── Niveaux ───────────────────────────────────────────────────────────────
 
   const niveauxDef = [
-    { libelle: "Jardin d'enfant", ordre: 1 },
-    { libelle: "Maternelle",      ordre: 2 },
-    { libelle: "12ème",           ordre: 3 },
-    { libelle: "11ème",           ordre: 4 },
-    { libelle: "10ème",           ordre: 5 },
-    { libelle: "9ème",            ordre: 6 },
-    { libelle: "8ème",            ordre: 7 },
-    { libelle: "7ème",            ordre: 8 },
-    { libelle: "6ème",            ordre: 9 },
-    { libelle: "5ème",            ordre: 10 },
-    { libelle: "4ème",            ordre: 11 },
-    { libelle: "3ème",            ordre: 12 },
+    { libelle: "Garderie",         ordre: 1 },
+    { libelle: "Jardin d'enfant",  ordre: 2 },
+    { libelle: "Maternelle",       ordre: 3 },
+    { libelle: "12ème",            ordre: 4 },
+    { libelle: "11ème",            ordre: 5 },
+    { libelle: "10ème",            ordre: 6 },
+    { libelle: "9ème",             ordre: 7 },
+    { libelle: "8ème",             ordre: 8 },
+    { libelle: "7ème",             ordre: 9 },
+    { libelle: "6ème",             ordre: 10 },
+    { libelle: "5ème",             ordre: 11 },
+    { libelle: "4ème",             ordre: 12 },
+    { libelle: "3ème",             ordre: 13 },
   ];
   for (const n of niveauxDef) {
-    await prisma.niveau.upsert({ where: { libelle: n.libelle }, update: {}, create: n });
+    await prisma.niveau.upsert({ where: { libelle: n.libelle }, update: { ordre: n.ordre }, create: n });
   }
   const niveaux = await prisma.niveau.findMany();
   const niveau6 = niveaux.find((n) => n.libelle === "6ème")!;
