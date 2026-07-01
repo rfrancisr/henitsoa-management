@@ -1,23 +1,38 @@
 #!/bin/bash
-# Script de mise à jour — ecole-henitsoa.com — à lancer depuis /opt/ecole/app sur le serveur
+# Déploiement — ecole-henitsoa.com
+# Lancer depuis /opt/ecole/app sur le serveur
 set -e
 
-echo "==> Pull du code..."
-git pull origin main
+echo "==> Pull..."
+git pull origin master
 
-echo "==> Installation des dépendances..."
-npm ci --omit=dev
+echo "==> Vérification swap..."
+SWAP=$(free -m | awk '/^Swap:/{print $2}')
+if [ "$SWAP" -eq 0 ]; then
+  echo "ERREUR : swap absent. Créer avec : sudo fallocate -l 1G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile"
+  exit 1
+fi
 
-echo "==> Génération du client Prisma..."
-npx prisma generate
+echo "==> Arrêt PM2..."
+pm2 stop ecole
 
-echo "==> Build Next.js..."
+echo "==> Build..."
+rm -rf .next
 npm run build
 
-echo "==> Migration base de données..."
-npx prisma migrate deploy
+echo "==> Vérification du build..."
+if ! ls .next/server/app/\(dashboard\)/ 2>/dev/null | grep -q manifest; then
+  echo "ERREUR : build incomplet (manifest manquant) — OOM probable. Relancer le script."
+  pm2 start ecole
+  exit 1
+fi
 
-echo "==> Redémarrage PM2..."
-pm2 restart ecole-manager
+echo "==> DB..."
+npx prisma db push
+npx tsx prisma/seed.ts
+npx tsx prisma/seed-repartition.ts --force
+
+echo "==> Redémarrage..."
+pm2 start ecole
 
 echo "✓ Déploiement terminé."
