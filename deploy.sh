@@ -34,6 +34,7 @@ echo "==> DB..."
 npx prisma db push
 npx tsx prisma/seed.ts
 npx tsx prisma/seed-repartition.ts --force
+npx tsx prisma/seed_repartition.mjs --force
 
 echo "==> Redémarrage..."
 pm2 start ecole

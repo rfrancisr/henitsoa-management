@@ -47,5 +47,5 @@ prisma/*.db-wal
 prisma/*.db-journal
 prisma/prisma/
 
-# repartition (générateurs et fichiers JSON générés, ignorés car recalculables)
+# repartition (générateurs locaux, fichiers Excel/PDF/JSON — non déployés)
 /repartition/
