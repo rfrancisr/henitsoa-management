@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "prisma generate && NODE_OPTIONS=--max-old-space-size=512 next build",
+    "build": "prisma generate && NODE_OPTIONS=--max-old-space-size=768 next build --turbopack",
     "start": "next start",
     "lint": "eslint",
     "seed": "npx ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed.ts",
