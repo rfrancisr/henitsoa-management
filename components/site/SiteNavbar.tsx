@@ -1,27 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLang } from "./LanguageContext";
 
-interface SiteNavbarProps {
-  heroDark?: boolean;
-}
-
-export function SiteNavbar({ heroDark = false }: SiteNavbarProps) {
+export function SiteNavbar() {
   const { lang, setLang, t } = useLang();
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const isLight = heroDark && !scrolled && !menuOpen;
 
   const navLinks = [
     { href: "/", label: t.nav.home },
@@ -31,80 +18,109 @@ export function SiteNavbar({ heroDark = false }: SiteNavbarProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled || menuOpen
-          ? "bg-white/90 backdrop-blur-xl border-b border-[#1D1D1F]/8"
-          : "bg-transparent"
-      }`}
+      style={{ borderBottom: "3px solid #FFD54F" }}
+      className="sticky top-0 z-50 bg-white"
     >
-      <div className="max-w-[980px] mx-auto px-6 sm:px-8">
-        <div className="flex items-center justify-between h-[44px]">
+      <div className="max-w-[980px] mx-auto px-5 sm:px-8">
+        <div className="flex items-center justify-between h-[60px]">
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0">
             <Image
               src="/LogoHenitsoa.png"
-              alt="Logo"
-              width={28}
-              height={28}
+              alt="Logo Henitsoa"
+              width={36}
+              height={36}
               className="rounded-full"
             />
             <div className="leading-none">
-              <div className={`text-[9px] font-medium tracking-[0.12em] uppercase transition-colors duration-300 ${isLight ? "text-white/50" : "text-[#1D1D1F]/40"}`}>
+              <div
+                className="text-[10px] font-bold tracking-[0.1em] uppercase"
+                style={{ color: "#2C2C3A", opacity: 0.45 }}
+              >
                 École Privée
               </div>
-              <div className="text-[12px] font-bold text-[#C9A84C] tracking-tight mt-0.5">
+              <div
+                className="text-[15px] tracking-tight mt-0.5"
+                style={{ fontFamily: "var(--font-fredoka), 'Fredoka One', cursive", color: "#FF7043" }}
+              >
                 Henitsoa
               </div>
             </div>
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop nav links */}
+          <ul className="hidden md:flex items-center gap-1 list-none">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-[12px] transition-colors duration-200 tracking-wide ${
-                  pathname === link.href
-                    ? "text-[#C9A84C] font-semibold"
-                    : isLight
-                    ? "text-white/65 hover:text-white"
-                    : "text-[#1D1D1F]/55 hover:text-[#1D1D1F]"
-                }`}
-              >
-                {link.label}
-              </Link>
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="transition-all duration-150 font-bold text-[13px] px-4 py-1.5 rounded-full"
+                  style={{
+                    fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                    background: pathname === link.href ? "#4FC3F7" : "transparent",
+                    color: pathname === link.href ? "#fff" : "#2C2C3A",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (pathname !== link.href) {
+                      (e.currentTarget as HTMLElement).style.background = "#4FC3F7";
+                      (e.currentTarget as HTMLElement).style.color = "#fff";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (pathname !== link.href) {
+                      (e.currentTarget as HTMLElement).style.background = "transparent";
+                      (e.currentTarget as HTMLElement).style.color = "#2C2C3A";
+                    }
+                  }}
+                >
+                  {link.label}
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
 
-          {/* Right */}
-          <div className="hidden md:flex items-center gap-4">
-            <div className={`flex items-center rounded-full p-0.5 ${isLight ? "bg-white/10" : "bg-[#1D1D1F]/6"}`}>
+          {/* Desktop right — lang switcher + CTA */}
+          <div className="hidden md:flex items-center gap-3">
+            {/* Language toggle */}
+            <div
+              className="flex items-center rounded-full p-0.5"
+              style={{ background: "rgba(44,44,58,0.07)" }}
+            >
               {(["fr", "mg"] as const).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
-                  className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wide transition-all duration-200 ${
-                    lang === l
-                      ? "bg-white text-[#1D1D1F] shadow-sm"
-                      : isLight
-                      ? "text-white/45 hover:text-white/75"
-                      : "text-[#1D1D1F]/40 hover:text-[#1D1D1F]/70"
-                  }`}
+                  className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide transition-all duration-150"
+                  style={{
+                    fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                    background: lang === l ? "#fff" : "transparent",
+                    color: lang === l ? "#2C2C3A" : "rgba(44,44,58,0.45)",
+                    boxShadow: lang === l ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
+                  }}
                 >
                   {l.toUpperCase()}
                 </button>
               ))}
             </div>
 
+            {/* CTA */}
             <Link
               href="/login"
-              className={`text-[12px] font-medium px-4 py-1.5 rounded-full transition-all duration-200 ${
-                isLight
-                  ? "border border-white/25 text-white/80 hover:bg-white/15 hover:text-white"
-                  : "bg-[#0071e3] text-white hover:bg-[#0077ed]"
-              }`}
+              className="text-[13px] font-bold px-5 py-2 rounded-full text-white transition-all duration-150"
+              style={{
+                fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                background: "#FF7043",
+                boxShadow: "0 3px 0 #BF360C",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 5px 0 #BF360C";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.transform = "";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 3px 0 #BF360C";
+              }}
             >
               {t.nav.portal}
             </Link>
@@ -112,22 +128,19 @@ export function SiteNavbar({ heroDark = false }: SiteNavbarProps) {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden w-8 h-8 flex flex-col justify-center items-center gap-[5px]"
+            className="md:hidden w-9 h-9 flex flex-col justify-center items-center gap-[5px]"
             onClick={() => setMenuOpen((o) => !o)}
             aria-label="Menu"
           >
-            {[0, 1, 2].map((i) => (
+            {([0, 1, 2] as const).map((i) => (
               <span
                 key={i}
-                className={`block h-px rounded-full transition-all duration-300 ${
-                  isLight ? "bg-white" : "bg-[#1D1D1F]"
-                } ${
-                  i === 0
-                    ? menuOpen ? "w-5 rotate-45 translate-y-[6px]" : "w-5"
-                    : i === 1
-                    ? menuOpen ? "w-5 opacity-0" : "w-3.5"
-                    : menuOpen ? "w-5 -rotate-45 -translate-y-[6px]" : "w-5"
+                className={`block h-[2px] rounded-full transition-all duration-300 ${
+                  i === 0 ? (menuOpen ? "w-5 rotate-45 translate-y-[7px]" : "w-5") :
+                  i === 1 ? (menuOpen ? "w-5 opacity-0" : "w-3.5") :
+                              (menuOpen ? "w-5 -rotate-45 -translate-y-[7px]" : "w-5")
                 }`}
+                style={{ background: "#2C2C3A" }}
               />
             ))}
           </button>
@@ -135,42 +148,53 @@ export function SiteNavbar({ heroDark = false }: SiteNavbarProps) {
 
         {/* Mobile menu */}
         <div
-          className={`md:hidden transition-all duration-300 overflow-hidden ${
+          className={`md:hidden overflow-hidden transition-all duration-300 ${
             menuOpen ? "max-h-80 pb-5" : "max-h-0"
           }`}
         >
-          <div className="border-t border-[#1D1D1F]/8 pt-3 flex flex-col gap-0.5">
+          <div
+            className="border-t pt-3 flex flex-col gap-1"
+            style={{ borderColor: "rgba(44,44,58,0.1)" }}
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className={`px-3 py-2.5 rounded-xl text-[13px] tracking-wide transition-colors duration-200 ${
-                  pathname === link.href
-                    ? "text-[#C9A84C] font-semibold"
-                    : "text-[#1D1D1F]/65 hover:text-[#1D1D1F] hover:bg-[#1D1D1F]/4"
-                }`}
+                className="px-4 py-2.5 rounded-xl text-[14px] font-bold transition-all duration-150"
+                style={{
+                  fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                  color: pathname === link.href ? "#FF7043" : "rgba(44,44,58,0.7)",
+                  background: "transparent",
+                }}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="px-3 pt-2 pb-1">
+            <div className="px-3 pt-2">
               <Link
                 href="/login"
                 onClick={() => setMenuOpen(false)}
-                className="bg-[#0071e3] text-white block text-center py-2.5 rounded-full text-[13px] font-medium hover:bg-[#0077ed] transition-colors duration-200"
+                className="block text-center py-2.5 rounded-full text-[14px] font-bold text-white transition-colors duration-150"
+                style={{
+                  fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                  background: "#FF7043",
+                }}
               >
                 {t.nav.portal}
               </Link>
             </div>
-            <div className="px-3 flex gap-2 pt-1.5">
+            <div className="px-3 pt-2 flex gap-2">
               {(["fr", "mg"] as const).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
-                  className={`px-4 py-1.5 rounded-full text-[11px] font-bold transition-all duration-200 ${
-                    lang === l ? "bg-[#1D1D1F] text-white" : "bg-[#1D1D1F]/8 text-[#1D1D1F]/50"
-                  }`}
+                  className="flex-1 py-1.5 rounded-full text-[12px] font-bold transition-all duration-150"
+                  style={{
+                    fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                    background: lang === l ? "#2C2C3A" : "rgba(44,44,58,0.08)",
+                    color: lang === l ? "#fff" : "rgba(44,44,58,0.5)",
+                  }}
                 >
                   {l.toUpperCase()}
                 </button>

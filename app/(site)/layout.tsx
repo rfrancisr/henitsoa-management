@@ -7,7 +7,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
   return (
     <LangProvider>
       <SiteNavbar />
-      <main className="pt-[68px]">{children}</main>
+      <main>{children}</main>
       <SiteFooter />
     </LangProvider>
   );

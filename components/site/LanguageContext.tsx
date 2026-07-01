@@ -9,16 +9,23 @@ export const TRANSLATIONS = {
       home: "Accueil",
       about: "À propos",
       news: "Actualités",
-      portal: "Portail élèves",
+      portal: "Accéder au portail",
     },
     hero: {
-      badge: "Depuis 1986 · Tsiroanomandidy",
+      badge: "Depuis 1986 · Tsiroanomandidy · Madagascar",
       title1: "École Privée",
       title2: "Henitsoa",
       tagline: "Un enfant bien éduqué est un avenir assuré",
       cta_primary: "Découvrir l'école",
       cta_secondary: "Portail élèves",
     },
+    ticker: [
+      "🏆 Lauréat CEPE 2026 — 1ère place au classement national Madagascar !",
+      "⭐ 40 ans d'excellence — École Privée Henitsoa fondée en 1986",
+      "📚 Inscriptions ouvertes pour l'année scolaire 2026-2027 — Contactez-nous !",
+      "💻 Nouveau laboratoire informatique — 20 postes pour nos élèves",
+      "🎉 Fête de fin d'année — Décembre 2026 — Familles bienvenues",
+    ],
     stats: [
       { value: "40", label: "Ans d'excellence" },
       { value: "4", label: "Niveaux scolaires" },
@@ -28,6 +35,42 @@ export const TRANSLATIONS = {
     mission: {
       quote: "Chaque élève compte. Chaque effort est accompagné.",
       body: "Depuis 1986, l'École Privée Henitsoa prépare les enfants de Tsiroanomandidy à un avenir brillant. Nos diplômés exercent aujourd'hui en France et aux États-Unis, devenant médecins, ingénieurs, juristes, informaticiens et bien plus encore.",
+    },
+    pillars: {
+      tag: "Pourquoi nous choisir",
+      title: "Une école qui ressemble à une maison",
+      items: [
+        {
+          tag: "Arts créatifs",
+          title: "Peindre, chanter, danser",
+          desc: "Du théâtre aux arts plastiques, chaque enfant trouve son moyen d'expression préféré.",
+          color: "rgba(255,112,67,0.35)",
+        },
+        {
+          tag: "Informatique",
+          title: "La technologie dès le jeune âge",
+          desc: "Notre labo de 20 postes prépare les élèves au monde numérique.",
+          color: "rgba(79,195,247,0.35)",
+        },
+        {
+          tag: "Culture & patrimoine",
+          title: "Nos racines malgaches",
+          desc: "Découverte du patrimoine culturel et des richesses de Madagascar.",
+          color: "rgba(102,187,106,0.35)",
+        },
+        {
+          tag: "Vie scolaire",
+          title: "Une école comme une famille",
+          desc: "La cantine, le partage et les moments qui font les souvenirs.",
+          color: "rgba(186,104,200,0.35)",
+        },
+        {
+          tag: "Sport & équipe",
+          title: "L'esprit d'équipe avant tout",
+          desc: "Football, compétitions et tournois inter-écoles toute l'année.",
+          color: "rgba(255,213,79,0.35)",
+        },
+      ],
     },
     levels: {
       title: "De la garderie au collège",
@@ -53,8 +96,43 @@ export const TRANSLATIONS = {
     news: {
       title: "Actualités",
       subtitle: "Les dernières nouvelles de l'école",
+      tag: "Vie de l'école",
       read_more: "Lire la suite",
       all: "Toutes les actualités →",
+    },
+    events: {
+      tag: "À venir",
+      title: "Notez les dates",
+      items: [
+        {
+          month: "Sep",
+          day: "1",
+          title: "Rentrée scolaire 2026-2027",
+          desc: "Accueil des élèves · Toutes les classes · 7h30",
+        },
+        {
+          month: "Oct",
+          day: "15",
+          title: "Remise des bulletins T1",
+          desc: "Salle polyvalente · Rencontres parents-enseignants · 14h00",
+        },
+        {
+          month: "Nov",
+          day: "7",
+          title: "Journée sportive annuelle",
+          desc: "Terrain de sport · Toute la journée · Portez votre maillot !",
+        },
+        {
+          month: "Déc",
+          day: "15",
+          title: "Fête de fin d'année scolaire",
+          desc: "Cour de l'école · 10h00 · Familles bienvenues",
+        },
+      ],
+    },
+    quote: {
+      text: "Un enfant bien éduqué est un avenir assuré.",
+      attr: "École Privée Henitsoa · depuis 1986",
     },
     cta: {
       title: "Rejoignez la famille\nHenitsoa",
@@ -66,6 +144,8 @@ export const TRANSLATIONS = {
       tagline: "Un enfant bien éduqué est un avenir assuré",
       founded: "Fondée en 1986 · Avaratsena, Tsiroanomandidy",
       links: "Navigation",
+      pedagogy: "Scolarité",
+      pedagogy_links: ["Garderie & Maternelle", "Primaire", "Collège", "Activités parascolaires"],
       contact: "Contact",
       contact_placeholder: "Informations de contact disponibles prochainement.",
       rights: "© 2026 École Privée Henitsoa. Tous droits réservés.",
@@ -98,16 +178,23 @@ export const TRANSLATIONS = {
       home: "Fandraisana",
       about: "Momba anay",
       news: "Vaovao",
-      portal: "Vavahady",
+      portal: "Hiditra ao amin'ny vavahady",
     },
     hero: {
-      badge: "Hatramin'ny 1986 · Tsiroanomandidy",
+      badge: "Hatramin'ny 1986 · Tsiroanomandidy · Madagasikara",
       title1: "École Privée",
       title2: "Henitsoa",
       tagline: "Ny zaza voaomana tsara dia manana hoavy mamirapiratra",
       cta_primary: "Fantaro ny sekoly",
       cta_secondary: "Vavahadin'ny mpianatra",
     },
+    ticker: [
+      "🏆 Lauri-endrika CEPE 2026 — Laharan'ny 1 amin'ny firenena, Madagasikara!",
+      "⭐ 40 taona fahaizana — École Privée Henitsoa hatramin'ny 1986",
+      "📚 Fisokafana fisoratana anarana 2026-2027 — Mifandraisa aminay!",
+      "💻 Laboratoire informatique vaovao — Fitaovana 20 ho an'ny mpianatra",
+      "🎉 Fety faranatr'asa sekoly — Desambra 2026 — Fianakaviana tonga soa",
+    ],
     stats: [
       { value: "40", label: "Taona fahaizana" },
       { value: "4", label: "Kilasy" },
@@ -117,6 +204,42 @@ export const TRANSLATIONS = {
     mission: {
       quote: "Ny mpianatra tsirairay dia manan-danja. Ny ezaka tsirairay dia heverina.",
       body: "Hatramin'ny 1986, ny École Privée Henitsoa dia mamomba ny ankizy any Tsiroanomandidy ho amin'ny hoavy mamirapiratra. Ireo mpianatra nahavita fanadinana dia miasa any Frantsa sy Etazonia ankehitriny, ho dokotera, injeniera, mpanao lalàna, mpiasa informatika ary betsaka hafa.",
+    },
+    pillars: {
+      tag: "Nahoana no misafidy anay",
+      title: "Sekoly mitovy amin'ny trano fiavanana",
+      items: [
+        {
+          tag: "Kira sy asa tanana",
+          title: "Manao hosodoko, mihira, mandihy",
+          desc: "Hatramin'ny théâtre ka hatramin'ny kira, ny zaza rehetra mahita ny fomba fiteny.",
+          color: "rgba(255,112,67,0.35)",
+        },
+        {
+          tag: "Informatique",
+          title: "Teknolojia hatramin'ny fahatanorana",
+          desc: "Ny laboratoire 20 fitaovana anay dia mamomba ny mpianatra ho amin'ny tontolo nomerika.",
+          color: "rgba(79,195,247,0.35)",
+        },
+        {
+          tag: "Kolotsaina",
+          title: "Ny fototra malagasy anay",
+          desc: "Fahitana ny harena ara-kolontsaina sy ny haren'i Madagasikara.",
+          color: "rgba(102,187,106,0.35)",
+        },
+        {
+          tag: "Fiainan-tsekoly",
+          title: "Sekoly mitovy amin'ny fianakaviana",
+          desc: "Ny sakafo, ny fizarana ary ireo fotoana mampisy tsangambato.",
+          color: "rgba(186,104,200,0.35)",
+        },
+        {
+          tag: "Fanatanjahantena",
+          title: "Ny fanahin'ny ekipa aloha",
+          desc: "Football, fifaninanana ary tournoi inter-sekoly mandritra ny taona.",
+          color: "rgba(255,213,79,0.35)",
+        },
+      ],
     },
     levels: {
       title: "Hatramin'ny garderie ka hatramin'ny collège",
@@ -142,8 +265,43 @@ export const TRANSLATIONS = {
     news: {
       title: "Vaovao",
       subtitle: "Ireo vaovao farany avy amin'ny sekoly",
+      tag: "Fiainan'ny sekoly",
       read_more: "Vakio bebe kokoa",
       all: "Vaovao rehetra →",
+    },
+    events: {
+      tag: "Ho avy",
+      title: "Tadidio ny daty",
+      items: [
+        {
+          month: "Sep",
+          day: "1",
+          title: "Fiverenana any an-tsekoly 2026-2027",
+          desc: "Fandraisan'ny mpianatra · Kilasy rehetra · 7h30",
+        },
+        {
+          month: "Okt",
+          day: "15",
+          title: "Fanomezana buletin T1",
+          desc: "Efitrano maro ampiasaina · Fihaonana ray aman-dreny-mpampianatra · 14h00",
+        },
+        {
+          month: "Nov",
+          day: "7",
+          title: "Andro fanatanjahantena",
+          desc: "Kianja fanatanjahantena · Andro manontolo · Mitafy ny akanjo fanatanjahantena!",
+        },
+        {
+          month: "Des",
+          day: "15",
+          title: "Fety faranatr'asa sekoly",
+          desc: "Kianja sekoly · 10h00 · Fianakaviana tonga soa",
+        },
+      ],
+    },
+    quote: {
+      text: "Ny zaza voaomana tsara dia manana hoavy mamirapiratra.",
+      attr: "École Privée Henitsoa · hatramin'ny 1986",
     },
     cta: {
       title: "Midira ao amin'ny\nfianakavian'i Henitsoa",
@@ -155,6 +313,8 @@ export const TRANSLATIONS = {
       tagline: "Ny zaza voaomana tsara dia manana hoavy mamirapiratra",
       founded: "Naorina tamin'ny 1986 · Avaratsena, Tsiroanomandidy",
       links: "Fanaovana",
+      pedagogy: "Fianarana",
+      pedagogy_links: ["Garderie & Maternelle", "Primaire", "Collège", "Hetsika"],
       contact: "Fifandraisana",
       contact_placeholder: "Ho azo ao afaka kely ny tsipika fifandraisana.",
       rights: "© 2026 École Privée Henitsoa. Zo rehetra voatokana.",
