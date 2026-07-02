@@ -31,9 +31,11 @@ echo "==> Backup DB (pré-déploiement)..."
 bash /opt/ecole/app/backup.sh "pre-deploy"
 
 echo "==> DB..."
+# Charger .env pour que DATABASE_URL soit défini avec un chemin absolu avant le seed
+set -a; source .env; set +a
 npx prisma db push
 npx tsx prisma/seed.ts
-DATABASE_URL="file:$(pwd)/prisma/dev.db" npx tsx prisma/seed_repartition.mjs --force
+npx tsx prisma/seed_repartition.mjs --force
 
 echo "==> Redémarrage..."
 pm2 start ecole
