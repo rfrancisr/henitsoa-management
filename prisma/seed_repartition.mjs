@@ -20,6 +20,29 @@ const { PERIODES_9EME }   = _require('./data_9eme.js');
 const { PERIODES_12EME }  = _require('./data_12eme.js');
 const { PERIODES_GARDERIE } = _require('./data_garderie.js');
 
+// 12ème Octobre–Juin : données mensuelles pré-remplies
+const { OCTOBRE_12EME }  = _require('../repartition/data_12eme_octobre.js');
+const { NOVEMBRE_12EME } = _require('../repartition/data_12eme_novembre.js');
+const { DECEMBRE_12EME } = _require('../repartition/data_12eme_decembre.js');
+const { JANVIER_12EME }  = _require('../repartition/data_12eme_janvier.js');
+const { FEVRIER_12EME }  = _require('../repartition/data_12eme_fevrier.js');
+const { MARS_12EME }     = _require('../repartition/data_12eme_mars.js');
+const { AVRIL_12EME }    = _require('../repartition/data_12eme_avril.js');
+const { MAI_12EME }      = _require('../repartition/data_12eme_mai.js');
+const { JUIN_12EME }     = _require('../repartition/data_12eme_juin.js');
+
+const MOIS_12EME_EXT = [
+  { mois: 'Octobre',  data: OCTOBRE_12EME  },
+  { mois: 'Novembre', data: NOVEMBRE_12EME },
+  { mois: 'Décembre', data: DECEMBRE_12EME },
+  { mois: 'Janvier',  data: JANVIER_12EME  },
+  { mois: 'Février',  data: FEVRIER_12EME  },
+  { mois: 'Mars',     data: MARS_12EME     },
+  { mois: 'Avril',    data: AVRIL_12EME    },
+  { mois: 'Mai',      data: MAI_12EME      },
+  { mois: 'Juin',     data: JUIN_12EME     },
+];
+
 const prisma  = new PrismaClient();
 const args    = process.argv.slice(2);
 const DRY_RUN = args.includes('--dry-run');
@@ -1200,6 +1223,34 @@ async function main() {
       }
       console.log(']');
     }
+  }
+
+  // ─── 12ème Octobre–Juin (données mensuelles pré-remplies) ─────────────────
+  console.log('\n📚 Classe 12eme (Octobre–Juin)');
+  for (const { mois, data } of MOIS_12EME_EXT) {
+    process.stdout.write(`  ${mois} [`);
+    for (const sem of data) {
+      const matieres = (sem.matieres || []).map(m => ({
+        matiere:      m.matiere      ?? '',
+        topic:        m.topic        ?? '',
+        approche:     m.approche     ?? '',
+        transmission: m.activites    ?? m.transmission ?? [],
+        exercices:    m.exercices    ?? [],
+      }));
+      const dateDebut = sem.dates
+        ? sem.dates.replace(/\s*[–—-]\s*.+$/, '').trim()
+        : '';
+      total++;
+      try {
+        await insererSemaine('12eme', mois, sem.n, dateDebut, sem.theme, '', matieres);
+        process.stdout.write('✓');
+        ok++;
+      } catch (err) {
+        process.stdout.write('✗');
+        console.error(`\n    Erreur 12eme ${mois} S${sem.n}:`, err.message);
+      }
+    }
+    console.log(']');
   }
 
   console.log(`\n✨ Terminé — ${ok}/${total} semaines insérées (${skip} ignorées)\n`);
