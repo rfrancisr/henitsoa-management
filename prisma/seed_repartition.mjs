@@ -45,15 +45,15 @@ const { PERIODES_12EME }  = _require('./data_12eme.js');
 const { PERIODES_GARDERIE } = _require('./data_garderie.js');
 
 // 12ème Octobre–Juin : données mensuelles pré-remplies
-const { OCTOBRE_12EME }  = _require('../repartition/data_12eme_octobre.js');
-const { NOVEMBRE_12EME } = _require('../repartition/data_12eme_novembre.js');
-const { DECEMBRE_12EME } = _require('../repartition/data_12eme_decembre.js');
-const { JANVIER_12EME }  = _require('../repartition/data_12eme_janvier.js');
-const { FEVRIER_12EME }  = _require('../repartition/data_12eme_fevrier.js');
-const { MARS_12EME }     = _require('../repartition/data_12eme_mars.js');
-const { AVRIL_12EME }    = _require('../repartition/data_12eme_avril.js');
-const { MAI_12EME }      = _require('../repartition/data_12eme_mai.js');
-const { JUIN_12EME }     = _require('../repartition/data_12eme_juin.js');
+const { OCTOBRE_12EME }  = _require('./data_12eme_octobre.js');
+const { NOVEMBRE_12EME } = _require('./data_12eme_novembre.js');
+const { DECEMBRE_12EME } = _require('./data_12eme_decembre.js');
+const { JANVIER_12EME }  = _require('./data_12eme_janvier.js');
+const { FEVRIER_12EME }  = _require('./data_12eme_fevrier.js');
+const { MARS_12EME }     = _require('./data_12eme_mars.js');
+const { AVRIL_12EME }    = _require('./data_12eme_avril.js');
+const { MAI_12EME }      = _require('./data_12eme_mai.js');
+const { JUIN_12EME }     = _require('./data_12eme_juin.js');
 
 const MOIS_12EME_EXT = [
   { mois: 'Octobre',  data: OCTOBRE_12EME  },
