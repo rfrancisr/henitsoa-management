@@ -41,31 +41,8 @@ const _require = createRequire(import.meta.url);
 const { PERIODES_10EME }  = _require('./data_10eme.js');
 const { PERIODES_8EME }   = _require('./data_8eme.js');
 const { PERIODES_9EME }   = _require('./data_9eme.js');
-const { PERIODES_12EME }  = _require('./data_12eme.js');
+const { PERIODES_12EME, MOIS_12EME } = _require('./data_12eme.js');
 const { PERIODES_GARDERIE } = _require('./data_garderie.js');
-
-// 12ème Octobre–Juin : données mensuelles pré-remplies
-const { OCTOBRE_12EME }  = _require('./data_12eme_octobre.js');
-const { NOVEMBRE_12EME } = _require('./data_12eme_novembre.js');
-const { DECEMBRE_12EME } = _require('./data_12eme_decembre.js');
-const { JANVIER_12EME }  = _require('./data_12eme_janvier.js');
-const { FEVRIER_12EME }  = _require('./data_12eme_fevrier.js');
-const { MARS_12EME }     = _require('./data_12eme_mars.js');
-const { AVRIL_12EME }    = _require('./data_12eme_avril.js');
-const { MAI_12EME }      = _require('./data_12eme_mai.js');
-const { JUIN_12EME }     = _require('./data_12eme_juin.js');
-
-const MOIS_12EME_EXT = [
-  { mois: 'Octobre',  data: OCTOBRE_12EME  },
-  { mois: 'Novembre', data: NOVEMBRE_12EME },
-  { mois: 'Décembre', data: DECEMBRE_12EME },
-  { mois: 'Janvier',  data: JANVIER_12EME  },
-  { mois: 'Février',  data: FEVRIER_12EME  },
-  { mois: 'Mars',     data: MARS_12EME     },
-  { mois: 'Avril',    data: AVRIL_12EME    },
-  { mois: 'Mai',      data: MAI_12EME      },
-  { mois: 'Juin',     data: JUIN_12EME     },
-];
 
 const prisma  = new PrismaClient();
 const args    = process.argv.slice(2);
@@ -1251,7 +1228,7 @@ async function main() {
 
   // ─── 12ème Octobre–Juin (données mensuelles pré-remplies) ─────────────────
   console.log('\n📚 Classe 12eme (Octobre–Juin)');
-  for (const { mois, data } of MOIS_12EME_EXT) {
+  for (const { mois, data } of MOIS_12EME) {
     process.stdout.write(`  ${mois} [`);
     for (const sem of data) {
       const matieres = (sem.matieres || []).map(m => ({
