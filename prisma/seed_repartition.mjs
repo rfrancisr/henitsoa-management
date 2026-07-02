@@ -14,8 +14,11 @@ import { PERIODES_11EME } from './data_11eme.js';
 import { PERIODES_7EME } from './data_7eme.js';
 import { createRequire } from 'module';
 const _require = createRequire(import.meta.url);
-const { PERIODES_10EME } = _require('./data_10eme.js');
-const { PERIODES_8EME }  = _require('./data_8eme.js');
+const { PERIODES_10EME }  = _require('./data_10eme.js');
+const { PERIODES_8EME }   = _require('./data_8eme.js');
+const { PERIODES_9EME }   = _require('./data_9eme.js');
+const { PERIODES_12EME }  = _require('./data_12eme.js');
+const { PERIODES_GARDERIE } = _require('./data_garderie.js');
 
 const prisma  = new PrismaClient();
 const args    = process.argv.slice(2);
@@ -1099,6 +1102,10 @@ function buildEntries8eme(sem) {
   ].filter(e => e.topic);
 }
 
+function buildEntries9eme(sem)      { return sem.matieres || []; }
+function buildEntries12eme(sem)     { return sem.matieres || []; }
+function buildEntriesGarderie(sem)  { return sem.matieres || []; }
+
 // ═══════════════════════════════════════════════════════════════════════════════
 // INSERTION EN BASE
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -1151,10 +1158,13 @@ async function main() {
   if (DRY_RUN) console.log('⚠️  Mode DRY-RUN\n');
 
   const CLASSES = [
-    { slug: '11eme',  periodes: PERIODES_11EME,  build: buildEntries11eme  },
-    { slug: '7eme',   periodes: PERIODES_7EME,   build: buildEntries7eme   },
-    { slug: '10eme',  periodes: PERIODES_10EME,  build: buildEntries10eme  },
-    { slug: '8eme',   periodes: PERIODES_8EME,   build: buildEntries8eme   },
+    { slug: '11eme',    periodes: PERIODES_11EME,   build: buildEntries11eme    },
+    { slug: '7eme',     periodes: PERIODES_7EME,    build: buildEntries7eme     },
+    { slug: '10eme',    periodes: PERIODES_10EME,   build: buildEntries10eme    },
+    { slug: '8eme',     periodes: PERIODES_8EME,    build: buildEntries8eme     },
+    { slug: '9eme',     periodes: PERIODES_9EME,    build: buildEntries9eme     },
+    { slug: '12eme',    periodes: PERIODES_12EME,   build: buildEntries12eme    },
+    { slug: 'garderie', periodes: PERIODES_GARDERIE,build: buildEntriesGarderie },
   ];
 
   let total = 0, ok = 0, skip = 0;

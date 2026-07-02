@@ -33,7 +33,6 @@ bash /opt/ecole/app/backup.sh "pre-deploy"
 echo "==> DB..."
 npx prisma db push
 npx tsx prisma/seed.ts
-npx tsx prisma/seed-repartition.ts --force
 npx tsx prisma/seed_repartition.mjs --force
 
 echo "==> Redémarrage..."
