@@ -13,6 +13,30 @@ import { PrismaClient } from '../app/generated/prisma/client.js';
 import { PERIODES_11EME } from './data_11eme.js';
 import { PERIODES_7EME } from './data_7eme.js';
 import { createRequire } from 'module';
+import { resolve } from 'path';
+
+// Guard: DATABASE_URL must use an absolute path.
+// tsx resolves "file:./..." relative to the Prisma schema dir (prisma/),
+// but Next.js resolves from the project root — so the same relative URL
+// silently seeds a different file than the one the app reads.
+{
+  const rawUrl   = process.env.DATABASE_URL ?? '';
+  const filePart = rawUrl.startsWith('file:') ? rawUrl.slice(5) : rawUrl;
+  if (!rawUrl) {
+    console.error('❌ DATABASE_URL non défini. Arrêt.');
+    process.exit(1);
+  }
+  if (filePart.startsWith('./') || filePart.startsWith('../')) {
+    console.error('❌ DATABASE_URL est un chemin relatif — interdit pour ce script.');
+    console.error('   tsx résout "file:./..." depuis prisma/ ; Next.js depuis la racine du projet.');
+    console.error('   Résultat : le seed écrit dans un fichier DB différent de celui de l\'app.');
+    console.error('   Utilisez un chemin absolu :');
+    console.error('     Windows : DATABASE_URL="file:D:/…/prisma/dev.db"');
+    console.error('     Linux   : DATABASE_URL="file:/opt/ecole/app/prisma/dev.db"');
+    process.exit(1);
+  }
+  console.log(`\n📁 Base de données : ${resolve(filePart)}`);
+}
 const _require = createRequire(import.meta.url);
 const { PERIODES_10EME }  = _require('./data_10eme.js');
 const { PERIODES_8EME }   = _require('./data_8eme.js');
