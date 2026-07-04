@@ -142,16 +142,86 @@ function EditModal({
   );
 }
 
+// ─── Modal d'historique ───────────────────────────────────────────────────────
+
+type LogEntry = {
+  id: string;
+  champ: 'topic' | 'approche' | 'transmission' | 'exercices';
+  ancienneValeur: string | string[];
+  updatedAt: string;
+  auteur: string;
+};
+
+const CHAMP_LABELS: Record<LogEntry['champ'], string> = {
+  topic: 'le sujet',
+  approche: 'l\'approche',
+  transmission: 'la transmission',
+  exercices: 'les exercices',
+};
+
+function HistoriqueModal({ mat, onClose }: { mat: MatiereRepartition; onClose: () => void }) {
+  const [logs, setLogs] = useState<LogEntry[] | null>(null);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`/api/repartition/matiere/${mat.id}`)
+      .then(res => {
+        if (!res.ok) throw new Error('Erreur serveur');
+        return res.json() as Promise<LogEntry[]>;
+      })
+      .then(data => { if (!cancelled) setLogs(data); })
+      .catch(() => { if (!cancelled) setError('Impossible de charger l\'historique.'); });
+    return () => { cancelled = true; };
+  }, [mat.id]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(26,26,24,.5)", backdropFilter: "blur(3px)" }}>
+      <div className="w-full max-w-xl max-h-[80vh] flex flex-col" style={{ background: "var(--white)", borderRadius: "2px 12px 12px 12px", border: "1px solid var(--borderLt)", boxShadow: "0 8px 40px rgba(0,0,0,.14)" }}>
+        <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: "1px solid var(--borderLt)" }}>
+          <span className="text-sm font-medium" style={{ color: "var(--inkMd)" }}>Historique — {mat.matiere}</span>
+          <button onClick={onClose} style={{ color: "var(--inkLt)" }} className="text-xl leading-none">✕</button>
+        </div>
+
+        <div className="overflow-y-auto flex-1 px-6 py-5">
+          {error && <p className="text-sm" style={{ color: "var(--red)" }}>{error}</p>}
+          {!error && logs === null && <p className="text-sm" style={{ color: "var(--inkLt)" }}>Chargement…</p>}
+          {logs && logs.length === 0 && (
+            <p className="text-sm italic" style={{ color: "var(--inkLt)" }}>Aucune modification enregistrée.</p>
+          )}
+          {logs && logs.length > 0 && (
+            <ul className="space-y-4">
+              {logs.map(log => (
+                <li key={log.id} className="text-sm" style={{ color: "var(--inkMd)" }}>
+                  <p>
+                    <strong style={{ color: "var(--ink)" }}>{log.auteur}</strong> a modifié {CHAMP_LABELS[log.champ]}
+                    {' '}— <span style={{ color: "var(--inkLt)" }}>{new Date(log.updatedAt).toLocaleString('fr-FR')}</span>
+                  </p>
+                  <p className="mt-1 text-xs" style={{ color: "var(--inkLt)" }}>
+                    Ancienne valeur : {Array.isArray(log.ancienneValeur) ? log.ancienneValeur.join(' · ') : log.ancienneValeur}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Carte matière ────────────────────────────────────────────────────────────
 
 function MatiereCard({
   mat,
   canEdit,
   onEdit,
+  onShowHistorique,
 }: {
   mat: MatiereRepartition;
   canEdit: boolean;
   onEdit: (mat: MatiereRepartition) => void;
+  onShowHistorique: (mat: MatiereRepartition) => void;
 }) {
   const [open, setOpen] = useState(false);
   const c = getMatColor(mat.matiere);
@@ -208,9 +278,12 @@ function MatiereCard({
           )}
 
           {canEdit && (
-            <div className="pt-1">
+            <div className="pt-1 flex gap-2">
               <button onClick={() => onEdit(mat)} className="btn-secondary text-xs px-3 py-1.5">
                 ✏️ Modifier
+              </button>
+              <button onClick={() => onShowHistorique(mat)} className="btn-secondary text-xs px-3 py-1.5">
+                🕘 Historique
               </button>
             </div>
           )}
@@ -245,6 +318,7 @@ export default function RepartitionViewer({
 }: Props) {
   const [semaine, setSemaine] = useState(initialSemaine);
   const [editingMat, setEditingMat] = useState<MatiereRepartition | null>(null);
+  const [historiqueMat, setHistoriqueMat] = useState<MatiereRepartition | null>(null);
   const [pdfMatiere, setPdfMatiere] = useState(initialSemaine?.matieres[0]?.matiere ?? '');
   const [downloading, setDownloading] = useState(false);
 
@@ -417,6 +491,7 @@ export default function RepartitionViewer({
               mat={mat}
               canEdit={canEdit}
               onEdit={setEditingMat}
+              onShowHistorique={setHistoriqueMat}
             />
           ))}
         </div>
@@ -433,6 +508,13 @@ export default function RepartitionViewer({
           mat={editingMat}
           onClose={() => setEditingMat(null)}
           onSave={handleSave}
+        />
+      )}
+
+      {historiqueMat && (
+        <HistoriqueModal
+          mat={historiqueMat}
+          onClose={() => setHistoriqueMat(null)}
         />
       )}
     </div>
