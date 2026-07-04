@@ -1,7 +1,7 @@
 'use client';
 import { useState, useCallback, useEffect } from 'react';
 import type { SemaineRepartition, MatiereRepartition, MoisRepartitionInfo } from '@/lib/repartition-types';
-import { getMatColor } from '@/lib/repartition-types';
+import { getMatColor, getDownloadOptions } from '@/lib/repartition-types';
 
 // ─── Modal d'édition ──────────────────────────────────────────────────────────
 
@@ -250,11 +250,11 @@ export default function RepartitionViewer({
 
   useEffect(() => {
     if (!semaine) return;
-    const names = semaine.matieres.map(m => m.matiere);
-    if (!pdfMatiere || !names.includes(pdfMatiere)) {
-      setPdfMatiere(names[0] ?? '');
+    const options = getDownloadOptions(classeSlug, semaine.matieres.map(m => m.matiere));
+    if (!pdfMatiere || !options.includes(pdfMatiere)) {
+      setPdfMatiere(options[0] ?? '');
     }
-  }, [semaine]);
+  }, [semaine, classeSlug]);
 
   async function handleDownloadPDF() {
     if (!pdfMatiere) return;
@@ -358,8 +358,8 @@ export default function RepartitionViewer({
               fontFamily: 'var(--font-sans)',
             }}
           >
-            {semaine.matieres.map(m => (
-              <option key={m.matiere} value={m.matiere}>{m.matiere}</option>
+            {getDownloadOptions(classeSlug, semaine.matieres.map(m => m.matiere)).map(opt => (
+              <option key={opt} value={opt}>{opt}</option>
             ))}
           </select>
           <button

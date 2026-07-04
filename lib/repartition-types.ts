@@ -62,6 +62,17 @@ export function getMoisInfo(mois: string): MoisRepartitionInfo | undefined {
   return MOIS_REPARTITION.find(m => m.libelle === mois);
 }
 
+// Classes migrated to a uniform 4-semaines/mois programme (Septembre→Juin).
+// Other classes keep the legacy irregular week counts above until they're migrated too.
+const CLASSES_MOIS_UNIFORME = new Set(['7eme', '8eme', '9eme', '10eme', '11eme', '12eme', 'garderie', 'maternelle']);
+
+export const MOIS_REPARTITION_UNIFORME: MoisRepartitionInfo[] =
+  MOIS_REPARTITION.map(m => ({ libelle: m.libelle, nbSemaines: 4 }));
+
+export function getMoisRepartitionForClasse(classe: string): MoisRepartitionInfo[] {
+  return CLASSES_MOIS_UNIFORME.has(classe) ? MOIS_REPARTITION_UNIFORME : MOIS_REPARTITION;
+}
+
 export const CLASSES_AVEC_REPARTITION = ['garderie', 'jardindenfant', 'maternelle', '12eme', '11eme', '10eme', '9eme', '8eme', '7eme'] as const;
 export type ClasseSlug = typeof CLASSES_AVEC_REPARTITION[number];
 
@@ -122,6 +133,7 @@ export const MAT_COLORS: Record<string, { border: string; badge: string; text: s
   'PRE-ECRITURE':     { border: 'border-l-teal-500',    badge: 'bg-teal-50 text-teal-700 border border-teal-200',          text: 'text-teal-700',    bg: 'bg-teal-50' },
   'PRE-CALCUL':       { border: 'border-l-blue-500',    badge: 'bg-blue-50 text-blue-700 border border-blue-200',          text: 'text-blue-700',    bg: 'bg-blue-50' },
   'PRE-MATHS':        { border: 'border-l-cyan-500',    badge: 'bg-cyan-50 text-cyan-700 border border-cyan-200',          text: 'text-cyan-700',    bg: 'bg-cyan-50' },
+  'PRE-MATHEMATIQUE': { border: 'border-l-cyan-600',    badge: 'bg-cyan-100 text-cyan-800 border border-cyan-300',         text: 'text-cyan-800',    bg: 'bg-cyan-100' },
   'ESPACE PHYSIQUE':  { border: 'border-l-teal-500',    badge: 'bg-teal-50 text-teal-700 border border-teal-200',          text: 'text-teal-700',    bg: 'bg-teal-50' },
   'ESPACE SENSORIEL': { border: 'border-l-yellow-500',  badge: 'bg-yellow-50 text-yellow-700 border border-yellow-200',    text: 'text-yellow-700',  bg: 'bg-yellow-50' },
   'EXERCICE SENSORIEL':{ border: 'border-l-yellow-500', badge: 'bg-yellow-50 text-yellow-700 border border-yellow-200',    text: 'text-yellow-700',  bg: 'bg-yellow-50' },
@@ -147,4 +159,58 @@ export const DEFAULT_COLOR = {
 
 export function getMatColor(matiere: string) {
   return MAT_COLORS[matiere] ?? DEFAULT_COLOR;
+}
+
+// Certaines classes détaillent Malagasy et Français en plusieurs matières
+// distinctes (une par ligne réelle de l'Excel : VAKITENY, TSIPELINA, LECTURE...).
+// Pour le téléchargement PDF, l'enseignant choisit "Malagasy" ou "Français" en un
+// clic et récupère le contenu de toutes les sous-matières regroupé dans un seul PDF.
+export const MATIERE_GROUPES: Record<string, Record<string, string[]>> = {
+  '9eme': {
+    'CALCUL':   ['ARITHMETIQUE', 'MESURE', 'GEOMETRIE'],
+    'MALAGASY': ['VAKITENY', 'TSIPELINA', 'FITSIPIKA', 'FANAZARANA HANORATRA', 'FANIT', 'F.TE'],
+    'FRANÇAIS': ['LECTURE', 'LANGUE', 'VOCABULAIRE', 'ORTHOGRAPHE', 'CONJUGAISON', 'GRAMMAIRE', 'EXPRESSION ORALE', 'EXPRESSION ECRITE'],
+  },
+  '10eme': {
+    'CALCUL':   ['ARITHMÉTIQUE', 'MESURE', 'GEOMETRIE', 'PROBLEME'],
+    'MALAGASY': ['F HITENY', 'VAKITENY', 'TSIPELINA', 'FITSIPIKA', 'SORAKALIANA'],
+    'FRANÇAIS': ['LECTURE', 'ORTHOGRAPHE', 'GRAMMAIRE', 'VOCABULAIRE', 'LANGAGE', 'CONJUGAISON', 'ÉCRITURE'],
+  },
+  '8eme': {
+    'CALCUL':   ['ARITHMÉTIQUE', 'GÉOMÉTRIE', 'MESURE'],
+    'MALAGASY': ['VAKITENY', 'F/B', 'TSIPELINA', 'FITSIPIKA'],
+    'FRANÇAIS': ['LANGAGE', 'LECTURE', 'VOCABULAIRE', 'GRAMMAIRE', 'ORTHOGRAPHE', 'CONJUGAISON'],
+  },
+  '7eme': {
+    'MALAGASY': ['FITSIPIKA', 'TSIPELINA'],
+  },
+};
+
+// Nom du groupe (ex: "MALAGASY") auquel appartient une sous-matière pour cette classe,
+// ou null si la matière n'appartient à aucun groupe (elle reste autonome).
+export function getMatiereGroupLabel(classe: string, matiere: string): string | null {
+  const groups = MATIERE_GROUPES[classe];
+  if (!groups) return null;
+  for (const [label, membres] of Object.entries(groups)) {
+    if (membres.includes(matiere)) return label;
+  }
+  return null;
+}
+
+// Options du menu de téléchargement : les sous-matières d'un même groupe sont
+// fusionnées en une seule entrée (le nom du groupe), les autres matières restent telles quelles.
+export function getDownloadOptions(classe: string, matieres: string[]): string[] {
+  const options: string[] = [];
+  const vus = new Set<string>();
+  for (const mat of matieres) {
+    const cle = getMatiereGroupLabel(classe, mat) ?? mat;
+    if (!vus.has(cle)) { vus.add(cle); options.push(cle); }
+  }
+  return options;
+}
+
+// Traduit une sélection du menu (groupe ou matière autonome) en la liste des
+// matières réelles à inclure dans le PDF.
+export function resolveMatiereSelection(classe: string, selection: string): string[] {
+  return MATIERE_GROUPES[classe]?.[selection] ?? [selection];
 }

@@ -18,6 +18,7 @@ export {
   MOIS_REPARTITION,
   MOIS_LABELS,
   getMoisInfo,
+  getMoisRepartitionForClasse,
   MAT_COLORS,
   DEFAULT_COLOR,
   getMatColor,

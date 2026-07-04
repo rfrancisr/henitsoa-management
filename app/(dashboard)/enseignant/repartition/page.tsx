@@ -5,7 +5,7 @@ import {
   getSemaine,
   CLASSES_AVEC_REPARTITION,
   CLASSES_LABELS,
-  MOIS_REPARTITION,
+  getMoisRepartitionForClasse,
   classeSlugFromLibelle,
   type ClasseSlug,
 } from '@/lib/repartition';
@@ -71,8 +71,9 @@ export default async function EnseignantRepartitionPage({
   const activeClasse = (classesDisponibles.find(c => c.slug === params.classe)?.slug)
     ?? classesDisponibles[0].slug;
 
-  const moisActif = MOIS_REPARTITION.find(m => m.libelle === params.mois)?.libelle ?? DEFAULT_MOIS;
-  const moisInfo  = MOIS_REPARTITION.find(m => m.libelle === moisActif)!;
+  const moisRepartition = getMoisRepartitionForClasse(activeClasse);
+  const moisActif = moisRepartition.find(m => m.libelle === params.mois)?.libelle ?? DEFAULT_MOIS;
+  const moisInfo  = moisRepartition.find(m => m.libelle === moisActif)!;
   const semaineNum = Math.max(1, Math.min(moisInfo.nbSemaines, parseInt(params.semaine ?? '1') || 1));
 
   const semaine = await getSemaine(activeClasse, moisActif, semaineNum);
@@ -110,7 +111,7 @@ export default async function EnseignantRepartitionPage({
 
       <RepartitionViewer
         semaine={semaine}
-        mois={MOIS_REPARTITION}
+        mois={moisRepartition}
         moisActif={moisActif}
         semaineActive={semaineNum}
         classeSlug={activeClasse}

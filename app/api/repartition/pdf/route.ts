@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
 
   const classeLabel = CLASSES_LABELS[classe as keyof typeof CLASSES_LABELS] ?? classe;
   const logoBase64 = loadLogoBase64();
-  const html = renderRepartitionPDF(semaines, matiere, classeLabel, mois, logoBase64);
+  const html = renderRepartitionPDF(semaines, matiere, classeLabel, mois, logoBase64, classe);
 
   if (searchParams.get('format') === 'html') {
     return new NextResponse(html, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });

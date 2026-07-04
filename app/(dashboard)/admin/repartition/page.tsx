@@ -1,6 +1,6 @@
 import { getSession } from '@/lib/session';
 import { redirect } from 'next/navigation';
-import { getSemaine, CLASSES_AVEC_REPARTITION, CLASSES_LABELS, MOIS_REPARTITION } from '@/lib/repartition';
+import { getSemaine, CLASSES_AVEC_REPARTITION, CLASSES_LABELS, getMoisRepartitionForClasse } from '@/lib/repartition';
 import RepartitionViewer from '@/components/RepartitionViewer';
 import BackLink from '@/components/ui/BackLink';
 
@@ -22,8 +22,9 @@ export default async function AdminRepartitionPage({
     ? params.classe!
     : '10eme';
 
-  const moisActif = MOIS_REPARTITION.find(m => m.libelle === params.mois)?.libelle ?? DEFAULT_MOIS;
-  const moisInfo  = MOIS_REPARTITION.find(m => m.libelle === moisActif)!;
+  const moisRepartition = getMoisRepartitionForClasse(classe);
+  const moisActif = moisRepartition.find(m => m.libelle === params.mois)?.libelle ?? DEFAULT_MOIS;
+  const moisInfo  = moisRepartition.find(m => m.libelle === moisActif)!;
   const semaineNum = Math.max(1, Math.min(moisInfo.nbSemaines, parseInt(params.semaine ?? '1') || 1));
 
   const semaine = await getSemaine(classe, moisActif, semaineNum);
@@ -59,7 +60,7 @@ export default async function AdminRepartitionPage({
 
       <RepartitionViewer
         semaine={semaine}
-        mois={MOIS_REPARTITION}
+        mois={moisRepartition}
         moisActif={moisActif}
         semaineActive={semaineNum}
         classeSlug={classe}

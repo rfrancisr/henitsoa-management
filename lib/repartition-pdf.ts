@@ -1,4 +1,5 @@
-import type { SemaineRepartition } from '@/lib/repartition-types';
+import type { SemaineRepartition, MatiereRepartition } from '@/lib/repartition-types';
+import { resolveMatiereSelection } from '@/lib/repartition-types';
 
 // Hex equivalents of the Tailwind colors used in MAT_COLORS
 const MAT_HEX: Record<string, { accent: string; bg: string; text: string; badgeBg: string }> = {
@@ -70,10 +71,14 @@ function esc(s: string): string {
     .replace(/"/g, '&quot;');
 }
 
-function renderWeek(sem: SemaineRepartition, matiere: string, c: ReturnType<typeof getHex>): string {
-  const mat = sem.matieres.find(m => m.matiere === matiere);
-  const matContent = mat ? `
+function renderMatiereContent(mat: MatiereRepartition, c: ReturnType<typeof getHex>, subLabel: boolean): string {
+  return `
     <div style="padding: 16px 18px; background: #fff;">
+
+      ${subLabel ? `
+      <div style="margin-bottom: 10px;">
+        <span style="background: ${c.badgeBg}; color: ${c.text}; padding: 2px 10px; border-radius: 100px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">${esc(mat.matiere)}</span>
+      </div>` : ''}
 
       <div style="margin-bottom: 14px;">
         <div class="label">Sujet / Topic</div>
@@ -105,7 +110,19 @@ function renderWeek(sem: SemaineRepartition, matiere: string, c: ReturnType<type
         </div>`).join('')}
       </div>` : ''}
 
-    </div>` : `
+    </div>`;
+}
+
+function renderWeek(sem: SemaineRepartition, matiereNames: string[], c: ReturnType<typeof getHex>): string {
+  const trouvees = matiereNames
+    .map(name => sem.matieres.find(m => m.matiere === name))
+    .filter((m): m is MatiereRepartition => Boolean(m));
+
+  const matContent = trouvees.length > 0
+    ? trouvees
+        .map(mat => renderMatiereContent(mat, getHex(mat.matiere), matiereNames.length > 1))
+        .join('<div style="height: 1px; background: #f0efee; margin: 0 18px;"></div>')
+    : `
     <div style="padding: 20px 18px; text-align: center; color: #a8a29e; font-size: 13px; font-style: italic; background: #fff;">
       Aucun contenu enregistré pour cette matière cette semaine.
     </div>`;
@@ -131,14 +148,16 @@ export function renderRepartitionPDF(
   classeLabel: string,
   mois: string,
   logoBase64?: string,
+  classeSlug?: string,
 ): string {
+  const matiereNames = classeSlug ? resolveMatiereSelection(classeSlug, matiere) : [matiere];
   const c = getHex(matiere);
   const logoTag = logoBase64
     ? `<img src="data:image/png;base64,${logoBase64}" style="height: 56px; width: auto; flex-shrink: 0;" alt="Logo">`
     : '';
 
   const nbSemaines = semaines.length;
-  const weekBlocks = semaines.map(sem => renderWeek(sem, matiere, c)).join('');
+  const weekBlocks = semaines.map(sem => renderWeek(sem, matiereNames, c)).join('');
 
   return `<!DOCTYPE html>
 <html lang="fr">
