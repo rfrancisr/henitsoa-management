@@ -1,7 +1,13 @@
 #!/bin/bash
 # Déploiement — ecole-henitsoa.com
 # Lancer depuis /opt/ecole/app sur le serveur
+# Usage : bash deploy.sh [--skip-db]   (--skip-db : changement code seul, sans backup/push/seed)
 set -e
+
+SKIP_DB=false
+if [ "$1" = "--skip-db" ]; then
+  SKIP_DB=true
+fi
 
 echo "==> Pull..."
 git pull origin master
@@ -27,15 +33,19 @@ if ! ls .next/server/app/\(dashboard\)/ 2>/dev/null | grep -q manifest; then
   exit 1
 fi
 
-echo "==> Backup DB (pré-déploiement)..."
-bash /opt/ecole/app/backup.sh "pre-deploy"
+if [ "$SKIP_DB" = true ]; then
+  echo "==> --skip-db : backup/push/seed ignorés (changement code seul)."
+else
+  echo "==> Backup DB (pré-déploiement)..."
+  bash /opt/ecole/app/backup.sh "pre-deploy"
 
-echo "==> DB..."
-# Charger .env pour que DATABASE_URL soit défini avec un chemin absolu avant le seed
-set -a; source .env; set +a
-npx prisma db push
-npx tsx prisma/seed.ts
-npx tsx prisma/seed_repartition.mjs --force
+  echo "==> DB..."
+  # Charger .env pour que DATABASE_URL soit défini avec un chemin absolu avant le seed
+  set -a; source .env; set +a
+  npx prisma db push
+  npx tsx prisma/seed.ts
+  npx tsx prisma/seed_repartition.mjs --force
+fi
 
 echo "==> Redémarrage..."
 pm2 start ecole
