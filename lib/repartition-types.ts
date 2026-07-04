@@ -64,7 +64,7 @@ export function getMoisInfo(mois: string): MoisRepartitionInfo | undefined {
 
 // Classes migrated to a uniform 4-semaines/mois programme (Septembre→Juin).
 // Other classes keep the legacy irregular week counts above until they're migrated too.
-const CLASSES_MOIS_UNIFORME = new Set(['7eme', '8eme', '9eme', '10eme', '11eme', '12eme', 'garderie', 'maternelle']);
+const CLASSES_MOIS_UNIFORME = new Set(['7eme', '8eme', '9eme', '10eme', '11eme', '12eme', 'garderie', 'maternelle', 'jardindenfant']);
 
 export const MOIS_REPARTITION_UNIFORME: MoisRepartitionInfo[] =
   MOIS_REPARTITION.map(m => ({ libelle: m.libelle, nbSemaines: 4 }));

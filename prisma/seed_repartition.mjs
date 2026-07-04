@@ -44,6 +44,7 @@ const { PERIODES_9EME, MOIS_9EME } = _require('./data_9eme.js');
 const { PERIODES_12EME, MOIS_12EME } = _require('./data_12eme.js');
 const { PERIODES_GARDERIE, MOIS_GARDERIE } = _require('./data_garderie.js');
 const { PERIODES_MATERNELLE, MOIS_MATERNELLE } = _require('./data_maternelle.js');
+const { PERIODES_JARDINDENFANT, MOIS_JARDINDENFANT } = _require('./data_jardindenfant.js');
 
 const prisma  = new PrismaClient();
 const args    = process.argv.slice(2);
@@ -111,6 +112,7 @@ function buildEntries9eme(sem)      { return sem.matieres || []; }
 function buildEntries12eme(sem)     { return sem.matieres || []; }
 function buildEntriesGarderie(sem)  { return sem.matieres || []; }
 function buildEntriesMaternelle(sem) { return sem.matieres || []; }
+function buildEntriesJardindenfant(sem) { return sem.matieres || []; }
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // INSERTION EN BASE
@@ -172,6 +174,7 @@ async function main() {
     { slug: '12eme',    periodes: PERIODES_12EME,   build: buildEntries12eme    },
     { slug: 'garderie', periodes: PERIODES_GARDERIE,build: buildEntriesGarderie },
     { slug: 'maternelle', periodes: PERIODES_MATERNELLE, build: buildEntriesMaternelle },
+    { slug: 'jardindenfant', periodes: PERIODES_JARDINDENFANT, build: buildEntriesJardindenfant },
   ];
 
   let total = 0, ok = 0, skip = 0;
@@ -408,6 +411,31 @@ async function main() {
       } catch (err) {
         process.stdout.write('✗');
         console.error(`\n    Erreur maternelle ${mois} S${sem.n}:`, err.message);
+      }
+    }
+    console.log(']');
+  }
+
+  // ─── Jardin d'Enfant Octobre–Juin (données mensuelles pré-remplies) ───────
+  console.log('\n📚 Classe jardindenfant (Octobre–Juin)');
+  for (const { mois, data } of MOIS_JARDINDENFANT) {
+    process.stdout.write(`  ${mois} [`);
+    for (const sem of data) {
+      const matieres = (sem.matieres || []).map(m => ({
+        matiere:      m.matiere      ?? '',
+        topic:        m.topic        ?? '',
+        approche:     m.approche     ?? '',
+        transmission: m.transmission ?? [],
+        exercices:    m.exercices    ?? [],
+      }));
+      total++;
+      try {
+        await insererSemaine('jardindenfant', mois, sem.n, sem.dateDebut, sem.theme, sem.sous ?? '', matieres);
+        process.stdout.write('✓');
+        ok++;
+      } catch (err) {
+        process.stdout.write('✗');
+        console.error(`\n    Erreur jardindenfant ${mois} S${sem.n}:`, err.message);
       }
     }
     console.log(']');
