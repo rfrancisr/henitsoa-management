@@ -214,3 +214,19 @@ export function getDownloadOptions(classe: string, matieres: string[]): string[]
 export function resolveMatiereSelection(classe: string, selection: string): string[] {
   return MATIERE_GROUPES[classe]?.[selection] ?? [selection];
 }
+
+// Recherche client-side dans la grille des matières d'une semaine : une matière
+// correspond si son nom, son sujet, ou le nom de son groupe (ex: "Malagasy" pour
+// VAKITENY) contient le texte recherché.
+export function matiereMatchesSearch(
+  mat: { matiere: string; topic: string },
+  classe: string,
+  query: string
+): boolean {
+  const q = query.trim().toLowerCase();
+  if (!q) return true;
+  if (mat.matiere.toLowerCase().includes(q)) return true;
+  if (mat.topic.toLowerCase().includes(q)) return true;
+  const groupLabel = getMatiereGroupLabel(classe, mat.matiere);
+  return groupLabel ? groupLabel.toLowerCase().includes(q) : false;
+}
