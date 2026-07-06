@@ -17,6 +17,7 @@ const I = {
   report: <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>,
   chart: <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>,
   calendar: <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>,
+  news: <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h13a2 2 0 012 2v13a1 1 0 01-1 1H6a2 2 0 01-2-2V4z"/><path d="M19 8h2v11a1 1 0 01-2 0"/><line x1="8" y1="8" x2="14" y2="8"/><line x1="8" y1="12" x2="14" y2="12"/><line x1="8" y1="16" x2="12" y2="16"/></svg>,
 };
 
 export default async function AdminDashboard() {
@@ -108,11 +109,18 @@ export default async function AdminDashboard() {
 
       {/* ── Section 3 : Suivi ── */}
       <SectionHeader label="En cours d'année — suivi et consultation" />
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-8">
         <ActionTile href="/enseignant/notes"    icon={I.pen}      label="Saisir les notes"          sub="Mettre à jour les résultats par période" />
         <ActionTile href="/directeur/bulletins" icon={I.report}   label="Voir les bulletins"        sub="Classement et PDF par élève" />
         <ActionTile href="/performance"         icon={I.chart}    label="Consulter les résultats"   sub="Statistiques et moyennes par classe" />
         <ActionTile href="/calendrier"          icon={I.calendar} label="Gérer le calendrier"       sub="Événements, examens et vacances" />
+      </div>
+
+      {/* ── Section 4 : Site public ── */}
+      <SectionHeader label="Site public — configuration" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <ActionTile href="/admin/actualites"   icon={I.news}     label="Gérer les actualités"  sub="Publier les nouvelles de l'école" />
+        <ActionTile href="/admin/dates-avenir" icon={I.calendar} label="Dates à venir"          sub="Les prochains événements sur la page d'accueil" />
       </div>
     </div>
   );
