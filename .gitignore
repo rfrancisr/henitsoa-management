@@ -49,3 +49,6 @@ prisma/prisma/
 
 # repartition (générateurs locaux, fichiers Excel/PDF/JSON — non déployés)
 /repartition/
+
+# images uploadées par les admins (contenu généré, non versionné)
+/public/uploads/
