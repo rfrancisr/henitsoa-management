@@ -1,7 +1,7 @@
 'use client';
 import { useState, useCallback, useEffect } from 'react';
 import type { SemaineRepartition, MatiereRepartition, MoisRepartitionInfo } from '@/lib/repartition-types';
-import { getMatColor, getDownloadOptions } from '@/lib/repartition-types';
+import { getMatColor, getDownloadOptions, matiereMatchesSearch } from '@/lib/repartition-types';
 
 // ─── Modal d'édition ──────────────────────────────────────────────────────────
 
@@ -321,6 +321,7 @@ export default function RepartitionViewer({
   const [historiqueMat, setHistoriqueMat] = useState<MatiereRepartition | null>(null);
   const [pdfMatiere, setPdfMatiere] = useState(initialSemaine?.matieres[0]?.matiere ?? '');
   const [downloading, setDownloading] = useState(false);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     if (!semaine) return;
@@ -364,6 +365,10 @@ export default function RepartitionViewer({
   function navUrl(m: string, s: number) {
     return `${basePath}?classe=${classeSlug}&mois=${encodeURIComponent(m)}&semaine=${s}`;
   }
+
+  const matieresFiltrees = semaine
+    ? semaine.matieres.filter(m => matiereMatchesSearch(m, classeSlug, search))
+    : [];
 
   const prevUrl = semaineActive > 1
     ? navUrl(moisActif, semaineActive - 1)
@@ -482,19 +487,46 @@ export default function RepartitionViewer({
         </div>
       </div>
 
+      {/* Recherche d'une matière */}
+      {semaine && semaine.matieres.length > 0 && (
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Rechercher une matière (ex: calcul, malagasy, fractions...)"
+          style={{
+            width: "100%",
+            padding: "9px 12px",
+            border: "1px solid var(--border)",
+            borderRadius: 6,
+            fontSize: 14,
+            fontFamily: "var(--font-sans)",
+            background: "var(--white)",
+            color: "var(--ink)",
+            outline: "none",
+          }}
+        />
+      )}
+
       {/* Grille des matières */}
       {semaine ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {semaine.matieres.map(mat => (
-            <MatiereCard
-              key={mat.id}
-              mat={mat}
-              canEdit={canEdit}
-              onEdit={setEditingMat}
-              onShowHistorique={setHistoriqueMat}
-            />
-          ))}
-        </div>
+        matieresFiltrees.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {matieresFiltrees.map(mat => (
+              <MatiereCard
+                key={mat.id}
+                mat={mat}
+                canEdit={canEdit}
+                onEdit={setEditingMat}
+                onShowHistorique={setHistoriqueMat}
+              />
+            ))}
+          </div>
+        ) : (
+          <p className="text-sm text-center py-8" style={{ color: "var(--inkLt)" }}>
+            Aucune matière ne correspond à « {search} » cette semaine.
+          </p>
+        )
       ) : (
         <div className="text-center py-16" style={{ color: "var(--inkLt)" }}>
           <p className="text-4xl mb-3">📋</p>
