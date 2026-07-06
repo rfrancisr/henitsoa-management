@@ -6,32 +6,20 @@ import { SiteNavbar } from "./SiteNavbar";
 import { SiteFooter } from "./SiteFooter";
 import { Reveal } from "./Reveal";
 
-const PLACEHOLDER_NEWS = [
-  {
-    date: "Juin 2026",
-    category: "Résultats",
-    title: "CEPE 2026 : un élève Henitsoa lauréat — 1er au classement national",
-    excerpt:
-      "Une fierté immense pour toute notre communauté scolaire. L'un de nos élèves a décroché la 1ère place au classement national du CEPE 2026, consacrant 40 ans de rigueur pédagogique.",
-    stripe: "#FF7043",
-  },
-  {
-    date: "Mai 2026",
-    category: "Équipements",
-    title: "Inauguration du nouveau laboratoire informatique",
-    excerpt:
-      "Un laboratoire de 20 postes ouvre ses portes. Nos élèves apprennent la programmation dans des conditions optimales.",
-    stripe: "#4FC3F7",
-  },
-  {
-    date: "Avril 2026",
-    category: "Culture",
-    title: "Journée culturelle 2026",
-    excerpt:
-      "Danse, arts et gastronomie : retour sur la journée qui a rassemblé toute la communauté scolaire.",
-    stripe: "#BA68C8",
-  },
-];
+type NewsItem = {
+  date: string;
+  category: string;
+  title: string;
+  excerpt: string;
+  stripe: string;
+};
+
+type EventItem = {
+  month: string;
+  day: string;
+  title: string;
+  desc: string;
+};
 
 /* ── Bunting SVG ──────────────────────────────────────────────────────────── */
 function Bunting() {
@@ -85,7 +73,7 @@ function WaveDivider({ from, to }: { from: string; to: string }) {
   );
 }
 
-function HomeContent() {
+function HomeContent({ news, events }: { news: NewsItem[]; events: EventItem[] }) {
   const { t } = useLang();
 
   const pillarPhotos = [
@@ -484,6 +472,7 @@ function HomeContent() {
       </section>
 
       {/* ── NEWS ──────────────────────────────────────────────────────────────── */}
+      {news.length > 0 && (
       <section className="py-16 sm:py-20 px-5 sm:px-8" style={{ background: "#EFF9FE" }}>
         <div className="max-w-[960px] mx-auto">
           <Reveal>
@@ -512,7 +501,7 @@ function HomeContent() {
           </Reveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {PLACEHOLDER_NEWS.map((item, i) => (
+            {news.map((item, i) => (
               <Reveal key={i} delay={i * 80} className="h-full">
                 <div
                   className="bg-white rounded-2xl overflow-hidden transition-all duration-200 hover:-translate-y-1 flex flex-col h-full"
@@ -596,8 +585,10 @@ function HomeContent() {
           </Reveal>
         </div>
       </section>
+      )}
 
       {/* ── EVENTS ────────────────────────────────────────────────────────────── */}
+      {events.length > 0 && (
       <section className="py-16 sm:py-20 px-5 sm:px-8" style={{ background: "#FFF8E1" }}>
         <div className="max-w-[680px] mx-auto">
           <Reveal>
@@ -626,7 +617,7 @@ function HomeContent() {
           </Reveal>
 
           <div className="flex flex-col gap-3">
-            {t.events.items.map((event, i) => (
+            {events.map((event, i) => (
               <Reveal key={i} delay={i * 70}>
                 <div
                   className="flex items-center gap-4 bg-white rounded-2xl px-5 py-4 transition-all duration-150"
@@ -683,6 +674,7 @@ function HomeContent() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ── QUOTE BANNER ──────────────────────────────────────────────────────── */}
       <div className="py-16 sm:py-20 px-5 text-center" style={{ background: "#66BB6A" }}>
@@ -804,10 +796,10 @@ function HomeContent() {
   );
 }
 
-export function HomePage() {
+export function HomePage({ news, events }: { news: NewsItem[]; events: EventItem[] }) {
   return (
     <LangProvider>
-      <HomeContent />
+      <HomeContent news={news} events={events} />
     </LangProvider>
   );
 }
