@@ -24,6 +24,31 @@ async function main() {
     console.log(`ℹ️  Admin : ${adminEmail}`);
   }
 
+  // ── Niveaux ───────────────────────────────────────────────────────────────
+  // Données structurelles nécessaires à toute école réelle (pas de la démo) :
+  // aucune page admin ne permet de les créer, donc elles doivent être seedées
+  // même en production.
+
+  const niveauxDef = [
+    { libelle: "Garderie",         ordre: 1 },
+    { libelle: "Jardin d'enfant",  ordre: 2 },
+    { libelle: "Maternelle",       ordre: 3 },
+    { libelle: "12ème",            ordre: 4 },
+    { libelle: "11ème",            ordre: 5 },
+    { libelle: "10ème",            ordre: 6 },
+    { libelle: "9ème",             ordre: 7 },
+    { libelle: "8ème",             ordre: 8 },
+    { libelle: "7ème",             ordre: 9 },
+    { libelle: "6ème",             ordre: 10 },
+    { libelle: "5ème",             ordre: 11 },
+    { libelle: "4ème",             ordre: 12 },
+    { libelle: "3ème",             ordre: 13 },
+  ];
+  for (const n of niveauxDef) {
+    await prisma.niveau.upsert({ where: { libelle: n.libelle }, update: { ordre: n.ordre }, create: n });
+  }
+  console.log(`✅ ${niveauxDef.length} niveaux`);
+
   if (!process.env.SEED_DEMO) {
     console.log("ℹ️  Mode production : données de démo ignorées (utiliser SEED_DEMO=true pour les inclure)");
     return;
@@ -100,30 +125,9 @@ async function main() {
   });
   console.log(`✅ Année scolaire : ${annee.libelle}`);
 
-  // ── Niveaux ───────────────────────────────────────────────────────────────
-
-  const niveauxDef = [
-    { libelle: "Garderie",         ordre: 1 },
-    { libelle: "Jardin d'enfant",  ordre: 2 },
-    { libelle: "Maternelle",       ordre: 3 },
-    { libelle: "12ème",            ordre: 4 },
-    { libelle: "11ème",            ordre: 5 },
-    { libelle: "10ème",            ordre: 6 },
-    { libelle: "9ème",             ordre: 7 },
-    { libelle: "8ème",             ordre: 8 },
-    { libelle: "7ème",             ordre: 9 },
-    { libelle: "6ème",             ordre: 10 },
-    { libelle: "5ème",             ordre: 11 },
-    { libelle: "4ème",             ordre: 12 },
-    { libelle: "3ème",             ordre: 13 },
-  ];
-  for (const n of niveauxDef) {
-    await prisma.niveau.upsert({ where: { libelle: n.libelle }, update: { ordre: n.ordre }, create: n });
-  }
   const niveaux = await prisma.niveau.findMany();
   const niveau6 = niveaux.find((n) => n.libelle === "6ème")!;
   const niveau3 = niveaux.find((n) => n.libelle === "3ème")!;
-  console.log(`✅ ${niveauxDef.length} niveaux`);
 
   // ── Matières ──────────────────────────────────────────────────────────────
 
