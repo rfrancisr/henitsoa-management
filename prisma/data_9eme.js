@@ -11,14 +11,10 @@ const m = (matiere, topic, approche, transmission, exercices) =>
   ({ matiere, topic, approche, transmission, exercices });
 
 const PERIODES_9EME = [
-  { num: 1, libelle: '1ère Période', debut: '01/09/2025', semaines: [
+  { num: 1, libelle: '1ère Période', debut: '07/09/2026', semaines: [
 
-// ── S1 : Semaine d'orientation — Prise de contact et test de pré-requis ─────
-// Excel : une seule case fusionnée "PRISE DE CONTACT ET TEST DE PRE-REQUIS"
-// couvrant les 22 matières de la semaine. Contenu détaillé par matière ci-dessous,
-// dans l'esprit de la rentrée déjà pratiqué sur 10ème/11ème/12ème.
 {
-  n: 1, dateDebut: "2025/09/01",
+  n: 1, dateDebut: "2026/09/07",
   theme: "Semaine d'orientation",
   sous: "Accueil des élèves · prise de contact et test de pré-requis dans toutes les matières",
   matieres: [
@@ -109,13 +105,12 @@ const PERIODES_9EME = [
     m("RÉCITATION","Mes deux yeux se font la fête",
       "Introduire une courte récitation ludique en début d'année pour développer la mémoire et l'articulation.",
       ["Lecture expressive du poème par l'enseignant","Explication des mots difficiles","Répétition vers par vers, en écho","Récitation individuelle par quelques volontaires"],
-      ["Récite le premier vers du poème → Corrigé : reproduction fidèle du vers appris","Combien de vers comporte ce poème ? → Corrigé : selon le texte présenté en classe","Explique avec tes mots de quoi parle ce poème → Corrigé : réponse cohérente avec le thème"]),
+      ["Récite le premier vers du poème → Corrigé : reproduction fidèle du vers appris","Combien de vers comporte ce poème ? → Corrigé : selon le texte présenté en classe","Explique avec tes mots de quoi parle ce poème → Corrigé : réponse cohérente avec le thème"])
   ],
 },
 
-// ── S2 : Numération, mesures et grammaire de rentrée ────────────────────────
 {
-  n: 2, dateDebut: "2025/09/08",
+  n: 2, dateDebut: "2026/09/14",
   theme: "Nombres jusqu'à 100 · La maison et ses habitants",
   sous: "Numération 1-100 · Mesure traditionnelle · Les lignes · Vakiteny : ny sakafo",
   matieres: [
@@ -206,13 +201,12 @@ const PERIODES_9EME = [
     m("RÉCITATION","Mes deux yeux se font la fête",
       "Poursuivre la mémorisation du poème 'Mes deux yeux se font la fête' entamé la semaine précédente.",
       ["Rappel collectif des vers déjà appris","Ajout des vers suivants, en répétition","Travail sur l'articulation et le rythme","Récitation par groupes de 4"],
-      ["Récite les 2 premiers vers du poème → Corrigé : reproduction fidèle des vers appris","De quoi parlent 'les yeux' dans ce poème selon toi ? → Corrigé : réponse cohérente avec le thème du poème","Répète le vers le plus difficile à ton avis → Corrigé : reproduction correcte, aide de l'enseignant si besoin"]),
+      ["Récite les 2 premiers vers du poème → Corrigé : reproduction fidèle des vers appris","De quoi parlent 'les yeux' dans ce poème selon toi ? → Corrigé : réponse cohérente avec le thème du poème","Répète le vers le plus difficile à ton avis → Corrigé : reproduction correcte, aide de l'enseignant si besoin"])
   ],
 },
 
-// ── S3 : Numération 100-1000, mesure de longueur, angles ────────────────────
 {
-  n: 3, dateDebut: "2025/09/15",
+  n: 3, dateDebut: "2026/09/21",
   theme: "Nombres jusqu'à 1000 · La santé",
   sous: "Numération 100-1000 · Mesure de longueur · Les angles · Vakiteny : ny fahasalamana",
   matieres: [
@@ -303,13 +297,12 @@ const PERIODES_9EME = [
     m("RÉCITATION","Mes deux yeux se font la fête (suite)",
       "Finaliser la mémorisation complète du poème et travailler l'expressivité de la récitation.",
       ["Récitation collective du poème en entier","Travail individuel sur l'intonation et les gestes","Récitation individuelle devant la classe pour quelques élèves","Encouragements et corrections bienveillantes"],
-      ["Récite le poème en entier → Corrigé : reproduction fidèle et expressive du poème appris","Quel geste peux-tu ajouter pour illustrer un vers ? → Corrigé : proposition individuelle cohérente","Quelle est la partie du poème que tu préfères ? Pourquoi ? → Corrigé : réponse libre justifiée"]),
+      ["Récite le poème en entier → Corrigé : reproduction fidèle et expressive du poème appris","Quel geste peux-tu ajouter pour illustrer un vers ? → Corrigé : proposition individuelle cohérente","Quelle est la partie du poème que tu préfères ? Pourquoi ? → Corrigé : réponse libre justifiée"])
   ],
 },
 
-// ── S4 : Numération 1000-2000, longueur, rectangle, sport ───────────────────
 {
-  n: 4, dateDebut: "2025/09/22",
+  n: 4, dateDebut: "2026/09/28",
   theme: "Nombres jusqu'à 2000 · Le sport et la cuisine",
   sous: "Numération 1000-2000 · Table 2 · Le rectangle · Vakiteny : ny fanatanjahantena",
   matieres: [
@@ -400,22 +393,17 @@ const PERIODES_9EME = [
     m("RÉCITATION","Du petit jour",
       "Découvrir un nouveau poème, 'Du petit jour', pour clore le mois de septembre.",
       ["Lecture expressive du poème par l'enseignant","Explication des mots et images difficiles","Apprentissage des 2 premiers vers, en répétition","Récitation collective des vers appris"],
-      ["Récite les 2 premiers vers de 'Du petit jour' → Corrigé : reproduction fidèle des vers appris","De quel moment de la journée parle ce poème ? → Corrigé : le petit jour, le matin, l'aube","Quelle image du poème préfères-tu ? → Corrigé : réponse libre justifiée"]),
+      ["Récite les 2 premiers vers de 'Du petit jour' → Corrigé : reproduction fidèle des vers appris","De quel moment de la journée parle ce poème ? → Corrigé : le petit jour, le matin, l'aube","Quelle image du poème préfères-tu ? → Corrigé : réponse libre justifiée"])
   ],
-},
+}
 
-  ],
-},
-
+  ] },
 ];
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// OCTOBRE
-// ═══════════════════════════════════════════════════════════════════════════════
 const OCTOBRE_9EME = [
-// ── S1 (P1-S5) : Numération 200-10 000, rectangle (périmètre), la famille ──
+
 {
-  n: 1, dateDebut: "2025/09/29",
+  n: 1, dateDebut: "2026/10/05",
   theme: "Nombres jusqu'à 10 000 · La famille",
   sous: "Numération 200-10.000 · Table 2 · Le rectangle (périmètre) · Vakiteny : ny ankohonana",
   matieres: [
@@ -506,13 +494,12 @@ const OCTOBRE_9EME = [
     m("RÉCITATION","Du petit jour (suite et fin)",
       "Achever la mémorisation complète du poème 'Du petit jour' commencé en septembre et travailler son expressivité.",
       ["Rappel des 2 premiers vers déjà appris","Apprentissage des vers suivants, en répétition","Récitation collective du poème en entier","Travail sur l'intonation et le rythme","Récitation individuelle par quelques volontaires"],
-      ["Récite le poème 'Du petit jour' en entier → Corrigé : reproduction fidèle et complète du poème appris","Combien de vers comporte le poème entier ? → Corrigé : selon le texte présenté en classe","Quelle image du poème préfères-tu et pourquoi ? → Corrigé : réponse libre justifiée"]),
+      ["Récite le poème 'Du petit jour' en entier → Corrigé : reproduction fidèle et complète du poème appris","Combien de vers comporte le poème entier ? → Corrigé : selon le texte présenté en classe","Quelle image du poème préfères-tu et pourquoi ? → Corrigé : réponse libre justifiée"])
   ],
 },
 
-// ── S2 (P1-S6) : Numération jusqu'à 100 000, aire du rectangle, les responsabilités ──
 {
-  n: 2, dateDebut: "2025/10/06",
+  n: 2, dateDebut: "2026/10/12",
   theme: "Nombres jusqu'à 100 000 · Les responsabilités familiales",
   sous: "Numération jusqu'à 100.000 · Tables 2 et 3 · Aire du rectangle · Vakiteny : ny andraikitry ny tsirairay",
   matieres: [
@@ -603,13 +590,12 @@ const OCTOBRE_9EME = [
     m("RÉCITATION","La maison m'attendait",
       "Découvrir un nouveau poème évoquant le retour à la maison, après avoir clos 'Du petit jour'.",
       ["Lecture expressive du poème par l'enseignant","Explication des mots et images difficiles","Apprentissage du premier vers, en répétition","Récitation collective du vers appris"],
-      ["Récite le premier vers de 'La maison m'attendait' → Corrigé : reproduction fidèle du vers appris","De quoi parle ce poème selon toi ? → Corrigé : le retour à la maison (réponse cohérente)","Explique le mot 'attendait' dans le titre → Corrigé : le fait d'espérer un retour, une arrivée"]),
+      ["Récite le premier vers de 'La maison m'attendait' → Corrigé : reproduction fidèle du vers appris","De quoi parle ce poème selon toi ? → Corrigé : le retour à la maison (réponse cohérente)","Explique le mot 'attendait' dans le titre → Corrigé : le fait d'espérer un retour, une arrivée"])
   ],
 },
 
-// ── S3 (P1-S7) : Numération jusqu'à 500 000, le carré, visite à la famille ──
 {
-  n: 3, dateDebut: "2025/10/13",
+  n: 3, dateDebut: "2026/10/19",
   theme: "Nombres jusqu'à 500 000 · Visite à la famille",
   sous: "Numération jusqu'à 500.000 · Tables 3 et 4 · Le carré · Vakiteny : mamangy havana",
   matieres: [
@@ -700,13 +686,112 @@ const OCTOBRE_9EME = [
     m("RÉCITATION","La maison m'attendait (suite)",
       "Poursuivre la mémorisation du poème 'La maison m'attendait' et en explorer le sentiment exprimé.",
       ["Rappel du premier vers appris la semaine précédente","Apprentissage des vers suivants, en répétition","Récitation collective des vers appris","Discussion sur le sentiment exprimé par le poème"],
-      ["Récite les 4 premiers vers de 'La maison m'attendait' → Corrigé : reproduction fidèle des vers appris","Quel sentiment exprime ce poème ? → Corrigé : la joie du retour ou la nostalgie, selon le texte","Répète le vers que tu trouves le plus difficile → Corrigé : reproduction avec aide si besoin"]),
+      ["Récite les 4 premiers vers de 'La maison m'attendait' → Corrigé : reproduction fidèle des vers appris","Quel sentiment exprime ce poème ? → Corrigé : la joie du retour ou la nostalgie, selon le texte","Répète le vers que tu trouves le plus difficile → Corrigé : reproduction avec aide si besoin"])
   ],
 },
 
-// ── S4 (P2-S1) : Numération jusqu'à 1 000 000, aire du carré, cérémonie familiale ──
 {
-  n: 4, dateDebut: "2025/10/27",
+  n: 4, dateDebut: "2026/10/26",
+  theme: "Semaine de révision et consolidation — Nombres jusqu'à 500 000",
+  sous: "Révision : numération et tables 3-4 · Le carré · Vakiteny : mamangy havana (approfondissement)",
+  matieres: [
+    m("ARITHMETIQUE","Révision : nombres jusqu'à 500 000, tables 3 et 4, multiplication avec retenue",
+      "Consolider la lecture, l'écriture et le rangement des nombres jusqu'à 500 000 et automatiser les tables de 3 et 4 à travers des problèmes de multiplication un peu plus complexes.",
+      ["Dictée de nombres jusqu'à 500 000, lecture et écriture individuelle","Jeu de rangement rapide de 5 nombres à 6 chiffres","Révision chronométrée des tables de 3 et 4 (jeu de flash)","Résolution de 2 problèmes mêlant multiplication et comparaison de nombres","Correction collective avec explicitation des erreurs fréquentes"],
+      ["Range du plus grand au plus petit : 425 000, 89 000, 500 000, 310 500 → Corrigé : 500 000, 425 000, 310 500, 89 000","Calcule : 84 × 4 = ? → Corrigé : 336 (avec retenue)","Un marché reçoit 3 sacs de 74 kg de riz chacun. Combien de kg au total ? → Corrigé : 74 × 3 = 222 kg"]),
+    m("MESURE","Révision : mesure de masse (g, kg)",
+      "Consolider la conversion g/kg et résoudre des petits problèmes d'addition et de comparaison de masses avec la balance de classe.",
+      ["Rappel rapide : 1 kg = 1000 g, peser à nouveau 2-3 objets","Jeu de conversion oral rapide g ↔ kg","Problème : additionner deux masses données","Problème : comparer deux masses et ranger plusieurs objets pesés","Correction collective"],
+      ["3 kg = ___ g → Corrigé : 3000 g","Un panier de légumes pèse 1 kg 200 g, un autre 800 g. Quelle est la masse totale ? → Corrigé : 2000 g soit 2 kg","Range du plus lourd au plus léger : 1 kg 500 g, 900 g, 2 kg → Corrigé : 2 kg, 1 kg 500 g, 900 g"]),
+    m("GEOMETRIE","Révision : le carré et son périmètre, comparaison avec le rectangle",
+      "Consolider le calcul du périmètre du carré et distinguer clairement carré et rectangle à travers des problèmes combinés.",
+      ["Rappel des propriétés du carré et de la formule du périmètre","Comparer un carré et un rectangle de même périmètre","Exercice : retrouver le côté d'un carré à partir de son périmètre","Tracé d'un carré et d'un rectangle de périmètres égaux, à l'équerre et à la règle","Correction collective"],
+      ["Un carré a un périmètre de 32 cm. Quelle est la longueur d'un côté ? → Corrigé : 32÷4 = 8 cm","Un rectangle de longueur 10 cm et largeur 6 cm a-t-il le même périmètre qu'un carré de 8 cm de côté ? → Corrigé : rectangle (10+6)×2=32 cm ; carré 8×4=32 cm → oui, même périmètre","Trace un carré de 6 cm de côté et calcule son périmètre → Corrigé : tracé vérifié ; périmètre = 24 cm"]),
+    m("VAKITENY","Famerenana : Mamangy havana",
+      "Manamafy ny fahatakarana ny lahatsoratra 'Mamangy havana' amin'ny fanontaniana lalindalina kokoa sy ny fitantarana manokana.",
+      ["Famerenana ny lahatsoratra tamin'ny famakiana am-bava","Fanontaniana lalindalina kokoa momba ny anton'ny fitsidihana","Fifanakalozana am-bava : fitantarana ny fitsidihana havana nataon'ny mpianatra manokana","Famintinana an-tsoratra fohy ny lahatsoratra"],
+      ["Inona no antony nampandeha ny mpianatra tao amin'ny lahatsoratra hitsidika ny havany? → Corrigé : hoentiny mankany amin'ny fety na fitsidihana fahazoana (araka ny lahatsoratra)","Tantarao am-bava ny farany fitsidihana havana nataonao → Corrigé : valiny manokana marina","Manorata fehezanteny roa mifintina ny lahatsoratra 'Mamangy havana' → Corrigé : famintinana marina misy hevitra roa lehibe tao amin'ny lahatsoratra"]),
+    m("TSIPELINA","Famerenana : ny teny verindroa",
+      "Manamafy ny fahaizana mamantatra sy mampiasa ny teny verindroa amin'ny fehezanteny lavabe kokoa.",
+      ["Famerenana haingana ny teny verindroa efa hita herinandro lasa","Fitadiavana teny verindroa vaovao amin'ny lahatsoratra 'Mamangy havana'","Fampiharana an-tsoratra : mamorona fehezanteny roa misy teny verindroa","Fanitsiana am-pokonolona"],
+      ["Tondroy ny teny verindroa ao amin'ny fehezanteny : 'Nandehandeha moramora izy ireo.' → Corrigé : nandehandeha, moramora","Manorata fehezanteny iray misy ny teny verindroa 'kelikely' → Corrigé : ohatra, 'Nihinana kelikely ny zaza.'","Ovay ho teny verindroa ny hoe 'mora' → Corrigé : moramora"]),
+    m("FITSIPIKA","Famerenana : ny sampateny 'mpan-' sy '-ana'",
+      "Manamafy ny fampiasana ireo sampateny roa nianarana amin'ny fototeny samihafa.",
+      ["Famerenana haingana ny santiona 'mpan-' sy '-ana'","Fampiharana amin'ny fototeny vaovao : 'vaky' → mpamaky, famakiana","Fanoratana teny mifototra amin'ny fototeny nofidina","Fanitsiana am-pokonolona"],
+      ["Ampio santiona 'mpan-' amin'ny fototeny 'vaky' → Corrigé : mpamaky","Manorata teny miafara amin'ny '-ana' avy amin'ny fototeny 'sasa' → Corrigé : fanasana","Inona ny fototeny ao amin'ny 'mpanoratra'? → Corrigé : soratra"]),
+    m("FANAZARANA HANORATRA","Famerenana : fehezanteny alamina, lava kokoa",
+      "Manamafy ny fahaizana mandamina teny amin'ny fehezanteny misy teny maromaro kokoa noho ny herinandro teo aloha.",
+      ["Famerenana ny fitsipika fandaminana teny","Fanomezana fehezanteny mifafy misy teny 6-7","Fampiharana an-tsoratra samirery","Fanamarihana ny filaharana marina sy ny marim-piatoana"],
+      ["Alamino ho fehezanteny : 'havana / ny / mpianatra / mamangy / faly / dia' → Corrigé : 'Faly ny mpianatra dia mamangy havana.'","Alamino : 'vary / sy / laoka / nohanina / no' → Corrigé : 'Vary sy laoka no nohanina.'","Nahoana no lava kokoa ity fehezanteny ity noho ny an'ny herinandro teo aloha? → Corrigé : misy teny maro kokoa mifandray"]),
+    m("LECTURE","Révision : Un jardin à l'école",
+      "Approfondir la compréhension du texte sur le jardin de l'école en le reliant à l'expérience personnelle des élèves.",
+      ["Relecture silencieuse rapide du texte","Questions de compréhension plus fines (pourquoi, comment)","Discussion : comparer avec le jardin ou le potager de sa propre famille","Relever à nouveau le vocabulaire du jardinage et le réutiliser à l'oral"],
+      ["Pourquoi faut-il arroser régulièrement le jardin de l'école ? → Corrigé : pour que les légumes poussent bien, selon le texte","Cite 2 outils utilisés pour jardiner d'après le texte → Corrigé : une pelle, un arrosoir (exemples selon le texte)","As-tu un jardin chez toi ? Que cultive-t-on ? → Corrigé : réponse individuelle cohérente"]),
+    m("LANGUE","Révision : Marie reste à la maison",
+      "Approfondir la compréhension du texte en comparant la situation de Marie à celle du personnage perdu dans l'école étudié la semaine précédente.",
+      ["Relecture du texte 'Marie reste à la maison'","Questions de compréhension plus fines sur les causes et conséquences","Comparaison orale des deux histoires étudiées (Marie / l'élève perdu)","Reformulation écrite courte de l'histoire de Marie"],
+      ["Que se passerait-il si Marie n'aidait pas sa famille ce jour-là ? → Corrigé : réponse cohérente, ex. les tâches ne seraient pas faites","En quoi l'histoire de Marie est-elle différente de celle de l'élève perdu ? → Corrigé : Marie reste volontairement à la maison, l'élève se perd par accident","Écris 2 phrases résumant l'histoire de Marie → Corrigé : réponse individuelle fidèle au texte"]),
+    m("VOCABULAIRE","Révision : localisation dans l'espace",
+      "Consolider le vocabulaire de localisation (sur, sous, devant, derrière, à côté de) dans des phrases plus complètes.",
+      ["Jeu rapide de rappel des mots de position","Décrire la position de 3 objets de la classe avec une phrase complète","Exercice écrit : compléter des phrases avec le bon mot de localisation","Correction collective"],
+      ["Complète : le sac est ___ la chaise (à côté) → Corrigé : à côté de","Décris en une phrase la position du tableau dans ta classe → Corrigé : réponse libre correcte, ex. 'Le tableau est devant la classe.'","Donne le contraire de 'devant' → Corrigé : derrière"]),
+    m("ORTHOGRAPHE","Révision : le pluriel des noms",
+      "Consolider la règle générale du pluriel et les cas particuliers -al/-aux, -eu/-eux à travers une dictée courte.",
+      ["Rappel oral rapide des 3 règles vues (s, -al/-aux, -eu/-eux)","Courte dictée de 5 noms à mettre au pluriel","Correction collective avec justification de chaque règle","Exercice supplémentaire de tri par catégorie"],
+      ["Mets au pluriel : un journal → Corrigé : des journaux","Mets au pluriel : un feu → Corrigé : des feux","Classe ces pluriels selon leur règle : chevaux, cahiers, jeux → Corrigé : -al/-aux = chevaux ; règle générale (s) = cahiers ; -eu/-eux = jeux"]),
+    m("CONJUGAISON","Révision : les verbes être et avoir au présent/passé composé",
+      "Consolider les conjugaisons d'être (présent) et avoir (passé composé) déjà vues, en les distinguant clairement dans des phrases.",
+      ["Rappel oral rapide des deux conjugaisons","Exercice de tri : phrases avec être / phrases avec avoir","Exercice à trous mêlant les deux verbes","Correction collective"],
+      ["Complète avec être ou avoir : Nous ___ contents et nous ___ eu une bonne note. → Corrigé : sommes / avons","Conjugue avoir au passé composé avec 'nous' → Corrigé : nous avons eu","Conjugue être au présent avec 'elles' → Corrigé : elles sont"]),
+    m("GRAMMAIRE","Révision : adjectif épithète et adjectif attribut",
+      "Consolider la distinction entre les deux fonctions de l'adjectif qualificatif vues en septembre et en octobre.",
+      ["Rappel des deux notions avec un exemple de chaque","Exercice de tri : classer des phrases en épithète / attribut","Exercice de production : écrire une phrase de chaque type","Correction collective"],
+      ["Dans 'Le petit chat dort', l'adjectif est-il épithète ou attribut ? → Corrigé : épithète","Dans 'Le chat est petit', l'adjectif est-il épithète ou attribut ? → Corrigé : attribut","Écris une phrase avec un adjectif attribut → Corrigé : réponse libre correcte, ex. 'Le ciel est bleu.'"]),
+    m("EXPRESSION ORALE","Révision : jeux oraux (devinettes et rimes)",
+      "Consolider la pratique des devinettes en les rendant un peu plus complexes (indices multiples).",
+      ["Rappel rapide des règles du jeu de devinette","Chaque élève propose une devinette avec 2 indices minimum","Jeu de rimes avec des mots plus longs","Discussion sur les progrès réalisés"],
+      ["Propose une devinette avec 2 indices pour un objet de la classe → Corrigé : réponse individuelle, les camarades devinent correctement","Trouve un mot qui rime avec 'maison' → Corrigé : ex. saison, poisson","Explique en une phrase pourquoi les devinettes t'aident à parler → Corrigé : réponse libre cohérente"]),
+    m("EXPRESSION ECRITE","Révision : rédiger une note claire",
+      "Réutiliser la structure de note apprise pour rédiger une nouvelle note dans un contexte différent.",
+      ["Rappel de la structure d'une note claire vue la semaine précédente","Modèle au tableau pour un nouveau contexte : 'Range les livres...'","Rédaction individuelle d'une nouvelle note","Échange et vérification de la clarté entre camarades"],
+      ["Écris une note demandant de fermer la porte de la classe → Corrigé : 'Ferme la porte de la classe en sortant, s'il te plaît.'","Quels éléments rendent une note facile à comprendre ? → Corrigé : phrase courte, verbe clair, politesse","Relis la note d'un camarade : est-elle claire ? → Corrigé : vérification individuelle"]),
+    m("S.V.T","Révision : les 5 organes des sens",
+      "Faire la synthèse des 5 organes des sens étudiés en septembre et en octobre (yeux, oreilles, nez, langue, dents/peau).",
+      ["Rappel collectif des 5 organes des sens et de leur rôle","Jeu : l'enseignant nomme un sens, les élèves montrent l'organe","Exercice écrit d'association organe-sens","Correction collective"],
+      ["Associe chaque organe à son sens : la langue → Corrigé : le goût","Associe chaque organe à son sens : le nez → Corrigé : l'odorat","Cite les 5 organes des sens étudiés → Corrigé : les yeux, les oreilles, le nez, la langue, la peau"]),
+    m("GEOGRAPHIE","Révision : le globe terrestre",
+      "Consolider l'observation du globe terrestre en y repérant Madagascar.",
+      ["Rappel de la forme de la Terre et du globe terrestre","Chercher ensemble Madagascar sur le globe","Observer les océans autour de l'île","Exercice individuel de repérage"],
+      ["Quelle est la forme de la Terre ? → Corrigé : ronde, sphérique","Sur le globe, quelle couleur représente les océans ? → Corrigé : le bleu","Cite le nom de l'île où nous vivons, repérée sur le globe → Corrigé : Madagascar"]),
+    m("TANTARA","Famerenana : ny andro sy ny volana",
+      "Manamafy ny fahalalana ny andro fito sy ny volana roa ambin'ny folo amin'ny fampiharana an-tsoratra.",
+      ["Famerenana haingana am-bava ny andro fito sy ny volana roa ambin'ny folo","Fanoratana ny andro sy ny volana amin'ny filaharana marina","Fanontaniana : inona ny andro anio, inona ny volana ankehitriny","Fanitsiana am-pokonolona"],
+      ["Inona no andro manaraka ny Alatsinainy? → Corrigé : Talata","Tanisao ny 3 volana voalohany amin'ny taona → Corrigé : Janoary, Febroary, Martsa","Firy andro ao amin'ny herinandro iray? → Corrigé : 7 andro"]),
+    m("ANGLAIS","Revision: family and counting up to 50",
+      "Consolidate family vocabulary and complete the counting sequence from 40 up to 50 already begun.",
+      ["Quick recall game: name family members shown in pictures","Complete the counting sequence together: 40 to 50","Sentence practice: 'This is my ...' with a family member","Pair game counting in turns up to 50"],
+      ["Count from 45 to 50 in English → Corrigé : forty-five, forty-six, forty-seven, forty-eight, forty-nine, fifty","Complete: 'This is my ___.' (show a picture of a father) → Corrigé : father","Name 2 more family members not yet used in class → Corrigé : ex. brother, grandmother"]),
+    m("FFMOM","Famerenana : fanajana ny fitsipiky ny sekoly",
+      "Manamafy ny fahatakarana ny fitsipiky ny sekoly amin'ny alalan'ny fampisehoana an-tsehatra.",
+      ["Famerenana ny fitsipika efa nianarana","Fampisehoana an-tsehatra kely momba ny toe-javatra manaja na tsy manaja ny fitsipika","Fifanakalozan-kevitra momba ny vokany raha tsy ajanona ny fitsipika","Famintinana ny lesona"],
+      ["Tanisao fitsipika telo efa nianarana → Corrigé : manangan-tanana, mihaino, tsy manelingelina (ohatra)","Ataovy fampisehoana kely fanajana ny mpampianatra → Corrigé : fanehoana marina araka ny fitsipika","Inona no vokatry ny tsy fanarahana ny fitsipiky ny sekoly? → Corrigé : tsy filaminana, fahaverezan'ny fahalalana"]),
+    m("CHANT","Révision : Bonjour ma cousine (interprétation complète)",
+      "Peaufiner l'interprétation complète de la chanson avec gestes, en vue d'une petite présentation.",
+      ["Rappel du chant en entier avec les gestes","Répétition en petits groupes pour améliorer la justesse","Présentation par 2-3 groupes devant la classe","Retour collectif bienveillant"],
+      ["Chante 'Bonjour ma cousine' en entier avec les gestes → Corrigé : évaluation de la mémorisation et de la justesse","Présente le chant en petit groupe devant la classe → Corrigé : participation évaluée","Quel geste correspond à la phrase d'accueil de la chanson ? → Corrigé : réponse cohérente avec les gestes appris"]),
+    m("RÉCITATION","Révision : La maison m'attendait (mémorisation complète)",
+      "Achever la mémorisation complète du poème et approfondir le travail d'expressivité.",
+      ["Rappel des vers déjà appris","Apprentissage des derniers vers du poème","Récitation collective du poème en entier avec intonation","Récitation individuelle par plusieurs volontaires"],
+      ["Récite le poème 'La maison m'attendait' en entier → Corrigé : reproduction fidèle et complète du poème","Quel est le sentiment dominant à la fin du poème ? → Corrigé : réponse cohérente selon le texte, ex. la joie de retrouver sa maison","Récite le vers que tu préfères en expliquant pourquoi → Corrigé : réponse libre justifiée"])
+  ],
+}
+
+];
+
+const NOVEMBRE_9EME = [
+
+{
+  n: 1, dateDebut: "2026/11/09",
   theme: "Nombres jusqu'à 1 000 000 · Cérémonie familiale",
   sous: "Numération jusqu'à 1.000.000 · Table 4 · Aire du carré · Vakiteny : lanonam-pianakaviana",
   matieres: [
@@ -797,18 +882,12 @@ const OCTOBRE_9EME = [
     m("RÉCITATION","À l'école, C'était le temps des copains",
       "Découvrir un nouveau poème sur l'amitié à l'école, pour clore le mois d'octobre.",
       ["Rappel du poème 'La maison m'attendait' terminé la semaine précédente","Lecture expressive de 'C'était le temps des copains'","Explication des mots et images difficiles","Apprentissage du premier vers, en répétition"],
-      ["Récite le premier vers de 'C'était le temps des copains' → Corrigé : reproduction fidèle du vers appris","De quoi parle ce poème ? → Corrigé : de l'amitié à l'école, des souvenirs entre copains","Compare 'La maison m'attendait' et 'C'était le temps des copains' : quel est le point commun ? → Corrigé : tous deux évoquent des souvenirs personnels et affectifs"]),
+      ["Récite le premier vers de 'C'était le temps des copains' → Corrigé : reproduction fidèle du vers appris","De quoi parle ce poème ? → Corrigé : de l'amitié à l'école, des souvenirs entre copains","Compare 'La maison m'attendait' et 'C'était le temps des copains' : quel est le point commun ? → Corrigé : tous deux évoquent des souvenirs personnels et affectifs"])
   ],
 },
-];
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// NOVEMBRE
-// ═══════════════════════════════════════════════════════════════════════════════
-const NOVEMBRE_9EME = [
-// ── P2 S2 : Grands nombres (million) et vie du village ──────────────────────
 {
-  n: 1, dateDebut: "2025/11/03",
+  n: 2, dateDebut: "2026/11/16",
   theme: "Les nombres jusqu'à 1 million · Vie du village",
   sous: "Numération jusqu'à 1 million · Mesure de capacité · Le triangle · Vakiteny : ny sekoly",
   matieres: [
@@ -899,13 +978,12 @@ const NOVEMBRE_9EME = [
     m("RÉCITATION","À l'école",
       "Poursuivre la mémorisation du poème 'À l'école' entamé en octobre.",
       ["Rappel des vers déjà appris du poème 'À l'école'","Ajout des vers suivants, en répétition","Travail sur l'articulation","Récitation par groupes"],
-      ["Récite les vers appris jusqu'à présent du poème 'À l'école' → Corrigé : reproduction fidèle des vers appris","De quoi parle ce poème ? → Corrigé : de la vie à l'école","Quel vers trouves-tu le plus difficile à mémoriser ? → Corrigé : réponse individuelle"]),
+      ["Récite les vers appris jusqu'à présent du poème 'À l'école' → Corrigé : reproduction fidèle des vers appris","De quoi parle ce poème ? → Corrigé : de la vie à l'école","Quel vers trouves-tu le plus difficile à mémoriser ? → Corrigé : réponse individuelle"])
   ],
 },
 
-// ── P2 S3 : Nombres jusqu'à 1 milliard et récits villageois ─────────────────
 {
-  n: 2, dateDebut: "2025/11/10",
+  n: 3, dateDebut: "2026/11/23",
   theme: "Les nombres jusqu'à 1 milliard · Récits villageois",
   sous: "Numération jusqu'à 1 milliard · Mesure de capacité (suite) · Le triangle (suite) · Vakiteny : Nary kely",
   matieres: [
@@ -996,13 +1074,12 @@ const NOVEMBRE_9EME = [
     m("RÉCITATION","C'était le temps des copains",
       "Découvrir un nouveau poème et en apprendre les 2 premiers vers.",
       ["Lecture expressive du nouveau poème par l'enseignant","Explication des mots et images difficiles","Apprentissage des 2 premiers vers, en répétition","Récitation collective des vers appris"],
-      ["Récite les 2 premiers vers de 'C'était le temps des copains' → Corrigé : reproduction fidèle des vers appris","De quoi parle ce poème selon toi ? → Corrigé : réponse cohérente, ex. de l'amitié, des souvenirs d'école","Explique avec tes mots le titre du poème → Corrigé : réponse cohérente"]),
+      ["Récite les 2 premiers vers de 'C'était le temps des copains' → Corrigé : reproduction fidèle des vers appris","De quoi parle ce poème selon toi ? → Corrigé : réponse cohérente, ex. de l'amitié, des souvenirs d'école","Explique avec tes mots le titre du poème → Corrigé : réponse cohérente"])
   ],
 },
 
-// ── P2 S4 : Multiplication à 2 chiffres et conte malgache ───────────────────
 {
-  n: 3, dateDebut: "2025/11/17",
+  n: 4, dateDebut: "2026/11/30",
   theme: "Multiplication à 2 chiffres · Le cercle",
   sous: "Multiplication 2 chiffres × 2 chiffres · Mesure de temps · Le cercle · Vakiteny : Ry tanindrazanay",
   matieres: [
@@ -1093,13 +1170,16 @@ const NOVEMBRE_9EME = [
     m("RÉCITATION","C'était le temps des copains",
       "Poursuivre la mémorisation du poème avec les vers suivants.",
       ["Rappel des vers déjà appris","Ajout des vers suivants","Travail sur le rythme et l'intonation","Récitation individuelle par quelques volontaires"],
-      ["Récite le poème jusqu'aux vers appris cette semaine → Corrigé : reproduction fidèle et cumulée des vers appris","Quelle image du poème préfères-tu ? → Corrigé : réponse libre justifiée","Ajoute un geste pour illustrer un vers du poème → Corrigé : proposition individuelle cohérente"]),
+      ["Récite le poème jusqu'aux vers appris cette semaine → Corrigé : reproduction fidèle et cumulée des vers appris","Quelle image du poème préfères-tu ? → Corrigé : réponse libre justifiée","Ajoute un geste pour illustrer un vers du poème → Corrigé : proposition individuelle cohérente"])
   ],
-},
+}
 
-// ── P2 S5 : Multiplication à 2 chiffres (suite) et clôture du mois ──────────
+];
+
+const DECEMBRE_9EME = [
+
 {
-  n: 4, dateDebut: "2025/11/24",
+  n: 1, dateDebut: "2026/12/07",
   theme: "Multiplication à 2 chiffres (suite) · Clôture du mois",
   sous: "Multiplication table 8 · Mesure de temps (suite) · Le cercle (suite) · Vakiteny : Arahaba tratry ny fety",
   matieres: [
@@ -1190,18 +1270,12 @@ const NOVEMBRE_9EME = [
     m("RÉCITATION","Le cavalier à la fontaine",
       "Découvrir un nouveau poème et en apprendre la première strophe.",
       ["Lecture expressive du nouveau poème par l'enseignant","Explication des mots difficiles (cavalier, fontaine)","Apprentissage de la première strophe, en répétition","Récitation collective"],
-      ["Récite la première strophe de 'Le cavalier à la fontaine' → Corrigé : reproduction fidèle de la strophe apprise","Qui sont les personnages de ce poème ? → Corrigé : le cavalier (et éventuellement son cheval, selon le texte)","Où se déroule la scène du poème ? → Corrigé : à la fontaine"]),
+      ["Récite la première strophe de 'Le cavalier à la fontaine' → Corrigé : reproduction fidèle de la strophe apprise","Qui sont les personnages de ce poème ? → Corrigé : le cavalier (et éventuellement son cheval, selon le texte)","Où se déroule la scène du poème ? → Corrigé : à la fontaine"])
   ],
 },
-];
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// DÉCEMBRE
-// ═══════════════════════════════════════════════════════════════════════════════
-const DECEMBRE_9EME = [
-// ── S6 : La division et le cube ──────────────────────────────────────────
 {
-  n: 1, dateDebut: "2025/12/01",
+  n: 2, dateDebut: "2026/12/14",
   theme: "La division et le cube · Ny andro fararano",
   sous: "Arithmétique : division à 1 chiffre · Géométrie : le cube · Vakiteny : ny fambolena",
   matieres: [
@@ -1292,13 +1366,12 @@ const DECEMBRE_9EME = [
     m("RÉCITATION","Le cavalier à la fontaine",
       "Poursuivre la mémorisation du poème 'Le cavalier à la fontaine' commencé en novembre en ajoutant les strophes suivantes.",
       ["Rappel des strophes déjà mémorisées en novembre","Lecture expressive des strophes suivantes par l'enseignant","Explication des mots difficiles des nouvelles strophes","Répétition vers par vers, en écho","Récitation individuelle des strophes connues par quelques volontaires"],
-      ["Récite les strophes du poème apprises jusqu'à présent → Corrigé : reproduction fidèle des vers appris","Explique avec tes mots le sens d'un vers difficile du poème → Corrigé : réponse cohérente avec l'explication donnée en classe","Combien de strophes connais-tu maintenant ? → Corrigé : selon la progression de la classe"]),
+      ["Récite les strophes du poème apprises jusqu'à présent → Corrigé : reproduction fidèle des vers appris","Explique avec tes mots le sens d'un vers difficile du poème → Corrigé : réponse cohérente avec l'explication donnée en classe","Combien de strophes connais-tu maintenant ? → Corrigé : selon la progression de la classe"])
   ],
 },
 
-// ── S7 : Division à 2 chiffres et patron du cube ─────────────────────────
 {
-  n: 2, dateDebut: "2025/12/08",
+  n: 3, dateDebut: "2026/12/21",
   theme: "Division à 2 chiffres et patron du cube · Mijinja vary",
   sous: "Arithmétique : division à 2 chiffres · Géométrie : patron du cube · Vakiteny : ny voly vary",
   matieres: [
@@ -1389,18 +1462,16 @@ const DECEMBRE_9EME = [
     m("RÉCITATION","Chant de nourrice",
       "Découvrir un nouveau poème court, le 'Chant de nourrice', au rythme doux et répétitif, pour développer la mémoire et l'articulation.",
       ["Lecture expressive du poème par l'enseignant, sur un ton doux et berçant","Explication du contexte : un chant que l'on chante pour endormir un bébé","Explication des mots difficiles","Répétition vers par vers, en écho","Récitation individuelle par quelques volontaires"],
-      ["Récite le premier vers du 'Chant de nourrice' → Corrigé : reproduction fidèle du vers appris","Pourquoi ce poème s'appelle-t-il un 'chant de nourrice' ? → Corrigé : parce que c'est un chant que l'on chante pour bercer/endormir un enfant","Sur quel ton faut-il réciter ce poème ? → Corrigé : un ton doux et calme"]),
+      ["Récite le premier vers du 'Chant de nourrice' → Corrigé : reproduction fidèle du vers appris","Pourquoi ce poème s'appelle-t-il un 'chant de nourrice' ? → Corrigé : parce que c'est un chant que l'on chante pour bercer/endormir un enfant","Sur quel ton faut-il réciter ce poème ? → Corrigé : un ton doux et calme"])
   ],
-},
+}
+
 ];
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// JANVIER
-// ═══════════════════════════════════════════════════════════════════════════════
 const JANVIER_9EME = [
-// ── P3 S2 : Janvier — Division à 2 chiffres · Le cube · La santé ────────────
+
 {
-  n: 1, dateDebut: "2026/01/12",
+  n: 1, dateDebut: "2027/01/04",
   theme: "Division à 2 chiffres · Le cube · La santé",
   sous: "Table de 9 · Mesure de temps · Vakiteny : ny goaika · Vocabulaire : les maladies",
   matieres: [
@@ -1491,13 +1562,12 @@ const JANVIER_9EME = [
     m("RÉCITATION","Chant de nourrice",
       "Poursuivre la mémorisation du poème 'Chant de nourrice' entamé en décembre.",
       ["Rappel collectif des vers déjà appris","Ajout des vers suivants, en répétition","Travail sur l'articulation et le rythme (poème berceur)","Récitation individuelle par quelques volontaires","Récitation collective finale"],
-      ["Récite les vers appris jusqu'à présent du 'Chant de nourrice' → Corrigé : reproduction fidèle des vers appris","Pourquoi ce poème est-il appelé 'chant de nourrice' selon toi ? → Corrigé : réponse cohérente, ex. c'est une berceuse chantée par les mères/nourrices aux bébés","Récite le vers qui te semble le plus doux → Corrigé : reproduction correcte, choix individuel justifié"]),
+      ["Récite les vers appris jusqu'à présent du 'Chant de nourrice' → Corrigé : reproduction fidèle des vers appris","Pourquoi ce poème est-il appelé 'chant de nourrice' selon toi ? → Corrigé : réponse cohérente, ex. c'est une berceuse chantée par les mères/nourrices aux bébés","Récite le vers qui te semble le plus doux → Corrigé : reproduction correcte, choix individuel justifié"])
   ],
 },
 
-// ── P3 S3 : Janvier — Division à 2 chiffres (suite) · Nombres décimaux · La santé (suite) ──
 {
-  n: 2, dateDebut: "2026/01/19",
+  n: 2, dateDebut: "2027/01/11",
   theme: "Division à 2 chiffres (suite) · Nombres décimaux · La santé (suite)",
   sous: "Table de 9 · Le calendrier · Vakiteny : ireo voronkely · Vocabulaire : lieux de soins",
   matieres: [
@@ -1588,13 +1658,12 @@ const JANVIER_9EME = [
     m("RÉCITATION","REVISION",
       "Consacrer la séance à la révision de toutes les récitations apprises depuis septembre.",
       ["Lister collectivement les poèmes appris depuis septembre","Réciter chaque poème en entier, un par un","Corriger la mémorisation si besoin","Faire réciter quelques élèves individuellement","Vote de la classe pour le poème préféré"],
-      ["Cite 2 poèmes appris depuis septembre → Corrigé : réponse selon la liste réelle, ex. 'Mes deux yeux se font la fête', 'Chant de nourrice'","Récite en entier un poème de ton choix parmi ceux appris → Corrigé : évaluation de la mémorisation","Quel est ton poème préféré et pourquoi ? → Corrigé : réponse individuelle justifiée"]),
+      ["Cite 2 poèmes appris depuis septembre → Corrigé : réponse selon la liste réelle, ex. 'Mes deux yeux se font la fête', 'Chant de nourrice'","Récite en entier un poème de ton choix parmi ceux appris → Corrigé : évaluation de la mémorisation","Quel est ton poème préféré et pourquoi ? → Corrigé : réponse individuelle justifiée"])
   ],
 },
 
-// ── P3 S4 : Janvier — Preuve par neuf · Le parallélépipède · Nouveau conte ──
 {
-  n: 3, dateDebut: "2026/01/26",
+  n: 3, dateDebut: "2027/01/18",
   theme: "Preuve par neuf · Le parallélépipède · Nouveau conte",
   sous: "Le calendrier · Vakiteny : omby avy aiza ireto · Lecture : La fille du roi est à marier (1)",
   matieres: [
@@ -1685,18 +1754,12 @@ const JANVIER_9EME = [
     m("RÉCITATION","REVISION",
       "Poursuivre la révision générale des poèmes de l'année, en travaillant l'expressivité de la récitation.",
       ["Rappel des poèmes revus la semaine précédente","Récitation individuelle de 2 poèmes par plusieurs élèves","Travail sur l'expressivité (ton, gestes)","Répétition en vue d'une éventuelle présentation","Bilan collectif"],
-      ["Récite un poème appris depuis septembre avec expressivité → Corrigé : évaluation de la mémorisation et de l'expressivité","Quel geste peux-tu ajouter pour rendre ta récitation plus expressive ? → Corrigé : réponse individuelle créative","Quels progrès as-tu faits en récitation depuis septembre ? → Corrigé : réponse individuelle réflexive"]),
+      ["Récite un poème appris depuis septembre avec expressivité → Corrigé : évaluation de la mémorisation et de l'expressivité","Quel geste peux-tu ajouter pour rendre ta récitation plus expressive ? → Corrigé : réponse individuelle créative","Quels progrès as-tu faits en récitation depuis septembre ? → Corrigé : réponse individuelle réflexive"])
   ],
 },
-];
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// FÉVRIER
-// ═══════════════════════════════════════════════════════════════════════════════
-const FEVRIER_9EME = [
-// ── P3 S5 : Février — La fraction · Le parallélépipède rectangle · Les métiers ──
 {
-  n: 1, dateDebut: "2026/02/02",
+  n: 4, dateDebut: "2027/01/25",
   theme: "La fraction · Le parallélépipède rectangle · Les métiers",
   sous: "Introduction à la fraction et table de 9 · Fiompiana hafa kely · Vocabulaire des métiers du commerce et de l'artisanat",
   matieres: [
@@ -1787,13 +1850,16 @@ const FEVRIER_9EME = [
     m("RÉCITATION","Une fille dans un pré",
       "Découvrir le poème 'Une fille dans un pré'.",
       ["Lecture expressive du poème par l'enseignant","Explication des mots difficiles","Répétition des 2 premiers vers, en écho","Récitation collective des vers appris"],
-      ["Récite les 2 premiers vers du poème → Corrigé : reproduction fidèle des vers appris","De qui parle ce poème ? → Corrigé : d'une fille se trouvant dans un pré","Explique avec tes mots ce qu'est un 'pré' → Corrigé : un grand terrain d'herbe où l'on peut faire paître les animaux"]),
+      ["Récite les 2 premiers vers du poème → Corrigé : reproduction fidèle des vers appris","De qui parle ce poème ? → Corrigé : d'une fille se trouvant dans un pré","Explique avec tes mots ce qu'est un 'pré' → Corrigé : un grand terrain d'herbe où l'on peut faire paître les animaux"])
   ],
-},
+}
 
-// ── P3 S6 : Février — La fraction (suite) · Le budget familial · Fiompiana omby ──
+];
+
+const FEVRIER_9EME = [
+
 {
-  n: 2, dateDebut: "2026/02/09",
+  n: 1, dateDebut: "2027/02/01",
   theme: "La fraction (suite) · Le budget familial · Fiompiana omby",
   sous: "Approfondissement des fractions · Revenus et dépenses · L'élevage bovin, les métiers et leurs outils",
   matieres: [
@@ -1884,13 +1950,12 @@ const FEVRIER_9EME = [
     m("RÉCITATION","Une fille dans un pré (suite)",
       "Poursuivre la mémorisation du poème 'Une fille dans un pré'.",
       ["Rappel des 2 premiers vers","Explication des vers suivants","Répétition vers par vers, en écho","Récitation individuelle par quelques volontaires du poème complet"],
-      ["Récite le poème 'Une fille dans un pré' en entier → Corrigé : reproduction fidèle du poème appris","Combien de vers comporte ce poème ? → Corrigé : selon le texte présenté en classe","Quelle image du poème préfères-tu ? → Corrigé : réponse libre justifiée"]),
+      ["Récite le poème 'Une fille dans un pré' en entier → Corrigé : reproduction fidèle du poème appris","Combien de vers comporte ce poème ? → Corrigé : selon le texte présenté en classe","Quelle image du poème préfères-tu ? → Corrigé : réponse libre justifiée"])
   ],
 },
 
-// ── P3 S7 : Février — La fraction (bilan) · Le budget familial (suite) · Ny fanjanahantany ──
 {
-  n: 3, dateDebut: "2026/02/16",
+  n: 2, dateDebut: "2027/02/08",
   theme: "La fraction (bilan) · Le budget familial (suite) · Ny fanjanahantany",
   sous: "Consolidation des fractions et du budget · Famaizana Mahasoa · La colonisation de Madagascar",
   matieres: [
@@ -1981,18 +2046,208 @@ const FEVRIER_9EME = [
     m("RÉCITATION","Plus tard",
       "Découvrir un nouveau poème, 'Plus tard', évoquant l'avenir.",
       ["Lecture expressive du poème 'Plus tard' par l'enseignant","Discussion : de quoi parle ce poème (les rêves d'avenir)","Explication des mots difficiles","Apprentissage des 2 premiers vers, en répétition","Récitation collective des vers appris"],
-      ["Récite les 2 premiers vers de 'Plus tard' → Corrigé : reproduction fidèle des vers appris","De quoi parle ce poème selon toi ? → Corrigé : réponse cohérente, ex. de ce que l'enfant veut faire ou devenir plus tard","Que voudrais-tu faire 'plus tard' ? → Corrigé : réponse libre individuelle"]),
+      ["Récite les 2 premiers vers de 'Plus tard' → Corrigé : reproduction fidèle des vers appris","De quoi parle ce poème selon toi ? → Corrigé : réponse cohérente, ex. de ce que l'enfant veut faire ou devenir plus tard","Que voudrais-tu faire 'plus tard' ? → Corrigé : réponse libre individuelle"])
   ],
 },
+
+{
+  n: 3, dateDebut: "2027/02/15",
+  theme: "Semaine de révision et consolidation",
+  sous: "Révision : fractions et table 9 · budget · volume · Vakiteny : Famaizana Mahasoa (approfondissement)",
+  matieres: [
+    m("ARITHMETIQUE","Révision : fraction d'une quantité et table de 9",
+      "Consolider le calcul de la fraction d'une quantité (moitié, tiers, quart) et la maîtrise de la table de 9 avec des nombres un peu plus grands.",
+      ["Rappel oral rapide : qu'est-ce que la moitié, le tiers, le quart d'une quantité ?","Jeu de rapidité sur la table de 9","Résoudre 2 problèmes calculant une fraction d'une quantité (ex. le tiers de 24 œufs)","Exercice individuel combinant fraction de quantité et table de 9","Correction collective"],
+      ["Calcule le tiers de 27 mangues → Corrigé : 27÷3=9 mangues","Calcule : 9 × 7 = ? → Corrigé : 63","Calcule le quart de 36 œufs → Corrigé : 36÷4=9 œufs"]),
+    m("MESURE","Révision : le budget familial avec deux objectifs d'épargne",
+      "Consolider la construction d'un budget familial en résolvant un problème avec deux objectifs d'épargne différents.",
+      ["Rappel : revenus, dépenses, épargne","Présenter un cas avec 2 objectifs d'épargne (ex. charrette et écolage)","Construire ensemble le budget correspondant","Exercice individuel : calculer combien de mois pour chaque objectif","Correction collective"],
+      ["Une famille épargne 20 000 Ar par mois pour un objectif de 100 000 Ar. Combien de mois faut-il ? → Corrigé : 100 000÷20 000=5 mois","Une famille a 350 000 Ar de recettes et 260 000 Ar de dépenses. Combien épargne-t-elle ? → Corrigé : 90 000 Ar","Cite 2 objectifs pour lesquels une famille peut épargner → Corrigé : ex. l'école des enfants, l'achat d'un zébu"]),
+    m("GEOMETRIE","Révision : le volume du parallélépipède rectangle (formule)",
+      "Passer du comptage de petits cubes à la formule volume = longueur × largeur × hauteur, en consolidant la semaine précédente.",
+      ["Rappel du comptage de petits cubes vu la semaine précédente","Faire remarquer que longueur × largeur × hauteur donne le même résultat que le comptage","Présenter la formule : volume = L × l × h","Exercice guidé avec une boîte de 4×3×2","Exercice individuel de calcul de volume avec la formule","Correction collective"],
+      ["Calcule le volume d'une boîte de 5 cm de long, 3 cm de large et 2 cm de haut → Corrigé : 5×3×2=30 cm³","Une boîte de 4×2×3 contient combien de petits cubes ? → Corrigé : 4×2×3=24 cubes","Vérifie par comptage que 3×3×2 donne bien 18 → Corrigé : 3 étages de 3×3=9, donc 9×2=18"]),
+    m("VAKITENY","Famerenana : Famaizana Mahasoa",
+      "Manamafy ny fahatakarana ny angano 'Famaizana Mahasoa' amin'ny fifanakalozan-kevitra manokana kokoa momba ny hafany.",
+      ["Famerenana ny angano tamin'ny famintinana am-bava","Fanontaniana lalindalina kokoa : nahoana no nofaizina ilay olona?","Fifanakalozan-kevitra manokana : ahoana no tokony hataon'ny olon-dehibe rehefa manitsy zaza?","Famintinana an-tsoratra fohy ny hafatry ny angano"],
+      ["Nahoana no ilaina ny fanitsiana atao amim-pitiavana ka tsy amim-pahatezerana? → Corrigé : mba tsy hampahory fa hampandroso ny zaza sady hitazona ny fifankatiavana","Manorata fehezanteny iray mifintina ny hafatry ny angano 'Famaizana Mahasoa' → Corrigé : famintinana marina, ohatra 'Ny fanitsiana amim-pitiavana no mahasoa indrindra.'","Lazao ohatra iray hafa (avy amin'ny fiainanao) mifandraika amin'ny hafatry ny angano → Corrigé : valiny manokana voamarina"]),
+    m("TSIPELINA","Famerenana : ny mpisolo tena mitana anjara asa",
+      "Manamafy ny fanavahana ny mpisolo tena mitana anjara mpanao asa (sujet) sy izay mahazo ny asa (complément) amin'ny fehezanteny maromaro kokoa.",
+      ["Famerenana haingana ny fitsipika: mpanao asa na mahazo ny asa","Fanomezana fehezanteny maromaro hodinihina","Fampiharana an-tsoratra : famantarana ny anjara asa isaky ny fehezanteny","Fanitsiana am-pokonolona"],
+      ["Amin'ny fehezanteny 'Izy no manasa ny lamba, ary ny reniny no manampy azy', inona ny anjara asan'ny 'azy'? → Corrigé : mahazo ny asa (complément)","Manorata fehezanteny roa : ny voalohany misy mpisolo tena mpanao asa, ny faharoa misy mpisolo tena mahazo ny asa → Corrigé : valiny manokana voamarina","Soloy amin'ny mpisolo tena mety: 'Ny mpampianatra dia miresaka amin'i Soa.' → Corrigé : 'Ny mpampianatra dia miresaka aminy.'"]),
+    m("FITSIPIKA","Famerenana : ny filaza mandidy",
+      "Manamafy ny fampiasana ny filaza mandidy amin'ny toe-javatra an-kilasy sy an-trano samihafa.",
+      ["Famerenana haingana ny endriky ny filaza mandidy (ianao/ianareo)","Fanomezana toe-javatra an-kilasy sy an-trano hovana ho filaza mandidy","Fampiharana an-bava sy an-tsoratra","Fanitsiana am-pokonolona"],
+      ["Ovay ho filaza mandidy ho an'ny olona iray: 'Ianao mamafa ny kilasy.' → Corrigé : 'Mamafà ny kilasy!'","Ovay ho filaza mandidy ho an'ny olona maromaro: 'Ianareo mihaino tsara.' → Corrigé : 'Mihainoa tsara, ianareo!'","Manorata filaza mandidy iray ampiasainao matetika an-trano → Corrigé : valiny manokana, ohatra 'Ento ny lasely!'"]),
+    m("FANAZARANA HANORATRA","Famerenana : famoronandahatsoratra, fanalava sy fanitsiana",
+      "Manohy manalava sy manatsara ny lahatsoratra efa noforonina, mifantoka amin'ny teny mpampifandray.",
+      ["Famerenana ny drafitra (fampidirana, votoaty, famaranana)","Fampidirana teny mpampifandray vaovao (ary, fa, koa)","Fanamboarana ny lahatsoratra herinandro teo aloha, fanampiana andalana iray","Famakiana am-baravava ny lahatsoratra vaovao","Fanitsiana am-pokonolona"],
+      ["Ampio teny mpampifandray ('ary' na 'fa') ao amin'ity fehezanteny roa ity → Corrigé : valiny manokana marina ny fampiasana ny teny mpampifandray","Manampia andalana iray hafa ao amin'ny lahatsoratrao momba ny fiompiana → Corrigé : valiny manokana, mifamatotra tsara amin'ny sisa","Firy andalana no ao amin'ny lahatsoratrao ankehitriny? → Corrigé : fanamarihana manokana araka ny vokatra tena azo"]),
+    m("LECTURE","Révision : L'agenda de mon père / Les oiseaux",
+      "Approfondir la compréhension des deux textes en comparant leur organisation (texte du quotidien / texte documentaire).",
+      ["Relecture silencieuse rapide des deux textes","Questions de compréhension plus fines sur chaque texte","Comparer : comment un agenda est organisé, comment un texte documentaire est organisé","Discussion : quel type de texte préfères-tu et pourquoi ?"],
+      ["Quelle information trouve-t-on dans un agenda ? → Corrigé : les rendez-vous et activités prévus, jour par jour","Cite une caractéristique physique d'un oiseau apprise dans le texte → Corrigé : réponse selon le texte, ex. des plumes, un bec","Quel texte donne des faits et lequel raconte le quotidien d'une personne ? → Corrigé : 'Les oiseaux' = documentaire ; 'L'agenda de mon père' = quotidien"]),
+    m("LANGUE","Révision : L'apprenti ne comprend rien (bilan de l'histoire)",
+      "Approfondir l'étude du texte en dressant le portrait complet de l'apprenti à travers ses erreurs successives.",
+      ["Rappel de l'histoire complète de l'apprenti","Lister ensemble toutes les erreurs commises par l'apprenti au fil de l'histoire","Discuter : l'apprenti progresse-t-il d'une erreur à l'autre ?","Reformulation écrite courte du portrait de l'apprenti"],
+      ["Cite 2 erreurs commises par l'apprenti dans l'histoire → Corrigé : réponse selon le texte étudié","L'apprenti a-t-il changé à la fin de l'histoire ? → Corrigé : réponse cohérente selon le dénouement du texte","Écris 2 phrases décrivant le caractère de l'apprenti → Corrigé : réponse individuelle fidèle au texte"]),
+    m("VOCABULAIRE","Révision : les jours de la semaine et les moments de la journée",
+      "Consolider les jours de la semaine en les combinant avec les moments de la journée (matin, après-midi, soir).",
+      ["Rappel rapide des 7 jours de la semaine","Introduire les moments de la journée : le matin, l'après-midi, le soir","Exercice : associer une activité à un jour et un moment (ex. le lundi matin, j'étudie)","Correction collective"],
+      ["Complète : Le ___ matin, je vais à l'école. (jour de ton choix) → Corrigé : réponse individuelle correcte, ex. 'lundi'","Cite les 3 moments de la journée → Corrigé : le matin, l'après-midi, le soir","Écris une phrase avec un jour et un moment de la journée → Corrigé : réponse libre correcte, ex. 'Le samedi après-midi, je me repose.'"]),
+    m("ORTHOGRAPHE","Révision : l'accord du participe passé avec être",
+      "Reprendre et consolider la règle de l'accord du participe passé avec l'auxiliaire être, vue en fin de janvier, à travers une dictée d'application.",
+      ["Rappel de la règle : avec 'être', le participe passé s'accorde avec le sujet","Courte dictée de 4 phrases avec l'auxiliaire être","Correction collective, justification de chaque accord","Exercice supplémentaire de transformation singulier/pluriel"],
+      ["Accorde : 'Ils sont (partir) ce matin.' → Corrigé : Ils sont partis ce matin.","Accorde : 'Elle est (arriver) la première.' → Corrigé : Elle est arrivée la première.","Mets au pluriel : 'Il est tombé.' → Corrigé : Ils sont tombés."]),
+    m("CONJUGAISON","Révision : le verbe du 3ème groupe au présent",
+      "Consolider la conjugaison de plusieurs verbes du 3ème groupe au présent avec des phrases plus variées.",
+      ["Rappel des verbes irréguliers déjà vus (prendre, venir, faire)","Exercice de conjugaison avec 2 nouveaux verbes du même groupe (dire, voir)","Exercice à trous mêlant plusieurs verbes du 3ème groupe","Correction collective"],
+      ["Conjugue 'dire' au présent avec 'nous' → Corrigé : nous disons","Conjugue 'voir' au présent avec 'ils' → Corrigé : ils voient","Complète : 'Tu ___ (venir) demain ?' → Corrigé : viens"]),
+    m("GRAMMAIRE","Révision : les pronoms lui, leur (distinction avec le, la, les)",
+      "Consolider la distinction entre les pronoms COD (le, la, les) et les pronoms COI (lui, leur) dans des phrases mêlées.",
+      ["Rappel rapide de la différence COD/COI","Exercice de tri : phrases avec COD / phrases avec COI","Exercice de remplacement mêlant les deux types de pronoms","Correction collective"],
+      ["Remplace : 'Je vois mon ami.' → Corrigé : Je le vois. (COD)","Remplace : 'Je parle à mon ami.' → Corrigé : Je lui parle. (COI)","Dans 'Elle les invite et leur offre un cadeau', identifie le COD et le COI → Corrigé : COD = les ; COI = leur"]),
+    m("EXPRESSION ORALE","Révision : m devant p, b, m",
+      "Consolider à l'oral la règle 'm devant p, b, m' avec davantage de mots et une petite dictée orale collective.",
+      ["Rappel rapide de la règle et des mots déjà vus","Proposer 3 nouveaux mots contenant la règle (important, embrasser, nombre)","Faire répéter et prononcer correctement en chœur puis individuellement","Dictée orale collective : la classe répète et épelle un mot à tour de rôle"],
+      ["Répète et prononce correctement : 'important', 'embrasser', 'nombre' → Corrigé : prononciation évaluée par l'enseignant","Épelle à l'oral le mot 'campagne' → Corrigé : c-a-m-p-a-g-n-e","Cite un mot appris cette semaine avec 'm' devant 'b' → Corrigé : embrasser (ou nombre)"]),
+    m("EXPRESSION ECRITE","Révision : écrire son emploi du temps de la semaine",
+      "Réutiliser le vocabulaire des jours et de la date pour rédiger son propre emploi du temps hebdomadaire.",
+      ["Rappel de l'écriture correcte des jours et de la date","Modèle au tableau : 'Le lundi, j'ai... Le mardi, j'ai...'","Rédaction individuelle de son emploi du temps (5-7 phrases)","Relecture et vérification de l'orthographe des jours"],
+      ["Écris 3 phrases décrivant ton emploi du temps de la semaine → Corrigé : réponse individuelle avec jours correctement orthographiés","Quel jour as-tu le plus d'activités ? Écris une phrase → Corrigé : réponse libre correcte","Relis ton texte : as-tu mis une majuscule à chaque jour ? → Corrigé : vérification individuelle (les jours ne prennent pas de majuscule en français, à corriger si besoin)"]),
+    m("S.V.T","Révision : la plante et la fleur",
+      "Consolider les parties de la plante et de la fleur en approfondissant le rôle de chacune.",
+      ["Rappel des parties de la plante et de la fleur","Approfondir le rôle de chaque partie (tige=transporte la sève, pétale=attire les insectes)","Exercice de légende complet d'un schéma de plante en fleur","Discussion : pourquoi les fleurs sont-elles colorées ?"],
+      ["À quoi sert la tige d'une plante ? → Corrigé : à transporter l'eau et les nutriments et à soutenir la plante","Pourquoi les fleurs sont-elles souvent colorées et parfumées ? → Corrigé : pour attirer les insectes qui aident à la pollinisation","Cite les 4 parties d'une plante en fleur → Corrigé : racine, tige, feuille, fleur"]),
+    m("GEOGRAPHIE","Révision : le commerce local et l'exportation",
+      "Consolider la distinction entre commerce local et exportation en étudiant un exemple concret de circuit commercial.",
+      ["Rappel de la différence commerce local / exportation","Étudier un exemple concret : du champ de vanille au marché international","Discussion : qui profite du commerce local ? qui profite de l'exportation ?","Exercice de classement de produits selon leur circuit"],
+      ["Range dans l'ordre le circuit de la vanille : récolte, vente au marché local, exportation → Corrigé : récolte, vente au marché local, exportation","Cite un produit vendu uniquement sur le marché local → Corrigé : légumes frais, fruits (exemples)","Pourquoi l'exportation rapporte-t-elle de l'argent au pays ? → Corrigé : parce que les produits sont vendus à l'étranger, ce qui fait entrer de l'argent"]),
+    m("TANTARA","Famerenana : ny fanjanahantany",
+      "Manamafy ny fahalalana ny amin'ny fanjanahan-tany frantsay, mifantoka amin'ny anton-javatra sy ny voka-dratsiny.",
+      ["Famerenana haingana ny taona 1896","Fanontaniana lalindalina kokoa: nahoana no resin'ny Frantsay i Madagasikara?","Famerenana ireo voka-dratsin'ny fanjanahantany","Fifanakalozan-kevitra am-pokonolona"],
+      ["Nahoana no resin'ny tafika frantsay i Madagasikara tamin'ny 1896? → Corrigé : noho ny fahefan'ny fitaovam-piadiana frantsay tamin'izany fotoana izany (araka ny nianarana)","Tanisao voka-dratsy iray navelan'ny fanjanahantany → Corrigé : fanalam-baovao, fanenjehana (ohatra)","Firy taona no naharitry ny fanjanahantany hatramin'ny fahaleovantena? → Corrigé : 1896 ka hatramin'ny 1960, dia 64 taona"]),
+    m("ANGLAIS","Revision: means of transport with comparatives",
+      "Consolidate the vocabulary of transport and the use of comparatives with more practice.",
+      ["Quick recall of means of transport already seen","Practise comparatives with new pairs: 'A train is faster than a bicycle.'","Roleplay in pairs: 'How do you travel to school?'","Short writing exercise: 2 sentences comparing transports"],
+      ["Compare: a boat / a plane (which is faster?) → Corrigé : A plane is faster than a boat.","Answer: 'How do you travel to school?' → Corrigé : réponse individuelle, ex. 'I travel by bicycle.'","Write a sentence comparing 2 means of transport → Corrigé : réponse libre, ex. 'A bus is slower than a car.'"]),
+    m("FFMOM","Famerenana : ny lanjan'aina tamin'ny alalan'ny fampisehoana",
+      "Manamafy ny fahatakarana ireo lanjan'aina efa nianarana amin'ny alalan'ny fampisehoana toe-javatra an-tsehatra.",
+      ["Famerenana haingana ireo lanjan'aina efa nianarana","Fizarana vondrona, samy manao fampisehoana kely (toe-javatra manaja na tsy manaja)","Fifanakalozan-kevitra momba ny fampisehoana nataon'ny vondrona hafa","Famintinana ny lesona"],
+      ["Ataovy fampisehoana kely mampiseho fanajana ny olon-dehibe → Corrigé : fanehoana marina araka ny fitsipika nianarana","Inona no lanjan'aina naseho tao amin'ny fampisehoan'ny vondronao? → Corrigé : valiny manokana araka ny fampisehoana natao","Nahoana no ilaina ny mampiseho amin'ny fampisehoana fa tsy amin'ny teny fotsiny? → Corrigé : mba ho azo hita sy tsapa mivantana ny fihetsika tsara"]),
+    m("CHANT","Révision : Jésus mon ami (interprétation soignée)",
+      "Peaufiner l'interprétation complète du chant en travaillant l'intensité de la voix et le rythme en petits groupes.",
+      ["Rappel du chant en entier","Répétition en petits groupes, chaque groupe travaille un passage","Retour collectif sur l'intensité et la justesse","Chant collectif final soigné"],
+      ["Chante 'Jésus mon ami' en entier avec une bonne intensité de voix → Corrigé : évaluation de la mémorisation et de la justesse","Quel passage du chant ton groupe a-t-il travaillé ? → Corrigé : réponse individuelle selon le groupe","Chante en petit groupe devant la classe → Corrigé : participation évaluée"]),
+    m("RÉCITATION","Révision : Plus tard (suite de la mémorisation)",
+      "Poursuivre la mémorisation du poème 'Plus tard' en apprenant les vers suivants.",
+      ["Rappel des 2 premiers vers déjà appris","Apprentissage des vers suivants, en répétition","Récitation collective de tous les vers appris","Discussion sur les métiers ou rêves évoqués dans les nouveaux vers"],
+      ["Récite les 4 premiers vers de 'Plus tard' → Corrigé : reproduction fidèle des vers appris","Quel nouveau rêve d'avenir apparaît dans les vers appris cette semaine ? → Corrigé : réponse selon le texte présenté en classe","Répète le vers que tu trouves le plus difficile → Corrigé : reproduction avec aide si besoin"])
+  ],
+},
+
+{
+  n: 4, dateDebut: "2027/02/22",
+  theme: "Semaine de révision et consolidation (synthèse)",
+  sous: "Synthèse : fractions, table 9, budget, volume · Vakiteny : mamintina ny lohahevitra rehetra",
+  matieres: [
+    m("ARITHMETIQUE","Révision : synthèse fractions de quantité et table de 9",
+      "Faire la synthèse des fractions de quantité et de la table de 9 à travers des problèmes combinant les deux notions.",
+      ["Rappel rapide de la fraction d'une quantité et de la table de 9","Jeu de rapidité mêlant les deux notions","Résolution d'un problème de synthèse à 2 étapes","Exercice individuel de synthèse","Correction collective"],
+      ["Calcule le tiers de 45 billes, puis multiplie le résultat par 9 → Corrigé : 45÷3=15 ; 15×9=135","Calcule : 9 × 8 = ? → Corrigé : 72","Calcule le quart de 32 mangues → Corrigé : 32÷4=8 mangues"]),
+    m("MESURE","Révision : synthèse du budget familial",
+      "Faire la synthèse de tout ce qui a été vu sur le budget familial (revenus, dépenses, épargne, objectifs) dans un problème complet.",
+      ["Rappel de toutes les notions du budget vues en février","Résoudre un problème complet mêlant dépenses, épargne et objectif","Discuter des priorités budgétaires d'une famille","Exercice individuel de synthèse","Correction collective"],
+      ["Une famille gagne 400 000 Ar, dépense 320 000 Ar et veut épargner le reste pour un objectif de 240 000 Ar. Combien de mois faut-il ? → Corrigé : épargne=80 000 Ar/mois ; 240 000÷80 000=3 mois","Cite l'ordre de priorité que tu donnerais à ces dépenses : loisirs, nourriture, école → Corrigé : nourriture, école, loisirs (ordre logique de priorité)","Une famille dépense 60% de ses 350 000 Ar de recettes. Combien dépense-t-elle ? → Corrigé : 210 000 Ar"]),
+    m("GEOMETRIE","Révision : synthèse du volume, comptage et formule",
+      "Vérifier la maîtrise du volume du parallélépipède rectangle en combinant comptage de cubes et formule dans un même problème.",
+      ["Rappel du comptage de cubes et de la formule L×l×h","Problème combinant les deux méthodes pour vérifier un résultat","Exercice individuel de calcul de volume avec la formule","Comparer le volume de 2 boîtes différentes","Correction collective"],
+      ["Calcule le volume d'une boîte de 6 cm × 4 cm × 3 cm → Corrigé : 6×4×3=72 cm³","Quelle boîte a le plus grand volume : 5×4×2 ou 4×4×3 ? → Corrigé : 5×4×2=40 cm³ ; 4×4×3=48 cm³ → la deuxième est plus grande","Vérifie par comptage que le volume d'une boîte de 3×2×4 est bien 24 → Corrigé : 3×2=6 cubes par étage ; 6×4=24 cubes"]),
+    m("VAKITENY","Famintinana : ny lahatsoratra rehetra novakiana tamin'ny Febroary",
+      "Mamintina ny lahatsoratra rehetra novakiana nandritra ny volana Febroary mba hanamafisana ny fitadidiana sy ny fahatakarana.",
+      ["Famerenana ny lohahevitra rehetra novakiana : fiompiana omby, angano Famaizana Mahasoa","Lalao famerenana : mifanandrina ny vondrona amin'ny fanontaniana momba ireo lahatsoratra","Famintinana am-bava ny lahatsoratra tiana indrindra","Fanoratana famintinana fohy an-tsoratra"],
+      ["Tanisao lahatsoratra iray novakina nandritra ny volana Febroary → Corrigé : valiny manokana, ohatra 'Fiompiana omby' na 'Famaizana Mahasoa'","Famintino amin'ny fehezanteny iray ny lahatsoratra tianao indrindra tamin'ny Febroary → Corrigé : famintinana fohy sy marina","Iza no lahatsoratra nahafinaritra anao indrindra tamin'ity volana ity? Nahoana? → Corrigé : valiny manokana voamarina"]),
+    m("TSIPELINA","Famerenana farany : ny mpisolo tena, fanoratana fehezanteny farany",
+      "Manamafy farany ny fahaizana mampiasa ny mpisolo tena mitana anjara asa samihafa, amin'ny fanoratana fehezanteny an-tenany.",
+      ["Famerenana faobe ny anjara asan'ny mpisolo tena (mpanao asa / mahazo ny asa)","Fanoratana fehezanteny 3 an-tenany misy mpisolo tena samihafa","Fifanakalozana amin'ny namana : famakiana sy famantarana ny anjara asa nampiasain'ny namana","Fanitsiana am-pokonolona"],
+      ["Manorata fehezanteny telo an-tenany, samy misy mpisolo tena hafa → Corrigé : valiny manokana voamarina","Famantaro ny anjara asan'ny mpisolo tena ao amin'ny fehezanteny nosoratan'ny namanao → Corrigé : fanamarinana marina araka ny fehezanteny hita","Inona ny mpisolo tena rehetra fantatrao ankehitriny? → Corrigé : aho, ianao, izy, izahay, ianareo, izy ireo (ohatra)"]),
+    m("FITSIPIKA","Famerenana farany : ny filaza mandidy amin'ny fiainana andavanandro",
+      "Mampihatra ny filaza mandidy amin'ny toe-javatra tena misy amin'ny fiainan'ny mpianatra an-kilasy sy an-trano.",
+      ["Famerenana faobe ny endriky ny filaza mandidy","Fifanakalozan-kevitra : filaza mandidy fampiasa isan'andro an-trano sy an-kilasy","Fanoratana lisitry ny filaza mandidy 5 ampiasain'ny mpianatra matetika","Famakiana am-pokonolona ny lisitra vitany"],
+      ["Manorata filaza mandidy 3 ampiasainao matetika an-trano → Corrigé : valiny manokana, ohatra 'Sasao ny lovia!', 'Diovy ny efitrano!'","Ovay ho filaza mandidy: 'Ianareo mamerina ny fitaovana amin'ny toerany.' → Corrigé : 'Averino amin'ny toerany ny fitaovana, ianareo!'","Inona no tsy tokony hisy ao amin'ny filaza mandidy matetika? → Corrigé : ny mpisolo tena voalaza matetika"]),
+    m("FANAZARANA HANORATRA","Famerenana farany : lahatsoratra madio sy feno",
+      "Manatsara sy manoratra farany ny lahatsoratra noforonina nandritra ny herinandro roa lasa, mba ho madio sy feno tsara.",
+      ["Famakiana farany ny lahatsoratra efa noforonina roa herinandro","Fanavaozana farany : manatsara ny fandaminan-kevitra sy ny teny mpampifandray","Fanoratana farany madio ny lahatsoratra feno","Famakiana am-pokonolona ny tsara indrindra","Fankasitrahana ny fandrosoana"],
+      ["Manoratra farany madio ny lahatsoratrao momba ny fiompiana → Corrigé : valiny manokana, madio sy mifandray tsara ny hevitra rehetra","Firy andalana no ao amin'ny lahatsoratrao farany? → Corrigé : fanamarihana manokana araka ny vokatra tena azo","Inona no nahatsara indrindra ny lahatsoratrao hatramin'ny nanombohanao azy? → Corrigé : valiny manokana, fanamarihana ny fandrosoana"]),
+    m("LECTURE","Bilan : les textes de février",
+      "Faire le bilan de tous les textes lus en février par un jeu de lecture-compréhension récapitulatif.",
+      ["Rappel de tous les titres de textes lus en février","Jeu de révision : deviner le texte à partir d'un indice","Mini-évaluation individuelle : 3 questions sur un texte du mois au choix","Correction collective"],
+      ["Cite un texte lu pendant le mois de février → Corrigé : réponse selon les textes réellement étudiés, ex. 'L'agenda de mon père' ou 'Les oiseaux'","Quel texte du mois as-tu préféré ? Pourquoi ? → Corrigé : réponse libre justifiée","Lis à voix haute un court passage d'un texte au choix → Corrigé : évaluation de la fluidité de lecture"]),
+    m("LANGUE","Bilan : les textes étudiés en février",
+      "Faire le bilan des textes étudiés en langue en février (L'apprenti ne comprend rien) par une synthèse orale et écrite.",
+      ["Rappel de l'histoire complète de l'apprenti","Discussion : quelle est la leçon la plus importante de ce texte ?","Rédaction individuelle d'une courte synthèse (2-3 phrases)","Partage de quelques productions"],
+      ["Quelle est, selon toi, la leçon la plus importante du texte 'L'apprenti ne comprend rien' ? → Corrigé : réponse libre argumentée, ex. bien écouter les consignes","Écris 2 phrases résumant l'histoire de l'apprenti → Corrigé : réponse individuelle fidèle au texte","Que retiens-tu le plus de ce texte ? → Corrigé : réponse libre individuelle"]),
+    m("VOCABULAIRE","Révision : planning hebdomadaire personnel",
+      "Consolider le vocabulaire des jours et des moments de la journée en construisant un planning personnel complet.",
+      ["Rappel des jours et des moments de la journée","Construire ensemble un tableau de planning hebdomadaire au tableau","Exercice individuel : compléter son propre planning avec 7 activités","Présentation orale de son planning à un camarade"],
+      ["Complète ton planning : que fais-tu le mercredi après-midi ? → Corrigé : réponse individuelle correcte","Présente à l'oral une activité de ton planning avec le jour et le moment → Corrigé : réponse individuelle, ex. 'Le vendredi soir, je me repose.'","Quel jour de la semaine préfères-tu ? Pourquoi ? → Corrigé : réponse libre justifiée"]),
+    m("ORTHOGRAPHE","Révision : accord du participe passé avec avoir et être",
+      "Consolider la différence entre l'accord du participe passé avec avoir (pas d'accord avec le sujet) et avec être (accord avec le sujet).",
+      ["Rappel des 2 règles déjà vues séparément (avoir / être)","Comparer sur des phrases parallèles : 'Elle a mangé.' / 'Elle est partie.'","Exercice de tri : phrases avec avoir / phrases avec être","Dictée de synthèse de 4 phrases mêlant les deux auxiliaires","Correction collective"],
+      ["Accorde : 'Elles ont (manger) une mangue.' → Corrigé : Elles ont mangé une mangue. (pas d'accord avec avoir)","Accorde : 'Elles sont (partir) tôt.' → Corrigé : Elles sont parties tôt. (accord avec être)","Pourquoi n'accorde-t-on pas 'mangé' mais on accorde 'parties' ? → Corrigé : parce que l'auxiliaire avoir ne s'accorde pas avec le sujet, alors que l'auxiliaire être s'accorde avec le sujet"]),
+    m("CONJUGAISON","Révision : synthèse des verbes des 3 groupes au présent",
+      "Faire la synthèse de la conjugaison au présent des verbes des 1er, 2ème et 3ème groupes déjà étudiés dans l'année.",
+      ["Rappel des 3 groupes de verbes et de leurs terminaisons au présent","Exercice de tri : classer des verbes selon leur groupe","Exercice à trous mêlant les 3 groupes au présent","Correction collective"],
+      ["Conjugue 'chanter' (1er groupe) au présent avec 'nous' → Corrigé : nous chantons","Conjugue 'finir' (2ème groupe) au présent avec 'ils' → Corrigé : ils finissent","Conjugue 'venir' (3ème groupe) au présent avec 'tu' → Corrigé : tu viens"]),
+    m("GRAMMAIRE","Révision : synthèse des pronoms compléments (le, la, les, lui, leur)",
+      "Faire la synthèse de tous les pronoms compléments étudiés (COD et COI) dans un texte court à compléter.",
+      ["Rappel de tous les pronoms compléments vus (le, la, les, lui, leur)","Exercice de synthèse : compléter un court texte avec le bon pronom","Correction collective, justification de chaque choix","Bilan des confusions encore fréquentes"],
+      ["Complète : 'Je vois Rina, je ___ salue et je ___ parle.' → Corrigé : le / lui","Remplace : 'Elle donne des bonbons aux enfants.' → Corrigé : Elle leur donne des bonbons.","Remplace : 'Il regarde les photos.' → Corrigé : Il les regarde."]),
+    m("EXPRESSION ORALE","Révision : synthèse orale sur les sons étudiés",
+      "Faire produire aux élèves leurs propres phrases orales contenant la règle 'm devant p, b, m' pour clore la séquence.",
+      ["Rappel rapide de la règle et des mots déjà rencontrés","Chaque élève invente une phrase orale contenant un mot avec la règle","Passage individuel devant la classe","Bilan collectif : les mots les mieux retenus"],
+      ["Invente et dis à l'oral une phrase avec le mot 'important' → Corrigé : réponse individuelle correcte, ex. 'C'est important d'étudier.'","Cite 3 mots appris ces deux semaines avec la règle 'm devant p/b/m' → Corrigé : campagne, tambour, important (exemples)","Quelle est l'exception à connaître pour cette règle ? → Corrigé : 'bonbon' s'écrit avec un 'n' bien que suivi de 'b'"]),
+    m("EXPRESSION ECRITE","Révision : synthèse — planning et invitation avec date",
+      "Réinvestir l'écriture des jours et de la date dans la rédaction d'une courte invitation précisant jour, date et activité.",
+      ["Rappel de l'écriture correcte de la date complète","Modèle au tableau d'une invitation courte (jour, date, activité, lieu)","Rédaction individuelle d'une invitation à un événement imaginé","Échange et vérification entre camarades"],
+      ["Écris une invitation précisant le jour, la date et l'activité d'une fête → Corrigé : réponse individuelle correcte, ex. 'Tu es invité samedi 27 février pour mon anniversaire.'","Relis ton invitation : la date est-elle complète (jour + numéro + mois) ? → Corrigé : vérification individuelle","Quel élément est indispensable dans une invitation ? → Corrigé : le jour, la date, le lieu et l'activité"]),
+    m("S.V.T","Bilan : la plante et la fleur",
+      "Faire la synthèse complète des connaissances sur la plante et la fleur par un schéma légendé complet.",
+      ["Rappel de toutes les parties de la plante et de la fleur étudiées","Exercice de synthèse : légender un schéma complet (racine à fleur)","Discussion : à quoi sert une plante pour l'être humain ?","Correction collective"],
+      ["Légende les 4 parties d'une plante en fleur sur un schéma → Corrigé : racine, tige, feuille, fleur, correctement placées","Cite une utilité des plantes pour l'être humain → Corrigé : nourriture, médicaments, bois (exemples)","Quelle partie de la plante attire les insectes ? → Corrigé : la fleur (les pétales colorés)"]),
+    m("GEOGRAPHIE","Bilan : le commerce à Madagascar",
+      "Faire la synthèse du commerce local et de l'exportation par un exercice de classement complet.",
+      ["Rappel de la différence commerce local / exportation","Exercice de synthèse : classer 6 produits en local/exporté","Discussion : pourquoi certains produits sont-ils seulement vendus localement ?","Correction collective"],
+      ["Classe : vanille, légumes frais, girofle, pain, café, poisson frais → Corrigé : exportés = vanille, girofle, café ; locaux = légumes frais, pain, poisson frais","Pourquoi le poisson frais est-il surtout vendu localement ? → Corrigé : car il se conserve mal sur une longue distance sans réfrigération","Cite un avantage du commerce local pour une famille → Corrigé : proximité, prix plus accessibles, produits frais"]),
+    m("TANTARA","Famintinana : ny fanjanahantany",
+      "Mamintina ny fanjanahan-tany frantsay teto Madagasikara, ny anton-javatra ary ny voka-dratsiny, ho fanomanana ny lesona manaraka.",
+      ["Famerenana faobe ny 1896 sy ireo voka-dratsin'ny fanjanahantany","Fanoritana taratasy fotoana fohy : 1896 (fanjanahantany) ka hatramin'ny 1960 (fahaleovantena)","Fanontaniana fahatakarana farany","Famintinana am-bava"],
+      ["Aiza no fara-hetsika navelan'ny fanjanahantany taminao? → Corrigé : valiny manokana araka ny nianarana, ohatra fanalam-baovao","Firy taona no niaina teo ambanin'ny fanjanahantany i Madagasikara? → Corrigé : 64 taona (1896-1960)","Nahoana no nanohitra ny Malagasy ny fanjanahantany? → Corrigé : mba hahazoana ny fahaleovan-tenany indray"]),
+    m("ANGLAIS","Revision: means of transport — final synthesis",
+      "Bring together all the transport vocabulary and comparatives learned in February in a short written synthesis.",
+      ["Quick recall of all means of transport and comparatives learned","Written exercise: 3 sentences using comparatives with transport vocabulary","Pair presentation: how each student prefers to travel and why","Correction and encouragement"],
+      ["Write 2 sentences comparing 2 means of transport → Corrigé : réponse libre, ex. 'A plane is faster than a boat.'","Which means of transport do you prefer? Answer in English → Corrigé : réponse individuelle, ex. 'I prefer the bicycle because it is cheap.'","Name all the means of transport you remember from this month → Corrigé : car, bus, bicycle, boat, train, plane, taxi (selon ce qui a été réellement enseigné)"]),
+    m("FFMOM","Famintinana : ireo lanjan'aina tamin'ny Febroary",
+      "Mamintina ireo lanjan'aina rehetra nianarana nandritra ny volana Febroary ary manoratra fanoloran-tena kely.",
+      ["Famerenana ireo lanjan'aina rehetra tamin'ny Febroary","Fanoratana fanoloran-tena kely : lanjan'aina iray tiako hohatsaraina","Fizarana an-tsitrapo eo anatrehan'ny kilasy","Famintinana farany sy famporisihana"],
+      ["Tondroy lanjan'aina 2 nianaranao tamin'ny Febroary → Corrigé : valiny manokana araka izay tena nianarana","Manorata fehezanteny fanoloran-tena kely momba ny lanjan'aina tianao hohatsaraina → Corrigé : valiny manokana voamarina","Nahoana no ilaina ny mamerina matetika ireo lanjan'aina ireo? → Corrigé : mba tsy hohadinoina ary hampiharina tsara amin'ny fiainana andavanandro"]),
+    m("CHANT","Bilan : les chants de février",
+      "Faire le bilan des chants appris en février par une petite présentation devant la classe.",
+      ["Rappel des chants appris en février (Jésus mon ami, Bonjour ma cousine)","Chant collectif enchaîné des deux chants","Passage individuel de quelques volontaires","Vote de la classe pour le chant préféré du mois"],
+      ["Chante un couplet d'un chant appris en février → Corrigé : évaluation de la mémorisation","Quel est le chant préféré de la classe ce mois-ci ? → Corrigé : réponse collective selon le vote","Chante en petit groupe devant la classe → Corrigé : participation évaluée"]),
+    m("RÉCITATION","Bilan : le poème Plus tard (mémorisation complète)",
+      "Achever la mémorisation complète du poème 'Plus tard' et en soigner l'expressivité pour clore le mois.",
+      ["Rappel de tous les vers déjà appris","Apprentissage des derniers vers si nécessaire","Récitation collective du poème en entier avec intonation","Récitation individuelle par plusieurs volontaires"],
+      ["Récite le poème 'Plus tard' en entier → Corrigé : reproduction fidèle et complète du poème","Quel métier ou rêve d'avenir préfères-tu parmi ceux évoqués dans le poème ? → Corrigé : réponse libre justifiée","Récite le vers que tu trouves le plus difficile en expliquant pourquoi → Corrigé : réponse libre justifiée"])
+  ],
+}
+
 ];
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// MARS
-// ═══════════════════════════════════════════════════════════════════════════════
 const MARS_9EME = [
-// ── S1 (n2, 2026/03/02) : Nombres complexes · Le trapèze · I Manana ─────────
+
 {
-  n: 1, dateDebut: "2026/03/02",
+  n: 1, dateDebut: "2027/03/01",
   theme: "La fraction et les nombres complexes · Le trapèze",
   sous: "Fractions (suite) puis nombres complexes · Table 9 · Le trapèze · Vakiteny : I Manana · F.TE : la fitaterana",
   matieres: [
@@ -2083,13 +2338,12 @@ const MARS_9EME = [
     m("RÉCITATION","RÉVISION",
       "Réviser les poèmes appris depuis septembre pour renforcer la mémoire et l'expressivité.",
       ["Rappel des titres des poèmes déjà appris","Récitation collective d'un premier poème","Travail sur l'articulation et l'intonation","Récitation individuelle par quelques volontaires d'un deuxième poème","Encouragements et corrections bienveillantes"],
-      ["Récite un poème appris depuis septembre → Corrigé : reproduction fidèle du poème choisi","Quel poème préfères-tu ? Pourquoi ? → Corrigé : réponse libre justifiée","Explique avec tes mots le sens d'un poème appris → Corrigé : réponse cohérente avec le thème du poème choisi"]),
+      ["Récite un poème appris depuis septembre → Corrigé : reproduction fidèle du poème choisi","Quel poème préfères-tu ? Pourquoi ? → Corrigé : réponse libre justifiée","Explique avec tes mots le sens d'un poème appris → Corrigé : réponse cohérente avec le thème du poème choisi"])
   ],
 },
 
-// ── S2 (n3, 2026/03/09) : Nombres complexes · Le trapèze (suite) · Lozam-piarakodia
 {
-  n: 2, dateDebut: "2026/03/09",
+  n: 2, dateDebut: "2027/03/08",
   theme: "Les nombres complexes · Le trapèze (suite)",
   sous: "Introduction des nombres complexes · Table 9 · Le trapèze · Vakiteny : lozam-piarakodia · F.TE : fifamoivoizana",
   matieres: [
@@ -2180,13 +2434,12 @@ const MARS_9EME = [
     m("RÉCITATION","RÉVISION",
       "Poursuivre la révision des poèmes de l'année avec un nouveau titre.",
       ["Rappel des poèmes révisés la semaine précédente","Récitation collective d'un troisième poème appris depuis septembre","Travail sur l'articulation et l'intonation","Récitation individuelle par quelques volontaires","Bilan collectif du répertoire connu"],
-      ["Récite un poème différent de celui de la semaine dernière → Corrigé : reproduction fidèle du poème choisi","Combien de poèmes la classe connaît-elle maintenant ? → Corrigé : réponse selon le répertoire réellement révisé","Quel poème trouves-tu le plus difficile à réciter ? Pourquoi ? → Corrigé : réponse libre justifiée"]),
+      ["Récite un poème différent de celui de la semaine dernière → Corrigé : reproduction fidèle du poème choisi","Combien de poèmes la classe connaît-elle maintenant ? → Corrigé : réponse selon le répertoire réellement révisé","Quel poème trouves-tu le plus difficile à réciter ? Pourquoi ? → Corrigé : réponse libre justifiée"])
   ],
 },
 
-// ── S3 (n4, 2026/03/16) : Nombres complexes — révision · Le trapèze — révision
 {
-  n: 3, dateDebut: "2026/03/16",
+  n: 3, dateDebut: "2027/03/15",
   theme: "Révision des nombres complexes · Révision du trapèze",
   sous: "Révision nombres complexes et table 9 · Révision trapèze · Vakiteny : ho any an-tanan-dehibe · F.TE : fitanterana eto an-toerana",
   matieres: [
@@ -2277,13 +2530,12 @@ const MARS_9EME = [
     m("RÉCITATION","RÉVISION",
       "Poursuivre la révision du répertoire de poèmes en enchaînant plusieurs titres.",
       ["Rappel des poèmes révisés les semaines précédentes","Récitation collective enchaînée de 2 poèmes déjà révisés","Travail sur l'articulation et l'intonation","Récitation individuelle par quelques volontaires","Bilan collectif du répertoire connu"],
-      ["Récite deux poèmes différents à la suite → Corrigé : évaluation de la mémorisation cumulée","Quel poème trouves-tu le plus facile à réciter ? Pourquoi ? → Corrigé : réponse individuelle justifiée","Explique avec tes mots le sens d'un des poèmes révisés → Corrigé : réponse cohérente avec le thème du poème choisi"]),
+      ["Récite deux poèmes différents à la suite → Corrigé : évaluation de la mémorisation cumulée","Quel poème trouves-tu le plus facile à réciter ? Pourquoi ? → Corrigé : réponse individuelle justifiée","Explique avec tes mots le sens d'un des poèmes révisés → Corrigé : réponse cohérente avec le thème du poème choisi"])
   ],
 },
 
-// ── S4 (n5, 2026/03/23) : Révision générale mensuelle ────────────────────────
 {
-  n: 4, dateDebut: "2026/03/23",
+  n: 4, dateDebut: "2027/03/22",
   theme: "Révision générale de mars",
   sous: "Bilan des notions du mois dans toutes les matières · Vakiteny : miady ny baolina · F.TE : sary sy sarimihetsika",
   matieres: [
@@ -2374,13 +2626,16 @@ const MARS_9EME = [
     m("RÉCITATION","RÉVISION",
       "Clore le mois par une révision complète du répertoire de poèmes appris depuis septembre.",
       ["Rappel de tous les poèmes appris depuis septembre","Récitation collective enchaînée de l'ensemble du répertoire","Travail final sur l'articulation et l'intonation","Récitation individuelle du poème préféré par quelques volontaires","Bilan collectif du répertoire connu"],
-      ["Récite le poème que tu préfères parmi tous ceux appris → Corrigé : évaluation de la mémorisation et de l'expressivité","Combien de poèmes la classe connaît-elle au total depuis septembre ? → Corrigé : réponse selon le répertoire réellement enseigné","Explique avec tes mots pourquoi tu aimes réciter des poèmes → Corrigé : réponse libre justifiée"]),
+      ["Récite le poème que tu préfères parmi tous ceux appris → Corrigé : évaluation de la mémorisation et de l'expressivité","Combien de poèmes la classe connaît-elle au total depuis septembre ? → Corrigé : réponse selon le répertoire réellement enseigné","Explique avec tes mots pourquoi tu aimes réciter des poèmes → Corrigé : réponse libre justifiée"])
   ],
-},
+}
 
-// ── S5 (n6, 2026/03/30) : Révision générale de fin de mois ───────────────────
+];
+
+const AVRIL_9EME = [
+
 {
-  n: 5, dateDebut: "2026/03/30",
+  n: 1, dateDebut: "2027/04/05",
   theme: "Révision générale de fin de mois — bilan de mars",
   sous: "Grand bilan de toutes les matières du mois de mars, avant le passage en avril",
   matieres: [
@@ -2471,18 +2726,304 @@ const MARS_9EME = [
     m("RÉCITATION","RÉVISION GENERAL",
       "Grand bilan final du répertoire de poèmes appris depuis septembre, en clôture du mois de mars.",
       ["Rappel de tous les poèmes appris depuis septembre","Récitation collective enchaînée de l'ensemble complet du répertoire","Récitation individuelle du poème préféré par chaque élève volontaire","Petite restitution devant une autre classe ou les parents si possible","Félicitations collectives pour le travail accompli"],
-      ["Récite l'ensemble du répertoire appris depuis septembre → Corrigé : évaluation globale de la mémorisation et de l'expressivité","Quel est le poème préféré de la classe ? → Corrigé : réponse collective selon les avis exprimés","Qu'as-tu appris de nouveau en récitation ce trimestre ? → Corrigé : réponse individuelle libre"]),
+      ["Récite l'ensemble du répertoire appris depuis septembre → Corrigé : évaluation globale de la mémorisation et de l'expressivité","Quel est le poème préféré de la classe ? → Corrigé : réponse collective selon les avis exprimés","Qu'as-tu appris de nouveau en récitation ce trimestre ? → Corrigé : réponse individuelle libre"])
   ],
 },
+
+{
+  n: 2, dateDebut: "2027/04/12",
+  theme: "Auto-évaluation — repérer ses lacunes avant le bilan de mai",
+  sous: "Tests individuels et auto-correction sur les notions du mois de mars",
+  matieres: [
+    m("ARITHMETIQUE","Auto-évaluation — nombres complexes et table de 9",
+      "Faire réaliser un test individuel sur les nombres complexes et la table de 9 pour que chaque élève repère ses propres lacunes avant le bilan de mai.",
+      ["Rappel rapide des nombres complexes et de la table de 9","Distribution d'un test individuel de 3 questions","Réalisation individuelle sans aide","Auto-correction avec le corrigé distribué","Bilan collectif des difficultés les plus fréquentes"],
+      ["Transforme 4 h 25 min en minutes → Corrigé : 265 min","Calcule : 9 × 7 = ? → Corrigé : 63","Transforme 195 min en heures et minutes → Corrigé : 3 h 15 min"]),
+    m("MESURE","Auto-évaluation — le budget familial",
+      "Faire réaliser un test individuel sur les problèmes de budget (recettes, dépenses, épargne, déficit) pour un repérage autonome des lacunes.",
+      ["Rappel du vocabulaire du budget (recettes, dépenses, épargne, déficit)","Distribution d'un test individuel de 2 problèmes","Réalisation individuelle","Auto-correction avec le corrigé","Bilan collectif des erreurs fréquentes"],
+      ["Une famille a 380 000 Ar de recettes et 310 000 Ar de dépenses. Quelle épargne réalise-t-elle ? → Corrigé : 70 000 Ar","Qu'est-ce qu'un déficit dans un budget ? → Corrigé : quand les dépenses dépassent les recettes","Une famille dépense 245 000 Ar pour 200 000 Ar de recettes. Quel est son déficit ? → Corrigé : 45 000 Ar"]),
+    m("GEOMETRIE","Auto-évaluation — les figures planes (carré, rectangle, triangle, trapèze)",
+      "Faire réaliser un test individuel sur la reconnaissance et le calcul de périmètre des 4 figures planes étudiées depuis septembre.",
+      ["Rappel des 4 figures planes","Distribution d'un test individuel : reconnaissance et calcul de périmètre","Réalisation individuelle","Auto-correction avec le corrigé","Bilan collectif"],
+      ["Quelle figure a 2 côtés parallèles et 2 côtés obliques ? → Corrigé : le trapèze","Calcule le périmètre d'un carré de 7 cm de côté → Corrigé : 28 cm","Calcule le périmètre d'un trapèze de côtés 6, 4, 5, 7 cm → Corrigé : 22 cm"]),
+    m("VAKITENY","Fitsapana tena — famerenana ny lahatsoratra tamin'ny Marsa",
+      "Manao fitsapana tena fohy momba ireo lahatsoratra novakina tamin'ny volana Marsa, mba hahafahan'ny mpianatra mamantatra ny tenany izay mbola tsy azo tsara.",
+      ["Fanontaniana fohy an-tsoratra momba ny lahatsoratra tamin'ny Marsa","Famaliana samirery, tsy misy fanampiana","Fanitsian-tena amin'ny corrigé","Famintinana am-pokonolona ny hadisoana matetika"],
+      ["Iza i Manana ao amin'ny lahatsoratra novakina tamin'ny Marsa? → Corrigé : ilay ankizivavy tantaraina ao amin'ny lahatsoratra 'I Manana'","Tanisao lahatsoratra iray hafa novakina tamin'ny Marsa → Corrigé : valiny manokana, ohatra 'Lozam-piarakodia'","Famintino amin'ny fehezanteny iray ny lahatsoratra tianao indrindra → Corrigé : famintinana fohy sy marina"]),
+    m("TSIPELINA","Fitsapana tena — ny litera nianarana hatramin'ny Febroary",
+      "Manao fitsapana tena fohy amin'ny alalan'ny lohasoratra mba hamantarana ireo litera mbola sarotra amin'ny mpianatra tsirairay.",
+      ["Famerenana haingana ny litera rehetra nianarana","Lohasoratra fitsapana fohy (4 teny)","Fanitsian-tena","Famintinana ny litera mbola sarotra"],
+      ["Soraty ny teny tononina: 'garabola' → Corrigé : garabola","Firy litera samihafa efa nianaranao hatramin'ny Febroary? → Corrigé : 11 litera","Inona ny litera mbola sarotra aminao? → Corrigé : valiny manokana"]),
+    m("FITSIPIKA","Fitsapana tena — ny mpisolotena mitana anjara asa F",
+      "Manao fitsapana tena fohy momba ny anjara asa F amin'ny mpisolotena, mba hamantarana ny mbola tsy azo tsara.",
+      ["Famerenana ny anjara asa F ao amin'ny mpisolotena","Fitsapana an-tsoratra fohy: 3 fanontaniana","Fanitsian-tena","Famintinana"],
+      ["Soloy amin'ny mpisolotena: 'Manasa ny lamba i Rasoa.' → Corrigé : 'Manasa ny lamba izy.'","Tanisao mpisolotena 2 mitana anjara asa F → Corrigé : izy, izy ireo (ohatra)","Manorata fehezanteny iray misy mpisolotena F → Corrigé : valiny manokana"]),
+    m("FANAZARANA HANORATRA","Fitsapana tena — fanoratana madio",
+      "Manao fitsapana tena fohy momba ny fanoratana madio, mba hamantarana ny tsy fahampiana tsirairay alohan'ny bilan farany.",
+      ["Famerenana ny fitsipika fanoratana madio","Fandikan-tsoratra fitsapana fohy, fehezanteny 2","Fanitsian-tena amin'ny corrigé","Famintinana ny tsy fahampiana hita"],
+      ["Adikaso: 'Ny asa no vatosoa.' → Corrigé : fanoratana madio sy mitovy amin'ny lahatra","Firy fehezanteny no nadika? → Corrigé : 2 fehezanteny","Inona ny hadisoana hitanao rehefa nampitahainao? → Corrigé : valiny manokana"]),
+    m("LECTURE","Auto-évaluation — les textes lus depuis février",
+      "Faire réaliser un test individuel sur les textes lus depuis février pour un repérage autonome des lacunes de compréhension.",
+      ["Rappel des titres lus depuis février","Test individuel : 3 questions sur un texte au choix","Auto-correction avec le corrigé","Bilan collectif des difficultés"],
+      ["Cite un texte lu depuis février → Corrigé : réponse selon les textes réellement étudiés","Quelle est la différence entre un conte et un texte documentaire ? → Corrigé : le conte raconte une histoire imaginaire, le documentaire donne des informations réelles","Quel texte as-tu trouvé le plus difficile à comprendre ? Pourquoi ? → Corrigé : réponse libre justifiée"]),
+    m("LANGUE","Auto-évaluation — la méthode d'étude de texte",
+      "Faire réaliser un test individuel qui reprend la méthode d'étude de texte pratiquée toute l'année (qui, où, quand, quoi, la morale), à partir du texte 'L'apprenti ne comprend rien'.",
+      ["Rappel de la méthode d'étude de texte (qui, où, quand, quoi, la morale)","Distribution d'un test individuel de 3 questions sur 'L'apprenti ne comprend rien'","Réalisation individuelle","Auto-correction avec le corrigé","Bilan collectif des points de méthode encore fragiles"],
+      ["Qui sont les deux personnages principaux de 'L'apprenti ne comprend rien' ? → Corrigé : le maître et l'apprenti","Quelle leçon peut-on tirer de cette histoire ? → Corrigé : réponse cohérente, ex. il faut bien écouter les consignes","Quelle question te reste-t-il le plus difficile à traiter sur un texte : qui, où, quand ou pourquoi ? → Corrigé : réponse individuelle"]),
+    m("VOCABULAIRE","Auto-évaluation — bilan du vocabulaire depuis février",
+      "Faire réaliser un test individuel sur le vocabulaire vu depuis février (jours, transport, commerce) pour un repérage autonome des lacunes.",
+      ["Rappel du vocabulaire vu depuis février","Test individuel de 3 mots à définir ou utiliser","Auto-correction","Bilan collectif"],
+      ["Que veut dire 'épargner' ? → Corrigé : mettre de l'argent de côté au lieu de le dépenser","Cite les 7 jours de la semaine → Corrigé : lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche","Cite un mot lié au commerce → Corrigé : marché, vendre, acheter (exemples)"]),
+    m("ORTHOGRAPHE","Auto-évaluation — les sons t=[s], s, g, c",
+      "Faire réaliser une courte dictée-test sur les sons étudiés en mars pour un repérage autonome des lacunes.",
+      ["Rappel des règles vues en mars","Dictée-test individuelle de 3 mots","Auto-correction","Bilan collectif des sons encore confondus"],
+      ["Comment se prononce le t dans 'addition' ? → Corrigé : [s]","Écris un mot où g se prononce [ʒ] → Corrigé : girafe, âge (exemples)","Comment se prononce le c dans 'garçon' ? → Corrigé : [s]"]),
+    m("CONJUGAISON","Auto-évaluation — bilan des conjugaisons de mars",
+      "Faire réaliser un test individuel sur les conjugaisons de mars (3ème groupe, verbes pronominaux) pour un repérage autonome des lacunes.",
+      ["Rappel des conjugaisons de mars","Test individuel de 3 conjugaisons","Auto-correction","Bilan collectif"],
+      ["Conjugue 'prendre' au passé composé avec 'nous' → Corrigé : nous avons pris","Conjugue 'se laver' au présent avec 'tu' → Corrigé : tu te laves","Conjugue 'faire' au futur avec 'ils' → Corrigé : ils feront"]),
+    m("GRAMMAIRE","Auto-évaluation — indicateurs et pronoms relatifs qui/que",
+      "Faire réaliser un test individuel sur les indicateurs de temps/lieu et les relatifs qui/que pour un repérage autonome des lacunes.",
+      ["Rappel des indicateurs de temps/lieu et des relatifs qui/que","Test individuel de 3 phrases à compléter","Auto-correction","Bilan collectif"],
+      ["Complète : 'Le livre ___ je lis est intéressant.' → Corrigé : que","Complète : 'La fille ___ chante est ma sœur.' → Corrigé : qui","Cite un indicateur de lieu → Corrigé : ici, là-bas, devant (exemples)"]),
+    m("EXPRESSION ORALE","Auto-évaluation — présenter un thème du mois",
+      "Faire préparer et évaluer une courte présentation orale sur un thème travaillé en mars, avec une grille d'auto-évaluation.",
+      ["Rappel des thèmes travaillés en mars","Chaque élève prépare et présente 2 phrases sur un thème au choix","Auto-évaluation avec une grille simple (clarté, fluidité)","Bilan collectif"],
+      ["Présente en 2 phrases un thème travaillé récemment → Corrigé : réponse individuelle cohérente","Qu'est-ce qui rend une présentation orale claire ? → Corrigé : parler lentement, articuler, regarder la classe","Note ta propre présentation sur 3 critères → Corrigé : auto-évaluation individuelle"]),
+    m("EXPRESSION ECRITE","Auto-évaluation — relire et corriger un texte",
+      "Faire relire aux élèves un texte déjà écrit pour qu'ils identifient eux-mêmes leurs erreurs les plus fréquentes.",
+      ["Rappel des critères de relecture (majuscule, point, accords)","Chaque élève relit un texte déjà écrit et relève ses propres erreurs","Correction individuelle avec une grille","Bilan collectif des erreurs les plus fréquentes"],
+      ["Relis un texte déjà écrit : trouve 2 erreurs et corrige-les → Corrigé : correction individuelle vérifiée","Pourquoi est-il important de se relire ? → Corrigé : pour corriger ses propres erreurs avant de rendre son texte","Cite un critère de relecture que tu utilises → Corrigé : majuscule, point, accord (exemples)"]),
+    m("S.V.T","Auto-évaluation — la graine, les aliments, l'eau et l'air",
+      "Faire réaliser un test individuel sur les notions de sciences de mars pour un repérage autonome des lacunes.",
+      ["Rappel des notions de mars","Test individuel de 3 questions","Auto-correction","Bilan collectif"],
+      ["Cite les 3 conditions de germination d'une graine → Corrigé : eau, chaleur, air","Que doit contenir un repas équilibré ? → Corrigé : un féculent, une protéine, un fruit ou légume","Pourquoi respire-t-on de l'air ? → Corrigé : pour apporter de l'oxygène au corps"]),
+    m("GEOGRAPHIE","Auto-évaluation — points cardinaux et artisanat",
+      "Faire réaliser un test individuel sur les points cardinaux et l'artisanat malgache pour un repérage autonome des lacunes.",
+      ["Rappel des points cardinaux et de l'artisanat malgache","Test individuel de 3 questions","Auto-correction","Bilan collectif"],
+      ["Cite les 4 points cardinaux → Corrigé : Nord, Sud, Est, Ouest","Cite un métier de l'artisanat malgache → Corrigé : vannier, potier, sculpteur (exemples)","Avec quelle matière fabrique-t-on un panier ? → Corrigé : le raphia"]),
+    m("TANTARA","Fitsapana tena — fahaleovantena sy Repoblika",
+      "Manao fitsapana tena fohy momba ny 26 Jona 1960 sy ireo Repoblika efatra, mba hamantarana ny mbola tsy azo tsara.",
+      ["Famerenana ny 26 Jona 1960 sy ireo Repoblika 4","Fitsapana an-tsoratra fohy, 3 fanontaniana","Fanitsian-tena","Famintinana"],
+      ["Amin'ny daty firy no nahazoan'i Madagasikara ny fahaleovantenany? → Corrigé : 26 Jona 1960","Firy Repoblika efa nisy teto Madagasikara? → Corrigé : 4 Repoblika","Tanisao andro iraisam-pirenena iray nianaranao → Corrigé : valiny manokana"]),
+    m("ANGLAIS","Self-assessment — means of transport and months",
+      "Have students take a short individual test on transport vocabulary and months to identify their own gaps.",
+      ["Quick recall of transport vocabulary and months","Individual test of 3 questions","Self-correction with answer key","Collective review of common mistakes"],
+      ["Name 3 means of transport in English → Corrigé : car, bus, bicycle (examples)","Say the 12 months in English → Corrigé : January to December in order","Which is faster, a bicycle or a plane? → Corrigé : A plane is faster than a bicycle."]),
+    m("FFMOM","Fitsapana tena — fahalalam-pomba tamin'ny Marsa",
+      "Manao fitsapana tena fohy momba ireo lohahevitra fahalalam-pomba tamin'ny Marsa, mba hamantarana izay mbola tsy azo tsara.",
+      ["Famerenana ireo lohahevitra tamin'ny Marsa","Fitsapana an-tsoratra fohy, 3 fanontaniana","Fanitsian-tena","Famintinana"],
+      ["Tanisao fitsipika iray nianaranao momba ny fahalalam-pomba → Corrigé : valiny manokana","Ahoana no fanajana ny olon-dehibe? → Corrigé : mihaino, manaja, manangan-tanana","Nahoana no ilaina ny fahalalam-pomba? → Corrigé : mba hisian'ny fifankatiavana sy filaminana"]),
+    m("CHANT","Auto-évaluation — un chant au choix depuis septembre",
+      "Faire choisir et évaluer un chant appris depuis septembre, avec une grille d'auto-évaluation simple.",
+      ["Rappel des chants appris depuis septembre","Chaque élève choisit et chante un couplet","Auto-évaluation avec une grille simple","Bilan collectif"],
+      ["Chante un couplet d'un chant appris depuis septembre → Corrigé : évaluation de la mémorisation","Quel chant maîtrises-tu le mieux ? → Corrigé : réponse individuelle","Que dois-tu encore travailler pour bien chanter ? → Corrigé : réponse individuelle, ex. la justesse, la mémorisation"]),
+    m("RÉCITATION","Auto-évaluation — un poème au choix depuis septembre",
+      "Faire choisir et évaluer un poème appris depuis septembre, avec une grille d'auto-évaluation simple.",
+      ["Rappel des poèmes appris depuis septembre","Chaque élève choisit et récite un poème","Auto-évaluation avec une grille simple","Bilan collectif"],
+      ["Récite un poème appris depuis septembre → Corrigé : évaluation de la mémorisation","Quel poème maîtrises-tu le mieux ? → Corrigé : réponse individuelle","Que dois-tu encore travailler pour bien réciter ? → Corrigé : réponse individuelle, ex. l'intonation, la mémorisation"])
+  ],
+},
+
+{
+  n: 3, dateDebut: "2027/04/19",
+  theme: "Entraînement chronométré — consolider les points faibles repérés",
+  sous: "Séries chronométrées et corrections immédiates sur les notions du mois de mars",
+  matieres: [
+    m("ARITHMETIQUE","Entraînement chronométré : nombres complexes et table de 9",
+      "Consolider par des exercices chronométrés les points faibles repérés la semaine précédente en nombres complexes et table de 9.",
+      ["Rappel des erreurs fréquentes repérées la semaine précédente","Série chronométrée de 3 exercices (nombres complexes + table de 9)","Correction immédiate","Repérage individuel des progrès réalisés"],
+      ["Transforme 6 h 5 min en minutes → Corrigé : 365 min","Calcule : 9 × 6 = ? → Corrigé : 54","Transforme 340 min en heures et minutes → Corrigé : 5 h 40 min"]),
+    m("MESURE","Entraînement chronométré : problèmes de budget",
+      "Consolider par des problèmes chronométrés un peu plus complexes les points faibles repérés en budget familial.",
+      ["Rappel des erreurs fréquentes en budget","Résolution chronométrée de 2 problèmes de budget plus complexes","Correction immédiate","Bilan des progrès"],
+      ["Une famille a 520 000 Ar de recettes, dépense 470 000 Ar. A-t-elle un excédent ou un déficit ? De combien ? → Corrigé : excédent de 50 000 Ar","Une famille dépense 610 000 Ar pour 550 000 Ar de recettes. Quel est son déficit ? → Corrigé : 60 000 Ar","Une famille épargne 15% de 400 000 Ar. Combien épargne-t-elle ? → Corrigé : 60 000 Ar"]),
+    m("GEOMETRIE","Entraînement chronométré : périmètres des figures planes",
+      "Consolider par une série chronométrée le calcul de périmètre des 4 figures planes étudiées.",
+      ["Rappel des formules de périmètre des 4 figures","Série chronométrée de 3 calculs de périmètre","Correction immédiate","Bilan des progrès"],
+      ["Périmètre d'un rectangle de 9 cm sur 4 cm → Corrigé : 26 cm","Périmètre d'un triangle de côtés 5, 6, 7 cm → Corrigé : 18 cm","Périmètre d'un trapèze de côtés 8, 5, 6, 5 cm → Corrigé : 24 cm"]),
+    m("VAKITENY","Fanazaran-tena voafetra fotoana — famerenana ireo lahatsoratra",
+      "Manohy manatsara ny fahaizana mamaky sy mamaly haingana amin'ny alalan'ny lahatsoratra fohy vaovao mitambatra ny lohahevitra tamin'ny Marsa.",
+      ["Famerenana ireo hadisoana matetika hita tamin'ny fitsapana teo aloha","Famakiana lahatsoratra fohy vaovao mitambatra ny lohahevitra tamin'ny Marsa","Fanontaniana voafetra fotoana, 3 fanontaniana","Fanitsiana am-pokonolona"],
+      ["Iza avy ireo lahatsoratra roa novakina tamin'ny Marsa? → Corrigé : valiny manokana, ohatra 'I Manana' sy 'Lozam-piarakodia'","Inona no hafatra iraisan'ireo lahatsoratra novakina tamin'ny Marsa? → Corrigé : valiny manokana araka ny lahatsoratra nianarana","Famakio am-baravava ny andalana tianao indrindra → Corrigé : famakiana mazava sy tsotra"]),
+    m("TSIPELINA","Fanazaran-tena voafetra fotoana — dictée mifangaro litera",
+      "Consolider les lettres encore fragiles repérées la semaine précédente par une dictée chronométrée.",
+      ["Famerenana ny litera mbola sarotra hita tamin'ny fitsapana teo aloha","Lohasoratra voafetra fotoana, 3 teny","Fanitsiana am-pokonolona","Famintinana ny fandrosoana"],
+      ["Soraty ny teny tononina: 'firavaka' → Corrigé : firavaka","Soraty ny teny tononina: 'tsangambato' → Corrigé : tsangambato","Inona ny litera efa tsara kokoa aminao izao? → Corrigé : valiny manokana"]),
+    m("FITSIPIKA","Fanazaran-tena voafetra fotoana — mpisolotena F",
+      "Consolider par un exercice chronométré la maîtrise de l'anjara asa F du mpisolotena.",
+      ["Famerenana ny anjara asa F","Fanontaniana voafetra fotoana, 3 fanontaniana","Fanitsiana am-pokonolona","Famintinana ny fandrosoana"],
+      ["Soloy amin'ny mpisolotena: 'Manoratra taratasy Rina sy Tovo.' → Corrigé : 'Manoratra taratasy izy ireo.'","Manorata fehezanteny 2 misy mpisolotena F samihafa → Corrigé : valiny manokana","Inona ireo mpisolotena rehetra fantatrao? → Corrigé : aho, ianao, izy, izahay, ianareo, izy ireo"]),
+    m("FANAZARANA HANORATRA","Fanazaran-tena voafetra fotoana — fanoratana madio sy haingana",
+      "Consolider la vitesse et la propreté de l'écriture par une dictée chronométrée.",
+      ["Famerenana ny fitsipika fanoratana madio","Fandikan-tsoratra voafetra fotoana, fehezanteny 2","Fanitsiana am-pokonolona","Famintinana ny fandrosoana"],
+      ["Adikaso ao anaty 3 minitra: 'Ny fahaizana no harena tsy mety ho very.' → Corrigé : fanoratana madio sy haingana","Firy minitra no lany taminao? → Corrigé : fanamarihana manokana","Inona no nataonao tsara kokoa noho ny fitsapana teo aloha? → Corrigé : valiny manokana"]),
+    m("LECTURE","Entraînement chronométré : compréhension de texte",
+      "Consolider par un exercice chronométré les types de questions de compréhension encore difficiles.",
+      ["Rappel des types de questions encore difficiles","Lecture silencieuse chronométrée d'un texte court","Questions chronométrées, 3 questions","Correction immédiate"],
+      ["Quel est le personnage principal du texte lu aujourd'hui ? → Corrigé : réponse selon le texte choisi en classe","Que se passe-t-il au début du texte ? → Corrigé : réponse selon le texte","Comment se termine le texte ? → Corrigé : réponse selon le texte"]),
+    m("LANGUE","Entraînement chronométré : méthode d'étude de texte",
+      "Consolider la méthode d'étude de texte par une application chronométrée sur un extrait de 'Plus tard tu seras'.",
+      ["Rappel de la méthode qui/où/quand/quoi/morale","Application chronométrée sur un extrait de 'Plus tard tu seras'","Correction immédiate","Bilan des progrès sur la méthode"],
+      ["Qui sont les personnes évoquées dans le texte 'Plus tard tu seras' ? → Corrigé : réponse selon le texte, ex. des enfants qui rêvent de métiers","Quelle qualité faut-il pour être un bon enseignant, d'après ce type de texte ? → Corrigé : réponse cohérente, ex. la patience","Formule une question 'pourquoi' sur ce texte → Corrigé : réponse individuelle cohérente"]),
+    m("VOCABULAIRE","Entraînement chronométré : vocabulaire depuis février",
+      "Consolider par un quiz chronométré le vocabulaire encore fragile depuis février.",
+      ["Rappel du vocabulaire encore fragile","Quiz chronométré de 3 mots","Correction immédiate","Bilan des progrès"],
+      ["Que veut dire 'exportation' ? → Corrigé : vendre des produits vers d'autres pays","Cite 2 métiers du commerce → Corrigé : vendeur, commerçant (exemples)","Quel jour vient avant vendredi ? → Corrigé : jeudi"]),
+    m("ORTHOGRAPHE","Entraînement chronométré : dictée des sons de mars",
+      "Consolider par une dictée chronométrée les sons encore confondus.",
+      ["Rappel des sons encore confondus","Dictée chronométrée de 3 mots","Correction immédiate","Bilan des progrès"],
+      ["Dictée : 'Le garçon mange une glace au cinéma.' → Corrigé : orthographe exacte","Comment se prononce le s dans 'maison' ? → Corrigé : [z]","Écris un mot où t se prononce [s] → Corrigé : addition, patient (exemples)"]),
+    m("CONJUGAISON","Entraînement chronométré : conjugaisons de mars",
+      "Consolider par un quiz chronométré les conjugaisons encore fragiles.",
+      ["Rappel des conjugaisons encore fragiles","Quiz chronométré de 3 conjugaisons","Correction immédiate","Bilan des progrès"],
+      ["Conjugue 'venir' au passé composé avec 'elle' → Corrigé : elle est venue","Conjugue 'se lever' au présent avec 'nous' → Corrigé : nous nous levons","Conjugue 'dire' au futur avec 'tu' → Corrigé : tu diras"]),
+    m("GRAMMAIRE","Entraînement chronométré : indicateurs et relatifs",
+      "Consolider par un quiz chronométré les points encore fragiles en indicateurs et relatifs.",
+      ["Rappel des points encore fragiles","Quiz chronométré de 3 phrases","Correction immédiate","Bilan des progrès"],
+      ["Souligne l'indicateur de temps : 'Avant, il n'y avait pas d'école ici.' → Corrigé : Avant","Complète : 'Voici le stylo ___ j'ai perdu.' → Corrigé : que","Complète : 'C'est la classe ___ je préfère.' → Corrigé : que"]),
+    m("EXPRESSION ORALE","Entraînement chronométré : présentation courte et fluide",
+      "Consolider la fluidité à l'oral par une présentation chronométrée d'une minute.",
+      ["Rappel des critères de fluidité à l'oral","Chaque élève présente 2 phrases chronométrées (1 minute)","Retour immédiat de la classe","Bilan des progrès à l'oral"],
+      ["Présente en 1 minute un sujet de ton choix → Corrigé : évaluation de la fluidité et de la clarté","Qu'est-ce qui t'a aidé à parler plus facilement cette fois ? → Corrigé : réponse individuelle","Utilise un connecteur pour lier tes 2 phrases → Corrigé : et, parce que, mais (exemples)"]),
+    m("EXPRESSION ECRITE","Entraînement chronométré : rédaction courte et correcte",
+      "Consolider la rapidité et la correction de l'écrit par une rédaction chronométrée de 3 phrases.",
+      ["Rappel des critères de correction (majuscule, point, accords)","Rédaction chronométrée de 3 phrases sur un sujet donné","Auto-relecture puis correction collective","Bilan des progrès"],
+      ["Rédige 3 phrases sur ton activité préférée en 5 minutes → Corrigé : réponse individuelle correcte","Relis : chaque phrase a-t-elle un verbe ? → Corrigé : vérification individuelle","Corrige une phrase mal ponctuée proposée par l'enseignant → Corrigé : correction individuelle vérifiée"]),
+    m("S.V.T","Entraînement chronométré : la graine, les aliments, l'eau et l'air",
+      "Consolider par un quiz chronométré les points encore fragiles en sciences de mars.",
+      ["Rappel des points encore fragiles","Quiz chronométré de 3 questions","Correction immédiate","Bilan des progrès"],
+      ["Que devient une graine quand elle germe ? → Corrigé : elle donne une jeune plante","Cite un aliment riche en protéines → Corrigé : poisson, viande, œuf (exemples)","Pourquoi l'eau est-elle indispensable à la vie ? → Corrigé : tous les êtres vivants en ont besoin pour boire et fonctionner"]),
+    m("GEOGRAPHIE","Entraînement chronométré : points cardinaux et artisanat",
+      "Consolider par un quiz chronométré les points cardinaux et l'artisanat encore fragiles.",
+      ["Rappel des points encore fragiles","Quiz chronométré de 3 questions","Correction immédiate","Bilan des progrès"],
+      ["Si tu fais face au Sud, qu'as-tu à ta gauche ? → Corrigé : l'Est","Cite une matière première de l'artisanat malgache → Corrigé : le raphia, la terre, le bois (exemples)","Pourquoi l'artisanat est-il important économiquement ? → Corrigé : il crée des emplois et des revenus"]),
+    m("TANTARA","Fanazaran-tena voafetra fotoana — fahaleovantena sy Repoblika",
+      "Consolider par des questions chronométrées les points encore fragiles sur la période de la colonisation à l'indépendance.",
+      ["Famerenana ny hadisoana matetika hita tamin'ny fitsapana teo aloha","Fanontaniana voafetra fotoana, 3 fanontaniana","Fanitsiana am-pokonolona","Famintinana ny fandrosoana"],
+      ["Iza no filoha voalohan'ny Repoblika I? → Corrigé : Philibert Tsiranana","Firy taona no naharitry ny fanjanahantany hatramin'ny fahaleovantena? → Corrigé : 64 taona (1896-1960)","Tanisao andro iraisam-pirenena iray hafa → Corrigé : valiny manokana"]),
+    m("ANGLAIS","Timed practice: means of transport and months",
+      "Consolidate through a timed quiz the vocabulary of transport and months that is still fragile.",
+      ["Rappel des erreurs fréquentes","Quiz chronométré de 3 questions","Correction immédiate","Bilan des progrès"],
+      ["Name 2 more means of transport not yet named this month → Corrigé : réponse individuelle, ex. train, taxi","Say the month that comes after April → Corrigé : May","Which is slower, a bicycle or a plane? → Corrigé : A bicycle is slower than a plane."]),
+    m("FFMOM","Fanazaran-tena voafetra fotoana — fahalalam-pomba",
+      "Consolider par un exercice chronométré la compréhension des règles de fahalalam-pomba encore fragiles.",
+      ["Famerenana ny lohahevitra mbola tsy azo tsara","Fanontaniana voafetra fotoana, 3 fanontaniana","Fampisehoana tsotra iray","Famintinana ny fandrosoana"],
+      ["Ahoana no atao rehefa misy fifandirana amin'ny namana? → Corrigé : miresaka am-pilaminana, mangataka fanampiana amin'ny olon-dehibe raha ilaina","Tanisao fitsipika iray hafa fantatrao → Corrigé : valiny manokana","Nahoana no ilaina ny fifampitondrana tsara? → Corrigé : mba hisian'ny fiadanana sy ny fifankatiavana"]),
+    m("CHANT","Entraînement : deux chants au choix, en duo",
+      "Consolider la mémorisation par un travail en binôme sur deux chants déjà appris.",
+      ["Rappel des chants encore fragiles","Chant en binômes, chacun aide l'autre","Passage devant la classe par quelques duos","Bilan des progrès"],
+      ["Chante en duo un couplet d'un chant appris depuis septembre → Corrigé : évaluation de la mémorisation en binôme","Aide ton camarade à retrouver un mot oublié du chant → Corrigé : entraide évaluée","Quel chant ton duo a-t-il choisi ? → Corrigé : réponse individuelle"]),
+    m("RÉCITATION","Entraînement : un poème au choix, en duo",
+      "Consolider la mémorisation par un travail en binôme sur un poème déjà appris.",
+      ["Rappel des poèmes encore fragiles","Récitation en binômes, chacun aide l'autre","Passage devant la classe par quelques duos","Bilan des progrès"],
+      ["Récite en duo un poème appris depuis septembre → Corrigé : évaluation de la mémorisation en binôme","Aide ton camarade à retrouver un vers oublié → Corrigé : entraide évaluée","Quel poème ton duo a-t-il choisi ? → Corrigé : réponse individuelle"])
+  ],
+},
+
+{
+  n: 4, dateDebut: "2027/04/26",
+  theme: "Consolidation finale avant le grand bilan de mai",
+  sous: "Synthèse de toutes les notions du mois de mars, dernière étape avant le bilan de fin de trimestre",
+  matieres: [
+    m("ARITHMETIQUE","Consolidation finale : nombres complexes, table de 9 et opérations posées",
+      "Faire la synthèse finale des nombres complexes et de la table de 9 dans un problème combinant plusieurs notions, avant le grand bilan de mai.",
+      ["Rappel synthétique de tout le mois d'avril","Résolution d'un problème de synthèse combinant nombres complexes, table de 9 et une opération posée","Correction collective détaillée","Bilan individuel final avant mai"],
+      ["Un car part à 2 h 45 et roule pendant 3 h 30 min. À quelle heure arrive-t-il ? → Corrigé : 6 h 15","Calcule : 9 × 9 = ? → Corrigé : 81","Pose et calcule : 458 + 276 → Corrigé : 734"]),
+    m("MESURE","Consolidation finale : le budget familial complet",
+      "Faire la synthèse finale du budget familial (recettes, dépenses, épargne, déficit) dans un problème complet.",
+      ["Rappel synthétique du budget familial","Résolution d'un problème complet (recettes, dépenses, épargne, déficit)","Correction collective détaillée","Bilan individuel final"],
+      ["Une famille a 600 000 Ar de recettes, dépense 480 000 Ar et épargne le reste pendant 4 mois. Quel sera le montant total épargné ? → Corrigé : 120 000×4=480 000 Ar","Qu'est-ce qui différencie un excédent d'un déficit ? → Corrigé : l'excédent est quand les recettes dépassent les dépenses ; le déficit est l'inverse","Cite 2 façons de réduire un déficit familial → Corrigé : réduire les dépenses, augmenter les recettes"]),
+    m("GEOMETRIE","Consolidation finale : synthèse des figures planes de l'année",
+      "Faire la synthèse finale des 4 figures planes étudiées depuis septembre dans un problème combiné.",
+      ["Rappel synthétique des 4 figures planes","Problème combinant périmètre de 2 figures différentes","Correction collective détaillée","Bilan individuel final de géométrie"],
+      ["Un jardin carré de 9 m de côté est agrandi en un jardin rectangulaire de 12 m sur 9 m. Quel est le nouveau périmètre ? → Corrigé : 2×(12+9)=42 m","Cite les 4 figures planes étudiées depuis septembre → Corrigé : carré, rectangle, triangle, trapèze","Quelle figure a tous ses côtés égaux ? → Corrigé : le carré"]),
+    m("VAKITENY","Famintinana farany : ny lahatsoratra rehetra novakina hatramin'ny Febroary",
+      "Mamintina farany ireo lahatsoratra rehetra novakina hatramin'ny Febroary, ho fanomanana ny bilan lehibe amin'ny Mey.",
+      ["Famerenana faobe ireo lahatsoratra rehetra novakina hatramin'ny Febroary","Lalao famerenana farany, mifanandrina ny vondrona","Famintinana am-bava sy an-tsoratra","Fankasitrahana ny fandrosoana"],
+      ["Tanisao lahatsoratra 2 novakina hatramin'ny Febroary → Corrigé : valiny manokana, ohatra 'Famaizana Mahasoa' sy 'I Manana'","Iza no lahatsoratra tianao indrindra hatramin'izay? → Corrigé : valiny manokana voamarina","Famintino amin'ny fehezanteny 2 ny lahatsoratra nofidianao → Corrigé : famintinana marina sy mifandraika"]),
+    m("TSIPELINA","Famintinana farany : ny litera rehetra nianarana",
+      "Mamintina farany ireo litera rehetra nianarana hatramin'ny Febroary amin'ny alalan'ny lohasoratra farany.",
+      ["Famerenana faobe ny litera rehetra nianarana hatramin'ny Febroary","Lohasoratra farany, 5 teny mifangaro litera","Fanitsiana am-pokonolona","Fankasitrahana ny fandrosoana"],
+      ["Soraty ny lahatsoratra fohy tononin'ny mpampianatra (2 fehezanteny) → Corrigé : fanoratana araka izay tononina, marina sy madio","Firy litera samihafa no nianaranao hatramin'ny Febroary? → Corrigé : 11 litera","Inona ny litera efa tsara tanteraka aminao izao? → Corrigé : valiny manokana"]),
+    m("FITSIPIKA","Famintinana farany : ny mpisolotena sy ny anjara asa F",
+      "Mamintina farany ny fahalalan'ny mpianatra ny mpisolotena sy ny anjara asa F, ho fanomanana ny bilan lehibe amin'ny Mey.",
+      ["Famerenana faobe ny mpisolotena sy ny anjara asa F","Fitsapana farany an-tsoratra, 3 fanontaniana","Fanitsiana am-pokonolona","Fankasitrahana ny fandrosoana"],
+      ["Soloy amin'ny mpisolotena: 'Miasa be dia be ny mpamboly.' → Corrigé : 'Miasa be dia be izy.'","Manorata fehezanteny farany misy mpisolotena F → Corrigé : valiny manokana","Tanisao ireo mpisolotena rehetra fantatrao izao → Corrigé : aho, ianao, izy, izahay, ianareo, izy ireo"]),
+    m("FANAZARANA HANORATRA","Famintinana farany : fanoratana madio sy haingana",
+      "Mamarana ny fifanaraha-drefiana amin'ny fanoratana madio sy haingana amin'ny alalan'ny fandikan-tsoratra farany.",
+      ["Famerenana faobe ny fitsipika fanoratana madio","Fandikan-tsoratra farany, fehezanteny 3, voafetra fotoana","Fanitsiana am-pokonolona","Fankasitrahana ny fandrosoana hatramin'ny Febroary"],
+      ["Adikaso ao anaty 4 minitra: 'Ny fahasalamana no harena voalohany.' → Corrigé : fanoratana madio sy haingana","Firy minitra no lany taminao amin'ity fitsapana ity? → Corrigé : fanamarihana manokana","Inona no fandrosoana hitanao hatramin'ny Febroary? → Corrigé : valiny manokana"]),
+    m("LECTURE","Bilan final : les textes lus depuis février",
+      "Faire le bilan final des textes lus depuis février, dernière étape avant le grand bilan de mai.",
+      ["Rappel de tous les textes lus depuis février","Jeu de révision par équipes","Mini-évaluation individuelle finale de 3 questions","Correction collective et bilan des progrès en lecture"],
+      ["Cite 2 textes lus depuis février → Corrigé : réponse selon les textes réellement étudiés","Quel texte t'a le plus appris de choses nouvelles ? → Corrigé : réponse libre justifiée","Lis à voix haute un passage au choix → Corrigé : évaluation de la fluidité de lecture"]),
+    m("LANGUE","Bilan final : la méthode d'étude de texte de l'année",
+      "Faire le bilan final de la méthode d'étude de texte pratiquée toute l'année, avant le grand bilan de mai.",
+      ["Rappel de la méthode d'étude de texte pratiquée toute l'année","Application finale sur un court extrait nouveau","Correction collective","Bilan des progrès en étude de texte avant le trimestre suivant"],
+      ["Quelles questions te poses-tu toujours en premier face à un texte nouveau ? → Corrigé : qui, où, quand, quoi","Applique la méthode à un texte donné par l'enseignant : qui en est le personnage principal ? → Corrigé : réponse selon le texte distribué","Qu'as-tu le plus progressé en étude de texte cette année ? → Corrigé : réponse individuelle libre"]),
+    m("VOCABULAIRE","Bilan final : vocabulaire depuis février",
+      "Faire le bilan final du vocabulaire vu depuis février par un quiz collectif récapitulatif.",
+      ["Rappel collectif du vocabulaire depuis février","Quiz final de 4 mots","Correction collective","Bilan individuel de progrès"],
+      ["Cite les 12 mois de l'année dans l'ordre → Corrigé : janvier à décembre dans l'ordre","Que veut dire 'artisanat' ? → Corrigé : la fabrication d'objets à la main par un artisan","Cite 3 moyens de transport → Corrigé : voiture, bus, avion (exemples)"]),
+    m("ORTHOGRAPHE","Bilan final : les sons t, s, g, c",
+      "Faire le bilan final des 4 règles de son étudiées en mars par une dictée bilan complète.",
+      ["Rappel collectif des 4 règles de son","Dictée bilan finale de 4 mots","Correction collective mot par mot","Bilan individuel de progrès en orthographe"],
+      ["Dictée : 'Le garçon lance sa balle dans le jardin.' → Corrigé : orthographe exacte","Comment se prononce le c dans 'balle' ? → Corrigé : [k]","Écris un mot où le g se prononce [g] → Corrigé : garçon, gomme (exemples)"]),
+    m("CONJUGAISON","Bilan final : conjugaisons de l'année",
+      "Faire le bilan final de toutes les conjugaisons de l'année (être, avoir, 1er/2ème/3ème groupes, pronominaux).",
+      ["Rappel synthétique de toutes les conjugaisons de l'année","Quiz final de 4 conjugaisons mélangées","Correction collective","Bilan individuel de progrès"],
+      ["Conjugue 'être' au présent avec 'nous' → Corrigé : nous sommes","Conjugue 'prendre' au passé composé avec 'ils' → Corrigé : ils ont pris","Conjugue 'se laver' au présent avec 'elle' → Corrigé : elle se lave"]),
+    m("GRAMMAIRE","Bilan final : synthèse des notions de grammaire de l'année",
+      "Faire le bilan final de toutes les notions de grammaire vues dans l'année (adjectifs, pronoms, indicateurs, relatifs).",
+      ["Rappel synthétique de toutes les notions vues","Quiz final de 4 questions mélangées","Correction collective","Bilan individuel de progrès"],
+      ["Complète : 'La maison ___ j'habite est grande.' → Corrigé : où","Remplace le COD : 'Il lit le livre.' → Corrigé : Il le lit.","Souligne l'adjectif attribut : 'Le ciel est bleu.' → Corrigé : bleu"]),
+    m("EXPRESSION ORALE","Bilan final : présentation libre devant la classe",
+      "Faire présenter à chaque élève un thème libre parmi ceux travaillés depuis septembre, en bilan de fin de trimestre.",
+      ["Chaque élève choisit un thème parmi ceux travaillés depuis septembre","Préparation individuelle de 3 phrases","Passage devant la classe","Bilan collectif des progrès à l'oral depuis septembre"],
+      ["Présente en 3 phrases un sujet de ton choix parmi ceux vus depuis septembre → Corrigé : réponse individuelle cohérente et fluide","Quel progrès as-tu fait à l'oral depuis septembre ? → Corrigé : réponse individuelle libre","Qu'est-ce qui t'aide encore à progresser ? → Corrigé : réponse individuelle, ex. s'entraîner davantage"]),
+    m("EXPRESSION ECRITE","Bilan final : choisir et améliorer son meilleur texte",
+      "Faire choisir et améliorer le meilleur texte rédigé depuis février, en bilan de fin de trimestre.",
+      ["Chaque élève relit ses productions depuis février","Choisir le texte préféré et l'améliorer","Recopier au propre","Partage de quelques textes améliorés"],
+      ["Quel texte préfères-tu parmi ceux écrits depuis février ? → Corrigé : réponse individuelle justifiée","Ajoute une phrase supplémentaire à ce texte → Corrigé : réponse individuelle cohérente","Relis : chaque phrase a-t-elle une majuscule et un point ? → Corrigé : vérification individuelle"]),
+    m("S.V.T","Bilan final : la graine, les aliments, l'eau et l'air",
+      "Faire le bilan final des notions de sciences de mars par un quiz collectif récapitulatif.",
+      ["Rappel collectif de toutes les notions du mois de mars","Quiz final de 4 questions","Correction collective","Bilan individuel de progrès en sciences"],
+      ["Cite les parties d'une graine → Corrigé : l'enveloppe, la réserve, le germe","Que doit contenir un repas équilibré ? → Corrigé : un féculent, une protéine, un fruit ou légume","Pourquoi l'eau et l'air sont-ils indispensables à la vie ? → Corrigé : tous les êtres vivants en ont besoin pour respirer et pour boire"]),
+    m("GEOGRAPHIE","Bilan final : points cardinaux et artisanat",
+      "Faire le bilan final des points cardinaux et de l'artisanat malgache par un quiz collectif récapitulatif.",
+      ["Rappel collectif approfondi","Quiz final de 4 questions","Correction collective","Bilan individuel de progrès en géographie"],
+      ["Cite les 4 points cardinaux dans l'ordre → Corrigé : Nord, Sud, Est, Ouest","Cite 3 métiers de l'artisanat malgache → Corrigé : vannier, potier, sculpteur (exemples)","Pourquoi l'artisanat est-il important pour Madagascar ? → Corrigé : il crée des emplois et fait connaître la culture malgache"]),
+    m("TANTARA","Famintinana farany : fahaleovantena sy Repoblika",
+      "Mamintina farany ny lesona tantara rehetra tamin'ny Marsa, ho fanomanana ny bilan lehibe amin'ny Mey.",
+      ["Famerenana faobe ny lesona tantara rehetra tamin'ny Marsa","Fitsapana farany am-bava, 4 fanontaniana","Fanitsiana am-pokonolona","Fankasitrahana ny fandrosoan'ny mpianatra"],
+      ["Amin'ny daty firy no nahazoan'i Madagasikara ny fahaleovantenany? → Corrigé : 26 Jona 1960","Firy Repoblika efa nisy teto Madagasikara? → Corrigé : 4 Repoblika","Tanisao andro iraisam-pirenena iray nianaranao → Corrigé : valiny manokana"]),
+    m("ANGLAIS","Final review: means of transport and months",
+      "Bring together the whole term's transport and months vocabulary in a final collective review.",
+      ["Rappel collectif approfondi de tout le vocabulaire","Quiz final de 4 questions","Correction collective","Bilan individuel de progrès en anglais"],
+      ["Name all the means of transport you learned this term → Corrigé : car, bus, bicycle, train, plane, taxi, boat (selon ce qui a été réellement enseigné)","Say all 12 months in English → Corrigé : January to December","How do you say 'plus rapide que' in English? → Corrigé : faster than"]),
+    m("FFMOM","Famintinana farany : fahalalam-pomba tamin'ny Marsa",
+      "Mamintina farany ireo lohahevitra fahalalam-pomba rehetra tamin'ny Marsa, ho fanomanana ny bilan lehibe amin'ny Mey.",
+      ["Famerenana faobe ireo lohahevitra rehetra tamin'ny Marsa","Fitsapana farany am-bava, 4 fanontaniana","Fampisehoana famintinana (jeu de rôle)","Fankasitrahana ny fandrosoan'ny mpianatra"],
+      ["Tanisao fitsipika 2 nianaranao tamin'ny Marsa → Corrigé : valiny manokana araka izay tena nianarana","Ahoana no fanajana ny fitsipika eny an-dalambe? → Corrigé : mijanona amin'ny jiro mena","Nahoana no ilaina ny fahalalam-pomba eo amin'ny fiaraha-monina? → Corrigé : mba hisian'ny fifankatiavana sy filaminana"]),
+    m("CHANT","Bilan final : le répertoire depuis septembre",
+      "Faire le bilan final du répertoire de chants appris depuis septembre, avant le grand bilan de mai.",
+      ["Rappel de tous les chants appris depuis septembre","Chant collectif enchaîné de 2-3 chants","Vote de la classe pour le chant préféré du trimestre","Félicitations collectives"],
+      ["Chante un couplet d'un chant appris depuis septembre → Corrigé : évaluation de la mémorisation","Quel est le chant préféré de la classe ? → Corrigé : réponse collective selon le vote","Qu'as-tu appris de nouveau en chant ce trimestre ? → Corrigé : réponse individuelle libre"]),
+    m("RÉCITATION","Bilan final : le répertoire depuis septembre",
+      "Faire le bilan final du répertoire de poèmes appris depuis septembre, avant le grand bilan de mai.",
+      ["Rappel de tous les poèmes appris depuis septembre","Récitation collective enchaînée de 2-3 poèmes","Récitation individuelle du poème préféré par quelques volontaires","Félicitations collectives"],
+      ["Récite un poème appris depuis septembre → Corrigé : évaluation de la mémorisation","Quel est le poème préféré de la classe ? → Corrigé : réponse collective selon les avis exprimés","Qu'as-tu appris de nouveau en récitation ce trimestre ? → Corrigé : réponse individuelle libre"])
+  ],
+}
+
 ];
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// AVRIL
-// ═══════════════════════════════════════════════════════════════════════════════
-const AVRIL_9EME = [
-// ── S1 : Semaine du 20 avril — Bilan du 4ème trimestre · Suite : Les 3 cosmonautes ──
+const MAI_9EME = [
+
 {
-  n: 1, dateDebut: "2026/04/20",
+  n: 1, dateDebut: "2027/05/10",
   theme: "Bilan collectif de fin de trimestre · Ny tsena · Suite : Les 3 cosmonautes",
   sous: "Révision jouée des grands nombres, mesures, géométrie et sciences · Nouveau son [j] · Pronom relatif que",
   matieres: [
@@ -2561,13 +3102,12 @@ const AVRIL_9EME = [
     m("RÉCITATION","RÉVISION — bilan des poèmes du trimestre",
       "Reprendre collectivement les poèmes appris depuis le début de l'année pour consolider la mémorisation avant les vacances.",
       ["Rappel de la liste des poèmes appris cette année","Récitation collective à l'unisson d'un poème au choix","Discussion : quel est le poème préféré de la classe et pourquoi","Répétition individuelle volontaire devant la classe"],
-      ["Récite un poème appris ce trimestre → Corrigé : reproduction fidèle du texte appris","Cite le titre d'un poème appris cette année → Corrigé : réponse individuelle selon les poèmes étudiés","Explique le thème d'un poème au choix → Corrigé : réponse cohérente avec le thème du poème choisi"]),
+      ["Récite un poème appris ce trimestre → Corrigé : reproduction fidèle du texte appris","Cite le titre d'un poème appris cette année → Corrigé : réponse individuelle selon les poèmes étudiés","Explique le thème d'un poème au choix → Corrigé : réponse cohérente avec le thème du poème choisi"])
   ],
 },
 
-// ── S2 : Semaine du 27 avril — Mini-évaluations formatives · Suite : Les 3 cosmonautes ──
 {
-  n: 2, dateDebut: "2026/04/27",
+  n: 2, dateDebut: "2027/05/18",
   theme: "Mini-évaluations formatives de fin de trimestre · Miara-miantsena · Fin : Les 3 cosmonautes",
   sous: "Bilans écrits courts dans toutes les matières · Dénouement du récit spatial",
   matieres: [
@@ -2646,18 +3186,12 @@ const AVRIL_9EME = [
     m("RÉCITATION","RÉVISION — petite évaluation individuelle",
       "Évaluer individuellement la mémorisation et l'articulation d'un poème appris ce trimestre.",
       ["Rappel collectif des poèmes appris ce trimestre","Passage individuel devant la classe, un poème au choix","Évaluation simple : mémorisation, articulation, expressivité","Encouragements et bilan avant les vacances"],
-      ["Récite individuellement un poème entier au choix → Corrigé : évaluation de la mémorisation et de l'articulation","Combien de vers comporte le poème récité ? → Corrigé : selon le texte choisi","Quelle expression du visage utilises-tu pour bien réciter ? → Corrigé : réponse cohérente, ex. sourire, regarder le public"]),
+      ["Récite individuellement un poème entier au choix → Corrigé : évaluation de la mémorisation et de l'articulation","Combien de vers comporte le poème récité ? → Corrigé : selon le texte choisi","Quelle expression du visage utilises-tu pour bien réciter ? → Corrigé : réponse cohérente, ex. sourire, regarder le public"])
   ],
 },
-];
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// MAI
-// ═══════════════════════════════════════════════════════════════════════════════
-const MAI_9EME = [
-// ── S3 : Bilan de l'année — révision par matière ─────────────────────────────
 {
-  n: 1, dateDebut: "2026/05/04",
+  n: 3, dateDebut: "2027/05/24",
   theme: "Bilan de l'année — révision par matière",
   sous: "Rappel des points-clés de chaque matière depuis septembre",
   matieres: [
@@ -2748,13 +3282,12 @@ const MAI_9EME = [
     m("RÉCITATION","Famerenana ny tononkalo nianarana tamin'ny fizarana voalohany",
       "Mamerina ny tononkalo 'Mes deux yeux se font la fête' sy ny hafa nianarana tamin'ny fizarana voalohan'ny taona.",
       ["Famerenana am-pokonolona ny tononkalo voalohany","Fanitsiana ny fanononana sy ny feo","Fitsapana tsirairay amin'ny mpianatra vitsivitsy","Fanomezana toro-hevitra momba ny fihetsika","Fankasitrahana ny ezaka"],
-      ["Tononkaloy ny andininy voalohan'ny tononkalo 'Mes deux yeux se font la fête' → Corrigé : fanombanana ny fitadidiana feno sy ny fanononana","Firy andininy no ao amin'io tononkalo io? → Corrigé : araka ny tononkalo nianarana tao am-pianarana","Inona no lazain'io tononkalo io? → Corrigé : valiny mifanaraka amin'ny loha-hevitry ny tononkalo"]),
+      ["Tononkaloy ny andininy voalohan'ny tononkalo 'Mes deux yeux se font la fête' → Corrigé : fanombanana ny fitadidiana feno sy ny fanononana","Firy andininy no ao amin'io tononkalo io? → Corrigé : araka ny tononkalo nianarana tao am-pianarana","Inona no lazain'io tononkalo io? → Corrigé : valiny mifanaraka amin'ny loha-hevitry ny tononkalo"])
   ],
 },
 
-// ── S4 : Synthèse — exercices croisés de révision ────────────────────────────
 {
-  n: 2, dateDebut: "2026/05/11",
+  n: 4, dateDebut: "2027/05/31",
   theme: "Synthèse — exercices croisés de révision",
   sous: "Exercices variés mêlant les notions vues durant l'année",
   matieres: [
@@ -2845,13 +3378,16 @@ const MAI_9EME = [
     m("RÉCITATION","Famerenana ny tononkalo nianarana tamin'ny fizarana faharoa",
       "Mamerina ny tononkalo hafa nianarana tamin'ny fizarana faharoan'ny taona.",
       ["Famerenana am-pokonolona ny tononkalo faharoa","Fanitsiana ny fanononana","Fitsapana tsirairay","Fampiasana fihetsika mba hanamafisana ny hevitra","Fankasitrahana"],
-      ["Tononkaloy ny andininy voalohan'ny tononkalo nianaranao tamin'ny fizarana faharoa → Corrigé : fanombanana ny fitadidiana","Inona ny andininy tsara indrindra araka ny hevitrao? Nahoana? → Corrigé : valiny manokana voamarina","Tononkaloy miaraka amin'ny namanao ny tononkalo → Corrigé : fanombanana ny firindran'ny fihirana am-pokonolona"]),
+      ["Tononkaloy ny andininy voalohan'ny tononkalo nianaranao tamin'ny fizarana faharoa → Corrigé : fanombanana ny fitadidiana","Inona ny andininy tsara indrindra araka ny hevitrao? Nahoana? → Corrigé : valiny manokana voamarina","Tononkaloy miaraka amin'ny namanao ny tononkalo → Corrigé : fanombanana ny firindran'ny fihirana am-pokonolona"])
   ],
-},
+}
 
-// ── S5 : Auto-évaluation — repérer ses lacunes ────────────────────────────────
+];
+
+const JUIN_9EME = [
+
 {
-  n: 3, dateDebut: "2026/05/18",
+  n: 1, dateDebut: "2027/06/07",
   theme: "Auto-évaluation — repérer ses lacunes",
   sous: "Tests individuels et auto-correction avant les examens",
   matieres: [
@@ -2942,13 +3478,12 @@ const MAI_9EME = [
     m("RÉCITATION","Famerenana ny tononkalo nianarana tamin'ny fizarana fahatelo",
       "Mamerina ny tononkalo hafa nianarana tamin'ny fizarana fahatelon'ny taona.",
       ["Famerenana am-pokonolona ny tononkalo fahatelo","Fanitsiana ny fanononana sy ny rythme","Fitsapana tsirairay","Fanentanana hampiasa fihetsika","Fankasitrahana"],
-      ["Tononkaloy ny andininy voalohan'ny tononkalo nianaranao tamin'ny fizarana fahatelo → Corrigé : fanombanana ny fitadidiana","Firy andininy amin'ireo tononkalo telo nianaranao no tadidinao tsara indrindra? → Corrigé : valiny manokana","Ahoana no fihetsika azonao ampiasaina hanamafisana ny hevitry ny tononkalo? → Corrigé : valiny manokana, ohatra fihetsiky ny tanana na ny endrika"]),
+      ["Tononkaloy ny andininy voalohan'ny tononkalo nianaranao tamin'ny fizarana fahatelo → Corrigé : fanombanana ny fitadidiana","Firy andininy amin'ireo tononkalo telo nianaranao no tadidinao tsara indrindra? → Corrigé : valiny manokana","Ahoana no fihetsika azonao ampiasaina hanamafisana ny hevitry ny tononkalo? → Corrigé : valiny manokana, ohatra fihetsiky ny tanana na ny endrika"])
   ],
 },
 
-// ── S6 : Consolidation finale avant les examens ───────────────────────────────
 {
-  n: 4, dateDebut: "2026/05/25",
+  n: 2, dateDebut: "2027/06/14",
   theme: "Consolidation finale avant les examens",
   sous: "Dernière révision intensive et conseils pour l'examen",
   matieres: [
@@ -3039,18 +3574,12 @@ const MAI_9EME = [
     m("RÉCITATION","Récital farany — fisafidianana sy fanehoana ny tononkalo tiana indrindra",
       "Mamarana ny taona amin'ny récital farany, izay mifidy ny mpianatra tsirairay ny tononkalo tiany indrindra ho tononina eo anatrehan'ny kilasy.",
       ["Famerenana faobe ny tononkalo efatra na dimy nianarana nandritra ny taona","Fisafidianana tsirairay ny tononkalo ho tononina","Fanomanana manokana (fihetsika, feo)","Récital eo anatrehan'ny kilasy","Fankasitrahana am-pokonolona ny ezaka rehetra","Fintina farany momba ny taona iray feno famakiana sy fitadidiana"],
-      ["Tononkaloy amin'ny fahatokisan-tena ny tononkalo tianao indrindra amin'ny taona iray manontolo → Corrigé : fanombanana ny fitadidiana feno sy ny fahatokisan-tena","Nahoana no io tononkalo io no nofidianao? → Corrigé : valiny manokana voamarina","Inona no fandrosoana hitanao amin'ny tenanao teo amin'ny fitononana tononkalo nandritra ity taona ity? → Corrigé : valiny manokana"]),
+      ["Tononkaloy amin'ny fahatokisan-tena ny tononkalo tianao indrindra amin'ny taona iray manontolo → Corrigé : fanombanana ny fitadidiana feno sy ny fahatokisan-tena","Nahoana no io tononkalo io no nofidianao? → Corrigé : valiny manokana voamarina","Inona no fandrosoana hitanao amin'ny tenanao teo amin'ny fitononana tononkalo nandritra ity taona ity? → Corrigé : valiny manokana"])
   ],
 },
-];
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// JUIN
-// ═══════════════════════════════════════════════════════════════════════════════
-const JUIN_9EME = [
-// ── P5 S7 : Semaine du 1er juin — Révision finale : synthèse générale ────────
 {
-  n: 1, dateDebut: "2026/06/01",
+  n: 3, dateDebut: "2027/06/21",
   theme: "Révision finale 1 : synthèse générale avant les examens",
   sous: "Reprise globale des grands thèmes de l'année dans les 22 matières",
   matieres: [
@@ -3141,206 +3670,108 @@ const JUIN_9EME = [
     m("RÉCITATION","Synthèse : reprise des poèmes du 1er trimestre",
       "Reprendre les poèmes appris au premier trimestre pour consolider la mémorisation avant la fin de l'année.",
       ["Rappel collectif des poèmes du 1er trimestre","Récitation en écho, vers par vers, pour les passages oubliés","Récitation individuelle de quelques volontaires","Correction de la diction et du rythme","Discussion sur le sens des poèmes","Bilan"],
-      ["Récite le premier poème appris cette année → Corrigé : évaluation de la mémorisation et de la diction","Combien de vers comporte ce poème ? → Corrigé : selon le texte présenté en classe","Explique avec tes mots le sens de ce poème → Corrigé : réponse cohérente avec le thème du poème"]),
+      ["Récite le premier poème appris cette année → Corrigé : évaluation de la mémorisation et de la diction","Combien de vers comporte ce poème ? → Corrigé : selon le texte présenté en classe","Explique avec tes mots le sens de ce poème → Corrigé : réponse cohérente avec le thème du poème"])
   ],
 },
 
-// ── P5 S8 : Semaine du 8 juin — Entraînement type examen chronométré ─────────
 {
-  n: 2, dateDebut: "2026/06/08",
-  theme: "Entraînement type examen : simulations chronométrées",
-  sous: "Exercices dans les conditions de l'examen, sur les 22 matières",
+  n: 4, dateDebut: "2027/06/28",
+  theme: "Entraînement chronométré et examen blanc final — passage en 8ème",
+  sous: "Simulations d'examen sur les 22 matières, bilan de l'année et conseils de passage en 8ème",
   matieres: [
-    m("ARITHMETIQUE","Entraînement chronométré : les 4 opérations posées et tables 2 à 9",
-      "Simuler les conditions d'examen sur les opérations posées et les tables pour gagner en vitesse et en fiabilité.",
-      ["Rappel des techniques posées (addition/soustraction avec retenue, multiplication à 2 chiffres, division)","Série chronométrée de 10 opérations posées (12 minutes)","Correction immédiate ligne par ligne","Jeu des tables : appel rapide de résultats (2 à 9)","Repérage des tables encore hésitantes par élève","Exercice de fractions simples liées aux tables (moitié, tiers, quart)","Bilan des opérations les mieux et moins bien maîtrisées"],
-      ["Pose et calcule : 68 427 + 15 896 → Corrigé : 84 323","Pose et calcule : 3 254 × 47 → Corrigé : 152 938","Complète : 7 × 8 = ? ; 9 × 6 = ? ; 6 × 7 = ? → Corrigé : 56 ; 54 ; 42"]),
-    m("MESURE","Entraînement type examen : le temps et le calendrier",
-      "S'entraîner sur les calculs de durée et de dates dans des situations chronométrées comme à l'examen.",
-      ["Rappel des unités de temps (s, min, h, jour, semaine, mois, année)","Rappel du nombre de jours par mois","Exercice chronométré : calcul de durée entre deux horaires","Exercice chronométré : calcul de date après un nombre de jours donné","Correction immédiate","Bilan des méthodes de calcul de durée à retenir"],
-      ["Un car part à 6 h 45 et arrive à 10 h 20. Durée du trajet ? → Corrigé : 3 h 35 min","Quelle date sera-t-il 18 jours après le 25 juin ? → Corrigé : 13 juillet","Combien de jours dans les mois d'avril, juin et septembre ? → Corrigé : 30 jours chacun"]),
-    m("GEOMETRIE","Entraînement type examen : triangle, cercle et trapèze",
-      "S'entraîner sur les calculs de périmètre et d'aire du triangle, du cercle et du trapèze dans des conditions chronométrées.",
-      ["Rappel des formules (aire triangle = b×h÷2 ; aire trapèze = (B+b)×h÷2 ; périmètre cercle = 2×π×r)","Exercice chronométré (20 min) : 2 calculs de triangle, 2 de cercle, 1 de trapèze","Correction immédiate avec vérification des unités","Repérage des formules encore hésitantes","Fiche-mémo des formules à apprendre par cœur","Bilan"],
-      ["Aire d'un triangle de base 14 cm et hauteur 8 cm → Corrigé : 14×8÷2=56 cm²","Périmètre d'un cercle de rayon 6 cm (π≈3,14) → Corrigé : 2×3,14×6=37,68 cm","Aire d'un trapèze de grande base 10 cm, petite base 6 cm, hauteur 4 cm → Corrigé : (10+6)×4÷2=32 cm²"]),
-    m("VAKITENY","Famerenana famakiana — ny fanatanjahantena sy ny fianakaviana",
-      "Mamerina mamaky lahatsoratra momba ny fanatanjahantena sy ny fianakaviana mba hanamafisana ny voambolana sy ny fahatakarana.",
-      ["Famakiana mangina lahatsoratra momba ny fanatanjahantena","Famakiana am-baravava nataon'ny mpianatra 4","Fanontaniana fahatakarana momba ny lahatsoratra","Fifampidinihana momba ny anjara asan'ny fianakaviana","Fanoratana valin-teny fohy an-tsoratra","Fanazavana ny teny tsy fantatra"],
-      ["Inona ny fanatanjahantena tianao indrindra? → Corrigé: valiny manokana, ohatra baolina kitra, savika","Iza avy ireo mpikambana ao amin'ny fianakaviana voatonona ao amin'ny lahatsoratra? → Corrigé: valiny araka ny lahatsoratra nisafidianana","Vakio am-baravava ny andalana faharoa → Corrigé: famakiana mazava sy tsotra"]),
-    m("TSIPELINA","Famerenana — zanatsoratra, renitsoratra, anarana",
-      "Manamafy ny fanavahana ny zanatsoratra sy ny renitsoratra ary ny anarana manokana sy iombonana.",
-      ["Famerenana ny lisitry ny zanatsoratra sy ny renitsoratra","Fanontaniana: tondroy ny zanatsoratra ao amin'ny teny nomena","Famerenana ny fitsipika momba ny anarana manokana (litera lehibe)","Fanavahana anarana manokana sy iombonana amin'ny lisitra","Fampiharana an-tsoratra","Fanitsiana am-pokonolona"],
-      ["Tondroy ny zanatsoratra ao amin'ny teny 'fitaterana' → Corrigé: i, a, e, a","Sokajio: Antsirabe, mpianatra, Rasoa, boky → Corrigé: anarana manokana=Antsirabe, Rasoa; anarana iombonana=mpianatra, boky","Nahoana no misy litera lehibe eo amin'ny hoe 'Rasoa'? → Corrigé: satria anarana manokana izy io"]),
-    m("FITSIPIKA","Famerenana — fehezanteny tsotra sy mpamaritoetra",
-      "Manamafy ny fanavahana fehezanteny tsotra sy ny fampiasana ny mpamaritoetra ao amin'ny fehezanteny.",
-      ["Famerenana ny votoatin'ny fehezanteny tsotra (mpisolotena/anarana + matoanteny)","Fanazavana ny mpamaritoetra (tsara, ratsy, lehibe...)","Fanontaniana: tondroy ny mpamaritoetra ao amin'ny fehezanteny","Fampiharana an-tsoratra: manampy mpamaritoetra amin'ny fehezanteny","Fanitsiana am-pokonolona","Famintinana"],
-      ["Tondroy ny mpamaritoetra: 'Trano lehibe sy madio ny tranon-dRasoa.' → Corrigé: lehibe, madio","Ampio mpamaritoetra ny fehezanteny: 'Ny akoho ___ dia mihinana.' → Corrigé: valiny manokana, ohatra 'Ny akoho mena dia mihinana.'","Inona ny votoatin'ny fehezanteny tsotra iray? → Corrigé: singa roa fara-fahakeliny, dia ny mpisolotena/anarana sy ny matoanteny"]),
-    m("FANAZARANA HANORATRA","Famerenana famoronan-tsoratra — fitantarana fohy",
-      "Manazatra ny mpianatra hamorona sy hanoratra tantara fohy misy fizarana telo mazava (fiandohana, tantara, fiafarana).",
-      ["Famerenana ny endriky ny tantara fohy (fiandohana, tantara, fiafarana)","Fifidianana lohahevitra iray (ohatra: andro fialan-tsasatra)","Famoronana am-bava alohan'ny fanoratana","Fanoratana tantara fohy misy fehezanteny 6-8","Famakiana ny sasany amin'ireo tantara noforonina","Fanitsiana am-pokonolona"],
-      ["Manorata tantara fohy misy fehezanteny 6 momba ny andro fialan-tsasatrao → Corrigé: valiny manokana voamarina, misy fiandohana-tantara-fiafarana mazava","Inona ny fizarana telo ao amin'ny tantara fohy? → Corrigé: fiandohana, tantara, fiafarana","Soraty ny fehezanteny fiandohan'ny tantaranao → Corrigé: fehezanteny mampiditra ny toerana sy ny fotoana"]),
-    m("LECTURE","Entraînement type examen : Le paysan et le Roi des Génies · La fille du roi est à marier",
-      "S'entraîner à répondre à des questions de compréhension chronométrées sur ces deux contes du programme.",
-      ["Relecture silencieuse des deux contes (10 minutes)","Questions chronométrées écrites (15 minutes, 6 questions)","Correction immédiate","Repérage des questions les plus ratées","Reprise orale des passages mal compris","Conseils de méthode pour répondre à une question de lecture"],
-      ["Que demande le paysan au Roi des Génies dans le conte ? → Corrigé : réponse selon le conte étudié en classe, ex. de l'aide ou une faveur","Pourquoi la fille du roi doit-elle se marier dans le conte 'La fille du roi est à marier' ? → Corrigé : réponse selon le conte étudié en classe","Cite une valeur illustrée par l'un de ces deux contes → Corrigé : la ruse, la sagesse, la persévérance (selon le conte)"]),
-    m("LANGUE","Entraînement type examen : les textes étudiés du 2ème trimestre",
-      "S'entraîner sur les questions de compréhension type examen à partir des textes du deuxième trimestre.",
-      ["Rappel des textes du 2ème trimestre","Relecture silencieuse d'un extrait","Exercice chronométré : 5 questions de compréhension (15 minutes)","Correction immédiate","Repérage des types de questions encore difficiles (implicite, inférence)","Bilan"],
-      ["Dans le texte étudié ce trimestre, quel problème doit résoudre le personnage principal ? → Corrigé : réponse selon le texte du 2ème trimestre","Que signifie une question 'implicite' dans un texte ? → Corrigé : une question dont la réponse n'est pas écrite mot pour mot mais doit être déduite du texte","Cite un indice du texte qui montre le sentiment du personnage → Corrigé : réponse selon le texte étudié"]),
-    m("VOCABULAIRE","Entraînement type examen : les métiers, la santé, le transport",
-      "S'entraîner sur le vocabulaire des métiers, de la santé et du transport avec des exercices type examen.",
-      ["Rappel du vocabulaire des 3 thèmes","Exercice chronométré : associer métier et outil/lieu de travail","Exercice chronométré : associer moyen de transport et usage","Correction immédiate","Bilan des confusions fréquentes"],
-      ["Associe : médecin - ?, chauffeur - ?, maçon - ? → Corrigé : médecin-hôpital/soigner, chauffeur-véhicule/conduire, maçon-brique/construire","Cite 3 moyens de transport utilisés à Madagascar → Corrigé : taxi-brousse, pousse-pousse, charrette (exemples)","Quel métier soigne les malades ? → Corrigé : le médecin (ou l'infirmier)"]),
-    m("ORTHOGRAPHE","Entraînement type examen : l'accord sujet-verbe",
-      "S'entraîner à accorder le verbe avec son sujet dans des phrases variées, dans des conditions chronométrées.",
-      ["Rappel de la règle : le verbe s'accorde avec son sujet","Cas particuliers : sujet inversé, sujets multiples","Exercice chronométré de 10 phrases à compléter","Correction immédiate","Repérage des erreurs les plus fréquentes","Bilan"],
-      ["Accorde : 'Les élèves (finir) leur travail.' → Corrigé : Les élèves finissent leur travail.","Accorde : 'Jao et Vola (jouer) dans la cour.' → Corrigé : Jao et Vola jouent dans la cour.","Accorde : 'Chaque élève (avoir) un cahier.' → Corrigé : Chaque élève a un cahier."]),
-    m("CONJUGAISON","Entraînement type examen : le futur simple et les verbes des 3 groupes",
-      "S'entraîner à conjuguer au futur simple des verbes des 3 groupes dans des exercices chronométrés.",
-      ["Rappel de la formation du futur simple (infinitif + terminaisons -ai, -as, -a...)","Rappel des verbes irréguliers fréquents (être, avoir, aller, faire, venir)","Exercice chronométré de conjugaison (8 verbes, 3 groupes mélangés)","Correction immédiate","Repérage des verbes irréguliers encore mal sus","Bilan"],
-      ["Conjugue 'aller' au futur simple, 2ème personne du singulier → Corrigé : tu iras","Conjugue 'faire' au futur simple, 1ère personne du pluriel → Corrigé : nous ferons","Conjugue 'manger' au futur simple, 3ème personne du singulier → Corrigé : il/elle mangera"]),
-    m("GRAMMAIRE","Entraînement type examen : COD et COI",
-      "S'entraîner à identifier le COD et le COI dans des phrases variées, dans des conditions chronométrées.",
-      ["Rappel : COD répond à 'quoi/qui', COI est introduit par une préposition (à, de)","Exercice chronométré de repérage (8 phrases)","Correction immédiate","Distinction COD/COI dans des phrases pièges","Bilan des erreurs fréquentes","Fiche-mémo"],
-      ["Identifie le COD : 'Elle écrit une lettre.' → Corrigé : COD = une lettre","Identifie le COI : 'Il parle à son ami.' → Corrigé : COI = à son ami","Cette phrase a-t-elle un COD ou un COI : 'Nous pensons à nos parents.' → Corrigé : COI = à nos parents"]),
-    m("EXPRESSION ORALE","Entraînement type examen : le récit oral",
-      "S'entraîner à raconter à l'oral un événement vécu ou imaginé, de façon claire et chronologique, comme à l'épreuve orale.",
-      ["Rappel de la structure d'un récit (début, événement, fin)","Modélisation d'un court récit par l'enseignant","Chaque élève prépare 1 minute un récit personnel","Passage à l'oral chronométré (1-2 minutes par élève)","Retour de la classe sur la clarté et l'ordre du récit","Bilan"],
-      ["Raconte à l'oral en 2 minutes un événement marquant de ton année scolaire → Corrigé : évaluation orale sur la clarté et la chronologie","Utilise 3 connecteurs de temps dans ton récit → Corrigé : d'abord, ensuite, enfin (exemples utilisés)","Que s'est-il passé à la fin de ton histoire ? → Corrigé : réponse individuelle cohérente avec le récit"]),
-    m("EXPRESSION ECRITE","Entraînement type examen : la rédaction narrative",
-      "S'entraîner à rédiger un récit complet dans un temps limité, comme à l'examen.",
-      ["Rappel du plan du récit (situation initiale, événement, résolution)","Choix d'un sujet imposé (ex. 'Un jour à l'école inoubliable')","Rédaction chronométrée (25 minutes, 8-10 lignes)","Auto-relecture avec grille (ponctuation, accords, temps)","Correction individuelle","Bilan des points à améliorer"],
-      ["Rédige un récit de 8-10 lignes sur 'Un jour à l'école inoubliable' → Corrigé : réponse individuelle avec situation initiale, événement et résolution","Vérifie : as-tu utilisé le passé composé ou l'imparfait correctement ? → Corrigé : vérification individuelle","Cite le moment le plus important de ton récit → Corrigé : réponse individuelle cohérente avec le texte rédigé"]),
-    m("S.V.T","Entraînement type examen : les animaux et les plantes",
-      "S'entraîner sur la classification des animaux et le cycle de vie des plantes dans des exercices type examen.",
-      ["Rappel des grandes catégories d'animaux (mammifères, oiseaux, poissons, reptiles, insectes)","Rappel du cycle de vie d'une plante (graine → germination → croissance → floraison → fruit)","Exercice chronométré : classer 8 animaux","Exercice chronométré : remettre en ordre le cycle de la plante","Correction immédiate","Bilan"],
-      ["Classe : chat, poule, requin, serpent, papillon → Corrigé : mammifère=chat, oiseau=poule, poisson=requin, reptile=serpent, insecte=papillon","Remets en ordre : fruit, graine, germination, floraison, croissance → Corrigé : graine, germination, croissance, floraison, fruit","Cite 2 besoins essentiels d'une plante pour pousser → Corrigé : eau, lumière (ou air, terre nutritive)"]),
-    m("GEOGRAPHIE","Entraînement type examen : l'Afrique",
-      "S'entraîner sur la carte de l'Afrique et ses grands repères, dans des conditions chronométrées.",
-      ["Rappel des grandes régions d'Afrique (Nord, Ouest, Centrale, Est, Australe)","Rappel de quelques pays et capitales clés","Exercice chronométré : carte muette de l'Afrique (10 repères)","Correction immédiate","Bilan des repères encore confondus"],
-      ["Place sur la carte : Nigeria, Kenya, Afrique du Sud, Égypte → Corrigé : vérifier le positionnement selon la carte de l'Afrique","Cite 3 capitales africaines → Corrigé : Le Caire, Nairobi, Dakar (exemples)","Dans quelle région se situe Madagascar par rapport à l'Afrique ? → Corrigé : Madagascar est une île de l'Afrique australe/de l'océan Indien"]),
-    m("TANTARA","Fanazaran-tena fanadinana : ny fanjanahan-tany sy ny fahaleovantena",
-      "Manazatra amin'ireo daty sy zava-dehibe momba ny fanjanahan-tany sy ny fahaleovantena, amin'ny fanaovana fanazaran-tena voafetra fotoana.",
-      ["Famerenana ny 1896 (fanjanahan-tany frantsay)","Famerenana ny 1947 (fikomiana)","Famerenana ny 26 jona 1960 (fahaleovantena)","Fanazaran-tena voafetra fotoana : fanontaniana 10 momba ny daty sy ny zava-nitranga","Fanitsiana avy hatrany","Famintinana ireo daty mbola mifangaro"],
-      ["Tamin'ny taona firy no lasa zanatany frantsay i Madagasikara ? → Corrigé : 1896","Inona no niseho tamin'ny 1947 teto Madagasikara ? → Corrigé : fikomiana tamin'ny fanjanahan-tany frantsay, izay nofoanana mafy","Amin'ny daty firy no nahazoan'i Madagasikara ny fahaleovantenany ? → Corrigé : ny 26 jona 1960"]),
-    m("ANGLAIS","Entraînement type examen : the body, the family, clothes",
-      "S'entraîner sur le vocabulaire du corps, de la famille et des vêtements dans des exercices chronométrés.",
-      ["Rappel du vocabulaire du corps (head, arm, leg, hand...)","Rappel du vocabulaire de la famille (mother, father, brother, sister...)","Rappel du vocabulaire des vêtements (shirt, trousers, shoes...)","Exercice chronométré : légender 3 images (corps, famille, vêtements)","Correction immédiate","Bilan"],
-      ["Name 3 parts of the body in English → Corrigé: head, arm, leg (examples)","Name 3 family members in English → Corrigé: mother, father, sister (examples)","What clothes are you wearing today? Answer in English → Corrigé: réponse individuelle en anglais, ex. I am wearing a shirt and trousers"]),
-    m("FFMOM","Fanazaran-tena fanadinana : ireo soatoavina tamin'ny 2ème trimestre",
-      "Mamerina ireo soatoavina tamin'ny 2ème trimestre (fahamarinana, herim-po, rariny) amin'ny endrika fanontaniana toy ny fanadinana.",
-      ["Famerenana ireo soatoavina tamin'ny 2ème trimestre","Fanoratana : mampifandray soatoavina iray amin'ny toe-javatra iray","Fifanakalozan-kevitra momba ireo valiny","Fandalinana toe-javatra : inona no hataonao raha... ?","Fanitsiana am-pokonolona","Famintinana"],
-      ["Ampifandraiso ny soatoavina amin'ny toe-javatra : mamerina zavatra hitanao tamin'ny tompony ianao → Corrigé : ny fahamarinana","Inona no hataonao raha mahita namana kasihina tsy ara-drariny ? → Corrigé : valiny manokana mampiseho ny herim-po sy ny rariny, ohatra ny miaro azy na milaza amin'ny olon-dehibe","Nahoana no zava-dehibe ny rariny ao am-pianarana ? → Corrigé : miantoka ny fitondrana mitovy ny olona rehetra, tsy misy fankasitrahana manokana"]),
-    m("CHANT","Entraînement type examen : reprise des chants du 2ème trimestre",
-      "Reprendre les chants du deuxième trimestre et préparer une petite évaluation orale de mémorisation.",
-      ["Rappel des paroles des chants du 2ème trimestre","Répétition collective avec accompagnement rythmique (mains, tambour)","Passage individuel de quelques volontaires","Mini-évaluation : chaque élève chante un couplet à son tour dans la semaine","Correction bienveillante des erreurs de mémoire","Bilan"],
-      ["Chante un couplet d'un chant du 2ème trimestre devant la classe → Corrigé : évaluation orale de la mémorisation","Reproduis le rythme d'un chant en frappant dans les mains → Corrigé : évaluation du rythme","Cite un chant du 2ème trimestre et son thème → Corrigé : réponse individuelle correcte"]),
-    m("RÉCITATION","Entraînement type examen : reprise des poèmes du 2ème trimestre",
-      "Reprendre les poèmes du 2ème trimestre et s'entraîner à une récitation chronométrée et expressive.",
-      ["Rappel des poèmes du 2ème trimestre","Répétition collective à voix haute, en insistant sur l'expressivité","Passage individuel chronométré (1 minute par élève)","Retour de la classe sur la diction et l'expressivité","Correction bienveillante","Bilan"],
-      ["Récite un poème du 2ème trimestre en 1 minute maximum → Corrigé : évaluation orale de la mémorisation et du temps","Cite un mot difficile de ce poème et explique son sens → Corrigé : réponse individuelle correcte","Comment peux-tu rendre ta récitation plus expressive ? → Corrigé : varier le ton, marquer les pauses, regarder le public (exemples)"]),
-  ],
-},
-
-// ── P5 S9 : Semaine du 15 juin — Révision ultime et examen blanc final ───────
-{
-  n: 3, dateDebut: "2026/06/15",
-  theme: "Révision ultime et examen blanc final — passage en 8ème",
-  sous: "Examens blancs complets, bilan de l'année et conseils finaux",
-  matieres: [
-    m("ARITHMETIQUE","Examen blanc final : division à 1 et 2 chiffres et nombres complexes (mesures composées)",
-      "Dernier entraînement combinant division posée et mesures composées, dans les conditions exactes de l'examen de passage.",
-      ["Rappel de la technique de la division posée (diviseur à 1 puis 2 chiffres)","Rappel des mesures composées (ex. 3 h 25 min, 4 m 35 cm)","Examen blanc de 30 minutes : 4 divisions + 2 conversions en mesures composées + 1 problème","Remise et correction immédiate des copies","Analyse individuelle des erreurs les plus fréquentes","Fiche récapitulative des méthodes à retenir pour l'examen officiel","Encouragements et conseils de gestion du temps"],
-      ["Pose et calcule : 8 526 ÷ 6 → Corrigé : 1 421","Pose et calcule : 47 892 ÷ 23 → Corrigé : 2 082 reste 6 (47 892 = 23×2 082 + 6)","Exprime en mesure complexe : 245 minutes → Corrigé : 4 h 5 min"]),
-    m("MESURE","Examen blanc final : budget familial et problèmes de mesures combinées",
-      "Résoudre, dans les conditions de l'examen, des problèmes combinant argent, mesures et proportionnalité simple, comme un budget familial.",
-      ["Rappel du fonctionnement d'un budget (revenus, dépenses, épargne)","Lecture d'un problème type examen avec plusieurs données","Examen blanc de 25 minutes : 1 problème de budget + 2 conversions + 1 problème de mesure","Correction collective détaillée, étape par étape","Repérage des erreurs de méthode (oubli d'étape, mauvaise unité)","Conseils finaux pour aborder un problème le jour de l'examen"],
-      ["Une famille gagne 450 000 Ar par mois. Elle dépense 180 000 Ar en nourriture, 90 000 Ar en logement et 60 000 Ar en transport. Combien reste-t-il pour épargner ? → Corrigé : 450 000−(180 000+90 000+60 000)=120 000 Ar","Un sac de riz de 25 kg coûte 62 500 Ar. Quel est le prix du kilo ? → Corrigé : 62 500÷25=2 500 Ar/kg","Une citerne de 500 L se remplit de 40 L par heure. En combien de temps sera-t-elle pleine ? → Corrigé : 500÷40=12,5 h soit 12 h 30 min"]),
-    m("GEOMETRIE","Examen blanc final : cube, parallélépipède et symétrie",
-      "Terminer la révision de géométrie par les solides et la symétrie axiale, dans un examen blanc complet.",
-      ["Rappel des solides : faces, arêtes, sommets du cube et du parallélépipède","Rappel de la symétrie axiale : construction du symétrique d'une figure","Examen blanc de 25 minutes : reconnaissance de solides, calcul de volume, construction symétrique","Correction collective","Repérage des dernières difficultés individuelles","Bilan final de géométrie 9ème"],
-      ["Combien de faces, d'arêtes et de sommets a un cube ? → Corrigé : 6 faces, 12 arêtes, 8 sommets","Calcule le volume d'un parallélépipède de 10×6×5 cm → Corrigé : 10×6×5=300 cm³","Construis le symétrique du triangle donné par rapport à la droite (d) → Corrigé : vérifier le tracé, distances égales de chaque côté de (d)"]),
-    m("VAKITENY","Fanadinana famakiana farany — ny fiompiana, ny varotra ary ny fitaterana",
-      "Manao fitsapana famakiana farany mitovitovy amin'ny fanadinana, momba ny fiompiana, ny varotra ary ny fitaterana.",
-      ["Fizarana lahatsoratra vaovao tsy mbola novakiana","Famakiana mangina 10 minitra","Fitsapana an-tsoratra: 5 fanontaniana fahatakarana","Fanolorana ny valiny an-tsoratra","Fanitsiana am-pokonolona","Famintinana ireo lahatsoratra rehetra novakiana nandritra ny taona"],
-      ["Inona ny biby fiompy voatonona ao amin'ny lahatsoratra? → Corrigé: valiny araka ny lahatsoratra nisafidianana, ohatra omby, akoho","Ahoana no fitaterana ny vokatra any an-tsena? → Corrigé: an-tongotra, amin'ny sarety, amin'ny fiara (ohatra)","Soraty fehezanteny iray mamintina ny lahatsoratra → Corrigé: fehezanteny fohy sy mifanaraka amin'ny votoatiny"]),
-    m("TSIPELINA","Fanadinana farany — famoronana teny sy dictée fitsapana",
-      "Manao fitsapana farany momba ny tsipelina, mitambatra ny abidia, ny marim-piatoana ary ny famoronana teny.",
-      ["Famerenana faobe ireo fitsipika nianarana","Dictée farany 15 teny","Fitsapana famoronana teny vaovao amin'ny renitsoratra iray nomena","Fanitsiana tsirairay","Famintinana ireo hadisoana matetika","Fanomezan-toky ho an'ny fanadinam-panjakana"],
-      ["Dictée: soraty ny teny holazain'ny mpampianatra (15 teny) → Corrigé: araka ny lisitra tsipelina nianarana nandritra ny taona","Mamorona teny 3 miandry amin'ny litera 'f' → Corrigé: ohatra fianarana, fahasalamana, fitaterana","Soraty ny fehezanteny madio: 'ny mpianatra dia mazoto mianatra' → Corrigé: 'Ny mpianatra dia mazoto mianatra.'"]),
-    m("FITSIPIKA","Fanadinana farany — mpisolotena sy ny anjara asan'ny teny",
-      "Manao fitsapana farany momba ny mpisolotena sy ny anjara asan'ny teny ao anaty fehezanteny, entina hiomanana amin'ny fanadinam-panjakana.",
-      ["Famerenana ny mpisolotena (aho, ianao, izy, izahay, ianareo, izy ireo)","Fanontaniana: soloy amin'ny mpisolotena mety ny anarana ao amin'ny fehezanteny","Famerenana faobe ireo anjara asan'ny teny (mpisolotena, matoanteny, mpamaritoetra, mpamaritra isa)","Fitsapana an-tsoratra farany, 10 fanontaniana","Fanitsiana tsirairay","Famintinana ireo fitsipi-teny rehetra nianarana"],
-      ["Soloy amin'ny mpisolotena mety: 'Rasoa sy Koto dia mianatra.' → Corrigé: 'Izy ireo dia mianatra.'","Tondroy ny matoanteny ao amin'ny fehezanteny: 'Ny mpianatra mamaky boky.' → Corrigé: mamaky","Manorata fehezanteny iray misy mpisolotena, matoanteny ary mpamaritoetra → Corrigé: valiny manokana voamarina"]),
-    m("FANAZARANA HANORATRA","Fitsapana fanoratana farany — fandikan-tsoratra sy famoronana mitambatra",
-      "Manao fitsapana farany mitambatra fandikan-tsoratra sy famoronan-tsoratra, mitovy amin'ny fanadinana.",
-      ["Famerenana faobe ny fitsipika fanoratana madio","Fandikan-tsoratra fitsapana, fehezanteny 3","Famoronan-tsoratra fitsapana, andalana 4-5 momba lohahevitra iray nomena","Fanitsiana tsirairay","Fanoroana ireo tsy fahampiana hita","Famintinana ny fandrosoana nandritra ny taona"],
-      ["Adikaso: 'Ny taona farany amin'ny kilasy faha-9 dia zava-dehibe amiko.' → Corrigé: fanoratana madio sy mitovy amin'ny lahatra","Manorata andalana 4 momba ny zavatra tianao indrindra tamin'ity taona ity → Corrigé: valiny manokana voamarina, madio ary misy marim-piatoana","Vakio ny soratrao ary itsipiho ny hadisoana hita → Corrigé: fanitsiana manokana"]),
-    m("LECTURE","Examen blanc final de lecture : Les trois cosmonautes et bilan de l'année",
-      "Terminer l'année par une épreuve de lecture complète sur un texte nouveau et un bilan de tous les textes vus.",
-      ["Distribution d'un texte nouveau non étudié : 'Les trois cosmonautes'","Lecture silencieuse (10 minutes)","Examen blanc : 6 questions de compréhension (20 minutes)","Correction collective détaillée","Bilan collectif : lister tous les textes lus dans l'année","Vote de la classe pour le texte préféré de l'année"],
-      ["Qui sont les personnages principaux du texte 'Les trois cosmonautes' ? → Corrigé : réponse selon le texte, ex. trois astronautes en mission","Que découvrent les cosmonautes dans l'histoire ? → Corrigé : réponse selon le texte étudié en classe","Cite 3 textes étudiés cette année que tu as aimés → Corrigé : réponse individuelle parmi les textes du programme"]),
-    m("LANGUE","Examen blanc final : texte nouveau et bilan de l'étude de texte",
-      "Réaliser un examen blanc complet sur un texte nouveau, dans les conditions exactes de l'examen de passage.",
-      ["Distribution d'un texte narratif nouveau","Lecture silencieuse (8 minutes)","Examen blanc : 5 questions écrites (20 minutes)","Correction collective","Bilan de la méthode d'étude de texte utilisée toute l'année","Conseils finaux pour la 8ème"],
-      ["Quel est le lieu de l'histoire dans le texte distribué ? → Corrigé : réponse selon le texte distribué","Quel est le problème rencontré par le personnage principal ? → Corrigé : réponse selon le texte distribué","Comment le problème est-il résolu à la fin ? → Corrigé : réponse selon le texte distribué"]),
+    m("ARITHMETIQUE","Examen blanc final : les 4 opérations posées, tables 2 à 9, division et nombres complexes",
+      "Clore l'année par un examen blanc chronométré qui couvre l'ensemble du programme d'arithmétique de 9ème : opérations posées, tables, division et mesures composées.",
+      ["Rappel rapide des techniques posées (addition, soustraction, multiplication, division à 1 et 2 chiffres)","Rappel des mesures composées (ex. 4 h 5 min, 3 m 45 cm)","Examen blanc de 30 minutes : opérations posées, tables, 1 division et 1 conversion en mesure complexe","Correction immédiate et analyse individuelle des erreurs les plus fréquentes","Fiche récapitulative des méthodes à retenir pour l'examen officiel","Encouragements et conseils de gestion du temps pour l'examen"],
+      ["Pose et calcule : 3 254 × 47 → Corrigé : 152 938","Pose et calcule : 47 892 ÷ 23 → Corrigé : 2 082 reste 6","Exprime en mesure complexe : 245 minutes → Corrigé : 4 h 5 min"]),
+    m("MESURE","Examen blanc final : budget familial, durées et mesures combinées",
+      "Terminer l'année par un examen blanc regroupant le calcul de durées/dates et les problèmes de budget et de mesures combinées.",
+      ["Rappel des unités de temps et du nombre de jours par mois","Rappel du fonctionnement d'un budget familial (revenus, dépenses, épargne)","Examen blanc de 30 minutes : 1 calcul de durée, 1 problème de budget, 1 problème de mesure combinée","Correction collective détaillée, étape par étape","Repérage des erreurs de méthode (oubli d'étape, mauvaise unité)","Conseils finaux pour aborder un problème le jour de l'examen"],
+      ["Un car part à 6 h 45 et arrive à 10 h 20. Durée du trajet ? → Corrigé : 3 h 35 min","Une famille gagne 450 000 Ar et dépense 330 000 Ar. Combien reste-t-il pour épargner ? → Corrigé : 120 000 Ar","Un sac de riz de 25 kg coûte 62 500 Ar. Quel est le prix du kilo ? → Corrigé : 2 500 Ar/kg"]),
+    m("GEOMETRIE","Examen blanc final : triangle, cercle, trapèze, solides et symétrie",
+      "Clore la géométrie de l'année par un examen blanc couvrant les calculs de périmètre/aire des figures planes et les solides avec la symétrie.",
+      ["Rappel des formules (aire triangle, aire trapèze, périmètre cercle)","Rappel des solides (faces, arêtes, sommets du cube et du parallélépipède) et de la symétrie axiale","Examen blanc de 30 minutes : 1 calcul sur figure plane, 1 sur solide, 1 construction symétrique","Correction immédiate avec vérification des unités","Fiche-mémo des formules à apprendre par cœur","Bilan final de géométrie 9ème"],
+      ["Aire d'un trapèze de grande base 10 cm, petite base 6 cm, hauteur 4 cm → Corrigé : 32 cm²","Combien de faces, d'arêtes et de sommets a un cube ? → Corrigé : 6 faces, 12 arêtes, 8 sommets","Construis le symétrique du triangle donné par rapport à la droite (d) → Corrigé : tracé vérifié, distances égales de chaque côté de (d)"]),
+    m("VAKITENY","Fanadinana famakiana farany — famintinana ny lahatsoratra rehetra novakiana",
+      "Mamarana ny taona amin'ny fitsapana famakiana farany mitambatra ny lohahevitra lehibe rehetra novakina (fanatanjahantena, fianakaviana, fiompiana, varotra, fitaterana).",
+      ["Famakiana lahatsoratra vaovao fohy mitambatra lohahevitra maro","Fitsapana an-tsoratra: 5 fanontaniana fahatakarana","Fanitsiana am-pokonolona","Famintinana faobe ireo lahatsoratra rehetra novakiana nandritra ny taona","Fifidianana ny lahatsoratra tiana indrindra nandritra ny taona"],
+      ["Iza avy ireo mpikambana ao amin'ny fianakaviana voatonona ao amin'ny lahatsoratra? → Corrigé: valiny araka ny lahatsoratra nisafidianana","Ahoana no fitaterana ny vokatra any an-tsena? → Corrigé: an-tongotra, amin'ny sarety, amin'ny fiara (ohatra)","Tanisao lohahevitra 3 novakiana nandritra ny taona → Corrigé: ohatra, ny fiompiana, ny fanatanjahantena, ny fitaterana"]),
+    m("TSIPELINA","Fanadinana farany — zanatsoratra/renitsoratra, anarana ary famoronan-teny",
+      "Manao fitsapana farany mitambatra ny fanavahana ny zanatsoratra/renitsoratra, ny anarana manokana ary ny famoronan-teny.",
+      ["Famerenana faobe ny zanatsoratra, ny renitsoratra ary ny fitsipika momba ny anarana manokana","Dictée farany 10 teny mitambatra ireo fitsipika ireo","Fitsapana famoronana teny vaovao amin'ny renitsoratra iray nomena","Fanitsiana tsirairay","Famintinana ireo hadisoana matetika hita nandritra ny taona"],
+      ["Tondroy ny zanatsoratra ao amin'ny teny 'fitaterana' → Corrigé: i, a, e, a","Sokajio: Antsirabe, mpianatra, Rasoa, boky → Corrigé: anarana manokana=Antsirabe, Rasoa; anarana iombonana=mpianatra, boky","Mamorona teny 3 miandry amin'ny litera 'f' → Corrigé: ohatra fianarana, fahasalamana, fitaterana"]),
+    m("FITSIPIKA","Fanadinana farany — fehezanteny tsotra, mpamaritoetra ary mpisolotena",
+      "Manao fitsapana farany mitambatra ny fehezanteny tsotra, ny mpamaritoetra ary ny mpisolotena sy ny anjara asan'ny teny, ho fanomanana ny fanadinam-panjakana.",
+      ["Famerenana ny votoatin'ny fehezanteny tsotra sy ny mpamaritoetra","Famerenana ny mpisolotena ary ny anjara asan'ny teny (matoanteny, mpamaritoetra, mpamaritra isa)","Fitsapana an-tsoratra farany, 8 fanontaniana","Fanitsiana tsirairay","Famintinana ireo fitsipi-teny rehetra nianarana nandritra ny taona"],
+      ["Tondroy ny mpamaritoetra: 'Trano lehibe sy madio ny tranon-dRasoa.' → Corrigé: lehibe, madio","Soloy amin'ny mpisolotena mety: 'Rasoa sy Koto dia mianatra.' → Corrigé: 'Izy ireo dia mianatra.'","Manorata fehezanteny iray misy mpisolotena, matoanteny ary mpamaritoetra → Corrigé: valiny manokana voamarina"]),
+    m("FANAZARANA HANORATRA","Fitsapana fanoratana farany — fandikan-tsoratra sy famoronana tantara fohy",
+      "Manao fitsapana farany mitambatra fandikan-tsoratra sy famoronana tantara fohy misy fizarana telo mazava, mitovy amin'ny fanadinana.",
+      ["Famerenana faobe ny fitsipika fanoratana madio sy ny endriky ny tantara fohy (fiandohana, tantara, fiafarana)","Fandikan-tsoratra fitsapana, fehezanteny 3","Famoronana tantara fohy fitsapana, fehezanteny 5-6 momba lohahevitra nomena","Fanitsiana tsirairay, fanoroana ireo tsy fahampiana hita","Famintinana ny fandrosoana nandritra ny taona"],
+      ["Adikaso: 'Ny taona farany amin'ny kilasy faha-9 dia zava-dehibe amiko.' → Corrigé: fanoratana madio sy mitovy amin'ny lahatra","Manorata tantara fohy misy fehezanteny 5 momba ny andro fialan-tsasatrao → Corrigé: valiny manokana voamarina, misy fiandohana-tantara-fiafarana mazava","Inona ny fizarana telo ao amin'ny tantara fohy? → Corrigé: fiandohana, tantara, fiafarana"]),
+    m("LECTURE","Examen blanc final de lecture : contes du programme et texte nouveau, bilan de l'année",
+      "Terminer l'année par une épreuve de lecture combinant une révision des contes étudiés et un texte nouveau, suivie d'un bilan complet des textes vus.",
+      ["Relecture silencieuse rapide des contes déjà étudiés (Le paysan et le Roi des Génies, La fille du roi est à marier)","Distribution d'un texte nouveau non étudié : 'Les trois cosmonautes'","Examen blanc : 6 questions de compréhension chronométrées (20 minutes)","Correction collective détaillée","Bilan collectif : lister tous les textes lus dans l'année","Vote de la classe pour le texte préféré de l'année"],
+      ["Que demande le paysan au Roi des Génies dans le conte ? → Corrigé : réponse selon le conte étudié en classe","Que découvrent les cosmonautes dans l'histoire ? → Corrigé : réponse selon le texte étudié en classe","Cite 3 textes étudiés cette année que tu as aimés → Corrigé : réponse individuelle parmi les textes du programme"]),
+    m("LANGUE","Examen blanc final : texte nouveau et bilan de l'étude de texte de l'année",
+      "Réaliser un examen blanc complet sur un texte nouveau, puis dresser le bilan de la méthode d'étude de texte pratiquée toute l'année.",
+      ["Rappel rapide des textes du 2ème trimestre et des types de questions travaillés (implicite, inférence)","Distribution d'un texte narratif nouveau","Examen blanc : 5 questions écrites chronométrées (20 minutes)","Correction collective","Bilan de la méthode d'étude de texte utilisée toute l'année","Conseils finaux pour la 8ème"],
+      ["Quel est le lieu de l'histoire dans le texte distribué ? → Corrigé : réponse selon le texte distribué","Que signifie une question 'implicite' dans un texte ? → Corrigé : une question dont la réponse n'est pas écrite mot pour mot mais doit être déduite du texte","Comment le problème du personnage principal est-il résolu à la fin ? → Corrigé : réponse selon le texte distribué"]),
     m("VOCABULAIRE","Examen blanc final : bilan général du vocabulaire de l'année",
-      "Terminer par un grand quiz de vocabulaire couvrant tous les champs lexicaux vus dans l'année (saisons incluses).",
-      ["Quiz en équipes couvrant tous les thèmes de l'année","Chaque équipe répond à tour de rôle","Ajout du thème des saisons pour clore le quiz","Correction et calcul des points","Bilan individuel : mon vocabulaire le mieux maîtrisé","Encouragements pour la 8ème"],
-      ["Cite les 2 grandes saisons de Madagascar → Corrigé : saison sèche et saison des pluies (ou fraîche/chaude selon la région)","Cite un mot appris cette année pour chacun des thèmes : maison, métier, transport → Corrigé : réponse individuelle correcte parmi le vocabulaire de l'année","Quel thème de vocabulaire connais-tu le mieux ? Donne 3 mots → Corrigé : réponse individuelle"]),
-    m("ORTHOGRAPHE","Examen blanc final : dictée bilan sur les sons [s]/[z]/[g]/[j]/[k]",
-      "Faire une dictée bilan couvrant les principales difficultés orthographiques de sons de l'année.",
-      ["Rappel rapide des graphies de chaque son (s/ss/c/ç pour [s] ; s/z pour [z] ; g/gu pour [g] ; g/j pour [j] ; c/qu/k pour [k])","Dictée bilan de 10 phrases contenant ces sons","Correction collective mot par mot","Repérage individuel des sons encore confondus","Fiche-mémo des graphies à retenir","Bilan général d'orthographe de l'année"],
-      ["Dictée : 'Le garçon guette le poisson dans la rivière.' → Corrigé : orthographe exacte, attention à 'garçon' (ç) et 'guette' (gu)","Complète avec s ou z : 'la mai-on', 'le pou-in' → Corrigé : la maison, le poussin","Complète avec c, qu ou k : 'la mus-ique', 'le -ilomètre' → Corrigé : la musique, le kilomètre"]),
-    m("CONJUGAISON","Examen blanc final : les verbes pronominaux et bilan des temps de l'année",
-      "Terminer la révision de conjugaison par les verbes pronominaux et un examen blanc récapitulatif des temps de l'année.",
-      ["Rappel des verbes pronominaux (se laver, se lever) et de leur accord au passé composé","Exercice de conjugaison de verbes pronominaux aux 3 temps étudiés","Examen blanc : 6 verbes à conjuguer, temps mélangés","Correction collective","Bilan individuel des temps encore fragiles","Fiche-mémo finale des conjugaisons pour la 8ème"],
-      ["Conjugue 'se laver' au passé composé, 3ème personne du féminin singulier → Corrigé : elle s'est lavée","Conjugue 'se lever' au présent, 1ère personne du pluriel → Corrigé : nous nous levons","Choisis le bon temps et conjugue : 'Demain, nous ___ (se promener) au parc.' → Corrigé : nous nous promènerons"]),
-    m("GRAMMAIRE","Examen blanc final : pronoms relatifs et indicateurs de temps/lieu",
-      "Terminer par un examen blanc sur les pronoms relatifs et les indicateurs de temps et de lieu, points souvent fragiles en fin de 9ème.",
-      ["Rappel des pronoms relatifs simples (qui, que, où)","Rappel des indicateurs de temps (hier, aujourd'hui, demain...) et de lieu (ici, là-bas, devant...)","Examen blanc : 8 phrases à compléter ou transformer","Correction collective","Bilan grammatical général de l'année","Fiche-mémo finale pour la 8ème"],
-      ["Complète avec 'qui', 'que' ou 'où' : 'C'est la maison ___ j'habite.' → Corrigé : où","Relie les 2 phrases avec un pronom relatif : 'J'ai un livre. Ce livre est intéressant.' → Corrigé : J'ai un livre qui est intéressant.","Souligne l'indicateur de temps : 'Demain, nous partirons tôt.' → Corrigé : Demain"]),
-    m("EXPRESSION ORALE","Examen blanc final : l'argumentation à l'oral",
-      "Terminer par un mini-débat oral où chaque élève défend un avis avec des arguments, en condition d'examen.",
-      ["Rappel : donner un avis + au moins 2 arguments","Présenter un sujet simple de débat (ex. 'Faut-il porter l'uniforme ?')","Préparation individuelle de 2 arguments","Passage à l'oral chronométré devant la classe","Questions-réponses avec la classe","Bilan de l'expression orale de l'année"],
-      ["Donne ton avis sur un sujet simple avec 2 arguments → Corrigé : évaluation orale de la structure avis + arguments","Que répondrais-tu à quelqu'un qui n'est pas d'accord avec toi ? → Corrigé : réponse individuelle argumentée et polie","Cite un connecteur pour introduire un argument → Corrigé : d'abord, de plus, enfin (exemples)"]),
-    m("EXPRESSION ECRITE","Examen blanc final : la rédaction argumentative",
-      "Clore l'année par une rédaction argumentative complète, dans les conditions exactes de l'examen de passage.",
-      ["Rappel du plan argumentatif (avis + 2-3 arguments + exemples + conclusion)","Sujet imposé type examen (ex. 'Pourquoi est-il important d'aller à l'école ?')","Rédaction chronométrée (30 minutes, 10-12 lignes)","Relecture individuelle avec grille de correction","Correction collective des erreurs les plus fréquentes","Bilan de l'expression écrite de toute l'année 9ème"],
-      ["Rédige 10-12 lignes sur 'Pourquoi est-il important d'aller à l'école ?' avec au moins 2 arguments → Corrigé : réponse individuelle structurée avec avis, arguments et conclusion","Vérifie : ta rédaction a-t-elle une introduction et une conclusion ? → Corrigé : vérification individuelle","Cite l'argument que tu trouves le plus convaincant dans ton texte → Corrigé : réponse individuelle"]),
-    m("S.V.T","Examen blanc final : les aliments et la nutrition",
-      "Terminer les sciences par un examen blanc sur les groupes d'aliments et une alimentation équilibrée.",
-      ["Rappel des groupes d'aliments (protéines, glucides, lipides, vitamines, eau)","Rappel des règles d'une alimentation équilibrée","Examen blanc : classer des aliments, construire un repas équilibré","Correction collective","Bilan général de sciences de l'année","Encouragements pour la 8ème"],
-      ["Classe : riz, poisson, huile, orange, eau → Corrigé : glucide=riz, protéine=poisson, lipide=huile, vitamine=orange, eau=eau","Compose un repas équilibré pour le déjeuner → Corrigé : réponse individuelle contenant au moins un glucide, une protéine et un légume/fruit","Pourquoi faut-il boire de l'eau chaque jour ? → Corrigé : pour hydrater le corps et permettre son bon fonctionnement (digestion, transport des nutriments...)"]),
-    m("GEOGRAPHIE","Examen blanc final : agriculture, élevage, commerce et artisanat",
-      "Terminer la géographie par un examen blanc sur les activités économiques de Madagascar.",
-      ["Rappel des grandes cultures de Madagascar (riz, vanille, girofle, café)","Rappel des types d'élevage (bovin, volaille, pisciculture)","Rappel du commerce et de l'artisanat local (marché, tissage, vannerie)","Examen blanc : 6 questions écrites","Correction collective","Bilan général de géographie de l'année"],
-      ["Cite 3 cultures importantes de Madagascar → Corrigé : riz, vanille, girofle (ou café, litchi)","Quel animal d'élevage est le plus répandu dans les campagnes malgaches ? → Corrigé : le zébu (bœuf malgache)","Cite un produit de l'artisanat malgache → Corrigé : la vannerie, le tissage de soie, la sculpture sur bois (exemples)"]),
-    m("TANTARA","Fanadinana andrana farany : ny andrim-panjakana sy ny maha-olom-pirenena",
-      "Mamarana ny tantara-maha-olom-pirenena amin'ny fanadinana andrana momba ny andrim-panjakana malagasy sy ny anjara asan'ny olom-pirenena.",
-      ["Famerenana ireo Repoblika 4 teto Madagasikara","Famerenana ireo andrim-panjakana ankehitriny (Filoham-pirenena, governemanta, Antenimieram-pirenena)","Famerenana ny zo sy adidin'ny olom-pirenena","Fanadinana andrana : fanontaniana an-tsoratra 6","Fanitsiana am-pokonolona","Famintinana farany ny tantara-maha-olom-pirenena tamin'ity taona ity"],
-      ["Repoblika firy no efa niaina i Madagasikara hatramin'ny fahaleovantena ? → Corrigé : Repoblika 4","Tondroy andrim-panjakan'i Repoblikan'i Madagasikara iray → Corrigé : ny Fiadidiana, ny Antenimieram-pirenena, ny governemanta (ohatra)","Tondroy adidin'ny olom-pirenena malagasy iray → Corrigé : manaja ny lalàna, mifidy, mandray anjara amin'ny fiaraha-monina (ohatra)"]),
-    m("ANGLAIS","Examen blanc final : animals, transport, weather",
-      "Terminer l'anglais de l'année par un examen blanc sur les animaux, le transport et la météo.",
-      ["Rappel du vocabulaire des animaux, du transport et de la météo","Exercice chronométré : quiz écrit de 10 questions mêlant les 3 thèmes","Correction collective","Bilan général d'anglais de l'année","Encouragements pour la 8ème","Petit jeu final en anglais pour clore l'année"],
-      ["Name 3 animals in English → Corrigé: dog, cow, chicken (examples)","How is the weather today? Answer in English → Corrigé: réponse individuelle, ex. It is sunny / It is raining","Name a means of transport in English → Corrigé: car, bicycle, bus, boat (examples)"]),
+      "Terminer par un grand quiz de vocabulaire couvrant tous les champs lexicaux de l'année (métiers, santé, transport, saisons...).",
+      ["Quiz en équipes couvrant tous les thèmes de l'année, dont métiers, santé et transport","Chaque équipe répond à tour de rôle","Ajout du thème des saisons pour clore le quiz","Correction et calcul des points","Bilan individuel : mon vocabulaire le mieux maîtrisé","Encouragements pour la 8ème"],
+      ["Associe : médecin - ?, chauffeur - ? → Corrigé : médecin-hôpital/soigner, chauffeur-véhicule/conduire","Cite les 2 grandes saisons de Madagascar → Corrigé : saison sèche et saison des pluies","Cite 3 moyens de transport utilisés à Madagascar → Corrigé : taxi-brousse, pousse-pousse, charrette (exemples)"]),
+    m("ORTHOGRAPHE","Examen blanc final : dictée bilan des sons et accord sujet-verbe",
+      "Terminer l'orthographe de l'année par une dictée bilan sur les principaux sons travaillés, associée à l'accord sujet-verbe.",
+      ["Rappel rapide des graphies de chaque son ([s], [z], [g], [j], [k]) et de la règle d'accord sujet-verbe","Dictée bilan de 6 phrases contenant ces sons et des accords à vérifier","Correction collective mot par mot","Repérage individuel des sons et accords encore confondus","Fiche-mémo des graphies et règles à retenir","Bilan général d'orthographe de l'année"],
+      ["Dictée : 'Le garçon guette le poisson dans la rivière.' → Corrigé : orthographe exacte, attention à 'garçon' (ç) et 'guette' (gu)","Accorde : 'Les élèves (finir) leur travail.' → Corrigé : Les élèves finissent leur travail.","Complète avec c, qu ou k : 'la mus-ique', 'le -ilomètre' → Corrigé : la musique, le kilomètre"]),
+    m("CONJUGAISON","Examen blanc final : bilan des temps de l'année et verbes pronominaux",
+      "Terminer la conjugaison de l'année par un examen blanc récapitulatif mêlant futur simple, verbes des 3 groupes et verbes pronominaux.",
+      ["Rappel des verbes pronominaux (se laver, se lever) et de leur accord au passé composé","Rappel de la formation du futur simple et des verbes irréguliers fréquents","Examen blanc : 6 verbes à conjuguer, temps et groupes mélangés","Correction collective","Bilan individuel des temps encore fragiles","Fiche-mémo finale des conjugaisons pour la 8ème"],
+      ["Conjugue 'se laver' au passé composé, 3ème personne du féminin singulier → Corrigé : elle s'est lavée","Conjugue 'aller' au futur simple, 2ème personne du singulier → Corrigé : tu iras","Choisis le bon temps et conjugue : 'Demain, nous ___ (se promener) au parc.' → Corrigé : nous nous promènerons"]),
+    m("GRAMMAIRE","Examen blanc final : COD/COI, pronoms relatifs et indicateurs",
+      "Terminer par un examen blanc mêlant COD/COI, pronoms relatifs et indicateurs de temps/lieu, points souvent fragiles en fin de 9ème.",
+      ["Rappel : COD répond à 'quoi/qui', COI est introduit par une préposition (à, de)","Rappel des pronoms relatifs simples (qui, que, où) et des indicateurs de temps/lieu","Examen blanc : 8 phrases à compléter, transformer ou analyser (COD/COI, relatifs, indicateurs)","Correction collective","Bilan grammatical général de l'année","Fiche-mémo finale pour la 8ème"],
+      ["Identifie le COD : 'Elle écrit une lettre.' → Corrigé : COD = une lettre","Complète avec 'qui', 'que' ou 'où' : 'C'est la maison ___ j'habite.' → Corrigé : où","Souligne l'indicateur de temps : 'Demain, nous partirons tôt.' → Corrigé : Demain"]),
+    m("EXPRESSION ORALE","Examen blanc final : récit et argumentation à l'oral",
+      "Terminer par un passage à l'oral chronométré où l'élève raconte un événement puis défend un avis avec des arguments, comme à l'épreuve orale.",
+      ["Rappel de la structure d'un récit (début, événement, fin) et de l'argumentation (avis + arguments)","Préparation individuelle : 1 minute de récit + 2 arguments sur un sujet simple","Passage à l'oral chronométré devant la classe (2 minutes par élève)","Questions-réponses avec la classe","Retour de la classe sur la clarté, la chronologie et les arguments","Bilan de l'expression orale de l'année"],
+      ["Raconte à l'oral en 1 minute un événement marquant de ton année scolaire → Corrigé : évaluation orale sur la clarté et la chronologie","Donne ton avis sur un sujet simple avec 2 arguments → Corrigé : évaluation orale de la structure avis + arguments","Utilise 3 connecteurs dans ta présentation → Corrigé : d'abord, ensuite, enfin (exemples utilisés)"]),
+    m("EXPRESSION ECRITE","Examen blanc final : rédaction narrative et argumentative",
+      "Clore l'année par une rédaction complète mêlant un court récit et une justification argumentée, dans les conditions exactes de l'examen de passage.",
+      ["Rappel du plan du récit (situation initiale, événement, résolution) et du plan argumentatif (avis + arguments + conclusion)","Sujet imposé type examen (ex. 'Un jour à l'école inoubliable, et pourquoi il est important d'aller à l'école')","Rédaction chronométrée (30 minutes, 10-12 lignes)","Auto-relecture avec grille (ponctuation, accords, temps, arguments)","Correction individuelle et collective des erreurs les plus fréquentes","Bilan de l'expression écrite de toute l'année 9ème"],
+      ["Rédige 10-12 lignes sur 'Un jour à l'école inoubliable' avec situation initiale, événement et résolution → Corrigé : réponse individuelle structurée","Ajoute une conclusion donnant ton avis sur l'importance de l'école → Corrigé : réponse individuelle argumentée","Vérifie : as-tu utilisé le passé composé correctement et une ponctuation correcte ? → Corrigé : vérification individuelle"]),
+    m("S.V.T","Examen blanc final : animaux, plantes et alimentation",
+      "Terminer les sciences de l'année par un examen blanc couvrant la classification des animaux, le cycle de vie des plantes et l'alimentation équilibrée.",
+      ["Rappel des grandes catégories d'animaux et du cycle de vie d'une plante","Rappel des groupes d'aliments et des règles d'une alimentation équilibrée","Examen blanc : classer des animaux, remettre en ordre le cycle de la plante, composer un repas équilibré","Correction collective","Bilan général de sciences de l'année","Encouragements pour la 8ème"],
+      ["Classe : chat, poule, requin, serpent, papillon → Corrigé : mammifère=chat, oiseau=poule, poisson=requin, reptile=serpent, insecte=papillon","Remets en ordre : fruit, graine, germination, floraison, croissance → Corrigé : graine, germination, croissance, floraison, fruit","Compose un repas équilibré pour le déjeuner → Corrigé : réponse individuelle contenant au moins un glucide, une protéine et un légume/fruit"]),
+    m("GEOGRAPHIE","Examen blanc final : l'Afrique et les activités économiques de Madagascar",
+      "Terminer la géographie de l'année par un examen blanc sur les repères de l'Afrique et les grandes activités économiques de Madagascar.",
+      ["Rappel des grandes régions et repères d'Afrique","Rappel des grandes cultures, de l'élevage, du commerce et de l'artisanat de Madagascar","Examen blanc : carte muette de l'Afrique (5 repères) et 4 questions sur l'économie malgache","Correction collective","Bilan des repères encore confondus","Bilan général de géographie de l'année"],
+      ["Place sur la carte : Nigeria, Kenya, Afrique du Sud → Corrigé : vérifier le positionnement selon la carte de l'Afrique","Cite 3 cultures importantes de Madagascar → Corrigé : riz, vanille, girofle (ou café, litchi)","Quel animal d'élevage est le plus répandu dans les campagnes malgaches ? → Corrigé : le zébu (bœuf malgache)"]),
+    m("TANTARA","Fanadinana andrana farany : fanjanahan-tany, fahaleovantena ary andrim-panjakana",
+      "Mamarana ny tantara-maha-olom-pirenena amin'ny fanadinana andrana mitambatra ny daty lehibe (fanjanahan-tany, fikomiana, fahaleovantena) ary ny andrim-panjakana malagasy ankehitriny.",
+      ["Famerenana ny 1896, ny 1947 ary ny 26 jona 1960","Famerenana ireo Repoblika 4 sy ireo andrim-panjakana ankehitriny (Fiadidiana, Antenimieram-pirenena, governemanta)","Famerenana ny zo sy adidin'ny olom-pirenena","Fanadinana andrana voafetra fotoana : fanontaniana an-tsoratra 8","Fanitsiana am-pokonolona","Famintinana farany ny tantara-maha-olom-pirenena tamin'ity taona ity"],
+      ["Tamin'ny taona firy no lasa zanatany frantsay i Madagasikara ? → Corrigé : 1896","Amin'ny daty firy no nahazoan'i Madagasikara ny fahaleovantenany ? → Corrigé : ny 26 jona 1960","Tondroy andrim-panjakan'i Repoblikan'i Madagasikara iray → Corrigé : ny Fiadidiana, ny Antenimieram-pirenena, ny governemanta (ohatra)"]),
+    m("ANGLAIS","Examen blanc final : the body, the family, clothes, animals, transport and weather",
+      "Terminer l'anglais de l'année par un grand examen blanc couvrant l'ensemble du vocabulaire vu depuis septembre.",
+      ["Rappel du vocabulaire du corps, de la famille et des vêtements","Rappel du vocabulaire des animaux, du transport et de la météo","Exercice chronométré : quiz écrit de 10 questions mêlant tous les thèmes","Correction collective","Bilan général d'anglais de l'année","Petit jeu final en anglais pour clore l'année"],
+      ["Name 3 parts of the body in English → Corrigé: head, arm, leg (examples)","How is the weather today? Answer in English → Corrigé: réponse individuelle, ex. It is sunny","Name a means of transport in English → Corrigé: car, bicycle, bus, boat (examples)"]),
     m("FFMOM","Fanadinana andrana farany : famintinana ireo soatoavina tamin'ny taona sy fanoloran-tena ho an'ny kilasy faha-8",
-      "Mamarana ny taom-pianarana FFMOM amin'ny famintinana ireo soatoavina rehetra nianarana sy fanoloran-tena manokana ho an'ny kilasy faha-8.",
-      ["Famerenana ireo soatoavina rehetra nianarana nandritra ny taona","Fanombanan-tena an-tsoratra : soatoavina inona no nampiharako tsara indrindra ?","Fanoratana fanoloran-tena kely manokana ho an'ny kilasy faha-8","Fizarana an-tsitrapo eo anatrehan'ny kilasy","Fifanakalozan-kevitra : nahoana ireo soatoavina ireo no ilaina amin'ny fiainana","Famintinana farany sy famporisihana"],
-      ["Tondroy soatoavina 4 nianarana tamin'ity taona ity → Corrigé : fanajana, fahamarinana, herim-po, rariny (na firaisankina, fahalalam-pomba arakaraka ny taona)","Soatoavina inona no tianao hampandrosoina hatrany amin'ny kilasy faha-8 ? → Corrigé : valiny manokana","Manorata fehezanteny fanoloran-tena ho an'ny kilasy faha-8 → Corrigé : valiny manokana mifanaraka amin'ny lohahevitra, ohatra 'Manoloran-tena aho hanaja lalandava ny namako.'"]),
-    m("CHANT","Examen blanc final : choix et répétition du chant de la cérémonie de fin d'année",
-      "Choisir collectivement et répéter le chant qui sera présenté lors de la cérémonie de fin d'année et de passage en 8ème.",
-      ["Vote de la classe parmi les chants appris dans l'année","Répétition intensive du chant choisi","Mise en scène simple (placement, gestes)","Répétition générale filmée ou observée (auto-évaluation)","Ajustements finaux","Répétition finale complète"],
-      ["Chante en entier le chant choisi pour la cérémonie → Corrigé : évaluation de la mémorisation complète","Pourquoi la classe a-t-elle choisi ce chant en particulier ? → Corrigé : réponse collective cohérente","Que peux-tu améliorer pour la représentation finale ? → Corrigé : réponse individuelle, ex. articuler davantage, chanter plus fort"]),
-    m("RÉCITATION","Examen blanc final : choix et répétition de la récitation pour la cérémonie",
-      "Choisir et répéter le poème présenté lors de la cérémonie de fin d'année et de passage en 8ème.",
-      ["Vote de la classe parmi les poèmes appris dans l'année","Répétition intensive du poème choisi","Travail de la mise en voix (ton, pauses, regard)","Répétition générale devant la classe (auto-évaluation)","Ajustements finaux","Répétition finale complète"],
-      ["Récite en entier le poème choisi pour la cérémonie → Corrigé : évaluation de la mémorisation complète et de l'expressivité","Pourquoi la classe a-t-elle choisi ce poème en particulier ? → Corrigé : réponse collective cohérente","Que peux-tu encore améliorer avant la représentation finale ? → Corrigé : réponse individuelle, ex. articuler davantage, ne pas réciter trop vite"]),
+      "Mamarana ny taom-pianarana FFMOM amin'ny famerenana ireo soatoavina rehetra nianarana nandritra ny taona (2ème trimestre indray) sy amin'ny fanoloran-tena manokana ho an'ny kilasy faha-8.",
+      ["Famerenana ireo soatoavina tamin'ny 2ème trimestre sy ny taona manontolo","Fandalinana toe-javatra : inona no hataonao raha... ?","Fanombanan-tena an-tsoratra : soatoavina inona no nampiharako tsara indrindra ?","Fanoratana fanoloran-tena kely manokana ho an'ny kilasy faha-8","Fizarana an-tsitrapo eo anatrehan'ny kilasy","Famintinana farany sy famporisihana"],
+      ["Inona no hataonao raha mahita namana kasihina tsy ara-drariny ? → Corrigé : valiny manokana mampiseho ny herim-po sy ny rariny","Tondroy soatoavina 4 nianarana tamin'ity taona ity → Corrigé : fanajana, fahamarinana, herim-po, rariny (arakaraka ny taona)","Manorata fehezanteny fanoloran-tena ho an'ny kilasy faha-8 → Corrigé : valiny manokana mifanaraka amin'ny lohahevitra"]),
+    m("CHANT","Choix et répétition finale du chant pour la cérémonie de fin d'année",
+      "Reprendre les chants du 2ème trimestre puis choisir et répéter collectivement le chant présenté à la cérémonie de fin d'année et de passage en 8ème.",
+      ["Rappel des paroles des chants du 2ème trimestre en guise d'échauffement","Vote de la classe parmi les chants appris dans l'année pour la cérémonie","Répétition intensive du chant choisi, avec mise en scène simple","Répétition générale (auto-évaluation)","Ajustements finaux","Répétition finale complète"],
+      ["Chante un couplet d'un chant du 2ème trimestre devant la classe → Corrigé : évaluation orale de la mémorisation","Chante en entier le chant choisi pour la cérémonie → Corrigé : évaluation de la mémorisation complète","Que peux-tu améliorer pour la représentation finale ? → Corrigé : réponse individuelle, ex. articuler davantage, chanter plus fort"]),
+    m("RÉCITATION","Choix et répétition finale du poème pour la cérémonie de fin d'année",
+      "Reprendre les poèmes du 2ème trimestre puis choisir et répéter le poème présenté à la cérémonie de fin d'année et de passage en 8ème.",
+      ["Rappel des poèmes du 2ème trimestre en guise d'échauffement","Vote de la classe parmi les poèmes appris dans l'année pour la cérémonie","Répétition intensive du poème choisi, travail de la mise en voix","Répétition générale devant la classe (auto-évaluation)","Ajustements finaux","Répétition finale complète"],
+      ["Récite un poème du 2ème trimestre en 1 minute maximum → Corrigé : évaluation orale de la mémorisation","Récite en entier le poème choisi pour la cérémonie → Corrigé : évaluation de la mémorisation complète et de l'expressivité","Que peux-tu encore améliorer avant la représentation finale ? → Corrigé : réponse individuelle, ex. articuler davantage, ne pas réciter trop vite"])
   ],
-},
+}
+
 ];
 
-// ═══════════════════════════════════════════════════════════════════════════════
 const MOIS_9EME = [
   { mois: 'Octobre', data: OCTOBRE_9EME },
   { mois: 'Novembre', data: NOVEMBRE_9EME },
@@ -3350,7 +3781,7 @@ const MOIS_9EME = [
   { mois: 'Mars', data: MARS_9EME },
   { mois: 'Avril', data: AVRIL_9EME },
   { mois: 'Mai', data: MAI_9EME },
-  { mois: 'Juin', data: JUIN_9EME },
+  { mois: 'Juin', data: JUIN_9EME }
 ];
 
 module.exports = { PERIODES_9EME, MOIS_9EME };

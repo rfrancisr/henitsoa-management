@@ -33,12 +33,13 @@ export type MoisRepartitionInfo = {
 };
 
 // Academic périodes — kept for grades, evaluations, bulletins
+// Année scolaire 2026-2027 (Arrêté 19538/2026).
 export const PERIODES: PeriodeInfo[] = [
-  { num: 1, libelle: '1ère Période', debut: '01/09/2025', nbSemaines: 7 },
-  { num: 2, libelle: '2ème Période', debut: '27/10/2025', nbSemaines: 7 },
-  { num: 3, libelle: '3ème Période', debut: '05/01/2026', nbSemaines: 7 },
-  { num: 4, libelle: '4ème Période', debut: '23/02/2026', nbSemaines: 6 },
-  { num: 5, libelle: '5ème Période', debut: '20/04/2026', nbSemaines: 9 },
+  { num: 1, libelle: '1ère Période', debut: '07/09/2026', nbSemaines: 8 },
+  { num: 2, libelle: '2ème Période', debut: '09/11/2026', nbSemaines: 7 },
+  { num: 3, libelle: '3ème Période', debut: '04/01/2027', nbSemaines: 8 },
+  { num: 4, libelle: '4ème Période', debut: '01/03/2027', nbSemaines: 8 },
+  { num: 5, libelle: '5ème Période', debut: '10/05/2027', nbSemaines: 8 },
 ];
 
 // Répartition months — primary navigation unit for programme

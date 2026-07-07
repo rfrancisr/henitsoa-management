@@ -52,12 +52,16 @@ const DRY_RUN = args.includes('--dry-run');
 const FORCE   = args.includes('--force');
 
 // Correspondance (période, semaine_within_période) → (mois, semaine_within_mois, dateDebut)
-// Année scolaire 2025-2026
+// Année scolaire 2026-2027 (Arrêté 19538/2026) — rentrée des apprenants le 07/09/2026.
+// Seules les 4 lignes p:1 (Septembre) sont encore consultées par insererSemaine() : toutes les
+// classes migrées vers l'architecture PERIODES_Xeme/MOIS_Xeme lisent leurs dates Octobre→Juin
+// directement depuis leur propre champ dateDebut/dates, pas depuis ce tableau. Les lignes p:2..5
+// ci-dessous sont donc mortes pour ces classes ; elles ne sont pas mises à jour (hors périmètre).
 const MOIS_MAP = [
-  { p:1, s:1, mois:'Septembre', n:1, date:'01/09/2025' },
-  { p:1, s:2, mois:'Septembre', n:2, date:'08/09/2025' },
-  { p:1, s:3, mois:'Septembre', n:3, date:'15/09/2025' },
-  { p:1, s:4, mois:'Septembre', n:4, date:'22/09/2025' },
+  { p:1, s:1, mois:'Septembre', n:1, date:'07/09/2026' },
+  { p:1, s:2, mois:'Septembre', n:2, date:'14/09/2026' },
+  { p:1, s:3, mois:'Septembre', n:3, date:'21/09/2026' },
+  { p:1, s:4, mois:'Septembre', n:4, date:'28/09/2026' },
   { p:1, s:5, mois:'Octobre',   n:1, date:'29/09/2025' },
   { p:1, s:6, mois:'Octobre',   n:2, date:'06/10/2025' },
   { p:1, s:7, mois:'Octobre',   n:3, date:'13/10/2025' },
