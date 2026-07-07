@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useLang, LangProvider } from "./LanguageContext";
@@ -11,50 +12,9 @@ type NewsItem = {
   category: string;
   title: string;
   excerpt: string;
-  stripe: string;
 };
 
-type EventItem = {
-  month: string;
-  day: string;
-  title: string;
-  desc: string;
-};
-
-/* ── Bunting SVG ──────────────────────────────────────────────────────────── */
-function Bunting() {
-  return (
-    <svg
-      viewBox="0 0 900 80"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      preserveAspectRatio="none"
-      style={{ position: "absolute", top: 0, left: 0, width: "100%", zIndex: 3, pointerEvents: "none" }}
-    >
-      <path d="M0,18 Q225,38 450,20 Q675,2 900,22" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
-      {[
-        { x: 60, c: "#FF7043", cls: "pennant-sw1" },
-        { x: 120, c: "#FFD54F", cls: "pennant-sw2" },
-        { x: 180, c: "#66BB6A", cls: "pennant-sw3" },
-        { x: 240, c: "#4FC3F7", cls: "pennant-sw1" },
-        { x: 300, c: "#BA68C8", cls: "pennant-sw2" },
-        { x: 360, c: "#FF7043", cls: "pennant-sw3" },
-        { x: 420, c: "#FFD54F", cls: "pennant-sw1" },
-        { x: 480, c: "#66BB6A", cls: "pennant-sw2" },
-        { x: 540, c: "#4FC3F7", cls: "pennant-sw3" },
-        { x: 600, c: "#BA68C8", cls: "pennant-sw1" },
-        { x: 660, c: "#FF7043", cls: "pennant-sw2" },
-        { x: 720, c: "#FFD54F", cls: "pennant-sw3" },
-        { x: 780, c: "#66BB6A", cls: "pennant-sw1" },
-        { x: 840, c: "#4FC3F7", cls: "pennant-sw2" },
-      ].map((p) => (
-        <g key={p.x} className={p.cls}>
-          <polygon points={`${p.x},20 ${p.x + 14},20 ${p.x + 7},48`} fill={p.c} />
-        </g>
-      ))}
-    </svg>
-  );
-}
+const NOTE_ROTATIONS = [-2.4, 1.6, -1.2];
 
 /* ── Wave divider ─────────────────────────────────────────────────────────── */
 function WaveDivider({ from, to }: { from: string; to: string }) {
@@ -73,8 +33,18 @@ function WaveDivider({ from, to }: { from: string; to: string }) {
   );
 }
 
-function HomeContent({ news, events }: { news: NewsItem[]; events: EventItem[] }) {
+/* ── Stage underline squiggle ─────────────────────────────────────────────── */
+function Underline({ color }: { color: string }) {
+  return (
+    <svg viewBox="0 0 220 14" height="14" className="mt-1" aria-hidden="true">
+      <path d="M2 10 Q55 0 110 8 T218 6" stroke={color} strokeWidth="4" fill="none" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function HomeContent({ news }: { news: NewsItem[] }) {
   const { t } = useLang();
+  const [urgencyVisible, setUrgencyVisible] = useState(true);
 
   const pillarPhotos = [
     "/site/art.jpg",
@@ -84,10 +54,36 @@ function HomeContent({ news, events }: { news: NewsItem[]; events: EventItem[] }
     "/site/foot.jpg",
   ];
 
-  const tickerItems = [...t.ticker, ...t.ticker];
-
   return (
-    <div style={{ background: "#FDFBF6" }}>
+    <div style={{ background: "#FBF4E2" }}>
+      {/* ── URGENCY BAR ───────────────────────────────────────────────────────── */}
+      {urgencyVisible && (
+        <div style={{ background: "#213B26", color: "#fff" }} className="relative">
+          <div className="max-w-[980px] mx-auto px-10 py-2 flex items-center justify-center gap-3 flex-wrap text-center">
+            <span
+              className="text-[13px] font-bold"
+              style={{ fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+            >
+              {t.hero.urgency}
+            </span>
+            <Link
+              href="/login"
+              className="text-[13px] font-bold underline"
+              style={{ color: "#F2B705", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+            >
+              {t.hero.urgency_link} →
+            </Link>
+            <button
+              onClick={() => setUrgencyVisible(false)}
+              aria-label="Masquer ce message"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-white/60 hover:text-white text-lg leading-none px-2"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
+
       <SiteNavbar />
 
       {/* ── HERO ──────────────────────────────────────────────────────────────── */}
@@ -103,37 +99,32 @@ function HomeContent({ news, events }: { news: NewsItem[]; events: EventItem[] }
           sizes="100vw"
           className="object-cover object-[50%_25%]"
         />
-        <div className="absolute inset-0" style={{ background: "rgba(44,28,20,0.72)" }} />
-
-        <Bunting />
+        <div className="absolute inset-0" style={{ background: "rgba(33,59,38,0.74)" }} />
 
         <div className="relative z-10 flex flex-col items-center" style={{ paddingTop: "2rem" }}>
-          {/* Eyebrow pill */}
           <div
             className="animate-fade-up inline-block text-white text-[11px] font-bold tracking-[0.1em] uppercase px-4 py-1.5 rounded-full mb-6"
-            style={{ background: "#BA68C8", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+            style={{ background: "#C43B2C", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
           >
             {t.hero.badge}
           </div>
 
-          {/* Title */}
           <h1
             className="animate-fade-up delay-200 leading-none"
             style={{
-              fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
+              fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif",
               fontSize: "clamp(3.5rem, 14vw, 10rem)",
               letterSpacing: "-0.02em",
-              color: "#FFD54F",
+              color: "#F2B705",
             }}
           >
             HENITSOA
           </h1>
 
-          {/* Tagline */}
           <p
             className="animate-fade-up delay-300 mt-6 max-w-sm mx-auto"
             style={{
-              color: "rgba(255,255,255,0.7)",
+              color: "rgba(255,255,255,0.75)",
               fontSize: "clamp(1rem, 2.2vw, 1.15rem)",
               lineHeight: 1.55,
               fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
@@ -143,7 +134,6 @@ function HomeContent({ news, events }: { news: NewsItem[]; events: EventItem[] }
             {t.hero.tagline}
           </p>
 
-          {/* CTAs */}
           <div className="animate-fade-up delay-400 flex flex-col sm:flex-row items-center gap-4 mt-10">
             <Link
               href="/a-propos"
@@ -151,16 +141,16 @@ function HomeContent({ news, events }: { news: NewsItem[]; events: EventItem[] }
               style={{
                 fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
                 fontSize: "15px",
-                background: "#FF7043",
-                boxShadow: "0 4px 0 #BF360C",
+                background: "#C43B2C",
+                boxShadow: "0 4px 0 #8B2A1F",
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 0 #BF360C";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 0 #8B2A1F";
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLElement).style.transform = "";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 0 #BF360C";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 0 #8B2A1F";
               }}
             >
               {t.hero.cta_primary}
@@ -172,7 +162,7 @@ function HomeContent({ news, events }: { news: NewsItem[]; events: EventItem[] }
                 fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
                 fontSize: "15px",
                 background: "#fff",
-                color: "#2C2C3A",
+                color: "#213B26",
                 border: "2.5px solid rgba(255,255,255,0.6)",
               }}
               onMouseEnter={(e) => {
@@ -185,63 +175,41 @@ function HomeContent({ news, events }: { news: NewsItem[]; events: EventItem[] }
               {t.hero.cta_secondary}
             </Link>
           </div>
+
+          {/* Trust strip */}
+          <div className="flex items-center gap-6 flex-wrap justify-center mt-8">
+            <div
+              className="flex items-center gap-2 text-white text-[13px] font-bold"
+              style={{ fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+            >
+              <span aria-hidden="true">🏆</span> {t.hero.trust_cepe}
+            </div>
+            <div
+              className="flex items-center gap-2 text-white text-[13px] font-bold"
+              style={{ fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+            >
+              <span aria-hidden="true">👨‍👩‍👧</span> {t.hero.trust_places}
+            </div>
+          </div>
         </div>
 
-        {/* Scroll hint */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2" style={{ zIndex: 2 }}>
           <div className="w-px h-10" style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0.3), transparent)" }} />
         </div>
       </section>
 
-      {/* ── WAVE → TICKER ─────────────────────────────────────────────────────── */}
-      <WaveDivider from="transparent" to="#FFD54F" />
+      <WaveDivider from="transparent" to="#FFFDF8" />
 
-      {/* ── TICKER ────────────────────────────────────────────────────────────── */}
-      <div
-        className="overflow-hidden"
-        style={{ background: "#FFD54F", padding: "0.65rem 0" }}
-        aria-label="Annonces de l'école"
-      >
-        <div className="flex items-center">
-          <span
-            className="shrink-0 text-white text-[11px] font-bold tracking-[0.07em] uppercase px-3 py-1 rounded mx-4"
-            style={{
-              background: "#2C2C3A",
-              fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-            }}
-            aria-hidden="true"
-          >
-            Annonces
-          </span>
-          <div className="overflow-hidden flex-1">
-            <div className="site-ticker-track" style={{ whiteSpace: "nowrap" }}>
-              {tickerItems.map((item, i) => (
-                <span
-                  key={i}
-                  className="inline-block font-bold mr-14 text-[13px]"
-                  style={{
-                    color: "#2C2C3A",
-                    fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                  }}
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── PHOTO PILLARS ─────────────────────────────────────────────────────── */}
-      <section className="bg-white py-16 sm:py-20 px-5 sm:px-8">
+      {/* ── PHOTO MOSAIC ("Pourquoi nous choisir") ───────────────────────────────── */}
+      <section className="py-16 sm:py-20 px-5 sm:px-8" style={{ background: "#FFFDF8" }}>
         <div className="max-w-[960px] mx-auto">
           <Reveal>
             <div className="text-center mb-10">
               <span
                 className="inline-block text-[11px] font-bold tracking-[0.12em] uppercase px-4 py-1.5 rounded-full mb-4"
                 style={{
-                  background: "#C8E6C9",
-                  color: "#388E3C",
+                  background: "#FCE29B",
+                  color: "#213B26",
                   fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
                 }}
               >
@@ -250,9 +218,9 @@ function HomeContent({ news, events }: { news: NewsItem[]; events: EventItem[] }
               <h2
                 className="mt-1"
                 style={{
-                  fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
+                  fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif",
                   fontSize: "clamp(1.7rem, 3.5vw, 2.4rem)",
-                  color: "#2C2C3A",
+                  color: "#213B26",
                   lineHeight: 1.2,
                 }}
               >
@@ -261,7 +229,6 @@ function HomeContent({ news, events }: { news: NewsItem[]; events: EventItem[] }
             </div>
           </Reveal>
 
-          {/* 3-col, 2-row mosaic */}
           <div
             className="site-photo-grid rounded-[20px] overflow-hidden"
             style={{
@@ -294,17 +261,15 @@ function HomeContent({ news, events }: { news: NewsItem[]; events: EventItem[] }
                     className="object-cover transition-all duration-500 ease-out group-hover:scale-[1.06]"
                     style={{ filter: "brightness(0.85)" }}
                   />
-                  {/* Color tint overlay */}
                   <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{ background: item.color }}
                   />
-                  {/* Label */}
                   <div
                     className="absolute bottom-0 left-0 right-0 z-10 transition-all duration-300 group-hover:pb-5"
                     style={{
                       padding: "1rem 1.25rem",
-                      background: "linear-gradient(to top, rgba(30,28,40,0.82) 0%, transparent 100%)",
+                      background: "linear-gradient(to top, rgba(33,28,20,0.82) 0%, transparent 100%)",
                     }}
                   >
                     <div
@@ -319,7 +284,7 @@ function HomeContent({ news, events }: { news: NewsItem[]; events: EventItem[] }
                     <h3
                       className="text-white"
                       style={{
-                        fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
+                        fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif",
                         fontSize: "1.1rem",
                         lineHeight: 1.2,
                       }}
@@ -340,452 +305,307 @@ function HomeContent({ news, events }: { news: NewsItem[]; events: EventItem[] }
         </div>
       </section>
 
-      {/* ── STATS ─────────────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 px-5 sm:px-8" style={{ background: "#EFF9FE" }}>
+      {/* ── WHY US ────────────────────────────────────────────────────────────── */}
+      <section className="py-16 sm:py-20 px-5 sm:px-8" style={{ background: "#FBF4E2" }}>
         <div className="max-w-[960px] mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {t.stats.map((stat, i) => {
-              const colors = ["#FF7043", "#4FC3F7", "#66BB6A", "#BA68C8"];
-              return (
-                <Reveal key={i} delay={i * 70}>
+          <Reveal>
+            <div className="text-center mb-10">
+              <span
+                className="inline-block text-[11px] font-bold tracking-[0.12em] uppercase px-4 py-1.5 rounded-full mb-4"
+                style={{
+                  background: "#F5D0C9",
+                  color: "#C43B2C",
+                  fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                }}
+              >
+                {t.whyUs.eyebrow}
+              </span>
+              <h2
+                className="mt-1 mx-auto"
+                style={{
+                  fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif",
+                  fontSize: "clamp(1.7rem, 3.5vw, 2.4rem)",
+                  color: "#213B26",
+                  lineHeight: 1.25,
+                  maxWidth: "24ch",
+                }}
+              >
+                {t.whyUs.title}
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {t.whyUs.items.map((item, i) => (
+              <Reveal key={i} delay={i * 80} className="h-full">
+                <div
+                  className="rounded-2xl p-6 h-full"
+                  style={{ background: "#FFFDF8", boxShadow: "0 10px 24px rgba(43,58,42,0.10)" }}
+                >
                   <div
-                    className="bg-white rounded-2xl p-6 text-center transition-all duration-200 hover:-translate-y-1"
-                    style={{ border: "2px solid #B3E5FC", boxShadow: "none" }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = colors[i];
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = "#B3E5FC";
-                    }}
+                    className="w-11 h-11 rounded-full flex items-center justify-center text-xl mb-4"
+                    style={{ background: "#FCE29B" }}
                   >
-                    <div
-                      className="font-black leading-none mb-2"
-                      style={{
-                        fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
-                        fontSize: "clamp(2.5rem, 5vw, 4rem)",
-                        color: colors[i],
-                      }}
-                    >
-                      {stat.value}
-                    </div>
-                    <div
-                      className="text-[11px] font-bold uppercase tracking-[0.1em] leading-snug"
-                      style={{
-                        color: "#2C2C3A",
-                        fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                      }}
-                    >
-                      {stat.label}
-                    </div>
+                    {item.icon}
                   </div>
-                </Reveal>
-              );
-            })}
+                  <h3
+                    className="mb-2"
+                    style={{ fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif", fontSize: "1.05rem", color: "#213B26" }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p className="text-[13px] leading-relaxed" style={{ color: "#4A5A48" }}>
+                    {item.desc}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── LEVELS ────────────────────────────────────────────────────────────── */}
-      <section className="bg-white py-16 sm:py-20 px-5 sm:px-8">
+      {/* ── SCOLARITÉ ─────────────────────────────────────────────────────────── */}
+      <section className="py-16 sm:py-20 px-5 sm:px-8" style={{ background: "#2F5233" }}>
         <div className="max-w-[960px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <Reveal>
+            <div className="text-center mb-10">
+              <span
+                className="inline-block text-[11px] font-bold tracking-[0.12em] uppercase px-4 py-1.5 rounded-full mb-4"
+                style={{ background: "#F2B705", color: "#213B26", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+              >
+                {t.levels.eyebrow}
+              </span>
+              <h2 style={{ fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif", fontSize: "clamp(1.7rem, 3.5vw, 2.4rem)", color: "#fff", lineHeight: 1.2 }}>
+                {t.levels.title}
+              </h2>
+              <p className="mt-3 text-[15px]" style={{ color: "rgba(255,255,255,0.85)" }}>
+                {t.levels.subtitle}
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {t.levels.items.map((level, i) => (
+              <Reveal key={i} delay={i * 80}>
+                <div
+                  className="rounded-2xl p-6"
+                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.14)" }}
+                >
+                  <span
+                    className="inline-block text-[12px] font-bold px-3 py-1 rounded-full mb-3"
+                    style={{ background: "#F2B705", color: "#213B26", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+                  >
+                    {level.age}
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl" aria-hidden="true">{level.icon}</span>
+                    <h3 style={{ fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif", fontSize: "1.4rem", color: "#fff" }}>
+                      {level.name}
+                    </h3>
+                  </div>
+                  <Underline color="#F2B705" />
+                  <p className="mt-2 text-[14px]" style={{ color: "rgba(255,255,255,0.85)" }}>
+                    {level.desc}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── VIE À L'ÉCOLE ─────────────────────────────────────────────────────── */}
+      <section className="py-16 sm:py-20 px-5 sm:px-8" style={{ background: "#FFFDF8" }}>
+        <div className="max-w-[960px] mx-auto">
+          <Reveal>
+            <div className="text-center mb-10">
+              <span
+                className="inline-block text-[11px] font-bold tracking-[0.12em] uppercase px-4 py-1.5 rounded-full mb-4"
+                style={{ background: "#D8C296", color: "#213B26", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+              >
+                {t.vieEcole.eyebrow}
+              </span>
+              <h2 style={{ fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif", fontSize: "clamp(1.7rem, 3.5vw, 2.4rem)", color: "#213B26", lineHeight: 1.2 }}>
+                {t.vieEcole.title}
+              </h2>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+            {t.vieEcole.tiles.map((tile, i) => (
+              <Reveal key={i} delay={i * 70}>
+                <div className="text-center p-6 rounded-2xl" style={{ background: "#FBF4E2" }}>
+                  <div
+                    className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl"
+                    style={{ background: tile.color }}
+                  >
+                    {tile.icon}
+                  </div>
+                  <h3 className="text-[15px]" style={{ fontFamily: "var(--font-nunito), 'Nunito', sans-serif", fontWeight: 800, color: "#213B26" }}>
+                    {tile.title}
+                  </h3>
+                  <p className="text-[13px] mt-1" style={{ color: "#4A5A48" }}>
+                    {tile.desc}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── ANNONCES (corkboard) ──────────────────────────────────────────────── */}
+      {news.length > 0 && (
+        <section className="py-16 sm:py-20 px-5 sm:px-8" style={{ background: "#D8C296" }}>
+          <div className="max-w-[960px] mx-auto">
             <Reveal>
-              <div>
-                <span
-                  className="inline-block text-[11px] font-bold tracking-[0.12em] uppercase px-4 py-1.5 rounded-full mb-5"
-                  style={{
-                    background: "#FFF9C4",
-                    color: "#F57F17",
-                    fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                  }}
-                >
-                  Scolarité
-                </span>
-                <h2
-                  className="mt-1"
-                  style={{
-                    fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
-                    fontSize: "clamp(2rem, 4vw, 3rem)",
-                    color: "#2C2C3A",
-                    lineHeight: 1.2,
-                  }}
-                >
-                  {t.levels.title}
-                </h2>
-                <p
-                  className="mt-4 text-[15px] leading-relaxed"
-                  style={{ color: "#666", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
-                >
-                  {t.levels.subtitle}
+              <div className="flex items-end justify-between gap-4 flex-wrap mb-10">
+                <div>
+                  <span
+                    className="inline-block text-[11px] font-bold tracking-[0.12em] uppercase mb-2"
+                    style={{ color: "#213B26", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+                  >
+                    {t.news.eyebrow}
+                  </span>
+                  <h2 style={{ fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif", fontSize: "clamp(1.7rem, 3vw, 2.3rem)", color: "#213B26" }}>
+                    {t.news.title}
+                  </h2>
+                </div>
+                <p style={{ fontFamily: "var(--font-caveat), 'Caveat', cursive", fontSize: "1.2rem", color: "#213B26" }}>
+                  {t.news.pinned}
                 </p>
               </div>
             </Reveal>
 
-            <div className="flex flex-col gap-3">
-              {t.levels.items.map((level, i) => {
-                const iconBgs = ["#FFCCBC", "#C8E6C9", "#B3E5FC", "#E1BEE7"];
-                return (
-                  <Reveal key={i} delay={i * 80}>
-                    <div
-                      className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-200 hover:-translate-x-0 hover:translate-x-1"
-                      style={{
-                        background: "#fff",
-                        border: "2px solid #FFE082",
-                        cursor: "default",
-                      }}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLElement).style.borderColor = "#FFD54F";
-                        (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 12px rgba(255,213,79,0.25)";
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLElement).style.borderColor = "#FFE082";
-                        (e.currentTarget as HTMLElement).style.boxShadow = "";
-                      }}
-                    >
-                      <div
-                        className="shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
-                        style={{ background: iconBgs[i] }}
-                      >
-                        {level.icon}
-                      </div>
-                      <div>
-                        <div
-                          className="font-bold text-[15px]"
-                          style={{ color: "#2C2C3A", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
-                        >
-                          {level.name}
-                        </div>
-                        <div
-                          className="text-[13px] mt-0.5"
-                          style={{ color: "#888", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
-                        >
-                          {level.desc}
-                        </div>
-                      </div>
-                    </div>
-                  </Reveal>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── NEWS ──────────────────────────────────────────────────────────────── */}
-      {news.length > 0 && (
-      <section className="py-16 sm:py-20 px-5 sm:px-8" style={{ background: "#EFF9FE" }}>
-        <div className="max-w-[960px] mx-auto">
-          <Reveal>
-            <div className="text-center mb-10">
-              <span
-                className="inline-block text-[11px] font-bold tracking-[0.12em] uppercase px-4 py-1.5 rounded-full mb-4"
-                style={{
-                  background: "#B3E5FC",
-                  color: "#01579B",
-                  fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                }}
-              >
-                {t.news.tag}
-              </span>
-              <h2
-                style={{
-                  fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
-                  fontSize: "clamp(1.7rem, 3.5vw, 2.4rem)",
-                  color: "#2C2C3A",
-                  lineHeight: 1.2,
-                }}
-              >
-                {t.news.title}
-              </h2>
-            </div>
-          </Reveal>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {news.map((item, i) => (
-              <Reveal key={i} delay={i * 80} className="h-full">
-                <div
-                  className="bg-white rounded-2xl overflow-hidden transition-all duration-200 hover:-translate-y-1 flex flex-col h-full"
-                  style={{ border: "2px solid #B3E5FC" }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 24px rgba(79,195,247,0.18)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.boxShadow = "";
-                  }}
-                >
-                  {/* Color stripe */}
-                  <div style={{ height: "8px", background: item.stripe }} />
-                  <div className="p-5 flex flex-col flex-1">
-                    <div
-                      className="text-[11px] font-bold uppercase tracking-[0.08em] mb-2"
-                      style={{
-                        color: "#90A4AE",
-                        fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                      }}
-                    >
-                      {item.date}
-                    </div>
-                    <h4
-                      className="mb-3 leading-snug flex-1"
-                      style={{
-                        fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
-                        fontSize: "1.05rem",
-                        color: "#2C2C3A",
-                        lineHeight: 1.3,
-                      }}
-                    >
-                      {item.title}
-                    </h4>
-                    <p
-                      className="text-[13px] leading-relaxed mb-4"
-                      style={{ color: "#666", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
-                    >
-                      {item.excerpt}
-                    </p>
-                    <Link
-                      href="/actualites"
-                      className="text-[13px] font-bold"
-                      style={{
-                        color: "#4FC3F7",
-                        fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                        textDecoration: "none",
-                      }}
-                    >
-                      {t.news.read_more} →
-                    </Link>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={200}>
-            <div className="text-center mt-8">
-              <Link
-                href="/actualites"
-                className="inline-block font-bold text-[14px] px-6 py-2.5 rounded-full transition-all duration-150"
-                style={{
-                  fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                  background: "#4FC3F7",
-                  color: "#fff",
-                  boxShadow: "0 3px 0 #0288D1",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 5px 0 #0288D1";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.transform = "";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 3px 0 #0288D1";
-                }}
-              >
-                {t.news.all}
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-      )}
-
-      {/* ── EVENTS ────────────────────────────────────────────────────────────── */}
-      {events.length > 0 && (
-      <section className="py-16 sm:py-20 px-5 sm:px-8" style={{ background: "#FFF8E1" }}>
-        <div className="max-w-[680px] mx-auto">
-          <Reveal>
-            <div className="text-center mb-10">
-              <span
-                className="inline-block text-[11px] font-bold tracking-[0.12em] uppercase px-4 py-1.5 rounded-full mb-4"
-                style={{
-                  background: "#FFF9C4",
-                  color: "#F57F17",
-                  fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                }}
-              >
-                {t.events.tag}
-              </span>
-              <h2
-                style={{
-                  fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
-                  fontSize: "clamp(1.7rem, 3.5vw, 2.4rem)",
-                  color: "#2C2C3A",
-                  lineHeight: 1.2,
-                }}
-              >
-                {t.events.title}
-              </h2>
-            </div>
-          </Reveal>
-
-          <div className="flex flex-col gap-3">
-            {events.map((event, i) => (
-              <Reveal key={i} delay={i * 70}>
-                <div
-                  className="flex items-center gap-4 bg-white rounded-2xl px-5 py-4 transition-all duration-150"
-                  style={{ border: "2px solid #FFE082" }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "translateX(4px)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 12px rgba(255,213,79,0.2)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "";
-                  }}
-                >
-                  {/* Date box */}
-                  <div
-                    className="shrink-0 w-14 text-center rounded-xl py-2"
-                    style={{ background: "#FFD54F" }}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {news.map((item, i) => (
+                <Reveal key={i} delay={i * 80} className="h-full">
+                  <Link
+                    href="/actualites"
+                    className="relative block h-full rounded-sm p-6 transition-transform duration-200 hover:-translate-y-1"
+                    style={{
+                      background: "#FFFCF3",
+                      boxShadow: "0 14px 20px rgba(43,58,42,0.18)",
+                      transform: `rotate(${NOTE_ROTATIONS[i % NOTE_ROTATIONS.length]}deg)`,
+                      textDecoration: "none",
+                    }}
                   >
                     <span
-                      className="block text-[10px] font-bold tracking-[0.1em] uppercase"
-                      style={{ color: "#795548", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+                      className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full"
+                      style={{ background: "#E1483A", boxShadow: "0 3px 4px rgba(0,0,0,0.3)" }}
+                      aria-hidden="true"
+                    />
+                    <span
+                      className="block text-[11px] font-bold uppercase tracking-[0.05em] mb-2"
+                      style={{ color: "#C43B2C", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
                     >
-                      {event.month}
+                      {item.category}
                     </span>
                     <span
-                      className="block leading-none"
-                      style={{
-                        fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
-                        fontSize: "1.75rem",
-                        color: "#2C2C3A",
-                      }}
+                      className="float-right ml-2 text-[1.05rem]"
+                      style={{ fontFamily: "var(--font-caveat), 'Caveat', cursive", color: "#3E8FC1", fontWeight: 700 }}
                     >
-                      {event.day}
+                      {item.date}
                     </span>
-                  </div>
-                  {/* Info */}
-                  <div>
-                    <div
-                      className="font-bold text-[14px]"
-                      style={{ color: "#2C2C3A", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
+                    <h3
+                      className="mb-2 clear-both"
+                      style={{ fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif", fontSize: "1.1rem", color: "#213B26" }}
                     >
-                      {event.title}
-                    </div>
-                    <div
-                      className="text-[12px] mt-0.5"
-                      style={{ color: "#888", fontFamily: "var(--font-nunito), 'Nunito', sans-serif" }}
-                    >
-                      {event.desc}
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+                      {item.title}
+                    </h3>
+                    <p className="text-[13px] mb-3" style={{ color: "#4A5A48" }}>
+                      {item.excerpt}
+                    </p>
+                    <span className="text-[13px] font-bold" style={{ color: "#213B26" }}>
+                      {t.news.read_more} →
+                    </span>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal delay={200}>
+              <div className="text-right mt-10">
+                <Link
+                  href="/actualites"
+                  className="text-[14px] font-bold"
+                  style={{ color: "#213B26", borderBottom: "2px solid #F2B705", paddingBottom: "2px" }}
+                >
+                  {t.news.all}
+                </Link>
+              </div>
+            </Reveal>
           </div>
-        </div>
-      </section>
+        </section>
       )}
 
-      {/* ── QUOTE BANNER ──────────────────────────────────────────────────────── */}
-      <div className="py-16 sm:py-20 px-5 text-center" style={{ background: "#66BB6A" }}>
+      {/* ── TESTIMONIAL ───────────────────────────────────────────────────────── */}
+      <div className="py-16 sm:py-20 px-5 flex justify-center" style={{ background: "#FBF4E2" }}>
         <Reveal>
-          <blockquote>
-            <span
-              className="text-white"
-              style={{
-                display: "inline",
-                fontSize: "5rem",
-                lineHeight: 0.5,
-                verticalAlign: "-0.4em",
-                opacity: 0.25,
-                marginRight: "0.1rem",
-                fontFamily: "Georgia, serif",
-              }}
-              aria-hidden="true"
-            >
-              &ldquo;
-            </span>
-            <span
-              className="text-white"
-              style={{
-                fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
-                fontSize: "clamp(1.4rem, 3vw, 2rem)",
-                lineHeight: 1.4,
-              }}
-            >
-              {t.quote.text}
-            </span>
-          </blockquote>
-          <p
-            className="mt-4 font-bold"
-            style={{
-              color: "rgba(255,255,255,0.7)",
-              fontSize: "13px",
-              fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-            }}
+          <div
+            className="max-w-[640px] text-center rounded-[26px] px-8 sm:px-10 py-9"
+            style={{ background: "#fff", border: "2px solid #213B26", boxShadow: "0 10px 24px rgba(43,58,42,0.10)" }}
           >
-            — {t.quote.attr}
-          </p>
+            <blockquote>
+              <span
+                style={{
+                  display: "inline",
+                  fontSize: "3.5rem",
+                  lineHeight: 0.5,
+                  verticalAlign: "-0.4em",
+                  opacity: 0.25,
+                  marginRight: "0.1rem",
+                  fontFamily: "Georgia, serif",
+                  color: "#213B26",
+                }}
+                aria-hidden="true"
+              >
+                &ldquo;
+              </span>
+              <span style={{ fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif", fontSize: "clamp(1.15rem, 2.4vw, 1.4rem)", color: "#213B26", lineHeight: 1.4 }}>
+                {t.testimonial.quote}
+              </span>
+            </blockquote>
+            <p className="mt-4 font-bold text-[13px]" style={{ color: "#4A5A48" }}>
+              {t.testimonial.attr}
+            </p>
+          </div>
         </Reveal>
       </div>
 
-      {/* ── CTA ───────────────────────────────────────────────────────────────── */}
-      <section className="py-24 sm:py-32 px-5 text-center" style={{ background: "#2C2C3A" }}>
-        <div className="max-w-[640px] mx-auto">
+      {/* ── FINAL CTA ─────────────────────────────────────────────────────────── */}
+      <section className="px-5 sm:px-8 pb-16 sm:pb-20" style={{ background: "#FBF4E2" }}>
+        <div className="max-w-[900px] mx-auto">
           <Reveal>
-            <h2
-              className="text-white mb-5 whitespace-pre-line"
-              style={{
-                fontFamily: "var(--font-fredoka), 'Fredoka One', cursive",
-                fontSize: "clamp(2.2rem, 5vw, 3.5rem)",
-                lineHeight: 1.2,
-              }}
+            <div
+              className="rounded-[28px] text-center px-6 sm:px-12 py-14 sm:py-16"
+              style={{ background: "#C43B2C" }}
             >
-              {t.cta.title}
-            </h2>
-          </Reveal>
-          <Reveal delay={120}>
-            <p
-              className="mb-10 text-[15px]"
-              style={{
-                color: "rgba(255,255,255,0.5)",
-                fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                lineHeight: 1.6,
-              }}
-            >
-              {t.cta.subtitle}
-            </p>
-          </Reveal>
-          <Reveal delay={200}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button
-                className="font-bold px-7 py-3 rounded-full text-white text-[15px] transition-all duration-150"
-                style={{
-                  fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                  background: "#FF7043",
-                  boxShadow: "0 4px 0 #BF360C",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 0 #BF360C";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.transform = "";
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 0 #BF360C";
-                }}
+              <h2
+                className="text-white mb-4 whitespace-pre-line"
+                style={{ fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif", fontSize: "clamp(2rem, 4.5vw, 3rem)", lineHeight: 1.2 }}
               >
-                {t.cta.contact}
-              </button>
-              <Link
-                href="/login"
-                className="font-bold px-7 py-3 rounded-full text-[15px] transition-all duration-150"
-                style={{
-                  fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                  background: "rgba(255,255,255,0.1)",
-                  color: "rgba(255,255,255,0.7)",
-                  border: "2px solid rgba(255,255,255,0.2)",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.18)";
-                  (e.currentTarget as HTMLElement).style.color = "#fff";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.1)";
-                  (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.7)";
-                }}
-              >
-                {t.cta.portal}
-              </Link>
+                {t.cta.title}
+              </h2>
+              <p className="mb-10 text-[15px]" style={{ color: "rgba(255,255,255,0.9)" }}>
+                {t.cta.subtitle}
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a
+                  href={`tel:${t.footer.phone.replace(/\s/g, "")}`}
+                  className="font-bold px-7 py-3 rounded-full text-[15px]"
+                  style={{ fontFamily: "var(--font-nunito), 'Nunito', sans-serif", background: "#F2B705", color: "#213B26" }}
+                >
+                  {t.cta.contact}
+                </a>
+                <Link
+                  href="/login"
+                  className="font-bold px-7 py-3 rounded-full text-[15px] border-2"
+                  style={{ fontFamily: "var(--font-nunito), 'Nunito', sans-serif", color: "#fff", borderColor: "#fff" }}
+                >
+                  {t.cta.portal}
+                </Link>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -796,10 +616,10 @@ function HomeContent({ news, events }: { news: NewsItem[]; events: EventItem[] }
   );
 }
 
-export function HomePage({ news, events }: { news: NewsItem[]; events: EventItem[] }) {
+export function HomePage({ news }: { news: NewsItem[] }) {
   return (
     <LangProvider>
-      <HomeContent news={news} events={events} />
+      <HomeContent news={news} />
     </LangProvider>
   );
 }
