@@ -14,6 +14,7 @@ export const authConfig = {
         nextUrl.pathname === "/" ||
         nextUrl.pathname.startsWith("/a-propos") ||
         nextUrl.pathname.startsWith("/actualites") ||
+        nextUrl.pathname.startsWith("/inscription") ||
         nextUrl.pathname.startsWith("/login") ||
         nextUrl.pathname.startsWith("/api/auth");
       if (isPublic) return true;

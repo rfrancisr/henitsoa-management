@@ -45,6 +45,7 @@ function Underline({ color }: { color: string }) {
 function HomeContent({ news }: { news: NewsItem[] }) {
   const { t } = useLang();
   const [urgencyVisible, setUrgencyVisible] = useState(true);
+  const displayNews = news.length > 0 ? news : t.news.fallback;
 
   const pillarPhotos = [
     "/site/art.jpg",
@@ -134,7 +135,28 @@ function HomeContent({ news }: { news: NewsItem[] }) {
             {t.hero.tagline}
           </p>
 
-          <div className="animate-fade-up delay-400 flex flex-col sm:flex-row items-center gap-4 mt-10">
+          <div className="animate-fade-up delay-400 flex flex-col sm:flex-row items-center gap-4 mt-10 flex-wrap justify-center">
+            <Link
+              href="/inscription"
+              className="font-bold px-7 py-3 rounded-full transition-all duration-150"
+              style={{
+                fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                fontSize: "15px",
+                background: "#F2B705",
+                color: "#213B26",
+                boxShadow: "0 4px 0 #B98E04",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 0 #B98E04";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.transform = "";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 0 #B98E04";
+              }}
+            >
+              {t.nav.admission}
+            </Link>
             <Link
               href="/a-propos"
               className="text-white font-bold px-7 py-3 rounded-full transition-all duration-150"
@@ -154,25 +176,6 @@ function HomeContent({ news }: { news: NewsItem[] }) {
               }}
             >
               {t.hero.cta_primary}
-            </Link>
-            <Link
-              href="/login"
-              className="font-bold px-7 py-3 rounded-full transition-all duration-150"
-              style={{
-                fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                fontSize: "15px",
-                background: "#fff",
-                color: "#213B26",
-                border: "2.5px solid rgba(255,255,255,0.6)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.transform = "";
-              }}
-            >
-              {t.hero.cta_secondary}
             </Link>
           </div>
 
@@ -455,8 +458,7 @@ function HomeContent({ news }: { news: NewsItem[] }) {
       </section>
 
       {/* ── ANNONCES (corkboard) ──────────────────────────────────────────────── */}
-      {news.length > 0 && (
-        <section className="py-16 sm:py-20 px-5 sm:px-8" style={{ background: "#D8C296" }}>
+      <section className="py-16 sm:py-20 px-5 sm:px-8" style={{ background: "#D8C296" }}>
           <div className="max-w-[960px] mx-auto">
             <Reveal>
               <div className="flex items-end justify-between gap-4 flex-wrap mb-10">
@@ -478,7 +480,7 @@ function HomeContent({ news }: { news: NewsItem[] }) {
             </Reveal>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {news.map((item, i) => (
+              {displayNews.map((item, i) => (
                 <Reveal key={i} delay={i * 80} className="h-full">
                   <Link
                     href="/actualites"
@@ -536,8 +538,7 @@ function HomeContent({ news }: { news: NewsItem[] }) {
               </div>
             </Reveal>
           </div>
-        </section>
-      )}
+      </section>
 
       {/* ── TESTIMONIAL ───────────────────────────────────────────────────────── */}
       <div className="py-16 sm:py-20 px-5 flex justify-center" style={{ background: "#FBF4E2" }}>
@@ -590,11 +591,18 @@ function HomeContent({ news }: { news: NewsItem[] }) {
               <p className="mb-10 text-[15px]" style={{ color: "rgba(255,255,255,0.9)" }}>
                 {t.cta.subtitle}
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a
-                  href={`tel:${t.footer.phone.replace(/\s/g, "")}`}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap">
+                <Link
+                  href="/inscription"
                   className="font-bold px-7 py-3 rounded-full text-[15px]"
                   style={{ fontFamily: "var(--font-nunito), 'Nunito', sans-serif", background: "#F2B705", color: "#213B26" }}
+                >
+                  {t.nav.admission}
+                </Link>
+                <a
+                  href={`tel:${t.footer.phone.replace(/\s/g, "")}`}
+                  className="font-bold px-7 py-3 rounded-full text-[15px] border-2"
+                  style={{ fontFamily: "var(--font-nunito), 'Nunito', sans-serif", color: "#fff", borderColor: "#fff" }}
                 >
                   {t.cta.contact}
                 </a>

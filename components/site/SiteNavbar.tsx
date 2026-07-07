@@ -106,6 +106,26 @@ export function SiteNavbar() {
 
             {/* CTA */}
             <Link
+              href="/inscription"
+              className="text-[13px] font-bold px-5 py-2 rounded-full transition-all duration-150"
+              style={{
+                fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                background: "#F2B705",
+                color: "#213B26",
+                boxShadow: "0 3px 0 #B98E04",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 5px 0 #B98E04";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.transform = "";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 3px 0 #B98E04";
+              }}
+            >
+              {t.nav.admission}
+            </Link>
+            <Link
               href="/login"
               className="text-[13px] font-bold px-5 py-2 rounded-full text-white transition-all duration-150"
               style={{
@@ -171,7 +191,19 @@ export function SiteNavbar() {
                 {link.label}
               </Link>
             ))}
-            <div className="px-3 pt-2">
+            <div className="px-3 pt-2 flex flex-col gap-2">
+              <Link
+                href="/inscription"
+                onClick={() => setMenuOpen(false)}
+                className="block text-center py-2.5 rounded-full text-[14px] font-bold transition-colors duration-150"
+                style={{
+                  fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
+                  background: "#F2B705",
+                  color: "#213B26",
+                }}
+              >
+                {t.nav.admission}
+              </Link>
               <Link
                 href="/login"
                 onClick={() => setMenuOpen(false)}
