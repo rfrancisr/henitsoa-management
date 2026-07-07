@@ -13,11 +13,11 @@ describe("formatMoisAnnee", () => {
 
 describe("getStripeColor", () => {
   it("returns the known color for an existing category", () => {
-    expect(getStripeColor("Résultats")).toBe("#FF7043");
-    expect(getStripeColor("Sport")).toBe("#FFD54F");
+    expect(getStripeColor("Résultats")).toBe("#C43B2C");
+    expect(getStripeColor("Sport")).toBe("#F2B705");
   });
 
   it("returns the default color for an unknown category", () => {
-    expect(getStripeColor("Catégorie inconnue")).toBe("#90A4AE");
+    expect(getStripeColor("Catégorie inconnue")).toBe("#8A9A88");
   });
 });
