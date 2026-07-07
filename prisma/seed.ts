@@ -49,6 +49,74 @@ async function main() {
   }
   console.log(`✅ ${niveauxDef.length} niveaux`);
 
+  // ── Actualités ────────────────────────────────────────────────────────────
+  // Articles réels affichés sur le site public avant la migration de la page
+  // vers un contenu piloté par la base (voir commit a15641f). Doivent être
+  // seedés même en production pour rester visibles et éditables depuis
+  // /admin/actualites au lieu de disparaître.
+
+  const actualitesDef = [
+    {
+      id: "actualite-cepe-2026",
+      titre: "CEPE 2026 : un élève Henitsoa lauréat — 1er au classement national",
+      categorie: "Résultats",
+      extrait:
+        "Une performance historique. L'un de nos élèves a décroché la 1ère place au classement national du CEPE 2026, devenant lauréat de Madagascar. Fruit de 40 ans de rigueur pédagogique et d'un accompagnement quotidien de nos enseignants, cette distinction est une immense fierté pour toute la communauté Henitsoa.",
+      image: "/site/prof2.jpg",
+      datePublication: new Date("2026-06-01"),
+    },
+    {
+      id: "actualite-labo-informatique",
+      titre: "Inauguration du nouveau laboratoire informatique",
+      categorie: "Équipements",
+      extrait:
+        "Un laboratoire de 20 postes entièrement équipé ouvre ses portes aux élèves du primaire et du collège, pour les initier à la programmation dans des conditions optimales.",
+      image: "/site/informatique.jpg",
+      datePublication: new Date("2026-05-01"),
+    },
+    {
+      id: "actualite-journee-culturelle-2026",
+      titre: "Journée culturelle 2026 : une fête de la diversité",
+      categorie: "Culture",
+      extrait:
+        "Danse, arts plastiques, gastronomie malgache et performances en chinois ont marqué la journée culturelle annuelle.",
+      image: "/site/art.jpg",
+      datePublication: new Date("2026-04-01"),
+    },
+    {
+      id: "actualite-mandarin-primaire",
+      titre: "Le mandarin dès le primaire : une première à Tsiroanomandidy",
+      categorie: "Pédagogie",
+      extrait:
+        "Première école de la région à introduire le chinois mandarin au niveau primaire, Henitsoa confirme sa vision d'une éducation tournée vers l'avenir.",
+      image: "/site/rova.jpg",
+      datePublication: new Date("2026-03-01"),
+    },
+    {
+      id: "actualite-tournoi-inter-ecoles",
+      titre: "Tournoi inter-écoles : Henitsoa remporte le trophée",
+      categorie: "Sport",
+      extrait:
+        "L'équipe de football du collège a brillé lors du tournoi inter-écoles de Tsiroanomandidy, remportant le trophée après une finale époustouflante.",
+      image: "/site/foot2.jpg",
+      datePublication: new Date("2026-02-01"),
+    },
+    {
+      id: "actualite-bepc-2025",
+      titre: "BEPC 2025 : taux de réussite remarquable",
+      categorie: "Examens",
+      extrait:
+        "Nos élèves de 3ème ont démontré leur excellence lors du BEPC 2025. Un taux de réussite dont toute l'équipe est fière.",
+      image: "/site/prof.jpg",
+      datePublication: new Date("2025-10-01"),
+    },
+  ];
+  for (const a of actualitesDef) {
+    const { id, ...data } = a;
+    await prisma.actualite.upsert({ where: { id }, update: {}, create: { id, ...data } });
+  }
+  console.log(`✅ ${actualitesDef.length} actualités`);
+
   if (!process.env.SEED_DEMO) {
     console.log("ℹ️  Mode production : données de démo ignorées (utiliser SEED_DEMO=true pour les inclure)");
     return;
