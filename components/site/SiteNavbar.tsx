@@ -18,7 +18,7 @@ export function SiteNavbar() {
 
   return (
     <nav
-      style={{ borderBottom: "3px solid #FFD54F" }}
+      style={{ borderBottom: "3px solid #F2B705" }}
       className="sticky top-0 z-50 bg-white"
     >
       <div className="max-w-[980px] mx-auto px-5 sm:px-8">
@@ -36,13 +36,13 @@ export function SiteNavbar() {
             <div className="leading-none">
               <div
                 className="text-[10px] font-bold tracking-[0.1em] uppercase"
-                style={{ color: "#2C2C3A", opacity: 0.45 }}
+                style={{ color: "#2B3A2A", opacity: 0.45 }}
               >
                 École Privée
               </div>
               <div
                 className="text-[15px] tracking-tight mt-0.5"
-                style={{ fontFamily: "var(--font-fredoka), 'Fredoka One', cursive", color: "#FF7043" }}
+                style={{ fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif", color: "#C43B2C" }}
               >
                 Henitsoa
               </div>
@@ -58,19 +58,19 @@ export function SiteNavbar() {
                   className="transition-all duration-150 font-bold text-[13px] px-4 py-1.5 rounded-full"
                   style={{
                     fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                    background: pathname === link.href ? "#4FC3F7" : "transparent",
-                    color: pathname === link.href ? "#fff" : "#2C2C3A",
+                    background: pathname === link.href ? "#3E8FC1" : "transparent",
+                    color: pathname === link.href ? "#fff" : "#2B3A2A",
                   }}
                   onMouseEnter={(e) => {
                     if (pathname !== link.href) {
-                      (e.currentTarget as HTMLElement).style.background = "#4FC3F7";
+                      (e.currentTarget as HTMLElement).style.background = "#3E8FC1";
                       (e.currentTarget as HTMLElement).style.color = "#fff";
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (pathname !== link.href) {
                       (e.currentTarget as HTMLElement).style.background = "transparent";
-                      (e.currentTarget as HTMLElement).style.color = "#2C2C3A";
+                      (e.currentTarget as HTMLElement).style.color = "#2B3A2A";
                     }
                   }}
                 >
@@ -85,7 +85,7 @@ export function SiteNavbar() {
             {/* Language toggle */}
             <div
               className="flex items-center rounded-full p-0.5"
-              style={{ background: "rgba(44,44,58,0.07)" }}
+              style={{ background: "rgba(43,58,42,0.07)" }}
             >
               {(["fr", "mg"] as const).map((l) => (
                 <button
@@ -95,7 +95,7 @@ export function SiteNavbar() {
                   style={{
                     fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
                     background: lang === l ? "#fff" : "transparent",
-                    color: lang === l ? "#2C2C3A" : "rgba(44,44,58,0.45)",
+                    color: lang === l ? "#2B3A2A" : "rgba(43,58,42,0.45)",
                     boxShadow: lang === l ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
                   }}
                 >
@@ -110,16 +110,16 @@ export function SiteNavbar() {
               className="text-[13px] font-bold px-5 py-2 rounded-full text-white transition-all duration-150"
               style={{
                 fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                background: "#FF7043",
-                boxShadow: "0 3px 0 #BF360C",
+                background: "#C43B2C",
+                boxShadow: "0 3px 0 #8B2A1F",
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 5px 0 #BF360C";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 5px 0 #8B2A1F";
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLElement).style.transform = "";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 3px 0 #BF360C";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 3px 0 #8B2A1F";
               }}
             >
               {t.nav.portal}
@@ -140,7 +140,7 @@ export function SiteNavbar() {
                   i === 1 ? (menuOpen ? "w-5 opacity-0" : "w-3.5") :
                               (menuOpen ? "w-5 -rotate-45 -translate-y-[7px]" : "w-5")
                 }`}
-                style={{ background: "#2C2C3A" }}
+                style={{ background: "#2B3A2A" }}
               />
             ))}
           </button>
@@ -154,7 +154,7 @@ export function SiteNavbar() {
         >
           <div
             className="border-t pt-3 flex flex-col gap-1"
-            style={{ borderColor: "rgba(44,44,58,0.1)" }}
+            style={{ borderColor: "rgba(43,58,42,0.1)" }}
           >
             {navLinks.map((link) => (
               <Link
@@ -164,7 +164,7 @@ export function SiteNavbar() {
                 className="px-4 py-2.5 rounded-xl text-[14px] font-bold transition-all duration-150"
                 style={{
                   fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                  color: pathname === link.href ? "#FF7043" : "rgba(44,44,58,0.7)",
+                  color: pathname === link.href ? "#C43B2C" : "rgba(43,58,42,0.7)",
                   background: "transparent",
                 }}
               >
@@ -178,7 +178,7 @@ export function SiteNavbar() {
                 className="block text-center py-2.5 rounded-full text-[14px] font-bold text-white transition-colors duration-150"
                 style={{
                   fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                  background: "#FF7043",
+                  background: "#C43B2C",
                 }}
               >
                 {t.nav.portal}
@@ -192,8 +192,8 @@ export function SiteNavbar() {
                   className="flex-1 py-1.5 rounded-full text-[12px] font-bold transition-all duration-150"
                   style={{
                     fontFamily: "var(--font-nunito), 'Nunito', sans-serif",
-                    background: lang === l ? "#2C2C3A" : "rgba(44,44,58,0.08)",
-                    color: lang === l ? "#fff" : "rgba(44,44,58,0.5)",
+                    background: lang === l ? "#2B3A2A" : "rgba(43,58,42,0.08)",
+                    color: lang === l ? "#fff" : "rgba(43,58,42,0.5)",
                   }}
                 >
                   {l.toUpperCase()}
