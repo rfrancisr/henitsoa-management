@@ -14,7 +14,7 @@ export function SiteFooter() {
   ];
 
   return (
-    <footer style={{ background: "#2C2C3A", color: "rgba(255,255,255,0.8)" }}>
+    <footer style={{ background: "#213B26", color: "rgba(255,255,255,0.8)" }}>
       <div className="max-w-[980px] mx-auto px-6 sm:px-10 pt-14 pb-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
@@ -35,7 +35,7 @@ export function SiteFooter() {
                 </div>
                 <div
                   className="text-[18px] mt-0.5"
-                  style={{ fontFamily: "var(--font-fredoka), 'Fredoka One', cursive", color: "#FFD54F" }}
+                  style={{ fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif", color: "#F2B705" }}
                 >
                   Henitsoa
                 </div>
@@ -62,7 +62,7 @@ export function SiteFooter() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[14px] transition-colors duration-150 hover:text-[#FFD54F]"
+                    className="text-[14px] transition-colors duration-150 hover:text-[#F2B705]"
                     style={{ color: "rgba(255,255,255,0.6)" }}
                   >
                     {link.label}
@@ -99,9 +99,16 @@ export function SiteFooter() {
             >
               {t.footer.contact}
             </h5>
-            <p className="text-[14px] italic leading-[1.65]" style={{ color: "rgba(255,255,255,0.35)" }}>
-              {t.footer.contact_placeholder}
+            <p className="text-[14px] leading-[1.65]" style={{ color: "rgba(255,255,255,0.6)" }}>
+              {t.footer.address}
             </p>
+            <a
+              href={`tel:${t.footer.phone.replace(/\s/g, "")}`}
+              className="block text-[14px] mt-1 transition-colors duration-150 hover:text-[#F2B705]"
+              style={{ color: "rgba(255,255,255,0.6)" }}
+            >
+              {t.footer.phone}
+            </a>
           </div>
         </div>
 
